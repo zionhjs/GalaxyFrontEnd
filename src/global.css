@@ -1,0 +1,33 @@
+html, body, #root {
+  height: 100%;
+  padding: 0;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+body {
+  margin: 0;
+}
+::-webkit-scrollbar {
+  display: none; 
+}
+::selection{
+  background-color: transparent;
+}
+@font-face{
+  font-family: 'OswaldLight';
+  src: url('./assets/fonts/Oswald-Light-TTF.sfd.ttf') format('truetype');
+}
+@font-face{
+  font-family: 'Oswald';
+  src: url('./assets/fonts/Oswald-Regular.ttf');
+}
+@font-face{
+  font-family: 'OswaldBold';
+  src: url('./assets/fonts/Oswald-Bold.otf');
+}
+@font-face{
+  font-family: 'Roboto';
+  src: url('./assets/fonts/Roboto-Regular-14.ttf');
+}

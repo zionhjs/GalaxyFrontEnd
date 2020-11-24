@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.editor{
+    width: 749px;
+    margin-top: 50px;
+}
+.htm{
+    width: 749px;
+    margin-top: 50px;
+}

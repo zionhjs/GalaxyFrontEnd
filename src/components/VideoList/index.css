@@ -1,0 +1,248 @@
+/*
+ * @Author: xingzai
+ * @Date: 2020-11-15 00:43:27
+ * @LastEditors: xingzai
+ * @LastEditTime: 2020-11-24 05:41:38
+ * @FilePath: \test\src\components\VideoList\index.css
+ */
+/*
+ * @Author: xingzai
+ * @Date: 2020-11-15 00:43:27
+ * @LastEditors: xingzai
+ * @LastEditTime: 2020-11-22 19:14:05
+ * @FilePath: \test\src\components\VideoList\index.css
+ */
+.container{
+    padding: 40px;
+    padding-bottom: 56px;
+    background-color: #1d1d1d;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+.box1,.box2,.box3{
+   display: flex;
+   flex-direction: column;
+   overflow: hidden; 
+   align-items: center;
+   line-height: 1;
+   background-color: #000;
+   position: relative;
+   justify-content: space-between;
+}
+.box2,.box3{
+    height: 50%;
+}
+.box1Img{
+    height: 708px;
+    width: auto;
+}
+.nameWrapper{
+    align-self: stretch;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.nameText{
+    font-family: 'Roboto';
+    font-size: 26px;
+    color: #fff;
+    margin-left: 15px;
+}
+.dateText{
+    margin-left: 75px;
+    font-size: 19px;
+    font-family: 'Roboto';
+    color: rgba(255,255,255,0.6);
+}
+.desc{
+    font-family: 'Roboto';
+    font-size: 19px;
+    color: rgba(255,255,255,0.6);
+    align-self: stretch;
+    padding-left: 15px;
+    align-items: center;
+    display: flex;
+    margin-bottom: 15px;
+}
+.rightBox{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.box1{
+    width: 1288px;
+}
+.box2,.box3{
+    height: 383px;
+    width: 514px;
+}
+.hidden{
+    display: none;
+}
+.editBox{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    display: none;
+}
+.editShow{
+    display: flex;
+}
+.editLeft{
+ flex: 1;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+}
+.editInput{
+    height: 42px;
+    border: 1px solid #4E4E4E;
+    background-color: #272727;
+    margin-bottom: 10px;
+    font-family: 'Roboto';
+    font-size: 18px;
+    color: #fff;
+    line-height: 42px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.editTextArea{
+    border: 1px solid #4E4E4E;
+    background-color: #272727;
+    height: 126px;
+    font-family: 'Roboto';
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+.editRight{
+width: 46px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+}
+.editClose{
+ width: 15px;
+ height: auto;
+}
+.editUpdate{
+    width: 15px;
+    height: auto;
+}
+.updateView{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.fileUpload{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+}
+.checkIcon{
+    width: 15px;
+    height: auto;
+}
+.box2Img,.box3Img{
+    height: 304px;
+    width: auto;
+}
+.playBtn1{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 85px;
+    height: auto;
+    margin-top: 308px;
+    cursor: pointer;
+}
+.playBtn2,.playBtn3{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 85px;
+    height: auto;
+    margin-top: 99px;
+    cursor: pointer;
+}
+.fullScreen{
+    font-size: 18px;
+    color: #fff;
+    margin-left: auto;
+    margin-right: 11px;
+}
+.editIcon{
+    width: 18px;
+    height: auto;
+    margin-left: auto;
+    margin-right: 11px;
+    display: block;
+}
+.uploadBox{
+    width: 514px;
+    height: 50%;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.bigUploadBox{
+    width: 1288px;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.bigUpperBox{
+    height: 708px;
+    background-color: #4E4E4E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+.upperBox{
+    height: 282px;
+    background-color: #4E4E4E;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+.uploadIcon{
+    width: 42px;
+    height: auto;
+}
+.uploadText{
+    font-family: 'Source Han Sans CN';
+    font-size: 21px;
+    color: #9e9e9e;
+    margin-top: 14px;
+}
+

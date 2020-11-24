@@ -1,0 +1,174 @@
+/*
+ * @Author: xingzai
+ * @Date: 2020-11-09 09:11:27
+ * @LastEditors: xingzai
+ * @LastEditTime: 2020-11-09 12:23:23
+ * @FilePath: \test\src\components\ArticleList\index.css
+ */
+.container {
+  background-color: #1d1d1d;
+  padding: 40px;
+}
+
+.listItem {
+  margin-bottom: 40px;
+  height: 429px;
+  background-color: #000;
+  display: flex;
+}
+
+.leftBox {
+  width: 666px;
+}
+
+.rightBox {
+  flex: 1;
+  position: relative;
+}
+.redClose{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 25px;
+  height: auto;
+  transform: translate(50%,-50%);
+}
+
+.listTitle {
+  font-family: 'Roboto';
+  color: #fff;
+  font-size: 26px;
+  margin-left: 51px;
+  margin-top: 45px;
+  height: 64px;
+  margin-right: 63px;
+}
+
+.listAuthor{
+
+}
+
+.listDate {
+ margin-left: 44px;
+}
+
+.listMidBox {
+  display: flex;
+  align-items: center;
+  margin-top: 22.5px;
+  margin-left: 51px;
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.listContent {
+  margin-left: 51px;
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 23.5px;
+  height: 154px;
+  width: 1007px;
+}
+
+.listFooter {
+font-family: 'Roboto';
+color: #fff;
+font-size: 14px;
+display: flex;
+align-items: center;
+margin-top: 53px;
+}
+.readIcon{
+  margin-left: 51px;
+  width: 22.5px;
+  height: auto;
+  margin-right: 5px;
+}
+
+.readText {
+
+}
+.likedIcon{
+ width: 19px;
+ height: auto;
+ margin-left: 103px;
+ margin-right: 5px;
+}
+
+.likedText {
+
+}
+.commentIcon{
+  width: 19px;
+  height: auto;
+  margin-left: 123px;
+  margin-right: 5px;
+}
+.commentText {
+    
+}
+.moreText{
+margin-left: auto;
+cursor: pointer;
+}
+.rightIcon{
+  margin-left: 5px;
+  margin-right: 17px;
+}
+.editIcon{
+  margin-left: auto;
+  color: #fff;
+  font-size: 21px;
+  margin-right: 18px;
+}
+.swiperImg{
+  width: 100%;
+  height: auto;
+}
+.swiperContainer{
+  position: relative;
+}
+.btnGroup{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  padding-left: 26px;
+  padding-right: 26px;
+  font-size: 19px;
+  color: #fff;
+}
+.dotsBox{
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 17px;
+  margin: auto;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+.dot{
+width: 16px;
+height: 16px;
+padding: 4px;
+border-radius: 50%;
+background-color:#fff;
+margin-right: 17px;
+background-clip: content-box;
+border: 1px solid #fff;
+}
+.swiperBtn{
+  cursor: pointer;
+}
+
+

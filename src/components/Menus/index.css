@@ -1,0 +1,45 @@
+/*
+ * @Author: xingzai
+ * @Date: 2020-11-12 06:01:47
+ * @LastEditors: xingzai
+ * @LastEditTime: 2020-11-12 06:02:04
+ * @FilePath: \test\src\components\Menus\index.css
+ */
+.container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  z-index: 20001;
+}
+
+.closeWrapper {
+  height: 80px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.closeIcon {
+  color: #9e9e9e !important;
+  font-size: 25px;
+  margin-right: 20px;
+}
+
+.menuBox {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menuItem {
+  font-family: 'Segoe UI';
+  color: #9E9E9E;
+  font-size: 40px;
+  cursor: pointer;
+  line-height: 1;
+  margin-bottom: 50px;
+}

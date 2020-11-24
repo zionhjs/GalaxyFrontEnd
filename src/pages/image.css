@@ -1,0 +1,64 @@
+.container{
+    display: flex;
+    flex-direction: column;
+}
+.swiperBox{
+    position: relative;
+    height: 937px;
+}
+.swiperItem{
+    width: 100%;
+    height: 100%;
+}
+.swiperImg{
+    width: 100%;
+    height: 937px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.preBtn{
+    width: 50px;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 40px;
+    margin: auto;
+    cursor: pointer;
+  }
+  .nextBtn{
+    width: 50px;
+    height: auto;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 40px;
+    margin: auto;
+    cursor: pointer;
+  }
+  .dotsBox{
+    position: absolute;
+    height: 16px;
+    top: 0;
+    bottom: 30px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: flex;
+    margin-bottom: 0;
+    justify-content: center;
+    
+  }
+  .dotBtn{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: #fff;
+    margin-right: 30px;
+    background-clip: content-box;
+    padding: 4px;
+  }
+  .activeDot{
+    border: 1px solid #fff;
+  }

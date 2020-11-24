@@ -1,0 +1,387 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 44px;
+  padding-left: 382px;
+  padding-right: 382px;
+  background-color: #1D1D1D;
+}
+
+.articleTitle {
+  font-family: 'Roboto';
+  font-size: 40px;
+  color: #D9D9D9;
+  line-height: 50px;
+}
+
+.articleInfo {
+  display: flex;
+  align-items: center;
+  margin-top: 38px;
+}
+
+.authorText,
+.dateText {
+  font-family: 'Roboto';
+  font-size: 20px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dateText {
+  margin-left: 22px;
+}
+
+.readIcon {
+  width: 23px;
+  height: auto;
+  margin-left: auto;
+}
+
+.readText,
+.likedText,
+.commentText,
+.shareText {
+  font-family: 'Roboto';
+  font-size: 14px;
+  color: #fff;
+  margin-left: 5px;
+}
+
+.likedIcon {
+  width: 19px;
+  height: auto;
+  margin-left: 72px;
+}
+
+.commentIcon {
+  width: 19px;
+  height: auto;
+  margin-left: 72px;
+}
+
+.shareIcon {
+  width: 21px;
+  height: auto;
+  margin-left: 72px;
+}
+
+.blogContent {
+  display: flex;
+  margin-top: 50px;
+}
+
+.post {
+  flex: 1;
+  font-family: 'Roboto';
+  color: #fff;
+  font-size: 16px;
+}
+
+.sider {
+  width: 22.5rem;
+  margin-left: 32px;
+}
+
+:global(.rich-img) {
+  width: 100%;
+  height: auto;
+  margin: auto;
+  display: block;
+  margin-top: 22px;
+  margin-bottom: 22px;
+}
+
+.searchBox {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 27px;
+  padding-right: 27px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  border: 1px solid #4E4E4E;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.searchTitle,
+.getNewsTitle,.recentPostTitle ,.tagsTitle,.commentTitle{
+  font-family: 'Roboto';
+  font-size: 40px;
+  color: #D9D9D9;
+  line-height: 1;
+}
+
+.inputView {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  border: 1px solid #4E4E4E;
+  background-color: #272727;
+  height: 42px;
+  margin-top: 15px;
+}
+
+.searchInput {
+  flex: 1;
+  background-color: transparent;
+  border: none;
+  font-family: 'Segoe UI';
+  font-size: 18px;
+  font-style: italic;
+  color: rgb(255, 255, 255, 0.6);
+}
+
+.searchIcon {
+  width: 14px;
+  height: auto;
+}
+
+.getNews {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 27px;
+  padding-right: 27px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  border: 1px solid #4E4E4E;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.newsText {
+  font-family: 'Roboto';
+  color: rgb(255, 255, 255, 0.6);
+  font-size: 16px;
+  margin-top: 15px;
+}
+.nameInput,.emailInput{
+  border: 1px solid #4E4E4E;
+  height: 42px;
+  background-color: #272727;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 15px;
+  color: rgb(255, 255, 255, 0.6);
+}
+.signupBtn{
+  margin-top: 15px;
+  color: #fff;
+  background-image: linear-gradient(to right,#0dd0e0, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+  text-align: center;
+  height: 42px;
+  line-height: 42px;
+  cursor: pointer;
+}
+.recentPost {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 27px;
+  padding-right: 27px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  border: 1px solid #4E4E4E;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40px;
+}
+.recentPostItem{
+  margin-bottom: 20px;
+  border-bottom: 1px solid #4e4e4e;
+}
+.itemContent{
+  display: flex;
+}
+.itemText{
+  font-family: 'Roboto';
+  color: rgba(217,217,217,0.6);
+  font-size: 14px;
+}
+.itemImg{
+  margin-right: 13px;
+  width: 97px;
+  height: auto;
+}
+.itemText{
+  width: 197px;
+}
+.recentPostTitle{
+  margin-bottom: 15px;
+}
+.itemDesc{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Roboto';
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 20px;
+  margin-top: 8px;
+}
+
+.tagsBox {
+  width: 100%;
+  box-sizing: border-box;
+  padding-left: 27px;
+  padding-right: 27px;
+  padding-top: 35px;
+  padding-bottom: 35px;
+  border: 1px solid #4E4E4E;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 40px;
+}
+.tagInner{
+  display: flex;
+  flex-wrap: wrap;
+}
+.tag{
+  height: 33px;
+  border: 1px solid #4e4e4e;
+  color: rgba(255, 255, 255, 0.6);
+  margin-right: 25px;
+  margin-bottom: 13px;
+  padding-left: 15px;
+  padding-right: 15px;
+  line-height: 33px;
+  text-align: center;
+  font-family: 'Roboto';
+  font-size: 14px;
+}
+.tagsTitle{
+  margin-bottom: 15px;
+}
+.postInfo{
+  display: flex;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: 17px;
+}
+.nextText{
+  margin-left: auto;
+  color: #fff;
+  font-family: 'Roboto';
+  font-size: 18px;
+}
+.rightIcon{
+  color: #fff;
+  font-size: 18px;
+  margin-left: 9.5px;
+}
+.commentBox{
+  padding: 46px;
+  border: 1px solid #4e4e4e;
+}
+.commentInputView{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 42px;
+  margin-top: 45px;
+}
+.commentInput{
+  border: 1px solid #4e4e4e;
+  height: 100%;
+  padding-left: 15px;
+  border: 1px solid #4e4e4e;
+  width: 504px;
+  color: #9E9E9E;
+  background-color: #272727;
+}
+.commentTextArea{
+  padding-top: 8px;
+  padding-left: 16px;
+  padding-right: 16px;
+  color: #9E9E9E;
+  font-family: 'Roboto';
+  font-size: 18px;
+  background-color: #272727;
+  border: 1px solid #4e4e4e;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 28px;
+}
+.checkedRow{
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+}
+.checked,.unChecked{
+  background-color: #272727;
+  border: 1px solid #4E4E4E;
+  margin-right: 5px;
+  width: 16px;
+  height: 16px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  color: #9e9e9e;
+}
+.checkedText{
+  font-family: 'Roboto';
+  font-size: 18px;
+  color: #9E9E9E;
+}
+.sendBtn{
+  background-image: linear-gradient(to right,#0dd0e0, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+  height: 42px;
+  color: #fff;
+  font-family: 'Roboto';
+  font-size: 18px;
+  text-align: center;
+  line-height: 42px;
+  margin-top: 36px;
+}
+.commentLabel{
+  font-size: 30px;
+  color: #fff;
+  margin-top: 64px;
+  margin-bottom: 30px;
+}
+.commentRow{
+  border: 1px solid #4E4E4E;
+  padding: 18px 24px;
+  margin-bottom: 20px;
+}
+.commentRow:last-child{
+  margin-bottom: 0;
+}
+.commentInfo{
+  display: flex;
+  align-items: center;
+}
+.avatar{
+  width: 38px;
+  height: 38px;
+  border-radius: 19px;
+}
+.commentNameText{
+  color: #fff;
+  margin-left: 24px;
+}
+.commentDateText{
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  margin-left: 33px;
+}
+.commentLikedIcon{
+  width: 19px;
+  height: auto;
+  margin-left: auto;
+}
+.commentLikedText{
+  color: #fff;
+  margin-left: 7px;
+}
+.commentContent{
+ font-size: 18px;
+ font-family: 'Roboto';
+ color: #9E9E9E;
+}
+
