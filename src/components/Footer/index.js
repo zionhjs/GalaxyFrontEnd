@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import classnames from 'classnames'
 import styles from './index.css'
 
 export default function (props) {
@@ -23,7 +24,7 @@ export default function (props) {
         <img src="facebook.png" alt="" className={styles.footerIcon} />
         <img src="linkin.png" alt="" className={styles.footerIcon} />
       </div>
-      <div className={styles.footerText}>galaxycgi@gmail.com</div>
+      <div id="email" className={classnames(styles.footerText,styles.emailText)}>galaxycgi@gmail.com</div>
       <div className={styles.footerText}> +1 6262656782</div>
       <div className={styles.footerText}>  9415 Culver Blvd #19, Culver City, CA 90232</div>
       <div className={styles.footerText}> Copyright © GalaxyCGI www.galaxycgi.com all rights reserved.</div>

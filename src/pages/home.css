@@ -194,6 +194,7 @@
   padding-top: 30px;
   padding-bottom: 30px;
   display: flex;
+  overflow: hidden;
 }
 .profile{
   flex: 1;
@@ -203,6 +204,18 @@
   justify-content: center;
   align-items: center;
   position: relative;
+}
+.profile:hover{
+  animation: zoomout 1s ease-in-out;
+  flex: 1.5;
+}
+@keyframes zoomout{
+0% {
+  flex: 1;
+}
+100% {
+  flex: 1.5;
+}
 }
 .profileImg{
   height: 100%;

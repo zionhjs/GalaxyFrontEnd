@@ -32,15 +32,15 @@
   }
   .footerIconBox{
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     margin-top: 65px;
     margin-bottom: 65px;
+    width: 856px;
   }
   .footerIcon{
     width: 35px;
     height: auto;
-    margin-right: 129px;
     cursor: pointer;
   }
   .footerText{
@@ -49,6 +49,10 @@
     opacity: 0.6;
     color: #fff;
     line-height: 46px;
+  }
+  .emailText:hover{
+  text-decoration: underline!important;
+  cursor: pointer;
   }
   .dialog{
     position: absolute;

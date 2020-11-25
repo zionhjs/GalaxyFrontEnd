@@ -10,6 +10,9 @@ import React, { useState, useRef } from 'react';
 import styles from './home.css';
 import { Carousel } from 'antd';
 import classnames from 'classnames'
+import QueueAnim from 'rc-queue-anim';
+import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import TweenOne from 'rc-tween-one';
 
 const leftBanners = ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg']
 const midBanners = ['banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg', 'banner1.jpeg']
@@ -105,6 +108,14 @@ export default function (props) {
         future for architecture and</div>
         <div className={styles.aboutText}>continuing provide our affordable high quality renders service.</div>
       </div>
+      
+     {/*  <OverPack className={styles.profileBox}>
+      <QueueAnim key='queueAnim' leaveReverse
+      animConfig={[
+        { opacity: [1, 0], translateY: [0, 50] },
+        { opacity: [1, 0], translateY: [0, -50] }
+      ]}
+      > */}
       <div className={styles.profileBox}>
         {profiles.map((item, index) => (
           <div key={index} className={styles.profile}>
@@ -116,7 +127,9 @@ export default function (props) {
             <div className={styles.seeMoreBtn}>SEE MORE</div>
           </div>
         ))}
-      </div>
+        </div>
+       {/*  </QueueAnim>
+        </OverPack> */}
       <div className={styles.illustrationBox}>
         <img src={illustration.imgUrl} className={styles.illustrationImg} alt="" />
         <div className={styles.illustrationTitleBox}>
@@ -124,7 +137,14 @@ export default function (props) {
           <div className={styles.illuTitle}>{illustration.title}</div>
         </div>
         <div className={styles.illuListMask}></div>
-        <div className={styles.illuListBox}>
+        <OverPack playScale={0.3}>
+        <QueueAnim 
+        type="bottom"
+        key="block"
+        leaveReverse
+        component="div"
+        componentProps={illustration}
+        className={styles.illuListBox}>        
           {illustration.list.map((item, index) => (
             <div key={index} className={styles.illuListItem}>
               <div className={styles.illuListTitleBox}><img src={item.icon} alt="" style={{width:'30px',height:'auto'}}/><span className={styles.illuListItemTitle}>{item.title}</span></div>
@@ -132,7 +152,8 @@ export default function (props) {
               <div className={styles.illuListText}>{item.text}</div>
             </div>
           ))}
-        </div>
+        </QueueAnim>
+        </OverPack>
       </div>
       <div className={styles.stillWrapper}>
         <div className={styles.stillTitleBox}>
@@ -201,10 +222,7 @@ export default function (props) {
             <div className={styles.stepContent}>Take your comments and revise that till you satisfied.</div>
           </div>
         </div>
-      </div>
-
-      
-
+      </div>    
     </div>
   );
 }

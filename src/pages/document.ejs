@@ -63,28 +63,32 @@
     background-color: #fff;
   }
   .progress{
-    width: 100%;
-    height: 100%;
+    margin-top: 43px;
+    width: 439px;
+    height: 10px;
     border-radius: 13px;
     animation: colorAnimation 3s linear;
-    background-image: linear-gradient(to right,#0dd0e0, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+    background: linear-gradient(to right, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
   }
   @keyframes colorAnimation {
-  0% {
-    width: 0%;
-  }
-  20% {
-    width: 20%;
-  }
-  40% {
-    width: 40%;
-  }
-  60% {
-    width: 60%;
-  }
-  100% {
-    width: 100%;
-  }
+    0% {
+        background-image: linear-gradient(to right, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+    }
+    20% {
+        background-image: linear-gradient(to right, #dd1bfc, #0dd0e0, #449fe7, #8369ef, #c62ef8);
+    }
+    40% {
+        background-image: linear-gradient(to right, #c62ef8, #dd1bfc, #0dd0e0, #449fe7, #8369ef);
+    }
+    6% {
+        background-image: linear-gradient(to right, #8369ef, #c62ef8, #dd1bfc, #0dd0e0, #449fe7);
+    }
+    80% {
+        background-image: linear-gradient(to right, #449fe7, #8369ef, #c62ef8, #dd1bfc, #0dd0e0);
+    }
+    100% {
+        background-image: linear-gradient(to right, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+    }
 }
   </style>
   <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -94,7 +98,7 @@
       <img class="logo" alt="" src="./purplelogo.png" />
       <div class="text1">We Visualize your design</div>
       <div class="text2">in fantastic ways</div>
-      <div class="progressBox"><div class="progress"></div></div>
+      <div class="progress"></div>
     </div>
     <div class="splashFooter">Copyright © 2020 GalaxyCGI. All Rights Reserved.</div>
   </div>

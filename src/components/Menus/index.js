@@ -16,8 +16,8 @@
 import React, { useState,useEffect } from 'react'
 import { CloseOutlined } from '@ant-design/icons'
 import QueueAnim from 'rc-queue-anim';
+import Router from 'umi/router'
 import styles from './index.css'
-import {getImages} from '../../service/api'
 
 const menus = ['Login', 'Logout', 'Dashboard']
 export default function (props) {
@@ -33,8 +33,7 @@ export default function (props) {
             close()
         }
         if(item==='Logout'){
-          let result= await getImages()
-          console.log('getImage',result)
+            Router.push('/test')
         }
         if(item==='Dashboard'){
            openDashboard()

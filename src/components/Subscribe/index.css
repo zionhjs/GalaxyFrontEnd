@@ -3,12 +3,13 @@
     height: 103px;
     left: 0;
     right: 0;
-    bottom: 79px;
+    bottom: 0;
     z-index: 20001;
     display: flex;
     justify-content: center;
     align-items: center;
     background-image: linear-gradient(to right,#0dd0e0, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+    opacity: 0.6;
   }
   .closeIcon{
     width: 16px;
@@ -29,12 +30,12 @@
   }
   .subInput{
     width: 428px;
-    height: 62px;
-    border-radius: 31px;
+    height: 40px;
+    border-radius: 20px;
     border: none;
     color: #D2D2D2;
     font-size: 30px;
     margin-left: 90px;
     padding-left: 39px;
-    line-height: 62px;
+    line-height: 40px;
   }

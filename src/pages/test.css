@@ -13,3 +13,18 @@
     width: 749px;
     margin-top: 50px;
 }
+.space{
+    height: 1500px;
+    width: 100%;
+    background-color: aquamarine;
+}
+.mylist{
+    display: flex;
+    height: 100px;
+}
+.listItem{
+    background-color: bisque;
+    margin-right: 20px;
+    width: 100px;
+    height: 250px;
+}
