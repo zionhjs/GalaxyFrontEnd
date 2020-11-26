@@ -305,6 +305,7 @@
 }
 .illuListBox{
   position: absolute;
+  overflow: hidden;
   width: 100%;
   left: 0;
   right: 0;
@@ -360,9 +361,22 @@ color: #fff;
   text-transform: uppercase;
   letter-spacing: 1.33px;
 }
+.wfOutterBox{
+  display: flex;
+  justify-content: space-evenly;
+  height: 279px;
+  overflow: hidden;
+}
+.wfInnerBox{
+  width: 370px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
 .workflowImg{
-  width: 100%;
-  height: auto;
+  height: 100%;
+  width: auto;
 }
 .stepBox{
   display: flex;

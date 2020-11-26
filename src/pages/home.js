@@ -6,7 +6,7 @@
  * @LastEditTime: 2020-11-07 06:00:11
  * @FilePath: \test\src\pages\index.js
  */
-import React, { useState, useRef,useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styles from './home.css';
 import { Carousel } from 'antd';
 import classnames from 'classnames'
@@ -27,6 +27,8 @@ const illustration = {
     { title: 'Match Expectations', text: 'Depends on the budget,we provide different quality of works.What we showed you we can do,we do it for you!', icon: 'expectation.png' }
   ]
 }
+const stillImages = ['wf1.png', 'wf2.png', 'wf3.png', 'wf4.png', 'wf5.png']
+const aniImages = stillImages
 export default function (props) {
   const [currentDot, setDot] = useState(0)//轮播图当前选中图片索引
   const leftCarousel = useRef()
@@ -65,7 +67,7 @@ export default function (props) {
               <div key={index} className={styles.leftBanner}><img src={item} alt="" className={styles.leftImg} /></div>
             ))}
           </Carousel>
-          <img className={styles.preBtn}  src="pre.png" alt=""  onClick={pre} />
+          <img className={styles.preBtn} src="pre.png" alt="" onClick={pre} />
         </div>
         <div className={styles.midBox}>
           <Carousel dots={false} ref={midCarousel}>
@@ -92,7 +94,7 @@ export default function (props) {
               <div key={index} className={styles.rightBanner}><img src={item} alt="" className={styles.rightImg} /></div>
             ))}
           </Carousel>
-          <img className={styles.nextBtn}  src="next.png" alt=""  onClick={next} />
+          <img className={styles.nextBtn} src="next.png" alt="" onClick={next} />
         </div>
       </div>
       <div className={styles.aboutBox}>
@@ -119,38 +121,53 @@ export default function (props) {
             <div className={styles.seeMoreBtn}>SEE MORE</div>
           </div>
         ))}
-        </div>
+      </div>
       <div className={styles.illustrationBox}>
         <img src={illustration.imgUrl} className={styles.illustrationImg} alt="" />
         <div className={styles.illustrationTitleBox}>
-          <img src="diamon.png" style={{width:'45px',height:'auto'}} />
+          <img src="diamon.png" style={{ width: '45px', height: 'auto' }} />
           <div className={styles.illuTitle}>{illustration.title}</div>
         </div>
         <div className={styles.illuListMask}></div>
         <OverPack playScale={0.3}>
-        <QueueAnim 
-        type="bottom"
-        key="queue"
-        leaveReverse
-        component="div"
-        className={styles.illuListBox}
-        >        
-           {illustration.list.map((item, index) => (
-            <div key={index+'#'} className={styles.illuListItem}>
-              <div className={styles.illuListTitleBox}><img src={item.icon} alt="" style={{width:'30px',height:'auto'}}/><span className={styles.illuListItemTitle}>{item.title}</span></div>
-              <div className={styles.illuSplitLine}></div>
-              <div className={styles.illuListText}>{item.text}</div>
-            </div>
-          ))}
-        </QueueAnim>
+          <QueueAnim
+            animConfig={[
+              { opacity: [1, 0], translateY: [0, 50] },
+              { opacity: [1, 0], translateY: [0, -50] }
+            ]}
+            delay={[0,1000,2000]}
+            ease="easeInOutCubic"
+            key="queue"
+            leaveReverse
+            component="div"
+            className={styles.illuListBox}
+          >
+            {illustration.list.map((item, index) => (
+              <div key={index + '#'} className={styles.illuListItem}>
+                <div className={styles.illuListTitleBox}><img src={item.icon} alt="" style={{ width: '30px', height: 'auto' }} /><span className={styles.illuListItemTitle}>{item.title}</span></div>
+                <div className={styles.illuSplitLine}></div>
+                <div className={styles.illuListText}>{item.text}</div>
+              </div>
+            ))}
+          </QueueAnim>
         </OverPack>
       </div>
       <div className={styles.stillWrapper}>
         <div className={styles.stillTitleBox}>
-          <img src="still.png" style={{width:'41px',height:'auto'}} />
+          <img src="still.png" style={{ width: '41px', height: 'auto' }} />
           <span className={styles.stillTitle}>Still Image WorkFlow</span>
         </div>
-        <div><img src="workflow.png" className={styles.workflowImg} /></div>
+        <OverPack playScale={0.3}>
+          <QueueAnim
+            type="bottom"
+            delay={[0,1000,2000]}
+            ease="easeInOutCubic"
+            key="queue"
+            leaveReverse
+            component="div"
+            className={styles.wfOutterBox}>{stillImages.map((item, index) => (<div key={index} className={styles.wfInnerBox}><img src={item} className={styles.workflowImg} alt="" /></div>))}
+          </QueueAnim>
+        </OverPack>
         <div className={styles.stepBox}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 1<img src="step.png" className={styles.stepImg} /></div>
@@ -181,11 +198,19 @@ export default function (props) {
 
       <div className={styles.animationWrapper}>
         <div className={styles.animationTitleBox}>
-        <img src="still.png" style={{width:'41px',height:'auto'}} />
+          <img src="still.png" style={{ width: '41px', height: 'auto' }} />
           <span className={styles.animationTitle}>Animation WorkFlow</span>
         </div>
 
-        <div><img src="workflow.png" className={styles.workflowImg} /></div>
+        <OverPack playScale={0.3}>
+          <QueueAnim
+            type="bottom"
+            key="queue"
+            leaveReverse
+            component="div"
+            className={styles.wfOutterBox}>{aniImages.map((item, index) => (<div key={index} className={styles.wfInnerBox}><img src={item} className={styles.workflowImg} alt="" /></div>))}
+          </QueueAnim>
+        </OverPack>
         <div className={styles.stepBox}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 1<img src="step.png" className={styles.stepImg} /></div>
@@ -212,7 +237,7 @@ export default function (props) {
             <div className={styles.stepContent}>Take your comments and revise that till you satisfied.</div>
           </div>
         </div>
-      </div>    
+      </div>
     </div>
   );
 }
