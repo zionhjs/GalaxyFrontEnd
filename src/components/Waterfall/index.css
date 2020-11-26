@@ -1,0 +1,233 @@
+.container{
+    background-color: #1D1D1D;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.waterfall{
+    display: flex;
+    padding-top: 12px;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+}
+.col1,.col2,.col3,.col4{
+    margin-right: 15px;
+    flex: 1;
+}
+.col4{
+    margin-right: 0;
+    width: auto;
+}
+.imgWrapper{
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    background-color: #000;
+    line-height: 21px;
+    position: relative;
+}
+.editBox{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    display: none;
+}
+.editShow{
+    display: flex;
+}
+.editLeft{
+ flex: 1;
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+}
+.editInput{
+    height: 42px;
+    border: 1px solid #4E4E4E;
+    background-color: #272727;
+    margin-bottom: 10px;
+    font-family: 'Roboto';
+    font-size: 18px;
+    color: #fff;
+    line-height: 42px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.editTextArea{
+    border: 1px solid #4E4E4E;
+    background-color: #272727;
+    height: 126px;
+    font-family: 'Roboto';
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+}
+.editRight{
+width: 46px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+align-items: center;
+}
+.editClose{
+ width: 15px;
+ height: auto;
+}
+.editUpdate{
+    width: 15px;
+    height: auto;
+}
+.updateView{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.checkIcon{
+    width: 15px;
+    height: auto;
+}
+.loadMore{
+    position: relative;
+    width: 367px;
+    height: 45px;
+    margin-bottom: 91px;
+    margin-top: 73px;
+    text-align: center;
+    line-height: 45px;
+    cursor: pointer;
+}
+.loadMoreImg{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100%;
+    height: auto;
+}
+.loadMoreText{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 110px;
+    height: auto;
+}
+.nameText{
+color: #fff;
+font-family: 'Roboto';
+font-size: 18px;
+margin-left: 9px;
+}
+.dateText{
+ font-size: 14px;
+ font-family: 'Roboto';
+ color: rgba(255,255,255,0.6);
+ margin-left: 14px;
+}
+.desc{
+    font-size: 14px;
+    font-family: 'Roboto';
+    color: rgba(255,255,255,0.6);
+    padding-left: 9px;
+}
+.imgFooter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 15px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+}
+.editIcon{
+    width: 21px;
+    height: auto;
+}
+.uploadBox{
+    background-color: #000;
+}
+.upperBox{
+    background-color: #4E4E4E;
+    height: 286px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+}
+.uploadIcon{
+    width: 42px;
+    height: auto;
+}
+.uploadText{
+    font-family: 'Source Han Sans CN';
+    font-size: 21px;
+    color: #9e9e9e;
+    margin-top: 14px;
+}
+.uploadFooter{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    padding-left: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.uploadLeft{
+    flex: 1;
+}
+.uploadInput{
+    height: 42px;
+    border: 1px solid #4E4E4E;
+    background-color: #272727;
+    margin-bottom: 10px;
+    font-family: 'Roboto';
+    font-size: 18px;
+    color: #fff;
+    line-height: 42px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+}
+.uploadRight{
+    width: 46px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.uploadTextArea{
+    border: 1px solid #4E4E4E;
+    background-color: #272727;
+    height: 70px;
+    font-family: 'Roboto';
+    font-size: 14px;
+    color: rgba(255,255,255,0.6);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    width: 100%;
+}
+.closeIcon{
+    width: 14px;
+    height: auto;
+}
+.uploadSmallIcon{
+    width: 16px;
+    height: auto;
+}
+.checkIcon{
+    width: 16px;
+    height: auto;
+}

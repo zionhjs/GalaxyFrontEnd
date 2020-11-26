@@ -1,0 +1,137 @@
+/*
+ * @Author: xingzai
+ * @Date: 2020-11-08 04:39:56
+ * @LastEditors: xingzai
+ * @LastEditTime: 2020-11-08 04:41:13
+ * @FilePath: \test\src\components\Footer\index.css
+ */
+ .footer{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 53px;
+    position: relative;
+    background-color: #000;
+    padding-bottom: 50px;
+  }
+  .footerTitleBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 38px;
+    color: #742176;
+  }
+  .userIcon{
+    width: 33px;
+    height: auto;
+  }
+  .footerTitle{
+    margin-left: 13px;
+    color: #fff;
+    font-family: 'Oswald';
+  }
+  .footerIconBox{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 65px;
+    margin-bottom: 65px;
+    width: 856px;
+  }
+  .footerIcon{
+    width: 35px;
+    height: auto;
+    cursor: pointer;
+  }
+  .footerText{
+    font-family: 'Roboto';
+    font-size: 16px;
+    opacity: 0.6;
+    color: #fff;
+    line-height: 46px;
+  }
+  .emailText:hover{
+  text-decoration: underline!important;
+  cursor: pointer;
+  }
+  .dialog{
+    position: absolute;
+    bottom: 50px;
+    right: 83px;
+    width: 328px;
+    height: 456px;
+    background-color: #fff;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .upBtn{
+    width: 54px;
+    height: auto;
+    position: absolute;
+    bottom: 50px;
+    right: 15px;
+  }
+  .btn{
+    width: 54px;
+    height: auto;
+    position: absolute;
+    bottom: 124px;
+    right: 15px;
+    cursor: pointer;
+  }
+  .closeBox{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 15px;
+    padding-top: 9px;
+    align-self: flex-end;
+  }
+  .dialogTitle{
+    font-family: 'Microsoft YaHei';
+    font-size: 22px;
+    opacity: 1;
+    color: #000;
+    margin-top: 25px;
+    font-weight: bold;
+    margin-bottom: 19px;
+  }
+  .dialogLabel{
+    font-family: 'Roboto';
+    font-size: 16px;
+    color: #000;
+  }
+  .nameInput{
+    width: 272px;
+    height: 42px;
+    margin-top: 47px;
+    font-family: 'Roboto';
+    color: #9E9E9E;
+    padding-left: 11px;
+    background: #F5F5F5 0% 0% no-repeat;
+    border: 1px solid #E5E5E5;
+  }
+  .emailInput{
+    width: 272px;
+    height: 42px;
+    margin-top: 28px;
+    font-family: 'Roboto';
+    color: #9E9E9E;
+    padding-left: 11px;
+    background: #F5F5F5 0% 0% no-repeat;
+    border: 1px solid #E5E5E5;
+  }
+  .submitButton{
+    width: 272px;
+    height: 42px;
+    border-radius: 21px;
+    background: transparent linear-gradient(90deg, #02D9DE 0%, #E117FC 100%) 0% 0% no-repeat;
+    margin-top: 50px;
+    color: #fff;
+    font-family: 'Microsoft YaHei';
+    font-size: 16px;
+    line-height: 42px;
+    text-align: center;
+    cursor: pointer;
+  }

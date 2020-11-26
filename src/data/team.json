@@ -1,0 +1,112 @@
+{
+    "bannerTitle":"Team",
+    "bannerText":"We have more than 200 employees across the world. Here we only showing our permanent and business manager & technical director list",
+    "bannerImg":"splash.jpeg",
+    "list":[
+        {
+            "title":"Chengdu Office",
+            "data":[
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                }
+            ]
+        },
+        {
+            "title":"Chengdu Office",
+            "data":[
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                }
+            ]
+        },
+        {
+            "title":"Chengdu Office",
+            "data":[
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.comkkkkkkkkkkkk"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                },
+                {
+                    "name":"Tom Tang",
+                    "job":"Architect & 3D Artist",
+                    "email":"tangshaobo90@gmail.com"
+                }
+            ]
+        }
+    ]
+}

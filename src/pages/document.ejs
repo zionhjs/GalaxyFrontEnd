@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+  <meta charSet="utf-8" />
+  <title>Your App</title>
+  <style type="text/css">
+  #splashbox{
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+  .splashContent{
+    background-image: url(/splash.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 1;
+  }
+  .splashFooter{
+    height: 64px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #fff;
+  }
+  .logo{
+    width: 204px;
+    height: auto;
+    margin-left: 65px;
+    margin-top: 57px;
+    align-self: flex-start;
+  }
+  .text1{
+    margin-top: 318px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    line-height: 40px;
+  }
+  .text2{
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Segoe UI';
+    line-height: 40px;
+  }
+  .progressBox{
+    margin-top: 43px;
+    width: 439px;
+    height: 10px;
+    border-radius: 13px;
+    background-color: #fff;
+  }
+  .progress{
+    margin-top: 43px;
+    width: 439px;
+    height: 10px;
+    border-radius: 13px;
+    animation: colorAnimation 3s linear;
+    background: linear-gradient(to right, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+  }
+  @keyframes colorAnimation {
+    0% {
+        background-image: linear-gradient(to right, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+    }
+    20% {
+        background-image: linear-gradient(to right, #dd1bfc, #0dd0e0, #449fe7, #8369ef, #c62ef8);
+    }
+    40% {
+        background-image: linear-gradient(to right, #c62ef8, #dd1bfc, #0dd0e0, #449fe7, #8369ef);
+    }
+    6% {
+        background-image: linear-gradient(to right, #8369ef, #c62ef8, #dd1bfc, #0dd0e0, #449fe7);
+    }
+    80% {
+        background-image: linear-gradient(to right, #449fe7, #8369ef, #c62ef8, #dd1bfc, #0dd0e0);
+    }
+    100% {
+        background-image: linear-gradient(to right, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+    }
+}
+  </style>
+  <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script type="text/template" id="splashtemplate">
+    <div id="splashbox">
+    <div class="splashContent">
+      <img class="logo" alt="" src="./purplelogo.png" />
+      <div class="text1">We Visualize your design</div>
+      <div class="text2">in fantastic ways</div>
+      <div class="progress"></div>
+    </div>
+    <div class="splashFooter">Copyright © 2020 GalaxyCGI. All Rights Reserved.</div>
+  </div>
+  </script>
+  <script type="text/javascript">
+  var template=document.getElementById("splashtemplate").innerHTML;   
+   $(document).ready(function(){
+     $("body").append(template)
+   })
+  </script>
+  <script type="text/javascript">
+  $(window).load(function(){
+    console.log('remove')
+    setTimeout(() => {
+      $("#splashbox").remove()  
+    },3000);   
+  })
+     </script>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+</html>

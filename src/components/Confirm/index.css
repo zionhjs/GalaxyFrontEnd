@@ -1,0 +1,81 @@
+.container{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    display: none;
+    background-color: #000;
+    border: 1px solid #4E4E4E;
+    width: 439px;
+    height: 334px;
+    padding-bottom: 42px;
+}
+.show{
+    display: flex;
+    flex-direction: column;
+    z-index: 25000;
+}
+.header{
+    height: 57px;
+    border: 1px solid #4E4E4E;
+    display: flex;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    flex-shrink: 0;
+}
+.deleteText{
+    font-family: 'Source Han Sans CN';
+    color: #fff;
+    font-size: 20px;
+    margin-left: 12px;
+}
+.recycleIcon{
+    width: 20px;
+    height: auto;
+}
+.closeIcon{
+    margin-left: auto;
+    width: 12px;
+    height: auto;
+}
+.confirmPromptBox{
+    margin-top: 59px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.warnIcon{
+    width: 33px;
+    height: auto;
+}
+.confirmTitle{
+    font-family: 'Roboto';
+    font-size: 38px;
+    color: #F5F5F5;
+    margin-left: 5px;
+}
+.confirmContent{
+    font-family: 'Source Han Sans CN';
+    font-size: 20px;
+    color: rgba(255,255,255,0.6);
+    text-align: center;
+    margin-top: 10px;
+}
+.confirmBtn{
+    background-image: linear-gradient(to right,#02D9DE , #E217FC 90%,#E217FC);
+    width: 372px;
+    height: 45px; 
+    border-radius: 22.5px;
+    color: #fff;
+    font-family: 'Roboto';
+    font-size: 18px;
+    margin-top: auto;
+    text-align: center;
+    line-height: 45px;
+    margin-left: auto;
+    margin-right: auto;
+    cursor: pointer;
+}

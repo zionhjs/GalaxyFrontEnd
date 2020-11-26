@@ -1,0 +1,30 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.editor{
+    width: 749px;
+    margin-top: 50px;
+}
+.htm{
+    width: 749px;
+    margin-top: 50px;
+}
+.space{
+    height: 1500px;
+    width: 100%;
+    background-color: aquamarine;
+}
+.mylist{
+    display: flex;
+    height: 100px;
+}
+.listItem{
+    background-color: bisque;
+    margin-right: 20px;
+    width: 100px;
+    height: 250px;
+}
