@@ -6,7 +6,7 @@
  * @LastEditTime: 2020-11-07 06:00:11
  * @FilePath: \test\src\pages\index.js
  */
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef,useEffect } from 'react';
 import styles from './home.css';
 import { Carousel } from 'antd';
 import classnames from 'classnames'
@@ -31,7 +31,15 @@ export default function (props) {
   const [currentDot, setDot] = useState(0)//轮播图当前选中图片索引
   const leftCarousel = useRef()
   const rightCarousel = useRef()
-  const midCarousel = useRef()  
+  const midCarousel = useRef()
+  const [show,setShow]=useState(false)  
+  useEffect(()=>{
+    window.onscroll=(e)=>{
+      console.log('xxxx')
+      console.log(e)
+
+    }
+  },[])
   function pre() {
     let arr = [leftCarousel, midCarousel, rightCarousel]
     const len = midBanners.length
@@ -55,6 +63,10 @@ export default function (props) {
     for (const value of arr) {
       value.current.next()
     }
+  }
+  function handleScroll(e){
+    console.log('xxxx')
+    console.log(e)
   }
   return (
     <div className={styles.container}>
@@ -108,14 +120,6 @@ export default function (props) {
         future for architecture and</div>
         <div className={styles.aboutText}>continuing provide our affordable high quality renders service.</div>
       </div>
-      
-     {/*  <OverPack className={styles.profileBox}>
-      <QueueAnim key='queueAnim' leaveReverse
-      animConfig={[
-        { opacity: [1, 0], translateY: [0, 50] },
-        { opacity: [1, 0], translateY: [0, -50] }
-      ]}
-      > */}
       <div className={styles.profileBox}>
         {profiles.map((item, index) => (
           <div key={index} className={styles.profile}>
@@ -128,8 +132,6 @@ export default function (props) {
           </div>
         ))}
         </div>
-       {/*  </QueueAnim>
-        </OverPack> */}
       <div className={styles.illustrationBox}>
         <img src={illustration.imgUrl} className={styles.illustrationImg} alt="" />
         <div className={styles.illustrationTitleBox}>
@@ -140,13 +142,13 @@ export default function (props) {
         <OverPack playScale={0.3}>
         <QueueAnim 
         type="bottom"
-        key="block"
+        key="queue"
         leaveReverse
         component="div"
-        componentProps={illustration}
-        className={styles.illuListBox}>        
-          {illustration.list.map((item, index) => (
-            <div key={index} className={styles.illuListItem}>
+        className={styles.illuListBox}
+        >        
+           {illustration.list.map((item, index) => (
+            <div key={index+'#'} className={styles.illuListItem}>
               <div className={styles.illuListTitleBox}><img src={item.icon} alt="" style={{width:'30px',height:'auto'}}/><span className={styles.illuListItemTitle}>{item.title}</span></div>
               <div className={styles.illuSplitLine}></div>
               <div className={styles.illuListText}>{item.text}</div>
