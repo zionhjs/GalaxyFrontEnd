@@ -5,7 +5,8 @@
     "build": "umi build",
     "test": "umi test",
     "lint": "eslint {src,mock,tests}/**/*.{js,jsx} --fix",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "deploy": "npm run build && aws s3 sync dist/ s3://galaxycgi.com --delete"
   },
   "dependencies": {
     "@ant-design/icons": "^4.2.2",
