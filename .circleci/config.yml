@@ -34,12 +34,12 @@ jobs:
       - run: sudo python get-pip.py
       - run: sudo pip install awscli --upgrade
       - run: aws --version
-        # configure AWS
-       - run:
-           name: configure AWS credentials
-           command: aws configure set aws_access_key_id $ACCESSKEY | aws configure set aws_secret_access_key $SECRETACCESSKEY | aws configure set region us-west-1
-       - run:
-           name: get AWS credentials
-           command: aws configure list
+      # configure AWS
+      - run:
+         name: configure AWS credentials
+         command: aws configure set aws_access_key_id $ACCESSKEY | aws configure set aws_secret_access_key $SECRETACCESSKEY | aws configure set region us-west-1
+      - run:
+         name: get AWS credentials
+         command: aws configure list
       - run: aws s3 ls
       - run: yarn run deploy
