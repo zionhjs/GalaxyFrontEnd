@@ -32,14 +32,6 @@ export default function (props) {
   const leftCarousel = useRef()
   const rightCarousel = useRef()
   const midCarousel = useRef()
-  const [show,setShow]=useState(false)  
-  useEffect(()=>{
-    window.onscroll=(e)=>{
-      console.log('xxxx')
-      console.log(e)
-
-    }
-  },[])
   function pre() {
     let arr = [leftCarousel, midCarousel, rightCarousel]
     const len = midBanners.length
@@ -63,10 +55,6 @@ export default function (props) {
     for (const value of arr) {
       value.current.next()
     }
-  }
-  function handleScroll(e){
-    console.log('xxxx')
-    console.log(e)
   }
   return (
     <div className={styles.container}>
