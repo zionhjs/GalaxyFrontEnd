@@ -162,7 +162,6 @@ export default function (props) {
                 )
             })
             }
-            <ReactPlayer playing url='watermarked4kAedas.mp4' muted controls />
             <LoadMore />
         </div>
     )

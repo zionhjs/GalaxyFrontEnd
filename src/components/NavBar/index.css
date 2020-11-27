@@ -8,13 +8,14 @@
 
 .container{
   height: 101px;
-  background: #000000 0% 0% no-repeat;  
+  background-color:#000;
   display: flex;
   justify-content: center;
   line-height: 101px;
   position: sticky;
   top: 80px;
   z-index: 20000;
+  opacity: 0.6;
 }
 .menuItem{
   position: relative;

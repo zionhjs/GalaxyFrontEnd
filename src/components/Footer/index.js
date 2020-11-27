@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'rc-scroll-anim';
 import classnames from 'classnames'
 import styles from './index.css'
 
@@ -39,7 +40,7 @@ export default function (props) {
         <input className={styles.emailInput} placeholder="Email" />
         <div className={styles.submitButton}>SUBMIT</div>
       </div>
-      <a href="#top"><img src="up.png" className={styles.upBtn} alt="" /></a>
+      <Link className={styles.anchor} to="top"><img src="up.png" className={styles.upIcon} alt="" /></Link>
       <img onClick={openDialog} src="contact.png" className={styles.btn} alt="" />
     </div>
   )

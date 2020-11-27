@@ -137,7 +137,7 @@ export default function (props) {
             ]}
             delay={[0,1000,2000]}
             ease="easeInOutCubic"
-            key="queue"
+            key="ill"
             leaveReverse
             component="div"
             className={styles.illuListBox}
@@ -157,13 +157,16 @@ export default function (props) {
           <img src="still.png" style={{ width: '41px', height: 'auto' }} />
           <span className={styles.stillTitle}>Still Image WorkFlow</span>
         </div>
-        <OverPack playScale={0.3}>
+        <OverPack playScale={0.4}>
           <QueueAnim
-            type="bottom"
-            delay={[0,1000,2000]}
-            ease="easeInOutCubic"
-            key="queue"
-            leaveReverse
+           animConfig={[
+            { opacity: [1, 0], translateY: [0, 250] },
+            { opacity: [1, 0], translateY: [250,0] }
+          ]}
+          leaveReverse
+            delay={[0,500,1000,1500,2000]}
+            ease="easeInCirc"
+            key="still"
             component="div"
             className={styles.wfOutterBox}>{stillImages.map((item, index) => (<div key={index} className={styles.wfInnerBox}><img src={item} className={styles.workflowImg} alt="" /></div>))}
           </QueueAnim>
@@ -202,10 +205,15 @@ export default function (props) {
           <span className={styles.animationTitle}>Animation WorkFlow</span>
         </div>
 
-        <OverPack playScale={0.3}>
+        <OverPack playScale={0.4}>
           <QueueAnim
-            type="bottom"
-            key="queue"
+             animConfig={[
+              { opacity: [1, 0], translateY: [0, 250] },
+              { opacity: [1, 0], translateY: [250,0] }
+            ]}
+             key="ani"
+             delay={[0,500,1000,1500,2000]}
+             ease="easeInCirc"
             leaveReverse
             component="div"
             className={styles.wfOutterBox}>{aniImages.map((item, index) => (<div key={index} className={styles.wfInnerBox}><img src={item} className={styles.workflowImg} alt="" /></div>))}

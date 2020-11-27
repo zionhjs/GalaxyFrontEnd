@@ -1,6 +1,5 @@
 html, body, #root {
   padding: 0;
-  overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
   height: auto!important;
