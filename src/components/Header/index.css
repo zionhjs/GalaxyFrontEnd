@@ -3,7 +3,7 @@
     display: flex;
     align-items: center;
     position: fixed;
-    background-color: #000;
+    background-color:rgba(0,0,0,0.6);
     z-index: 20000;
   }
   .logo{
