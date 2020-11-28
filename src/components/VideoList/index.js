@@ -2,6 +2,9 @@ import React, { useState, useMemo } from 'react'
 import { FullscreenOutlined } from '@ant-design/icons'
 import classnames from 'classnames'
 import ReactPlayer from 'react-player'
+import {OverPack} from 'rc-scroll-anim';
+import QueueAnim from 'rc-queue-anim';
+import TweenOne from 'rc-tween-one';
 import LoadMore from '../LoadMore'
 import _ from 'lodash'
 
@@ -45,7 +48,7 @@ export default function (props) {
                 return (
                     <div key={index} className={styles.row}>
                         
-                        {item[0]&&item[0].id!==undefined&&(<div style={colStyle} className={styles.box1}>
+                        {item[0]&&item[0].id!==undefined&&(<OverPack playScale={0.3}><TweenOne key="box1ani" animation={{ x: '-=50',opacity: 0,type: 'from', ease: 'easeOutQuad'}} resetStyle style={colStyle} className={styles.box1}>
                             <img src={item[0].imgUrl} className={styles.box1Img} />
                             <div className={styles.nameWrapper}><span className={styles.nameText}>{item[0].name}</span><span className={styles.dateText}>{item[0].date}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                             <div className={styles.desc}>{item[0].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[0])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
@@ -61,7 +64,7 @@ export default function (props) {
                                 </div>
                             </div>
                             <img src="playBtn.png" className={styles.playBtn1} />
-                        </div>)
+                        </TweenOne></OverPack>)
                          }{
                             item[0]&&item[0].id===undefined&&(<div className={styles.bigUploadBox}>
                                 <div className={styles.bigUpperBox}>
@@ -82,9 +85,9 @@ export default function (props) {
                             </div>) 
                          }
 
-                        <div style={col1Style} className={styles.rightBox}>
+                        <OverPack playScale={0.3} style={col1Style} className={styles.rightBox}>
                             
-                           {item[1]&&item[1].id!==undefined&&(<div className={styles.box2}>
+                           {item[1]&&item[1].id!==undefined&&(<TweenOne key="box2ani" animation={{ y: '-=50',opacity: 0,type: 'from', ease: 'easeOutQuad'}} resetStyle className={styles.box2}>
                                 <img src={item[1].imgUrl} className={styles.box2Img} />
                                 <div className={styles.nameWrapper}><span className={styles.nameText}>{item[1].name}</span><span className={styles.dateText}>{item[1].date}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                                 <div className={styles.desc}>{item[1].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[1])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
@@ -101,7 +104,7 @@ export default function (props) {
                                 </div>
 
                                 <img src="playBtn.png" className={styles.playBtn2} />
-                            </div>)
+                            </TweenOne>)
                            }
 
                            {item[1]&&item[1].id===undefined&&(<div className={styles.uploadBox}>
@@ -122,7 +125,7 @@ export default function (props) {
                                 </div>
                             </div>)}
 
-                            {item[2]&&item[2].id!==undefined&&(<div className={styles.box3}>
+                            {item[2]&&item[2].id!==undefined&&(<TweenOne key="box3ani" animation={{ y: '+=50',opacity: 0,type: 'from', ease: 'easeOutQuad'}} resetStyle className={styles.box3}>
                                 <img src={item[2].imgUrl} className={styles.box3Img} />
                                 <div className={styles.nameWrapper}><span className={styles.nameText}>{item[2].name}</span><span className={styles.dateText}>{item[2].date}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                                 <div className={styles.desc}>{item[2].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[2])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
@@ -138,7 +141,7 @@ export default function (props) {
                                     </div>
                                 </div>
                                 <img src="playBtn.png" className={styles.playBtn3} />
-                            </div>)}
+                            </TweenOne>)}
 
                             {item[2]&&item[2].id===undefined&&(<div className={styles.uploadBox}>
                                 <div className={styles.upperBox}>
@@ -157,7 +160,7 @@ export default function (props) {
                                     </div>
                                 </div>
                             </div>)}
-                        </div>
+                        </OverPack>
                     </div>
                 )
             })
