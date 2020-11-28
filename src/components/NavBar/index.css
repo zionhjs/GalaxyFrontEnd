@@ -41,3 +41,22 @@
  left: 0;
  right: 0;
 }
+.top{
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+ 
+}
+.top:hover{
+opacity: 0;
+animation: menuhidden 0.5s linear;
+}
+@keyframes menuhidden{
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+}
