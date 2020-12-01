@@ -12,11 +12,12 @@
  * @LastEditTime: 2020-11-08 16:04:45
  * @FilePath: \test\src\pages\animation.js
  */
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect, useCallback } from 'react'
 import { Carousel } from 'antd';
 import classnames from 'classnames'
 import NavBar from '../components/NavBar'
 import VideoList from '../components/VideoList'
+import Video from '../components/Video'
 import { getAnimation } from '../service/api'
 import cover from '../assets/animation/video.png'
 import styles from './animation.css'
@@ -31,49 +32,49 @@ const videoList = [{
   "date": "2020.11.23",
   "desc": "GalaxyCGI is an Architectural Visualization",
   "imgUrl": cover,
-  "video": ""
+  "video": "watermarked4kAedas.mp4"
 }, {
   id:2,
   "name": "voluptatem",
   "date": "2020.11.23",
   "desc": "GalaxyCGI is an Architectural Visualization",
   "imgUrl": cover,
-  "video": ""
+  "video": "watermarked4kAedas.mp4"
 }, {
   id:3,
   "name": "voluptatem",
   "date": "2020.11.23",
   "desc": "GalaxyCGI is an Architectural Visualization",
   "imgUrl": cover,
-  "video": ""
+  "video": "watermarked4kAedas.mp4"
 }, {
   id:4,
   "name": "voluptatem",
   "date": "2020.11.23",
   "desc": "GalaxyCGI is an Architectural Visualization",
   "imgUrl": cover,
-  "video": ""
+  "video": "watermarked4kAedas.mp4"
 }, {
   id:5,
   "name": "voluptatem",
   "date": "2020.11.23",
   "desc": "GalaxyCGI is an Architectural Visualization",
   "imgUrl": cover,
-  "video": ""
+  "video": "watermarked4kAedas.mp4"
 }, {
   id:6,
   "name": "voluptatem",
   "date": "2020.11.23",
   "desc": "GalaxyCGI is an Architectural Visualization",
   "imgUrl": cover,
-  "video": ""
+  "video": "watermarked4kAedas.mp4"
 }, {
   id:7,
   "name": "voluptatem",
   "date": "2020.11.23",
   "desc": "GalaxyCGI is an Architectural Visualization",
   "imgUrl": cover,
-  "video": ""
+  "video": "watermarked4kAedas.mp4"
 },
 {
   id:8,
@@ -81,7 +82,7 @@ const videoList = [{
   "date": "2020.11.23",
   "desc": "GalaxyCGI is an Architectural Visualization",
   "imgUrl": cover,
-  "video": ""
+  "video": "watermarked4kAedas.mp4"
 },
 {
   id:9,
@@ -89,7 +90,7 @@ const videoList = [{
   "date": "2020.11.23",
   "desc": "GalaxyCGI is an Architectural Visualization",
   "imgUrl": cover,
-  "video": ""
+  "video": "watermarked4kAedas.mp4"
 },
 
 ]
@@ -99,6 +100,8 @@ export default function (props) {
   const leftCarousel = useRef()
   const rightCarousel = useRef()
   const midCarousel = useRef()
+  const [videoVisible,setVideoVisible]=useState(false)
+  const [video,setVideo]=useState({})
   useEffect(() => {
     //TODO:获取数据
     async function getResult() {
@@ -133,12 +136,15 @@ export default function (props) {
       value.current.next()
     }
   }
-  function play(item) {
-    console.log(item)
-  }
+  
   function btnClicked(item) {
     console.log(item)
   }
+  const play=useCallback((item)=>{
+    console.log('item',item)
+    setVideo(item)
+    setVideoVisible(true)
+  },[])
   return (
     <div className={styles.container}>
       <div className={styles.bannerBox}>
@@ -170,7 +176,8 @@ export default function (props) {
         </div>
       </div>
       <NavBar navButtons={navButtons} onBtnClicked={btnClicked} />
-      <VideoList data={videoList} role={role} />
+      <VideoList data={videoList} role={role} play={play} />
+      <Video visible={videoVisible} video={video} />
     </div>
   )
 }

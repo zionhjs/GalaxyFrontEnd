@@ -53,10 +53,8 @@ animation: menuhidden 0.5s linear;
 @keyframes menuhidden{
   0% {
     opacity: 1;
-    transform: translateY(0);
   }
   100% {
     opacity: 0;
-    transform: translateY(-100%);
   }
 }

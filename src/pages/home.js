@@ -8,11 +8,9 @@
  */
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './home.css';
-import { Carousel } from 'antd';
-import classnames from 'classnames'
+import Swiper from '../components/Swiper'
 import QueueAnim from 'rc-queue-anim';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
-import TweenOne from 'rc-tween-one';
 
 const leftBanners = ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg']
 const midBanners = ['banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg', 'banner1.jpeg']
@@ -60,43 +58,7 @@ export default function (props) {
   }
   return (
     <div className={styles.container}>
-      <div className={styles.bannerBox}>
-        <div className={styles.leftBox}>
-          <Carousel dots={false} ref={leftCarousel}>
-            {leftBanners.map((item, index) => (
-              <div key={index} className={styles.leftBanner}><img src={item} alt="" className={styles.leftImg} /></div>
-            ))}
-          </Carousel>
-          <img className={styles.preBtn} src="pre.png" alt="" onClick={pre} />
-        </div>
-        <div className={styles.midBox}>
-          <Carousel dots={false} ref={midCarousel}>
-            {midBanners.map((item, index) => (
-              <div key={index} className={styles.midBanner}><img src={item} alt="" className={styles.midImg} /></div>
-            ))}
-          </Carousel>
-          <div className={styles.dotsBox}>
-            {midBanners.map((dot, idx) => (<div key={idx} className={classnames(styles.dotBtn, { [styles.activeDot]: currentDot === idx })}></div>))}
-          </div>
-          <div className={styles.descBox}>
-            <div className={styles.descTitle}>Interior Rending</div>
-            <div className={styles.descText}>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</div>
-            <div className={styles.descText}>laudantium ,totam rem aperiam,eaque ipsa quae ab illo inventore veritatis et quasi architecto</div>
-            <div className={styles.descText}>beatae vitae dicta sunt explicabo.</div>
-            <div className={styles.contactBtn}>
-              <span className={styles.btnText}>Contact Us</span>
-            </div>
-          </div>
-        </div>
-        <div className={styles.rightBox}>
-          <Carousel dots={false} ref={rightCarousel}>
-            {rightBanners.map((item, index) => (
-              <div key={index} className={styles.rightBanner}><img src={item} alt="" className={styles.rightImg} /></div>
-            ))}
-          </Carousel>
-          <img className={styles.nextBtn} src="next.png" alt="" onClick={next} />
-        </div>
-      </div>
+       <Swiper />
       <div className={styles.aboutBox}>
         <div className={styles.titleBox}><img src="logo.png" className={styles.aboutLogo} /><span className={styles.aboutTitle}>ABOUT US</span></div>
         <div className={styles.aboutText}>GalaxyCGI is an Architural Visualization Company which focus on provide affordable photorealistic CG imagery &amp; Animation marketing campaigns and design presentations.</div>

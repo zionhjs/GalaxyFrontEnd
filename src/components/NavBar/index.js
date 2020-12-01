@@ -16,7 +16,7 @@ export default function(props){
     },[])
     let handleScroll=useCallback(_.debounce(({ scrollTop, offsetTop, id})=>{
       let el=document.getElementById(id)
-      let top=getComputedStyle(el,null).getPropertyValue('top').replace('px','')
+      let top=el&&getComputedStyle(el,null).getPropertyValue('top').replace('px','')
       let t=Math.ceil(top)
       let isTop=(offsetTop-scrollTop)<=t;
       console.log('istop',isTop)

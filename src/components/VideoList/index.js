@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo,useCallback } from 'react'
 import { FullscreenOutlined } from '@ant-design/icons'
 import classnames from 'classnames'
 import ReactPlayer from 'react-player'
@@ -11,7 +11,7 @@ import _ from 'lodash'
 import styles from './index.css'
 
 export default function (props) {
-    let { data, role } = props
+    let { data, role,play } = props
     let list = useMemo(() => {
         data=_.concat(data,{})
         return _.chunk(data, 3)
@@ -63,7 +63,7 @@ export default function (props) {
                                     <img src="confirm.png" className={styles.checkIcon} alt="" />
                                 </div>
                             </div>
-                            <img src="playBtn.png" className={styles.playBtn1} />
+                            <img onClick={play.bind(null,item[0])} src="playBtn.png" className={styles.playBtn1} />
                         </TweenOne></OverPack>)
                          }{
                             item[0]&&item[0].id===undefined&&(<div className={styles.bigUploadBox}>

@@ -1,0 +1,28 @@
+.container{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0,0,0,0.8);
+    z-index: 30000;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-bottom: 30px;
+    padding-top: 72px;
+}
+.desc{
+    margin-top: 50px;
+    font-family: 'Segoe UI';
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.videoWrapper{
+    width: 1606px;
+    height: 80vh;
+}
+.video{
+}
