@@ -1,15 +1,16 @@
 import React, { useState } from 'react'
 import { Link } from 'rc-scroll-anim';
 import classnames from 'classnames'
+import {connect} from 'dva'
 import styles from './index.css'
 
-export default function (props) {
-  const [dialogVisible, setVisible] = useState(false)
+const Footer=(props)=>{
+  const {dispatch,contactVisible}=props
   function closeDialog() {
-    setVisible(false)
+    dispatch({type:'global/closeContact'})
   }
   function openDialog() {
-    setVisible(true)
+    dispatch({type:'global/openContact'})
   }
   return (
     <div className={styles.footer}>
@@ -31,7 +32,7 @@ export default function (props) {
       <div className={styles.footerText}> Copyright © GalaxyCGI www.galaxycgi.com all rights reserved.</div>
       <div className={styles.footerText}> The website design, the logo, the covers and gallery images are property of GalaxyCGI for its total or partial reproduction, as well as exploitation, distribution</div>
       <div className={styles.footerText}> and marketing.</div>
-      <div className={styles.dialog} style={dialogVisible ? { display: 'flex' } : { display: 'none' }}>
+      <div className={styles.dialog} style={contactVisible ? { display: 'flex' } : { display: 'none' }}>
         <div className={styles.closeBox} onClick={closeDialog}><img src="close.png" alt="" style={{ width: '14px', height: 'auto', opacity: 1 }} /></div>
         <div className={styles.dialogTitle}>conversation</div>
         <div className={styles.dialogLabel}>Please fill in the following</div>
@@ -45,3 +46,4 @@ export default function (props) {
     </div>
   )
 }
+export default connect(({global})=>({contactVisible:global.contactVisible}))(Footer)

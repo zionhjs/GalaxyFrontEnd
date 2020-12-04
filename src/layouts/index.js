@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { useMediaQuery } from 'react-responsive'
 import styles from './index.css';
 import Header from '../components/Header'
 import Footer from '../components/Footer'
@@ -6,6 +7,7 @@ import Menus from '../components/Menus'
 import Login from '../components/Login'
 import Subscribe from '../components/Subscribe'
 import Dashboard from '../components/Dashboard'
+import MobileLayout from '../mobile/Layout'
 const menus = [{ icon: 'home.png', text: 'Home' },
 { icon: 'image.png', text: 'Images' },
 { icon: 'animation.png', text: 'Animations' },
@@ -18,6 +20,8 @@ function BasicLayout(props) {
   const [loginVisible,setLoginVisible]=useState(false)
   const [subVisible,setSubVisible]=useState(false)
   const [dashVisible,setDashVisible]=useState(false)
+  const isMobile = useMediaQuery({ maxWidth: 767 })
+  console.log('ismobile',isMobile)
   function close(){
     setVisible(false)
   }
@@ -42,7 +46,7 @@ function BasicLayout(props) {
   function dashClose(){
     setDashVisible(false)
   }
-  return (
+return  isMobile ? (<MobileLayout>{props.children}</MobileLayout>) :(
     <div id="top" className={styles.container}>
         <Dashboard visible={dashVisible} close={dashClose} avatar={avatar} />
         <Menus visible={visible} close={close} openLogin={openLogin} openDashboard={openDashboard} />

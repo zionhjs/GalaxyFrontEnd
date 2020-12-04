@@ -145,6 +145,7 @@ export default function (props) {
     setVideo(item)
     setVideoVisible(true)
   },[])
+  const closeVideo=useCallback(()=>{setVideoVisible(false)},[])
   return (
     <div className={styles.container}>
       <div className={styles.bannerBox}>
@@ -177,7 +178,7 @@ export default function (props) {
       </div>
       <NavBar navButtons={navButtons} onBtnClicked={btnClicked} />
       <VideoList data={videoList} role={role} play={play} />
-      <Video visible={videoVisible} video={video} />
+      <Video visible={videoVisible} video={video} close={closeVideo} />
     </div>
   )
 }

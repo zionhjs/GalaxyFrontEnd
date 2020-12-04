@@ -4,99 +4,94 @@
     padding-bottom: 17px;
     display: flex;
     justify-content: space-between;
-    background-color: #1d1d1d;
     position: relative;
-}
-.leftBox{
-    width: 326px;
-    height: 691px;
+    background-color: #1d1d1d;
     overflow: hidden;
-    align-self: center;
 }
-.midBox{
-    width: 1200px;
-    overflow: hidden;
+.imgWrapper{
     display: flex;
     justify-content: center;
     align-items: center;
-}
-.rightBox{
-    width: 326px;
-    height: 691px;
     overflow: hidden;
-    align-self: center;
-}
-.leftImg,.midImg,.rightImg{
     height: 100%;
+    background-color: transparent;
+}
+.swiperImg {
+    height: 835px;
     width: auto;
 }
-.dotsBox{
-    position: absolute;
-    height: 16px;
-    top: 0;
-    bottom: 30px;
-    left: 0;
-    right: 0;
-    margin: auto;
-    display: flex;
-    margin-bottom: 0;
-    justify-content: center;
-    
-  }
-  .dotBtn{
+.activeItem {
+  transform: scaleX(1.35);
+  transition: all linear 0.5s;  
+}
+.preItem,.nextItem{
+ transform: scaleX(0.6);
+ transition: all linear 0.5s; 
+}
+.container :global(.swiper-pagination-customs){
+    display:inline-block;
+    border-radius: 50%;
+    margin: 0 5px;
+    outline: 0;
     width: 16px;
     height: 16px;
-    border-radius: 50%;
     background-color: #fff;
-    margin-right: 30px;
     background-clip: content-box;
     padding: 4px;
-  }
-  .activeDot{
+}
+.container :global(.swiper-pagination-customs-active) {
     border: 1px solid #fff;
-  }
-  .preBtn,.nextBtn{
+    }
+.container :global(.swiper-button-prev){
+    left: 130px;
     width: 50px;
-    height: auto;
+    height: 50px;
+    cursor: pointer;
+    background: url(../../../public/pre.png) center center no-repeat;
+    background-size: contain;
+}
+.container :global(.swiper-button-next){
+    right:130px;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    background: url(../../../public/next.png) center center no-repeat;
+    background-size: contain;
+}
+.container :global(.swiper-button-next)::after{
+    content:'';
+}
+.container :global(.swiper-button-prev)::after{
+    content:'';
+}
+.leftMask{
     position: absolute;
+    left:  0;
+    width: 115px;
+    height: 810px;
     top: 0;
     bottom: 0;
     margin: auto;
-    cursor: pointer;
-  }
-  .preBtn{
-      left: 150px;
-  }
-  .nextBtn{
-      right: 145px;
-  }
-  .leftMask{
-      position: absolute;
-      left:  0;
-      width: 115px;
-      top: 0;
-      bottom: 0;
-      margin: auto;
-      height: 691px;
-      -moz-box-shadow:  0 0 45px 30px black;
-      -webkit-box-shadow:  0 0 45px 30px black;
-      box-shadow:  0 0 45px 30px black;
-      background-color: #000;
-      
-  }
-  .rightMask{
-      position: absolute;
-      right:  0;
-      width: 115px;
-      top: 0;
-      bottom: 0;
-      margin: auto;
-      -moz-box-shadow:  0 0 45px 30px black;
-      -webkit-box-shadow:  0 0 45px 30px black;
-      box-shadow:  0 0 45px 30px black; 
-      background-color: #000;   
-      height: 691px;
-  }
+    -moz-box-shadow:  0 0 45px 30px #000;
+    -webkit-box-shadow:  0 0 45px 30px #000;
+    box-shadow:  0 0 45px 30px #000;
+    background-color: #000;
+    z-index: 10000;   
+}
+.rightMask{
+    position: absolute;
+    right:  0;
+    width: 115px;
+    height: 810px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    -moz-box-shadow:  0 0 45px 30px #000;
+    -webkit-box-shadow:  0 0 45px 30px #000;
+    box-shadow:  0 0 45px 30px #000; 
+    background-color: #000;   
+    z-index: 10000;
+}
   .swiperTitle{
       position: absolute;
       top: 254px;
@@ -108,6 +103,7 @@
       font-size: 51px;
       font-weight: bold;
       text-align: center;
+      z-index: 10000;
   }
   .swiperText{
       font-family: 'Roboto';
@@ -120,6 +116,7 @@
       right: 0;
       margin: auto;
       top: 329px;
+      z-index: 10000;
   }
   .contactBtn{
     width: 200px;
@@ -135,6 +132,7 @@
     right: 0;
     margin: auto;
     top: 452px;
+    z-index: 10000;
   }
   .contactText{
     font-size: 20px;

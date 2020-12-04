@@ -1,0 +1,12 @@
+.container{
+    
+}
+.header{
+    height: 1rem;
+    display: flex;
+    align-items: center;
+}
+.logo{
+    height: 0.43rem;
+    width: auto;
+}

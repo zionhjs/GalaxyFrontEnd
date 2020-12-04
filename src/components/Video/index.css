@@ -26,3 +26,30 @@
 }
 .video{
 }
+.preIcon{
+    width: 50px;
+    height: auto;
+    left: 32px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    cursor: pointer;
+}
+.nextIcon{
+    width: 50px;
+    height: auto;
+    right: 32px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    position: absolute;
+    cursor: pointer;
+}
+.closeIcon{
+    width: 13px;
+    height: auto;
+    position: absolute;
+    top: 86px;
+    right: 37px;
+}

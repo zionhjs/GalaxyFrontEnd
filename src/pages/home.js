@@ -1,3 +1,10 @@
+/*
+ * @Author: xingzai
+ * @Date: 2020-11-25 05:29:09
+ * @LastEditors: xingzai
+ * @LastEditTime: 2020-12-04 08:04:10
+ * @FilePath: \GalaxyFrontEnd\src\pages\home.js
+ */
 
 /*
  * @Author: xingzai
@@ -11,6 +18,9 @@ import styles from './home.css';
 import Swiper from '../components/Swiper'
 import QueueAnim from 'rc-queue-anim';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import { useMediaQuery } from 'react-responsive'
+import MobileHome from '../mobile/Home'
+import TweenOne from 'rc-tween-one';
 
 const leftBanners = ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg']
 const midBanners = ['banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg', 'banner1.jpeg']
@@ -32,6 +42,7 @@ export default function (props) {
   const leftCarousel = useRef()
   const rightCarousel = useRef()
   const midCarousel = useRef()
+  const isMobile = useMediaQuery({ maxWidth: 767 })
   function pre() {
     let arr = [leftCarousel, midCarousel, rightCarousel]
     const len = midBanners.length
@@ -56,11 +67,11 @@ export default function (props) {
       value.current.next()
     }
   }
-  return (
+  return isMobile ? (<MobileHome />) : (
     <div className={styles.container}>
        <Swiper />
       <div className={styles.aboutBox}>
-        <div className={styles.titleBox}><img src="logo.png" className={styles.aboutLogo} /><span className={styles.aboutTitle}>ABOUT US</span></div>
+        <div className={styles.titleBox}><img src="logo.png" className={styles.aboutLogo} /><OverPack playScale={0.5}><TweenOne component="span" animation={{type:'from',opacity:0}} key="aboutText" className={styles.aboutTitle}>ABOUT US</TweenOne></OverPack></div>
         <div className={styles.aboutText}>GalaxyCGI is an Architural Visualization Company which focus on provide affordable photorealistic CG imagery &amp; Animation marketing campaigns and design presentations.</div>
         <div className={styles.aboutText}>Founded in 2010 by a group of architects and CGI artists in China ,
         the company seized the opportunity of China's blooming architectural revolution and organized &amp; trained a</div>
