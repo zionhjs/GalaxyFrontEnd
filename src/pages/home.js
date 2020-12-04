@@ -71,7 +71,10 @@ export default function (props) {
     <div className={styles.container}>
        <Swiper />
       <div className={styles.aboutBox}>
-        <div className={styles.titleBox}><img src="logo.png" className={styles.aboutLogo} /><OverPack playScale={0.5}><TweenOne component="span" animation={{type:'from',opacity:0}} key="aboutText" className={styles.aboutTitle}>ABOUT US</TweenOne></OverPack></div>
+        <OverPack playScale={0.3}><QueueAnim duration={1000} ease="easeInCirc"  animConfig={[
+            { opacity: [1, 0] },
+            { opacity: [1, 0]}
+          ]} className={styles.titleBox}><img key="logoAni" src="logo.png" className={styles.aboutLogo} /><span key="aboutText" className={styles.aboutTitle}>ABOUT US</span></QueueAnim></OverPack>
         <div className={styles.aboutText}>GalaxyCGI is an Architural Visualization Company which focus on provide affordable photorealistic CG imagery &amp; Animation marketing campaigns and design presentations.</div>
         <div className={styles.aboutText}>Founded in 2010 by a group of architects and CGI artists in China ,
         the company seized the opportunity of China's blooming architectural revolution and organized &amp; trained a</div>
@@ -97,10 +100,12 @@ export default function (props) {
       </div>
       <div className={styles.illustrationBox}>
         <img src={illustration.imgUrl} className={styles.illustrationImg} alt="" />
-        <div className={styles.illustrationTitleBox}>
-          <img src="diamon.png" style={{ width: '45px', height: 'auto' }} />
-          <div className={styles.illuTitle}>{illustration.title}</div>
-        </div>
+        <OverPack playScale={0.1}>
+        <QueueAnim key="titleAni" duration={500} ease="easeInCirc" animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} className={styles.illustrationTitleBox}>
+          <img key="illimgAni" src="diamon.png" style={{ width: '45px', height: 'auto' }} />
+          <div key="illTitleAni" className={styles.illuTitle}>{illustration.title}</div>
+        </QueueAnim>
+        </OverPack>
         <div className={styles.illuListMask}></div>
         <OverPack playScale={0.3}>
           <QueueAnim
