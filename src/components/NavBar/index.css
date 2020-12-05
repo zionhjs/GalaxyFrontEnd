@@ -44,17 +44,14 @@
 .top{
   backface-visibility:hidden;
   -webkit-backface-visibility:hidden;
+  transform: translateY(-101px);
+  opacity: 0;
+  transition: all 0.5s linear;
  
 }
-.top:hover{
-opacity: 0;
-animation: menuhidden 0.5s linear;
+.top1{
+  transform: translateY(0);
+  opacity: 1;
+  transition: all 0.5s linear;
 }
-@keyframes menuhidden{
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
-}
+

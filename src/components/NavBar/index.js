@@ -6,6 +6,8 @@ import styles from './index.css'
 export default function(props){
   const [idx,setIdx]=useState(0)
   const [isTop,setIsTop]=useState(false)
+  const [position,setPosition]=useState(0)
+  const [direction,setDirection]=useState('down')
     let {navButtons,onBtnClicked}=props;
     function handleClick(item,index){
       setIdx(index)
@@ -19,11 +21,17 @@ export default function(props){
       let top=el&&getComputedStyle(el,null).getPropertyValue('top').replace('px','')
       let t=Math.ceil(top)
       let isTop=(offsetTop-scrollTop)<=t;
-      console.log('istop',isTop)
+      console.log('scrollTop',scrollTop)
+      setPosition(scrollTop)
+      let direction=scrollTop-position<0 ?'up':'down'
+      if(scrollTop!=position){
+        setDirection(direction)
+      }      
+      console.log(direction)
       setIsTop(isTop)
-    },500),[])
+    },500),[position])
     return (
-        <Element id="navBar" onScroll={handleScroll} className={classnames(styles.container,{[styles.top]:isTop})}>
+        <Element id="navBar" onScroll={handleScroll} className={classnames(styles.container,{[styles.top]:isTop&&direction==='down',[styles.top1]:isTop&&direction==='up'})}>
           {navButtons.map((item,index)=>(
               <div onClick={()=>handleClick(item,index)} key={index} className={classnames(styles.menuItem,{[styles.activeItem]:idx===index})}>
                   {item}

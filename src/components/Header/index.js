@@ -1,10 +1,11 @@
 import React,{useState} from 'react'
 import {SearchOutlined,MenuOutlined} from '@ant-design/icons'
 import router from 'umi/router';
+import {Link} from 'umi'
 import classnames from 'classnames'
 import styles from './index.css'
 export default function(props){
-  const {menus,open=function(){},modalVisible,openSub=function(){}}=props
+  const {menus,openSub=function(){}}=props
   function handleClick(item, index) {
     //props.history.push('/test')
     setIdx(index)
@@ -21,13 +22,11 @@ export default function(props){
       router.push('team')
     }
   }
-  function openMenu(){
-    open()
-  }
+  
     const [idx, setIdx] = useState(0);//顶部导航菜单索引
     return (
         <div className={styles.header}>
-        <img src="/purplelogo.png" alt="" className={styles.logo} />
+        <Link to="/"><img src="/purplelogo.png" alt="" className={styles.logo} /></Link>
         <div className={styles.menuBox}>
           {menus.map((item, index) => (
             <div onClick={() => handleClick(item, index)} key={index} className={classnames(styles.menuItem, { [styles['activeMenu']]: idx === index })}>
@@ -41,7 +40,7 @@ export default function(props){
           <input className={styles.searchInput} />
           <SearchOutlined className={styles.searchIcon} />
         </div>
-        <MenuOutlined onClick={openMenu} className={styles.toggleIcon} style={modalVisible ?{visibility:'hidden'}:{visibility:'visible'}} />
+        {/* <MenuOutlined onClick={openMenu} className={styles.toggleIcon} style={modalVisible ?{visibility:'hidden'}:{visibility:'visible'}} /> */}
       </div>
     )
 }

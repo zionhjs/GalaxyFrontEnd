@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Link } from 'rc-scroll-anim';
 import classnames from 'classnames'
 import {connect} from 'dva'
+import QueueAnim from 'rc-queue-anim';
+import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import styles from './index.css'
 
 const Footer=(props)=>{
@@ -14,18 +16,23 @@ const Footer=(props)=>{
   }
   return (
     <div className={styles.footer}>
-      <div className={styles.footerTitleBox}>
-        <img src="user.png" alt="" className={styles.userIcon} />
-        <span className={styles.footerTitle}>CONTACT</span>
-      </div>
-      <div className={styles.footerIconBox}>
-        <img src="email.png" className={styles.footerIcon} alt="" />
-        <img src="tel.png" alt="" className={styles.footerIcon} />
-        <img src="camera.png" alt="" className={styles.footerIcon} />
-        <img src="bird.png" alt="" className={styles.footerIcon} />
-        <img src="facebook.png" alt="" className={styles.footerIcon} />
-        <img src="linkin.png" alt="" className={styles.footerIcon} />
-      </div>
+      <OverPack playScale={0.3}>
+      <QueueAnim animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} ease="easeInCirc" duration={500} className={styles.footerTitleBox}>
+        <img key="userAni" src="user.png" alt="" className={styles.userIcon} />
+        <span key="userTextAni" className={styles.footerTitle}>CONTACT</span>
+        </QueueAnim>
+      </OverPack>
+      <OverPack playScale={0.3}>
+      <QueueAnim animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} ease="easeInCirc" duration={500}  className={styles.footerIconBox}>
+        <img key="email" src="email.png" className={styles.footerIcon} alt="" />
+        <img key="tel" src="tel.png" alt="" className={styles.footerIcon} />
+        <img key="camera" src="camera.png" alt="" className={styles.footerIcon} />
+        <img key="bird" src="bird.png" alt="" className={styles.footerIcon} />
+        <img key="facebook" src="facebook.png" alt="" className={styles.footerIcon} />
+        <img key="linkin" src="linkin.png" alt="" className={styles.footerIcon} />
+      </QueueAnim>
+      </OverPack>
+      
       <div id="email" className={classnames(styles.footerText,styles.emailText)}>galaxycgi@gmail.com</div>
       <div className={styles.footerText}> +1 6262656782</div>
       <div className={styles.footerText}>  9415 Culver Blvd #19, Culver City, CA 90232</div>

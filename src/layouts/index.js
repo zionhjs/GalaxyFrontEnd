@@ -8,6 +8,7 @@ import Login from '../components/Login'
 import Subscribe from '../components/Subscribe'
 import Dashboard from '../components/Dashboard'
 import MobileLayout from '../mobile/Layout'
+import ThreeLine from '../components/ThreeLine';
 const menus = [{ icon: 'home.png', text: 'Home' },
 { icon: 'image.png', text: 'Images' },
 { icon: 'animation.png', text: 'Animations' },
@@ -22,9 +23,7 @@ function BasicLayout(props) {
   const [dashVisible,setDashVisible]=useState(false)
   const isMobile = useMediaQuery({ maxWidth: 767 })
   console.log('ismobile',isMobile)
-  function close(){
-    setVisible(false)
-  }
+  
   function open(){
     setVisible(true)
   }
@@ -48,11 +47,12 @@ function BasicLayout(props) {
   }
 return  isMobile ? (<MobileLayout>{props.children}</MobileLayout>) :(
     <div id="top" className={styles.container}>
+      <ThreeLine />
         <Dashboard visible={dashVisible} close={dashClose} avatar={avatar} />
-        <Menus visible={visible} close={close} openLogin={openLogin} openDashboard={openDashboard} />
+        <Menus openLogin={openLogin} openDashboard={openDashboard} />
         <Login visible={loginVisible} close={loginClose} />
         <Subscribe visible={subVisible} close={closeSub} />
-        <Header menus={menus} open={open} modalVisible={visible} openSub={openSub}/> 
+        <Header menus={menus} openSub={openSub}/> 
       <div className={styles.placeholder}></div>      
       {props.children}
       <Footer />

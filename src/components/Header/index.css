@@ -5,6 +5,9 @@
     position: fixed;
     background-color:rgba(0,0,0,0.9);
     z-index: 20000;
+    padding-right: 96px;
+    left: 0;
+    right: 0;
   }
   .header:hover{
     background-color: #000;
@@ -12,7 +15,7 @@
   .logo{
     width: 200px;
     height: auto;
-    margin-left: 15px;
+    margin-left: 20px;
   }
   .menuBox{
     margin-left: 470px;
@@ -28,7 +31,7 @@
   .menuItem{
     display: flex;
     align-items: center;
-    margin-right: 80px;
+    margin-right: 63px;
     color:#929292;
     font-size: 18px;
     font-weight: 500;
@@ -70,9 +73,11 @@
     background-color: #373737;
     border: 0;
     color: #666;
+    outline: none;
   }
   .searchIcon{
     color:#9E9E9E!important;
+    cursor: pointer;
   }
   .toggleIcon{
     color: #9E9E9E!important;

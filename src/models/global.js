@@ -8,7 +8,8 @@
 export default {
     namespace:'global',
     state:{
-      contactVisible:false,
+      contactVisible:false,//底部聊天对话框是否可见
+      menuVisible:false,//右上角3条杠打开的菜单是否可见
     },
     reducers:{
      openContact(state){
@@ -21,6 +22,12 @@ export default {
        return {
          ...state,
          contactVisible:false
+       }
+     },
+     toggleMenu(state){
+       return {
+         ...state,
+         menuVisible:!state.menuVisible
        }
      }
     },

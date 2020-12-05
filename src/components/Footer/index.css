@@ -57,7 +57,7 @@
   .dialog{
     position: fixed;
     bottom: 50px;
-    right: 83px;
+    right: 115px;
     width: 328px;
     height: 456px;
     background-color: #fff;
@@ -67,7 +67,7 @@
     align-items: center;
   }
   .anchor{
-    width: 54px;
+    width: 108px;
     height: auto;
     position: fixed;
     bottom: 50px;
@@ -79,10 +79,10 @@
     height: auto;
   }
   .btn{
-    width: 54px;
+    width: 108px;
     height: auto;
     position: fixed;
-    bottom: 124px;
+    bottom: 144px;
     right: 15px;
     cursor: pointer;
   }

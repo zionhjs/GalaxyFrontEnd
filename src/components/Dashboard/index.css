@@ -8,7 +8,7 @@
     display: none;
     flex-direction: column;
     padding-left: 134px;
-    z-index: 20001;
+    z-index: 20003;
     align-items: flex-start;
 }
 .visible{

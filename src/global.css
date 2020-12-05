@@ -14,6 +14,9 @@ body {
 ::selection{
   background-color: transparent;
 }
+input,textarea{
+  outline: none;
+}
 @font-face{
   font-family: 'OswaldLight';
   src: url('./assets/fonts/Oswald-Light-TTF.sfd.ttf') format('truetype');
@@ -29,4 +32,58 @@ body {
 @font-face{
   font-family: 'Roboto';
   src: url('./assets/fonts/Roboto-Regular-14.ttf');
+}
+
+.nav-icon{
+  position: fixed;
+  top:21px;
+  right:30px;
+  height:36px;
+  width:36px;
+  transform-style: preserve-3d;
+  perspective: 600px;
+  z-index: 20002;
+  cursor: pointer;
+  margin:auto;
+}
+
+.nav-icon .nav-line{
+  margin:8px 6px 8px 6px;
+  width:22px;
+  height: 1px;
+  background: white;
+  transition: all .1s ease-out;
+}
+
+/* onhover */
+.nav-icon:hover #nav-line-1{
+  /* margin-right:0; */
+  width:27px;
+}
+.nav-icon:hover #nav-line-2{
+  width:18px;
+  /* margin:8px 8px 8px 8px; */
+}
+.nav-icon:hover #nav-line-3{
+  /* margin-left:0; */
+  width:27px;
+}
+/* nav-line-clicked */
+.nav-icon .nav-line-actived-1{
+  margin:8px 6px 8px 6px;
+  width:27px;
+  height: 1px;
+  transform: translate(0, 9px) rotate(45deg);
+}
+.nav-icon .nav-line-actived-2{
+  margin:8px 6px 8px 6px;
+  width:27px;
+  height: 1px;
+  opacity:0;
+}
+.nav-icon .nav-line-actived-3{
+  margin:8px 6px 8px 6px;
+  width:27px;
+  height: 1px;
+  transform: translate(0, -9px) rotate(-45deg);
 }

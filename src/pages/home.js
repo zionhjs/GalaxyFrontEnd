@@ -2,6 +2,13 @@
  * @Author: xingzai
  * @Date: 2020-11-25 05:29:09
  * @LastEditors: xingzai
+ * @LastEditTime: 2020-12-05 01:29:14
+ * @FilePath: \GalaxyFrontEnd\src\pages\home.js
+ */
+/*
+ * @Author: xingzai
+ * @Date: 2020-11-25 05:29:09
+ * @LastEditors: xingzai
  * @LastEditTime: 2020-12-04 08:04:10
  * @FilePath: \GalaxyFrontEnd\src\pages\home.js
  */
@@ -18,9 +25,9 @@ import styles from './home.css';
 import Swiper from '../components/Swiper'
 import QueueAnim from 'rc-queue-anim';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import TweenOne from 'rc-tween-one';
 import { useMediaQuery } from 'react-responsive'
 import MobileHome from '../mobile/Home'
-import TweenOne from 'rc-tween-one';
 
 const leftBanners = ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg']
 const midBanners = ['banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg', 'banner1.jpeg']
@@ -131,10 +138,12 @@ export default function (props) {
         </OverPack>
       </div>
       <div className={styles.stillWrapper}>
-        <div className={styles.stillTitleBox}>
-          <img src="still.png" style={{ width: '41px', height: 'auto' }} />
-          <span className={styles.stillTitle}>Still Image WorkFlow</span>
-        </div>
+      <OverPack playScale={0.4}>
+        <QueueAnim animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} ease="easeInCirc" duration={500} className={styles.stillTitleBox}>
+          <img key="stillImg" src="still.png" style={{ width: '41px', height: 'auto' }} />
+          <span key="stillText" className={styles.stillTitle}>Still Image WorkFlow</span>
+        </QueueAnim>
+        </OverPack>
         <OverPack playScale={0.4}>
           <QueueAnim
            animConfig={[
@@ -149,39 +158,59 @@ export default function (props) {
             className={styles.wfOutterBox}>{stillImages.map((item, index) => (<div key={index} className={styles.wfInnerBox}><img src={item} className={styles.workflowImg} alt="" /></div>))}
           </QueueAnim>
         </OverPack>
-        <div className={styles.stepBox}>
+        <OverPack className={styles.stepBox}>
+          <TweenOne key="step1" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 1<img src="step.png" className={styles.stepImg} /></div>
             <div className={styles.stepContent}>Information gathering We will collect all the related files for the project and give you the ETD as soon as we can</div>
           </div>
+          </TweenOne>
+          <TweenOne className={styles.stepArrowWrapper} key="step1Img" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <img src="stepArrow.png" alt="" className={styles.stepArrow} />
+          </TweenOne>
+          <TweenOne key="step2" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 2<img src="step.png" className={styles.stepImg} /></div>
             <div className={styles.stepContent}>Setup 3D scene and confirm the possible camera with you</div>
           </div>
+          </TweenOne>
+          <TweenOne key="step2Img" className={styles.stepArrowWrapper} animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <img src="stepArrow.png" alt="" className={styles.stepArrow} />
+          </TweenOne>
+          <TweenOne key="step3" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 3<img src="step.png" className={styles.stepImg} /></div>
             <div className={styles.stepContent}>Setup lighting &amp; texture and show it to you for adjusting</div>
           </div>
+          </TweenOne>
+          <TweenOne key="step3Img" className={styles.stepArrowWrapper} animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <img src="stepArrow.png" alt="" className={styles.stepArrow} />
+          </TweenOne>
+          <TweenOne key="step4" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 4<img src="step.png" className={styles.stepImg} /></div>
             <div className={styles.stepContent}>Work on the post productions to show you the photorealistic CGIs</div>
           </div>
+          </TweenOne>
+          <TweenOne key="step4Img" className={styles.stepArrowWrapper} animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <img src="stepArrow.png" alt="" className={styles.stepArrow} />
+          </TweenOne>
+          <TweenOne key="step2" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 5<img src="step.png" className={styles.stepImg} /></div>
             <div className={styles.stepContent}>Take your comments and revise that till you satisfied.</div>
           </div>
-        </div>
+          </TweenOne>
+        </OverPack>
       </div>
 
       <div className={styles.animationWrapper}>
-        <div className={styles.animationTitleBox}>
-          <img src="still.png" style={{ width: '41px', height: 'auto' }} />
-          <span className={styles.animationTitle}>Animation WorkFlow</span>
-        </div>
+        <OverPack playScale={0.3}>
+        <QueueAnim animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} ease="easeInCirc" duration={500} className={styles.animationTitleBox}>
+          <img key="stiImg" src="still.png" style={{ width: '41px', height: 'auto' }} />
+          <span key="stiText" className={styles.animationTitle}>Animation WorkFlow</span>
+        </QueueAnim>
+        </OverPack>
 
         <OverPack playScale={0.4}>
           <QueueAnim
@@ -197,32 +226,50 @@ export default function (props) {
             className={styles.wfOutterBox}>{aniImages.map((item, index) => (<div key={index} className={styles.wfInnerBox}><img src={item} className={styles.workflowImg} alt="" /></div>))}
           </QueueAnim>
         </OverPack>
-        <div className={styles.stepBox}>
+        <OverPack playScale={0.3} className={styles.stepBox}>
+          <TweenOne key="step1" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 1<img src="step.png" className={styles.stepImg} /></div>
             <div className={styles.stepContent}>Information gathering We will collect all the related files for the project and give you the ETD as soon as we can</div>
           </div>
+          </TweenOne>
+          <TweenOne key="step1Img" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.stepArrowWrapper}>
           <img src="stepArrow.png" alt="" className={styles.stepArrow} />
+          </TweenOne>
+          <TweenOne key="step2" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 2<img src="step.png" className={styles.stepImg} /></div>
             <div className={styles.stepContent}>Setup 3D scene and confirm the possible camera with you</div>
           </div>
+          </TweenOne>
+          <TweenOne key="step2Img" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.stepArrowWrapper}>
           <img src="stepArrow.png" alt="" className={styles.stepArrow} />
+          </TweenOne>
+          <TweenOne key="step3" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 3<img src="step.png" className={styles.stepImg} /></div>
             <div className={styles.stepContent}>Setup lighting &amp; texture and show it to you for adjusting</div>
           </div>
+          </TweenOne>
+          <TweenOne key="step3Img" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.stepArrowWrapper}>
           <img src="stepArrow.png" alt="" className={styles.stepArrow} />
+          </TweenOne>
+          <TweenOne key="step4" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 4<img src="step.png" className={styles.stepImg} /></div>
             <div className={styles.stepContent}>Work on the post productions to show you the photorealistic CGIs</div>
           </div>
+          </TweenOne>
+          <TweenOne key="step4Img" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.stepArrowWrapper}>
           <img src="stepArrow.png" alt="" className={styles.stepArrow} />
+          </TweenOne>
+          <TweenOne key="step5" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 5<img src="step.png" className={styles.stepImg} /></div>
             <div className={styles.stepContent}>Take your comments and revise that till you satisfied.</div>
           </div>
-        </div>
+          </TweenOne>
+        </OverPack>
       </div>
     </div>
   );
