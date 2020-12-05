@@ -28,12 +28,12 @@
  transform: scaleX(0.6);
  transition: all linear 0.5s; 
 }
-.container .swiper-pagination-custom{
+.container :global(.swiper-pagination-custom){
     bottom: 0.03906rem;
     left: 0;
     width: 100%;
 }
-.container .swiper-pagination{
+.container :global(.swiper-pagination){
     position: absolute;
 text-align: center;
 transition: 300ms opacity;
@@ -64,7 +64,8 @@ z-index: 10;
     position: absolute;
     top: 0;
     bottom: 0;
-    margin: auto;   
+    margin: auto;
+    z-index: 10;   
 }
 .container :global(.swiper-button-next){
     right:130px;
