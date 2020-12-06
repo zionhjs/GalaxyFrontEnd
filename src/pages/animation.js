@@ -13,18 +13,14 @@
  * @FilePath: \test\src\pages\animation.js
  */
 import React, { useState, useRef, useEffect, useCallback } from 'react'
-import { Carousel } from 'antd';
 import classnames from 'classnames'
 import NavBar from '../components/NavBar'
 import VideoList from '../components/VideoList'
 import Video from '../components/Video'
+import AnimationSwiper from '../components/AnimationSwiper'
 import { getAnimation } from '../service/api'
 import cover from '../assets/animation/video.png'
 import styles from './animation.css'
-
-const leftBanners = [{ imgUrl: 'banner1.jpeg', video: '' }, { imgUrl: 'banner2.jpeg', video: '' }, { imgUrl: 'banner3.jpeg', video: '' }, { imgUrl: 'banner4.jpeg', video: '' }]
-const midBanners = [{ imgUrl: 'banner2.jpeg', video: '' }, { imgUrl: 'banner3.jpeg', video: '' }, { imgUrl: 'banner4.jpeg', video: '' }, { imgUrl: 'banner1.jpeg', video: '' }]
-const rightBanners = [{ imgUrl: 'banner3.jpeg', video: '' }, { imgUrl: 'banner4.jpeg', video: '' }, { imgUrl: 'banner1.jpeg', video: '' }, { imgUrl: 'banner2.jpeg', video: '' }]
 const navButtons = ['Regular', '360 VR/AR', 'Mixed', 'Nav to lmages']
 const videoList = [{
   id:1,
@@ -96,10 +92,6 @@ const videoList = [{
 ]
 const role="admin"
 export default function (props) {
-  const [currentDot, setDot] = useState(0)//轮播图当前选中图片索引
-  const leftCarousel = useRef()
-  const rightCarousel = useRef()
-  const midCarousel = useRef()
   const [videoVisible,setVideoVisible]=useState(false)
   const [video,setVideo]=useState({})
   useEffect(() => {
@@ -111,32 +103,7 @@ export default function (props) {
     }
     getResult()
     return function () { }
-  },[])
-  function pre() {
-    let arr = [leftCarousel, midCarousel, rightCarousel]
-    const len = midBanners.length
-    if (currentDot === 0) {
-      setDot(len - 1)
-    } else {
-      setDot(currentDot - 1)
-    }
-    for (const value of arr) {
-      value.current.prev()
-    }
-  }
-  function next() {
-    let arr = [leftCarousel, midCarousel, rightCarousel]
-    const len = midBanners.length
-    if (currentDot === len - 1) {
-      setDot(0)
-    } else {
-      setDot(currentDot + 1)
-    }
-    for (const value of arr) {
-      value.current.next()
-    }
-  }
-  
+  },[]) 
   function btnClicked(item) {
     console.log(item)
   }
@@ -148,34 +115,7 @@ export default function (props) {
   const closeVideo=useCallback(()=>{setVideoVisible(false)},[])
   return (
     <div className={styles.container}>
-      <div className={styles.bannerBox}>
-        <div className={styles.leftBox}>
-          <Carousel dots={false} ref={leftCarousel}>
-            {leftBanners.map((item, index) => (
-              <div key={index} className={styles.leftBanner}><img src={item.imgUrl} alt="" className={styles.leftImg} /></div>
-            ))}
-          </Carousel>
-          <img className={styles.preBtn} src="pre.png" alt="" onClick={pre} />
-        </div>
-        <div className={styles.midBox}>
-          <Carousel dots={false} ref={midCarousel}>
-            {midBanners.map((item, index) => (
-              <div key={index} className={styles.midBanner}><img src={item.imgUrl} alt="" className={styles.midImg} /><img src="playBtn.png" className={styles.playBtn} onClick={() => play(item)} /></div>
-            ))}
-          </Carousel>
-          <div className={styles.dotsBox}>
-            {midBanners.map((dot, idx) => (<div key={idx} className={classnames(styles.dotBtn, { [styles.activeDot]: currentDot === idx })}></div>))}
-          </div>
-        </div>
-        <div className={styles.rightBox}>
-          <Carousel dots={false} ref={rightCarousel}>
-            {rightBanners.map((item, index) => (
-              <div key={index} className={styles.rightBanner}><img src={item.imgUrl} alt="" className={styles.rightImg} /></div>
-            ))}
-          </Carousel>
-          <img className={styles.nextBtn} src="next.png" alt="" onClick={next} />
-        </div>
-      </div>
+      <AnimationSwiper />
       <NavBar navButtons={navButtons} onBtnClicked={btnClicked} />
       <VideoList data={videoList} role={role} play={play} />
       <Video visible={videoVisible} video={video} close={closeVideo} />

@@ -6,18 +6,15 @@
  * @FilePath: \test\src\components\Login\index.js
  */
 
-import React, { useState,useEffect } from 'react'
+import React, { useState,useEffect,useCallback } from 'react'
+import {connect} from 'dva'
 import {login} from '../../service/api'
 import styles from './index.css'
 
-export default function (props) {
-    const { visible, close } = props
+const Login=(props)=> {
+    const { visible,dispatch} = props
     const [account,setAccount]=useState('')
     const [pass,setPass]=useState('')
-    
-    function handleClose() {
-        close()
-    }
     function accountChange(e){
         setAccount(e.target.value)
         console.log(account)
@@ -30,16 +27,18 @@ export default function (props) {
     let result=await login({username:account,password:pass})
     if(result&&result.jwt){
         await localStorage.setItem('artjwt',JSON.stringify(result.jwt))
-        close()
-       }
-    
-    }   
+        dispatch({type:'global/closeLogin'})
+       }    
+    }
+    const cancel=useCallback(()=>{
+        dispatch({type:'global/closeLogin'})
+    },[])   
 
     return (
         visible ? (<div className={styles.container}>
             <div className={styles.closeWrapper}>
                 <img src="purplelogo.png" className={styles.logo} alt="" />
-                <img src="loginClose.png" className={styles.closeIcon} onClick={handleClose} alt="" />
+                {/* <img src="loginClose.png" className={styles.closeIcon} onClick={handleClose} alt="" /> */}
             </div>
             <div className={styles.loginBox}>
                 <div className={styles.loginTitle}>Management system</div>
@@ -47,8 +46,10 @@ export default function (props) {
                 <input value={pass} onChange={passwordChange} type="password" placeholder="Password" className={styles.passwordInput} />
                 <div className={styles.textWrapper}><span className={styles.regText}>Registration</span><span className={styles.forgetText}>Forget Password</span></div>
                 <div onClick={Log} className={styles.loginBtn}>LOG IN</div>
+                <div onClick={cancel} className={styles.cancelBtn}>CANCEL</div>
             </div>
            
         </div>):null
     )
 }
+export default connect(({global})=>({visible:global.loginVisible}))(Login)

@@ -15,7 +15,7 @@
   position: sticky;
   top: 80px;
   z-index: 20000;
-  opacity: 0.6;
+  opacity: 0.9;
 }
 .menuItem{
   position: relative;
@@ -45,13 +45,11 @@
   backface-visibility:hidden;
   -webkit-backface-visibility:hidden;
   transform: translateY(-101px);
-  opacity: 0;
-  transition: all 0.5s linear;
+  transition: all 0.3s linear;
   z-index: 0; 
 }
 .top1{
   transform: translateY(0);
-  opacity: 1;
-  transition: all 0.5s linear;
+  transition: all 0.3s linear;
 }
 

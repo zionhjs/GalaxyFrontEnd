@@ -42,7 +42,7 @@ input,textarea{
   width:36px;
   transform-style: preserve-3d;
   perspective: 600px;
-  z-index: 20002;
+  z-index: 20005;
   cursor: pointer;
   margin:auto;
 }
@@ -50,7 +50,7 @@ input,textarea{
 .nav-icon .nav-line{
   margin:8px 6px 8px 6px;
   width:22px;
-  height: 1px;
+  height: 2px;
   background: white;
   transition: all .1s ease-out;
 }
@@ -72,18 +72,18 @@ input,textarea{
 .nav-icon .nav-line-actived-1{
   margin:8px 6px 8px 6px;
   width:27px;
-  height: 1px;
+  height: 2px;
   transform: translate(0, 9px) rotate(45deg);
 }
 .nav-icon .nav-line-actived-2{
   margin:8px 6px 8px 6px;
   width:27px;
-  height: 1px;
+  height: 2px;
   opacity:0;
 }
 .nav-icon .nav-line-actived-3{
   margin:8px 6px 8px 6px;
   width:27px;
-  height: 1px;
+  height: 2px;
   transform: translate(0, -9px) rotate(-45deg);
 }

@@ -5,7 +5,6 @@
     position: fixed;
     background-color:rgba(0,0,0,0.9);
     z-index: 20000;
-    padding-right: 96px;
     left: 0;
     right: 0;
   }
@@ -43,6 +42,9 @@
     padding-right: 15px;
     cursor: pointer;
   }
+  .menuBox :nth-child(5){
+    margin-right: 0;
+  }
   .activeBg{
     position: absolute;
     width: 100%;
@@ -57,27 +59,35 @@
   .searchBox{
     display: flex;
     align-items: center;
-    width: 230px;
-    height: 40px;
     justify-content: space-between;
     background-color: #373737;
     border-radius: 20px;
     padding-left: 15px;
     padding-right: 15px;
     margin-left: auto;
+    margin-right: 96px;
+    transition: all ease-in-out 0.3s;
   }
+  .searchInactive{
+    width: 200px;
+  }
+  .searchActive{
+    width: 250px;
+  }  
   .searchInput{
-    height: 100%;
-    flex: 1;
+    height: 40px;
+    width: 200px;
     box-sizing: border-box;
     background-color: #373737;
     border: 0;
     color: #666;
     outline: none;
+    caret-color: #fff;
   }
   .searchIcon{
     color:#9E9E9E!important;
     cursor: pointer;
+    font-size: 25px;
   }
   .toggleIcon{
     color: #9E9E9E!important;

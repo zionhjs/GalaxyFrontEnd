@@ -54,7 +54,10 @@ const Sw=(props)=>{
           banners.map((item,index)=>(
             <SwiperSlide key={index}>
                 {({isActive,isPrev,isNext})=> 
-                (<div className={classnames(styles.imgWrapper,{[styles.activeItem]:isActive,[styles.preItem]:isPrev,[styles.nextItem]:isNext})}><img className={styles.swiperImg} src={item} alt="" /></div>)
+                (<div className={classnames(styles.imgWrapper,{[styles.activeItem]:isActive,[styles.preItem]:isPrev,[styles.nextItem]:isNext})}>
+                    <img className={styles.swiperImg} src={item} alt="" />
+                    {isActive ? <img className={styles.playIcon} src="playBtn.png" alt="" /> : null }
+                </div>)
 }
                 </SwiperSlide>
           ))
@@ -65,9 +68,6 @@ const Sw=(props)=>{
     </Swiper>
           <div className={styles.leftMask}></div>
           <div className={styles.rightMask}></div>
-          <span className={styles.swiperTitle}>Interior rendering</span>
-          <p className={styles.swiperText}>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-          <div onClick={openDialog} className={styles.contactBtn}><span className={styles.contactText}>CONTACT US</span></div>
         </div>
     )
 }

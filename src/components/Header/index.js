@@ -1,4 +1,4 @@
-import React,{useState} from 'react'
+import React,{useState,useCallback} from 'react'
 import {SearchOutlined,MenuOutlined} from '@ant-design/icons'
 import router from 'umi/router';
 import {Link} from 'umi'
@@ -6,6 +6,7 @@ import classnames from 'classnames'
 import styles from './index.css'
 export default function(props){
   const {menus,openSub=function(){}}=props
+  const [active,setActive]=useState(false)
   function handleClick(item, index) {
     //props.history.push('/test')
     setIdx(index)
@@ -22,6 +23,12 @@ export default function(props){
       router.push('team')
     }
   }
+  const focusHandler=useCallback(()=>{
+   setActive(true)
+  },[])
+  const blurHandler=useCallback(()=>{
+    setActive(false)
+  },[])
   
     const [idx, setIdx] = useState(0);//顶部导航菜单索引
     return (
@@ -36,7 +43,7 @@ export default function(props){
             </div>
           ))}
         </div>
-        <div className={styles.searchBox}>
+        <div onBlur={blurHandler} onFocus={focusHandler}  className={classnames(styles.searchBox,{[styles.searchInactive]:!active,[styles.searchActive]:active})}>
           <input className={styles.searchInput} />
           <SearchOutlined className={styles.searchIcon} />
         </div>

@@ -15,6 +15,19 @@
     overflow: hidden;
     height: 100%;
     background-color: transparent;
+    position: relative;
+}
+.playIcon{
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+    width: 85px;
+    height: auto;
+    transform: scaleX(0.75);
+    cursor: pointer;
 }
 .swiperImg {
     height: 835px;
@@ -84,82 +97,7 @@ z-index: 10;
 .container :global(.swiper-button-prev)::after{
     content:'';
 }
-.leftMask{
-    position: absolute;
-    left:  0;
-    width: 90px;
-    height: 810px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    -moz-box-shadow:  0 0 45px 30px #000;
-    -webkit-box-shadow:  0 0 45px 30px #000;
-    box-shadow:  0 0 45px 30px #000;
-    background-color: #000;
-    z-index: 10000;   
-}
-.rightMask{
-    position: absolute;
-    right:  0;
-    width: 90px;
-    height: 810px;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    -moz-box-shadow:  0 0 45px 30px #000;
-    -webkit-box-shadow:  0 0 45px 30px #000;
-    box-shadow:  0 0 45px 30px #000; 
-    background-color: #000;   
-    z-index: 10000;
-}
-  .swiperTitle{
-      position: absolute;
-      top: 254px;
-      margin: auto;
-      left: 0;
-      right: 0;
-      font-family: 'Microsoft YaHei';
-      color: #fff;
-      font-size: 51px;
-      font-weight: bold;
-      text-align: center;
-      z-index: 10000;
-  }
-  .swiperText{
-      font-family: 'Roboto';
-      font-size: 16px;
-      color: #fff;
-      position: absolute;
-      width: 732px;
-      text-align: center;
-      left: 0;
-      right: 0;
-      margin: auto;
-      top: 329px;
-      z-index: 10000;
-  }
-  .contactBtn{
-    width: 200px;
-    height: 40px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    background-color: #fff;
-    cursor: pointer;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: auto;
-    top: 452px;
-    z-index: 10000;
-  }
-  .contactText{
-    font-size: 20px;
-    background-clip: text;
-    background-image:  linear-gradient(90deg, #02D9DE 0%, #E217FC 50%, #E217FC 100%);
-    background-repeat: no-repeat;
-    background-size: cover;
-    color: transparent;
-    font-family: 'Microsoft YaHei';
-  }
+
+  
+  
+  

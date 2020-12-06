@@ -1,75 +1,75 @@
 .loadMore{
-    position: relative;
-    width: 367px;
-    height: 45px;
-    margin-top: 85px;
-    text-align: center;
-    line-height: 45px;
-    cursor: pointer;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  .loadMoreImg{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 100%;
-    height: auto;
-  }
-  .loadMoreText{
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 110px;
-    height: auto;
-  }
-  .downBox{
-    display: flex;
-    justify-content: center;
-    margin-top: 114px;
-    margin-bottom: 93px;
-  }
-  .boxLeft{
-  width: 536px;
-  margin-right: 113.5px;
-  }
-  .boxRight{
-    width: 549px;
-    display: flex;
-    flex-direction: column;
-  }
-  .boxLeftTitle{
-    color: #fff;
-    font-family: 'Roboto';
-    font-size: 40px;
-  }
-  .boxLeftText{
-    font-family: 'Roboto';
-    font-size: 16px;
-    color: rgba(255,255,255,0.6);
-  }
-  .signBtn{
-    color: #fff;
-    font-family: 'Roboto';
-    font-size: 18px;
-    text-align: center;
-    line-height: 42px;
-    background-image: linear-gradient(to right,#02D9DE , #E217FC 90%,#E217FC);
-    cursor: pointer;
-  }
-  .nameInput,.emailInput{
-  height: 42px;
-  margin-bottom: 30px;
-  padding-left: 12px;
+  position: relative;
+  width: 367px;
+  height: 45px;
+  margin-top: 85px;
+  text-align: center;
+  line-height: 45px;
+  cursor: pointer;
+  margin-left: auto;
+  margin-right: auto;
+}
+.loadMoreImg{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
+.loadMoreText{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 110px;
+  height: auto;
+}
+.downBox{
+  display: flex;
+  justify-content: center;
+  margin-top: 114px;
+  margin-bottom: 93px;
+}
+.boxLeft{
+width: 536px;
+margin-right: 113.5px;
+}
+.boxRight{
+  width: 549px;
+  display: flex;
+  flex-direction: column;
+}
+.boxLeftTitle{
+  color: #fff;
+  font-family: 'Roboto';
+  font-size: 40px;
+}
+.boxLeftText{
+  font-family: 'Roboto';
+  font-size: 16px;
+  color: rgba(255,255,255,0.6);
+}
+.signBtn{
+  color: #fff;
   font-family: 'Roboto';
   font-size: 18px;
-  color: #9e9e9e;
-  border: 1px solid #4E4E4E;
-  background: #272727 0% 0% no-repeat;
-  }
+  text-align: center;
+  line-height: 42px;
+  background-image: linear-gradient(to right,#02D9DE , #E217FC 90%,#E217FC);
+  cursor: pointer;
+}
+.nameInput,.emailInput{
+height: 42px;
+margin-bottom: 30px;
+padding-left: 12px;
+font-family: 'Roboto';
+font-size: 18px;
+color: #9e9e9e;
+border: 1px solid #4E4E4E;
+background: #272727 0% 0% no-repeat;
+}

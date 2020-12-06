@@ -22,19 +22,19 @@ import styles from './index.css'
 
 const menus = ['Login', 'Logout', 'Dashboard']
 const MenuComponent= (props)=> {
-    const {openLogin,openDashboard,menuVisible } = props
+    const {dispatch,openDashboard,menuVisible } = props
     const [idx, setIdx] = useState(0)
     
     async function handleCliked(item, index) {
         setIdx(index)
         if(item==='Login'){
-            openLogin()//打开登录框
+            dispatch({type:'global/openLogin'})//打开登录框
         }
         if(item==='Logout'){
             Router.push('/test')
         }
         if(item==='Dashboard'){
-           openDashboard()
+           dispatch({type:'global/openDashboard'})
         }
        
     }

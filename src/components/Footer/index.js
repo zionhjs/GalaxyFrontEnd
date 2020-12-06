@@ -12,7 +12,7 @@ const Footer=(props)=>{
     dispatch({type:'global/closeContact'})
   }
   function openDialog() {
-    dispatch({type:'global/openContact'})
+    dispatch({type:'global/toggleContact'})
   }
   return (
     <div className={styles.footer}>

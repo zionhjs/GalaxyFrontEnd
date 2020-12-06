@@ -18,6 +18,7 @@ const ThreeLine=(props)=>{
     const {dispatch}=props
     const handleClick=useCallback(()=>{
         dispatch({type:'global/toggleMenu'})
+        dispatch({type:'global/closeAll'})
         var nav_line_1 = document.getElementById('nav-line-1');
         var nav_line_2 = document.getElementById('nav-line-2');
         var nav_line_3 = document.getElementById('nav-line-3');

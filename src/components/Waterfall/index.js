@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import classnames from 'classnames'
+import LazyLoad from 'react-lazyload';
+import { OverPack } from 'rc-scroll-anim';
+import TweenOne from 'rc-tween-one';
 import BigImage from '../BigImage'
 import styles from './index.css'
 
@@ -31,8 +34,12 @@ export default function (props) {
             <div className={styles.waterfall}>
                 <div className={styles.col1}>
                     {col1.map((item, index) =>
-                        (<div key={index} className={styles.imgWrapper}>
+                        (
+                        <OverPack playScale={0.2} key={index}>
+                        <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
+                            <LazyLoad height={200} offset={100}>
                             <img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} />
+                            </LazyLoad>
                             <div className={styles.imgFooter}>
                                 <div>
                                     <div><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
@@ -51,11 +58,15 @@ export default function (props) {
                                     <img src="confirm.png" className={styles.checkIcon} alt="" />
                                 </div>
                             </div>
-                        </div>))}
+                        </TweenOne>
+                        </OverPack>
+                        ))}
                 </div>
                 <div className={styles.col2}>{col2.map((item, index) =>
-                    (<div key={index} className={styles.imgWrapper}>
-                        <img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} />
+                    (
+                        <OverPack key={index} playScale={0.2}>
+                    <TweenOne key={index+'col2'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.imgWrapper}>
+                        <LazyLoad height={200} offset={100}><img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} /></LazyLoad>
                         <div className={styles.imgFooter}>
                             <div>
                                 <div><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
@@ -74,10 +85,16 @@ export default function (props) {
                                 <img src="confirm.png" className={styles.checkIcon} alt="" />
                             </div>
                         </div>
-                    </div>))}</div>
+                    </TweenOne>
+                    </OverPack>
+                    ))}</div>
                 <div className={styles.col3}>{col3.map((item, index) =>
-                    (<div key={index} className={styles.imgWrapper}>
+                    (
+                        <OverPack playScale={0.2} key={index}>
+                    <TweenOne key={index+'col3'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.imgWrapper}>
+                        <LazyLoad height={200} offset={100}>
                         <img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} />
+                        </LazyLoad>
                         <div className={styles.imgFooter}>
                             <div>
                                 <div><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
@@ -96,10 +113,16 @@ export default function (props) {
                                 <img src="confirm.png" className={styles.checkIcon} alt="" />
                             </div>
                         </div>
-                    </div>))}</div>
+                    </TweenOne>
+                    </OverPack>
+                    ))}</div>
                 <div className={styles.col4}>{col4.map((item, index) =>
-                    (<div key={index} className={styles.imgWrapper}>
+                    (
+                        <OverPack playScale={0.2} key={index}>
+                    <TweenOne key={index+'col4'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.imgWrapper}>
+                        <LazyLoad height={200} offset={100}>
                         <img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} />
+                        </LazyLoad>
                         <div className={styles.imgFooter}>
                             <div>
                                 <div><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
@@ -118,9 +141,11 @@ export default function (props) {
                                 <img src="confirm.png" className={styles.checkIcon} alt="" />
                             </div>
                         </div>
-                    </div>))}
-                    {
-                        <div className={styles.uploadBox}>
+                    </TweenOne>
+                    </OverPack>
+                    ))}
+                    {   <OverPack playScale={0.2}>
+                        <TweenOne key="upload" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.uploadBox}>
                             <div className={styles.upperBox}>
                                 <img src="uploadB.png" className={styles.uploadIcon} alt="" />
                                 <div className={styles.uploadText}>Upload image</div>
@@ -136,7 +161,8 @@ export default function (props) {
                                     <img src="confirm.png" className={styles.checkIcon} />
                                 </div>
                             </div>
-                        </div>
+                        </TweenOne>
+                        </OverPack>
                     }
                 </div>
             </div>

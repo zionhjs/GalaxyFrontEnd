@@ -29,7 +29,7 @@ export default function(props){
       }      
       console.log(direction)
       setIsTop(isTop)
-    },500),[position])
+    },100),[position])
     return (
         <Element id="navBar" onScroll={handleScroll} className={classnames(styles.container,{[styles.top]:isTop&&direction==='down',[styles.top1]:isTop&&direction==='up'})}>
           {navButtons.map((item,index)=>(

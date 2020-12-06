@@ -6,12 +6,13 @@
  * @FilePath: \test\src\components\Dashboard\index.js
  */
 import React,{useState} from 'react'
+import {connect} from 'dva'
 import classnames from 'classnames'
 import styles from './index.css'
 
 const menus=['Interior','Exterior','Mixed','Nav to Animation']
-export default function(props){
-    const {visible,close,avatar}=props
+const Dashboard=(props)=>{
+    const {avatar,visible}=props
     const [idx,setIdx]=useState(0)
     function selectMenu(index){
         setIdx(index)
@@ -19,7 +20,6 @@ export default function(props){
     return (
         <div className={classnames(styles.container,{[styles.visible]:visible})}>
             <div className={styles.header}>
-                <img onClick={close} src="close.png" className={styles.closeIcon} alt="" />
             </div>
             <div><img src={avatar} className={styles.avatar} alt=""/></div>
             <div className={styles.nameText}>Tom Tang</div>
@@ -41,3 +41,4 @@ export default function(props){
         </div>
     )
 }
+export default connect(({global})=>({visible:global.dashboardVisible}))(Dashboard)
