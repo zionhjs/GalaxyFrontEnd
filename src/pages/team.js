@@ -1,14 +1,17 @@
 import React, { useMemo,useState,useEffect } from 'react'
 import classnames from 'classnames'
+import TweenOne from 'rc-tween-one';
+import { OverPack } from 'rc-scroll-anim';
 import styles from './team.css'
 import LoadMore from '../components/LoadMore'
 import teamJson from '../data/team.json'
 
-const role="admn"
+const role="admin"
 export default function (props) {
     function addMember(index){
      teamData.list[index].data.push({name:'',job:'',email:''})
      setTeamData({...teamData})
+     window.scrollBy(0,1)
     }
     function nameChange(index,i,e)
     {
@@ -39,27 +42,37 @@ export default function (props) {
             <div className={styles.midBox}>
                 {teamData?.list?.map((item, index) => (
                     <div key={index} className={styles.midInnerBox}>
-                        <div className={styles.listTitle}>{item.title}</div>
+                        <OverPack playScale={0.3}>
+                        <TweenOne animation={{opacity: 0,type: 'from', ease: 'easeInCirc'}} className={styles.listTitle}>{item.title}</TweenOne>
+                        </OverPack>
                         <div className={styles.list}>
                             {item.data.map((v, i) => (
-                               role==='admin' ? (<div key={i} className={classnames(styles.listItem,styles.adminBox)}>
+                               role==='admin' ? (
+                                   <OverPack className={classnames(styles.listItem)} playScale={0.3} key={i}>
+                               <TweenOne className={styles.adminBox} key={i+'listItem'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: 'easeInCirc'}}>
                                     <img src="redClose.png" alt="" className={styles.closeIcon} />
                                     <input placeholder="Name" className={styles.nameInput} value={v.name} onChange={nameChange.bind(null,index,i)} />
                                     <input placeholder="Profession" className={styles.jobInput} value={v.job} onChange={jobChange.bind(null,index,i)} />
                                     <input placeholder="email" className={styles.emailInput} value={v.email} onChange={emailChange.bind(null,index,i)} />
                                     <div className={styles.confirmBtn}>Confirm</div>
-                                </div>) : 
-                                (<div key={i} className={classnames(styles.listItem)}>
-                                <img src="redClose.png" alt="" className={styles.closeIcon} />
+                                </TweenOne>
+                                </OverPack>
+                                ) : 
+                                (
+                                    <OverPack className={classnames(styles.listItem)} playScale={0.3} key={i}>
+                                <TweenOne key={i+'listItem'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: 'easeInCirc'}}>
+                                {/* <img src="redClose.png" alt="" className={styles.closeIcon} /> */}
                                 <div className={styles.nameText}>{v.name}</div>
                                 <div className={styles.jobText}>{v.job}</div>
                                 <div className={styles.emailText}>{v.email}</div>
-                            </div>)
+                            </TweenOne>
+                            </OverPack>
+                            )
                             ))}
-                            {role==='admin' ?<div onClick={addMember.bind(null,index)} className={classnames(styles.addBox,styles.listItem)}>
+                            {role==='admin' ?<OverPack playScale={0.3} className={classnames(styles.listItem)}><TweenOne className={styles.addBox} key="addmember" animation={{ y: '+=50',opacity: 0,type: 'from', ease: 'easeInCirc'}} onClick={addMember.bind(null,index)}>
                                 <img src="addM.png" className={styles.addMIcon} alt="" />
                                 <div className={styles.addText}>Add member</div>
-                            </div> :null}
+                            </TweenOne></OverPack> :null}
                         </div>
                     </div>
                 ))}

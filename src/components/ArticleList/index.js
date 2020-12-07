@@ -8,6 +8,8 @@
 import React,{Fragment,useState} from 'react'
 import { RightOutlined,FormOutlined } from '@ant-design/icons'
 import router from 'umi/router'
+import TweenOne from 'rc-tween-one';
+import { OverPack } from 'rc-scroll-anim';
 import styles from './index.css'
 import Swiper from './swiper'
 import LoadMore from '../LoadMore'
@@ -36,7 +38,8 @@ export default function (props) {
     return (
         <div className={styles.container}>
             {data.map((item, index) => (
-                <div key={index} className={styles.listItem}>
+                <OverPack key={index+'listitem'} playScale={0.3}>
+                <TweenOne animation={{ x: '-=50',opacity: 0,type: 'from', ease: 'easeInCirc'}} key={index} className={styles.listItem}>
                     <div className={styles.leftBox}>
                         <Swiper images={item.images} />
                     </div>
@@ -58,7 +61,8 @@ export default function (props) {
                             }
                         </div>
                     </div>
-                </div>
+                </TweenOne>
+                </OverPack>
             ))}
             <LoadMore />
             <Confirm visible={visible} onConfirm={onConfirm.bind(null,curItem)} close={closeConfirm} />
