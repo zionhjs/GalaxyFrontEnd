@@ -1,34 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState,useCallback } from 'react'
 import classnames from 'classnames'
 import LazyLoad from 'react-lazyload';
+import {connect} from 'dva'
 import { OverPack } from 'rc-scroll-anim';
 import TweenOne from 'rc-tween-one';
 import BigImage from '../BigImage'
 import styles from './index.css'
 
-export default function (props) {
-    let { data, role } = props
-    const { col1, col2, col3, col4 } = data
-    const [visible, setVisible] = useState(false)
-    const [val, setVal] = useState({})
-    function nameChange(e) {
-        setVal({ ...val, name: e.target.value })
-    }
-    function descChange(e) {
-        setVal({ ...val, desc: e.target.value })
-    }
-    function openBigImg(item) {
-        setVisible(true)
-    }
-    function edit(item) {
-        setVal(item)
-    }
-    function closeEdit() {
-        setVal({})
-    }
-    function closeBigImg() {
-        setVisible(false)
-    }
+const Waterfall=(props)=> {
+    let { col1,col2,col3,col4,currentItem,dispatch, role} = props
+    const nameChange=useCallback((e)=>{
+        dispatch({type:'image/setName',payload:e.target.value})
+    },[])
+    const descChange=useCallback((e)=>{
+        dispatch({type:'image/setDesc',payload:e.target.value})
+    },[])
+    const openBigImg=useCallback((item)=>{
+        dispatch({type:'image/setCurrent',payload:item})
+        dispatch({type:'image/openBigImage'})
+    },[])
+    const edit=useCallback((item)=>{
+        dispatch({type:'image/setCurrent',payload:item})
+    },[])
+    const closeEdit=useCallback(()=>{
+        dispatch({type:'image/setCurrent',payload:{}})
+    },[])
     return (
         <div className={styles.container}>
             <div className={styles.waterfall}>
@@ -47,10 +43,10 @@ export default function (props) {
                                 </div>
                                 {role === 'admin' ? <img onClick={edit.bind(null, item)} src="editW.png" alt="" className={styles.editIcon} /> : null}
                             </div>
-                            <div className={classnames(styles.editBox, { [styles.editShow]: val.id === item.id })}>
+                            <div className={classnames(styles.editBox, { [styles.editShow]: currentItem.id === item.id })}>
                                 <div className={styles.editLeft}>
-                                    <input value={val.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                    <textarea onChange={descChange} value={val.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                    <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                    <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                                 </div>
                                 <div className={styles.editRight}>
                                     <img onClick={closeEdit} src="close.png" className={styles.editClose} alt="" />
@@ -74,10 +70,10 @@ export default function (props) {
                             </div>
                             {role === 'admin' ? <img onClick={edit.bind(null, item)} src="editW.png" alt="" className={styles.editIcon} /> : null}
                         </div>
-                        <div className={classnames(styles.editBox, { [styles.editShow]: val.id === item.id })}>
+                        <div className={classnames(styles.editBox, { [styles.editShow]: currentItem.id === item.id })}>
                             <div className={styles.editLeft}>
-                                <input value={val.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                <textarea onChange={descChange} value={val.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                             </div>
                             <div className={styles.editRight}>
                                 <img onClick={closeEdit} src="close.png" className={styles.editClose} alt="" />
@@ -102,10 +98,10 @@ export default function (props) {
                             </div>
                             {role === 'admin' ? <img onClick={edit.bind(null, item)} src="editW.png" alt="" className={styles.editIcon} /> : null}
                         </div>
-                        <div className={classnames(styles.editBox, { [styles.editShow]: val.id === item.id })}>
+                        <div className={classnames(styles.editBox, { [styles.editShow]: currentItem.id === item.id })}>
                             <div className={styles.editLeft}>
-                                <input value={val.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                <textarea onChange={descChange} value={val.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                             </div>
                             <div className={styles.editRight}>
                                 <img onClick={closeEdit} src="close.png" className={styles.editClose} alt="" />
@@ -130,10 +126,10 @@ export default function (props) {
                             </div>
                             {role === 'admin' ? <img onClick={edit.bind(null, item)} src="editW.png" alt="" className={styles.editIcon} /> : null}
                         </div>
-                        <div className={classnames(styles.editBox, { [styles.editShow]: val.id === item.id })}>
+                        <div className={classnames(styles.editBox, { [styles.editShow]: currentItem.id === item.id })}>
                             <div className={styles.editLeft}>
-                                <input value={val.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                <textarea onChange={descChange} value={val.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                             </div>
                             <div className={styles.editRight}>
                                 <img onClick={closeEdit} src="close.png" className={styles.editClose} alt="" />
@@ -167,7 +163,8 @@ export default function (props) {
                 </div>
             </div>
             <div className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></div>
-            <BigImage visible={visible} close={closeBigImg} />
+            <BigImage  />
         </div>
     )
 }
+export default connect(({image:{col1,col2,col3,col4,currentItem}})=>({col1,col2,col3,col4,currentItem}))(Waterfall)

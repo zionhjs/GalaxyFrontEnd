@@ -2,12 +2,14 @@ import React, { useMemo,useState,useEffect } from 'react'
 import classnames from 'classnames'
 import TweenOne from 'rc-tween-one';
 import { OverPack } from 'rc-scroll-anim';
+import {connect} from 'dva'
 import styles from './team.css'
 import LoadMore from '../components/LoadMore'
 import teamJson from '../data/team.json'
 
 const role="admin"
-export default function (props) {
+const TeamPage=(props)=> {
+    const {dispatch}=props;
     function addMember(index){
      teamData.list[index].data.push({name:'',job:'',email:''})
      setTeamData({...teamData})
@@ -29,6 +31,7 @@ export default function (props) {
     const [teamData,setTeamData]=useState({})
     useEffect(()=>{
   setTeamData(teamJson)
+  dispatch({type:'team/getTeamData'})
     },[])
     return (
         <div className={styles.container}>
@@ -81,3 +84,4 @@ export default function (props) {
         </div>
     )
 }
+export default connect(({team})=>({}))(TeamPage)

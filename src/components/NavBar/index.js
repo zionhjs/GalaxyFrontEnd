@@ -1,17 +1,17 @@
 import React,{useState,useCallback, useEffect} from 'react'
+import {connect} from 'dva'
 import { Element } from 'rc-scroll-anim';
 import _ from 'lodash'
 import classnames from 'classnames'
 import styles from './index.css'
-export default function(props){
+const NavBar=(props)=>{
   const [idx,setIdx]=useState(0)
   const [isTop,setIsTop]=useState(false)
   const [position,setPosition]=useState(0)
   const [direction,setDirection]=useState('down')
-    let {navButtons,onBtnClicked}=props;
+    let {navButtons}=props;
     function handleClick(item,index){
       setIdx(index)
-      onBtnClicked(item)
     }
     useEffect(()=>{
      
@@ -41,3 +41,4 @@ export default function(props){
         </Element>
     )
 }
+export default connect(({global:{navButtons}})=>({navButtons}))(NavBar)

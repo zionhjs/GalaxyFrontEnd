@@ -1,0 +1,27 @@
+.container{
+ background-color: #000;
+ padding-left: 0.48rem;
+ padding-bottom: 0.39rem;
+ padding-top: 0.06rem;
+ position: fixed;
+ top: 1rem;
+ left: 0;
+ right: 0;
+ z-index: 20008;
+}
+.menuItem{
+ margin-top: 0.3rem;
+ display: flex;
+ align-items: center;
+}
+.menuIcon{
+ width: 0.18rem;
+ height: auto;
+ margin-right: 0.08rem;
+
+}
+.menuText{
+font-family: 'Roboto';
+font-size: 0.22rem;
+color: #fff;
+}

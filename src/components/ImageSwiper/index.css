@@ -1,0 +1,89 @@
+/*
+ * @Author: xingzai
+ * @Date: 2020-12-11 02:38:27
+ * @LastEditors: xingzai
+ * @LastEditTime: 2020-12-11 02:41:10
+ * @FilePath: \GalaxyFrontEnd\src\components\ImageSwiper\index.css
+ */
+.container{
+    height: 937px;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    background-color: #1d1d1d;
+    overflow: hidden;
+}
+.imgWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 100%;
+    background-color: transparent;
+}
+.swiperImg {
+    height: 937px;
+    width: auto;
+}
+.activeItem {
+  transform: scaleX(1.35); 
+}
+
+.container :global(.swiper-pagination-custom){
+    bottom: 32px;
+    left: 0;
+    width: 100%;
+}
+.container :global(.swiper-pagination){
+    position: absolute;
+text-align: center;
+transition: 300ms opacity;
+transform: translate3d(0, 0, 0);
+z-index: 10;
+}
+.container :global(.swiper-pagination-customs){
+    display:inline-block;
+    border-radius: 50%;
+    margin: 0 5px;
+    outline: 0;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    background-clip: content-box;
+    padding: 4px;
+}
+.container :global(.swiper-pagination-customs-active) {
+    border: 1px solid #fff;
+    }
+    .container :global(.swiper-button-prev){
+        left: 40px;
+        width: 75px;
+        height: 75px;
+        cursor: pointer;
+        background: url(../../../public/pre.png)  no-repeat;
+        background-size: contain;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 10;   
+    }
+    .container :global(.swiper-button-next){
+        right:40px;
+        width: 75px;
+        height: 75px;
+        cursor: pointer;
+        background: url(../../../public/next.png)  no-repeat;
+        background-size: contain;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 10;
+    }
+    .container :global(.swiper-button-next)::after{
+        content:'';
+    }
+    .container :global(.swiper-button-prev)::after{
+        content:'';
+    }

@@ -9,11 +9,7 @@ import Subscribe from '../components/Subscribe'
 import Dashboard from '../components/Dashboard'
 import MobileLayout from '../mobile/Layout'
 import ThreeLine from '../components/ThreeLine';
-const menus = [{ icon: 'home.png', text: 'Home' },
-{ icon: 'image.png', text: 'Images' },
-{ icon: 'animation.png', text: 'Animations' },
-{ icon: 'edit.png', text: 'Blogs' },
-{ icon: 'team.png', text: 'Team' }]
+
 const avatar="avatar.jpg"
 
 function BasicLayout(props) {
@@ -34,7 +30,7 @@ return  isMobile ? (<MobileLayout>{props.children}</MobileLayout>) :(
         <Menus />
         <Login />
         <Subscribe visible={subVisible} close={closeSub} />
-        <Header menus={menus} openSub={openSub}/> 
+        <Header openSub={openSub}/> 
       <div className={styles.placeholder}></div>      
       {props.children}
       <Footer />

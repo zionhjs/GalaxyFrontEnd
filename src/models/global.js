@@ -8,12 +8,25 @@
 export default {
     namespace:'global',
     state:{
+      menus:[{ icon: 'home.png', text: 'Home',route:'/home' },
+      { icon: 'image.png', text: 'Images',route:'/image' },
+      { icon: 'animation.png', text: 'Animations',route:'/animation' },
+      { icon: 'edit.png', text: 'Blogs',route:'/blogs' },
+      { icon: 'team.png', text: 'Team',route:'/team' }],//顶部导航菜单
+      navButtons: ['Interior','Exterior','360','Mixed','Nav to Animation'],//副导航菜单
       contactVisible:false,//底部聊天对话框是否可见
       menuVisible:false,//右上角3条杠打开的菜单是否可见
       loginVisible:false,//登录对话框是否可见
       dashboardVisible:false,//dashboard是否可见
+      menuVisibleMobile:false,//移动端导航栏是否可见
     },
     reducers:{
+      toggleMenuMobile(state){
+       return {
+         ...state,
+         menuVisibleMobile:!state.menuVisibleMobile
+       }
+      },
      openContact(state){
        return {
          ...state,
@@ -37,6 +50,12 @@ export default {
          ...state,
          menuVisible:!state.menuVisible
        }
+     },
+     closeMenu(state){
+return {
+  ...state,
+  menuVisible:false
+}
      },
      openLogin(state){
        return {

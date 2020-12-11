@@ -1,10 +1,18 @@
+/*
+ * @Author: xingzai
+ * @Date: 2020-11-25 05:29:09
+ * @LastEditors: xingzai
+ * @LastEditTime: 2020-12-10 00:27:56
+ * @FilePath: \GalaxyFrontEnd\src\components\Header\index.js
+ */
 import React,{useState,useCallback} from 'react'
+import {connect} from 'dva'
 import {SearchOutlined,MenuOutlined} from '@ant-design/icons'
 import router from 'umi/router';
 import {Link} from 'umi'
 import classnames from 'classnames'
 import styles from './index.css'
-export default function(props){
+const Header=(props)=>{
   const {menus,openSub=function(){}}=props
   const [active,setActive]=useState(false)
   function handleClick(item, index) {
@@ -51,3 +59,4 @@ export default function(props){
       </div>
     )
 }
+export default connect(({global})=>({menus:global.menus}))(Header)

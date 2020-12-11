@@ -20,7 +20,8 @@
  * @LastEditTime: 2020-11-07 06:00:11
  * @FilePath: \test\src\pages\index.js
  */
-import React, { useState, useRef, useEffect } from 'react';
+import React from 'react';
+import {connect} from 'dva'
 import styles from './home.css';
 import Swiper from '../components/Swiper'
 import QueueAnim from 'rc-queue-anim';
@@ -28,52 +29,13 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import TweenOne from 'rc-tween-one';
 import { useMediaQuery } from 'react-responsive'
 import MobileHome from '../mobile/Home'
-
-const leftBanners = ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg']
-const midBanners = ['banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg', 'banner1.jpeg']
-const rightBanners = ['banner3.jpeg', 'banner4.jpeg', 'banner1.jpeg', 'banner2.jpeg']
-const profiles = [{ imgUrl: 'profile1.jpeg', title: 'Interior rendering', desc: 'Sed ut perspiciatis unde iste natus' },
-{ imgUrl: 'profile2.jpeg', title: 'Exterior rendering', desc: 'Sed ut perspiciatis unde iste natus' },
-{ imgUrl: 'profile3.jpeg', title: 'Architectural Animation', desc: 'Sed ut perspiciatis unde iste natus' }]
-const illustration = {
-  imgUrl: 'profile3.jpeg', title: 'CGI ILLUSTRATION WITHOUT LIMITS', list: [
-    { title: '24-Hour Estimate', text: 'we serves immediately visualization quotations 24 hours a day,365 a year', icon: 'estime.png' },
-    { title: '100% On Time Delivery', text: 'Our Delivery always on time,never mess up your presentation.We late,you don\'t pay.', icon: 'deliver.png' },
-    { title: 'Match Expectations', text: 'Depends on the budget,we provide different quality of works.What we showed you we can do,we do it for you!', icon: 'expectation.png' }
-  ]
-}
 const stillImages = ['wf1.png', 'wf2.png', 'wf3.png', 'wf4.png', 'wf5.png']
 const aniImages = stillImages
-export default function (props) {
-  const [currentDot, setDot] = useState(0)//轮播图当前选中图片索引
-  const leftCarousel = useRef()
-  const rightCarousel = useRef()
-  const midCarousel = useRef()
+const HomePage=(props)=> {
+  const {profiles,illustration}=props;  
   const isMobile = useMediaQuery({ maxWidth: 767 })
-  function pre() {
-    let arr = [leftCarousel, midCarousel, rightCarousel]
-    const len = midBanners.length
-    if (currentDot === 0) {
-      setDot(len - 1)
-    } else {
-      setDot(currentDot - 1)
-    }
-    for (const value of arr) {
-      value.current.prev()
-    }
-  }
-  function next() {
-    let arr = [leftCarousel, midCarousel, rightCarousel]
-    const len = midBanners.length
-    if (currentDot === len - 1) {
-      setDot(0)
-    } else {
-      setDot(currentDot + 1)
-    }
-    for (const value of arr) {
-      value.current.next()
-    }
-  }
+  
+  
   return isMobile ? (<MobileHome />) : (
     <div className={styles.container}>
        <Swiper />
@@ -195,7 +157,7 @@ export default function (props) {
           <TweenOne key="step4Img" className={styles.stepArrowWrapper} animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <img src="stepArrow.png" alt="" className={styles.stepArrow} />
           </TweenOne>
-          <TweenOne key="step2" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
+          <TweenOne key="step5" animation={{ x: '-=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 5<img src="step.png" className={styles.stepImg} /></div>
             <div className={styles.stepContent}>Take your comments and revise that till you satisfied.</div>
@@ -274,3 +236,4 @@ export default function (props) {
     </div>
   );
 }
+export default connect(({home})=>({profiles:home.profiles,illustration:home.illustration}))(HomePage)

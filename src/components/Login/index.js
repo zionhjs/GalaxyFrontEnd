@@ -8,7 +8,6 @@
 
 import React, { useState,useEffect,useCallback } from 'react'
 import {connect} from 'dva'
-import {login} from '../../service/api'
 import styles from './index.css'
 
 const Login=(props)=> {
@@ -24,11 +23,7 @@ const Login=(props)=> {
         console.log(pass)
     } 
     async function Log(){
-    let result=await login({username:account,password:pass})
-    if(result&&result.jwt){
-        await localStorage.setItem('artjwt',JSON.stringify(result.jwt))
-        dispatch({type:'global/closeLogin'})
-       }    
+    dispatch({type:'login/login',payload:{id:account,password:pass}})        
     }
     const cancel=useCallback(()=>{
         dispatch({type:'global/closeLogin'})
@@ -38,12 +33,11 @@ const Login=(props)=> {
         visible ? (<div className={styles.container}>
             <div className={styles.closeWrapper}>
                 <img src="purplelogo.png" className={styles.logo} alt="" />
-                {/* <img src="loginClose.png" className={styles.closeIcon} onClick={handleClose} alt="" /> */}
             </div>
             <div className={styles.loginBox}>
                 <div className={styles.loginTitle}>Management system</div>
-                <input value={account} onChange={accountChange} placeholder="Account" className={styles.accountInput} />
-                <input value={pass} onChange={passwordChange} type="password" placeholder="Password" className={styles.passwordInput} />
+                <input value={account} onChange={accountChange} placeholder="Account" className={styles.accountInput} autoComplete="new-password" />
+                <input value={pass} onChange={passwordChange} type="password" placeholder="Password" autoComplete="new-password" className={styles.passwordInput} />
                 <div className={styles.textWrapper}><span className={styles.regText}>Registration</span><span className={styles.forgetText}>Forget Password</span></div>
                 <div onClick={Log} className={styles.loginBtn}>LOG IN</div>
                 <div onClick={cancel} className={styles.cancelBtn}>CANCEL</div>

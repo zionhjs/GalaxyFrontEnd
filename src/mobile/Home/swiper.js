@@ -1,21 +1,21 @@
 /*
  * @Author: xingzai
- * @Date: 2020-11-29 05:03:56
+ * @Date: 2020-12-10 03:58:04
  * @LastEditors: xingzai
- * @LastEditTime: 2020-11-29 05:03:58
- * @FilePath: \GalaxyFrontEnd\src\components\Swiper\index.js
+ * @LastEditTime: 2020-12-10 03:58:04
+ * @FilePath: \GalaxyFrontEnd\src\mobile\Home\swiper.js
  */
-import React,{useState,useCallback} from 'react'
+import React,{useCallback} from 'react'
 import classnames from 'classnames'
-import SwiperCore, { Navigation, Pagination,EffectCoverflow } from 'swiper';
+import SwiperCore, {Pagination,Autoplay} from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {connect} from 'dva'
 import 'swiper/swiper.less';
 import 'swiper/components/navigation/navigation.less';
 import 'swiper/components/pagination/pagination.less';
 import 'swiper/components/scrollbar/scrollbar.less';
-import styles from './index.css'
-SwiperCore.use([Navigation, Pagination,EffectCoverflow]);
+import styles from './swiper.css'
+SwiperCore.use([Pagination,Autoplay]);
 const Sw=(props)=>{
     const {dispatch,banners}=props
     const renderCustom=useCallback((swiper,current,total)=>{
@@ -30,17 +30,13 @@ const Sw=(props)=>{
         }
         return paginationHtml;
     },[])
-    const openDialog=useCallback(()=>{
-        dispatch({type:'global/openContact'})
-    },[])
+   
     return (
         <div className={styles.container}>            
              <Swiper
              speed={800}
-      slidesPerView={2}
-      effect="coverflow"
-      coverflowEffect={{ rotate: 0,
-        slideShadows : false}}
+             autoplay
+       slidesPerView={1}
       centeredSlides
       centeredSlidesBounds
       navigation={{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'}}
@@ -58,15 +54,10 @@ const Sw=(props)=>{
                 </SwiperSlide>
           ))
       }
-      <div className="swiper-pagination"></div>
-      <div className="swiper-button-prev"></div>
-	    <div className="swiper-button-next"></div>      
+      <div className="swiper-pagination"></div>     
     </Swiper>
-          <div className={styles.leftMask}></div>
-          <div className={styles.rightMask}></div>
           <span className={styles.swiperTitle}>Interior rendering</span>
           <p className={styles.swiperText}>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-          <div onClick={openDialog} className={styles.contactBtn}><span className={styles.contactText}>CONTACT US</span></div>
         </div>
     )
 }
