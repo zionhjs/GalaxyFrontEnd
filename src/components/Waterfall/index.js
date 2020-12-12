@@ -8,7 +8,7 @@ import BigImage from '../BigImage'
 import styles from './index.css'
 
 const Waterfall=(props)=> {
-    let { col1,col2,col3,col4,currentItem,dispatch, role} = props
+    let { col1,col2,col3,col4,currentItem,showEdit,dispatch, role} = props
     const nameChange=useCallback((e)=>{
         dispatch({type:'image/setName',payload:e.target.value})
     },[])
@@ -43,7 +43,7 @@ const Waterfall=(props)=> {
                                 </div>
                                 {role === 'admin' ? <img onClick={edit.bind(null, item)} src="editW.png" alt="" className={styles.editIcon} /> : null}
                             </div>
-                            <div className={classnames(styles.editBox, { [styles.editShow]: currentItem.id === item.id })}>
+                            <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                                 <div className={styles.editLeft}>
                                     <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
                                     <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
@@ -70,7 +70,7 @@ const Waterfall=(props)=> {
                             </div>
                             {role === 'admin' ? <img onClick={edit.bind(null, item)} src="editW.png" alt="" className={styles.editIcon} /> : null}
                         </div>
-                        <div className={classnames(styles.editBox, { [styles.editShow]: currentItem.id === item.id })}>
+                        <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
                                 <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
@@ -98,7 +98,7 @@ const Waterfall=(props)=> {
                             </div>
                             {role === 'admin' ? <img onClick={edit.bind(null, item)} src="editW.png" alt="" className={styles.editIcon} /> : null}
                         </div>
-                        <div className={classnames(styles.editBox, { [styles.editShow]: currentItem.id === item.id })}>
+                        <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
                                 <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
@@ -126,7 +126,7 @@ const Waterfall=(props)=> {
                             </div>
                             {role === 'admin' ? <img onClick={edit.bind(null, item)} src="editW.png" alt="" className={styles.editIcon} /> : null}
                         </div>
-                        <div className={classnames(styles.editBox, { [styles.editShow]: currentItem.id === item.id })}>
+                        <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
                                 <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
@@ -167,4 +167,4 @@ const Waterfall=(props)=> {
         </div>
     )
 }
-export default connect(({image:{col1,col2,col3,col4,currentItem}})=>({col1,col2,col3,col4,currentItem}))(Waterfall)
+export default connect(({image:{col1,col2,col3,col4,currentItem,bigImageVisible},global:{role}})=>({col1,col2,col3,col4,currentItem,showEdit:!bigImageVisible,role}))(Waterfall)

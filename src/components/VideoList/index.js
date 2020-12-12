@@ -1,4 +1,5 @@
 import React, { useState, useMemo,useCallback } from 'react'
+import {connect} from 'dva'
 import { FullscreenOutlined } from '@ant-design/icons'
 import classnames from 'classnames'
 import ReactPlayer from 'react-player'
@@ -10,36 +11,43 @@ import _ from 'lodash'
 
 import styles from './index.css'
 
-export default function (props) {
-    let { data, role,play } = props
+const VideoList=(props)=> {
+    let {  role,videoList,currentItem,uploadFile,showEdit,dispatch } = props
     let list = useMemo(() => {
-        data=_.concat(data,{})
-        return _.chunk(data, 3)
-    }, [data])
-    const [val, setVal] = useState({})//当前编辑的元素数据
-    const [upload, setUpload] = useState({})//上传的数据
-    function edit(item) {
-        setVal(item)
-    }
-    function nameChange(e) {
-        setVal({ ...val, name: e.target.value })
-    }
-    function descChange(e) {
-        setVal({ ...val, desc: e.target.value })
-    }
-    function closeEditor() {
-        setVal({ id: null })
-    }
-    function uploadNameChange(e) {
-        setUpload({ ...upload, name: e.target.value })
-    }
-    function uploadDescChange(e) {
-        setUpload({ ...upload, desc: e.target.value })
-    }
-    function selectFiles(item, e) {
-        let file = e.target.files[0]
-        let src = URL.createObjectURL(file)
-    }
+        let ret=_.concat(videoList,{})
+        return _.chunk(ret, 3)
+    }, [videoList])
+    const [upload, setUpload] = useState({name:'',desc:''})//上传的数据
+    const edit=useCallback((item)=>{
+     dispatch({type:'animation/setCurrent',payload:item})
+    },[])
+    const nameChange=useCallback((e)=>{
+     dispatch({type:'animation/setName',payload:e.target.value})
+    },[])
+    const descChange=useCallback((e)=>{
+        dispatch({type:'animation/setDesc',payload:e.target.value})
+    },[])
+    const closeEditor=useCallback(()=>{
+        dispatch({type:'animation/setCurrent',payload:{id:null}})
+    },[])
+    const play=useCallback((item)=>{
+        dispatch({type:'animation/setCurrent',payload:item})
+        dispatch({type:'animation/openVideo'})
+    },[])
+    const selectFiles=useCallback((item,e)=>{
+        let file=e.target.files[0]
+        dispatch({type:'animation/setUpdateFile',payload:{file}})
+    },[])
+    const selectUploadFile=useCallback((e)=>{
+        let file=e.target.files[0]
+        dispatch({type:'animation/setUploadFile',payload:{file}})
+    },[])
+    const uploadNameChange=useCallback((e)=>{
+        dispatch({type:'animation/setUploadName',payload:{name:e.target.value}})
+    },[])
+    const uploadDescChange=useCallback((e)=>{
+        dispatch({type:'animation/setUploadDesc',payload:{desc:e.target.value}})
+    },[])
     return (
         <div className={styles.container}>
             {list.map((item, index) => {
@@ -52,10 +60,10 @@ export default function (props) {
                             <img src={item[0].imgUrl} className={styles.box1Img} />
                             <div className={styles.nameWrapper}><span className={styles.nameText}>{item[0].name}</span><span className={styles.dateText}>{item[0].date}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                             <div className={styles.desc}>{item[0].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[0])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
-                            <div className={classnames(styles.editBox, { [styles.editShow]: val.id === item[0].id })}>
+                            <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item[0].id)&&showEdit })}>
                                 <div className={styles.editLeft}>
-                                    <input value={val.name} onChange={nameChange} className={styles.editInput} />
-                                    <textarea onChange={descChange} value={val.desc} className={styles.editTextArea} />
+                                    <input value={currentItem.name} onChange={nameChange} className={styles.editInput} />
+                                    <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} />
                                 </div>
                                 <div className={styles.editRight}>
                                     <img onClick={closeEditor} src="close.png" className={styles.editClose} alt="" />
@@ -68,17 +76,17 @@ export default function (props) {
                          }{
                             item[0]&&item[0].id===undefined&&(<div className={styles.bigUploadBox}>
                                 <div className={styles.bigUpperBox}>
-                                    <img src="uploadB.png" className={styles.uploadIcon} alt="" />
+                                    <img src="uploadB.png" className={styles.uploadIcon} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} />
                                     <div className={styles.uploadText}>Upload video</div>
                                 </div>
                                 <div className={classnames(styles.editBox, styles.editShow)}>
                                     <div className={styles.editLeft}>
-                                        <input value={upload.name} onChange={uploadNameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                        <textarea onChange={uploadDescChange} value={upload.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                        <input value={uploadFile.name} onChange={uploadNameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                        <textarea onChange={uploadDescChange} value={uploadFile.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                                     </div>
                                     <div className={styles.editRight}>
                                         <img src="close.png" className={styles.editClose} alt="" />
-                                        <img src="uploadS.png" className={styles.editUpdate} alt="" />
+                                        <div className={styles.uploadView}><img src="uploadS.png" className={styles.editUpdate} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} /></div>
                                         <img src="confirm.png" className={styles.checkIcon} alt="" />
                                     </div>
                                 </div>
@@ -91,10 +99,10 @@ export default function (props) {
                                 <img src={item[1].imgUrl} className={styles.box2Img} />
                                 <div className={styles.nameWrapper}><span className={styles.nameText}>{item[1].name}</span><span className={styles.dateText}>{item[1].date}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                                 <div className={styles.desc}>{item[1].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[1])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
-                                <div className={classnames(styles.editBox, { [styles.editShow]: val.id === item[1].id })}>
+                                <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item[1].id)&&showEdit })}>
                                     <div className={styles.editLeft}>
-                                        <input value={val.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                        <textarea onChange={descChange} value={val.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                        <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                        <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                                     </div>
                                     <div className={styles.editRight}>
                                         <img onClick={closeEditor} src="close.png" className={styles.editClose} alt="" />
@@ -109,17 +117,17 @@ export default function (props) {
 
                            {item[1]&&item[1].id===undefined&&(<div className={styles.uploadBox}>
                                 <div className={styles.upperBox}>
-                                    <img src="uploadB.png" className={styles.uploadIcon} alt="" />
+                                <img src="uploadB.png" className={styles.uploadIcon} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} />
                                     <div className={styles.uploadText}>Upload video</div>
                                 </div>
                                 <div className={classnames(styles.editBox, styles.editShow)}>
                                     <div className={styles.editLeft}>
-                                        <input value={upload.name} onChange={uploadNameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                        <textarea onChange={uploadDescChange} value={upload.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                        <input value={uploadFile.name} onChange={uploadNameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                        <textarea onChange={uploadDescChange} value={uploadFile.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                                     </div>
                                     <div className={styles.editRight}>
                                         <img src="close.png" className={styles.editClose} alt="" />
-                                        <img src="uploadS.png" className={styles.editUpdate} alt="" />
+                                        <div className={styles.uploadView}><img src="uploadS.png" className={styles.editUpdate} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} /></div>
                                         <img src="confirm.png" className={styles.checkIcon} alt="" />
                                     </div>
                                 </div>
@@ -129,10 +137,10 @@ export default function (props) {
                                 <img src={item[2].imgUrl} className={styles.box3Img} />
                                 <div className={styles.nameWrapper}><span className={styles.nameText}>{item[2].name}</span><span className={styles.dateText}>{item[2].date}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                                 <div className={styles.desc}>{item[2].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[2])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
-                                <div className={classnames(styles.editBox, { [styles.editShow]: val.id === item[2].id })}>
+                                <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item[2].id)&&showEdit })}>
                                     <div className={styles.editLeft}>
-                                        <input value={val.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                        <textarea onChange={descChange} value={val.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                        <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                        <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                                     </div>
                                     <div className={styles.editRight}>
                                         <img onClick={closeEditor} src="close.png" className={styles.editClose} alt="" />
@@ -145,17 +153,17 @@ export default function (props) {
 
                             {item[2]&&item[2].id===undefined&&(<div className={styles.uploadBox}>
                                 <div className={styles.upperBox}>
-                                    <img src="uploadB.png" className={styles.uploadIcon} alt="" />
-                                    <div className={styles.uploadText}>Upload video</div>
+                                <img src="uploadB.png" className={styles.uploadIcon} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} />
+                                <div className={styles.uploadText}>Upload video</div>
                                 </div>
                                 <div className={classnames(styles.editBox, styles.editShow)}>
                                     <div className={styles.editLeft}>
-                                        <input value={upload.name} onChange={uploadNameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                        <textarea onChange={uploadDescChange} value={upload.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                        <input value={uploadFile.name} onChange={uploadNameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                        <textarea onChange={uploadDescChange} value={uploadFile.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                                     </div>
                                     <div className={styles.editRight}>
                                         <img src="close.png" className={styles.editClose} alt="" />
-                                        <img src="uploadS.png" className={styles.editUpdate} alt="" />
+                                        <div className={styles.uploadView}><img src="uploadS.png" className={styles.editUpdate} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} /></div>
                                         <img src="confirm.png" className={styles.checkIcon} alt="" />
                                     </div>
                                 </div>
@@ -169,3 +177,4 @@ export default function (props) {
         </div>
     )
 }
+export default connect(({animation:{videoList,currentItem,uploadFile,videoVisible},global:{role}})=>({videoList,currentItem,uploadFile,showEdit:!videoVisible,role}))(VideoList)

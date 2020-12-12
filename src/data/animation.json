@@ -1,11 +1,70 @@
 {
-    "videoList": [
-        {
-            "name":"voluptatem",
-            "date":"2020.11.23",
-            "desc":"GalaxyCGI is an Architectural Visualization",
-            "imgUrl":"",
-            "video":""
-        }
-    ]
+    "videoList": [{
+        "id":1,
+        "name": "voluptatem",
+        "date": "2020.11.23",
+        "desc": "GalaxyCGI is an Architectural Visualization",
+        "imgUrl": "cover.png",
+        "video": "watermarked4kAedas.mp4"
+      }, {
+        "id":2,
+        "name": "voluptatem",
+        "date": "2020.11.23",
+        "desc": "GalaxyCGI is an Architectural Visualization",
+        "imgUrl": "cover.png",
+        "video": "watermarked4kAedas.mp4"
+      }, {
+        "id":3,
+        "name": "voluptatem",
+        "date": "2020.11.23",
+        "desc": "GalaxyCGI is an Architectural Visualization",
+        "imgUrl": "cover.png",
+        "video": "watermarked4kAedas.mp4"
+      }, {
+        "id":4,
+        "name": "voluptatem",
+        "date": "2020.11.23",
+        "desc": "GalaxyCGI is an Architectural Visualization",
+        "imgUrl": "cover.png",
+        "video": "watermarked4kAedas.mp4"
+      }, {
+        "id":5,
+        "name": "voluptatem",
+        "date": "2020.11.23",
+        "desc": "GalaxyCGI is an Architectural Visualization",
+        "imgUrl": "cover.png",
+        "video": "watermarked4kAedas.mp4"
+      }, {
+        "id":6,
+        "name": "voluptatem",
+        "date": "2020.11.23",
+        "desc": "GalaxyCGI is an Architectural Visualization",
+        "imgUrl": "cover.png",
+        "video": "watermarked4kAedas.mp4"
+      }, {
+        "id":7,
+        "name": "voluptatem",
+        "date": "2020.11.23",
+        "desc": "GalaxyCGI is an Architectural Visualization",
+        "imgUrl": "cover.png",
+        "video": "watermarked4kAedas.mp4"
+      },
+      {
+        "id":8,
+        "name": "voluptatem",
+        "date": "2020.11.23",
+        "desc": "GalaxyCGI is an Architectural Visualization",
+        "imgUrl": "cover.png",
+        "video": "watermarked4kAedas.mp4"
+      },
+      {
+        "id":9,
+        "name": "voluptatem",
+        "date": "2020.11.23",
+        "desc": "GalaxyCGI is an Architectural Visualization",
+        "imgUrl": "cover.png",
+        "video": "watermarked4kAedas.mp4"
+      }      
+      ],
+      "banners": ["banner1.jpeg", "banner2.jpeg", "banner3.jpeg", "banner4.jpeg"]
 }

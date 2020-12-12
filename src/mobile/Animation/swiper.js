@@ -1,21 +1,21 @@
 /*
  * @Author: xingzai
- * @Date: 2020-11-29 05:03:56
+ * @Date: 2020-12-12 08:50:19
  * @LastEditors: xingzai
- * @LastEditTime: 2020-11-29 05:03:58
- * @FilePath: \GalaxyFrontEnd\src\components\Swiper\index.js
+ * @LastEditTime: 2020-12-12 08:50:20
+ * @FilePath: \GalaxyFrontEnd\src\mobile\Animation\swiper.js
  */
-import React,{useState,useCallback} from 'react'
+import React,{useCallback} from 'react'
 import classnames from 'classnames'
-import SwiperCore, { Navigation, Pagination,EffectCoverflow } from 'swiper';
+import SwiperCore, {  Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {connect} from 'dva'
 import 'swiper/swiper.less';
 import 'swiper/components/navigation/navigation.less';
 import 'swiper/components/pagination/pagination.less';
 import 'swiper/components/scrollbar/scrollbar.less';
-import styles from './index.css'
-SwiperCore.use([Navigation, Pagination,EffectCoverflow]);
+import styles from './swiper.css'
+SwiperCore.use([Autoplay, Pagination]);
 const Sw=(props)=>{
     const {dispatch,banners}=props
     const renderCustom=useCallback((swiper,current,total)=>{
@@ -30,22 +30,17 @@ const Sw=(props)=>{
         }
         return paginationHtml;
     },[])
-    const openDialog=useCallback(()=>{
-        dispatch({type:'global/openContact'})
-    },[])
+    
     return banners.length===0 ? null : (
         <div className={styles.container}>            
              <Swiper
+             autoplay
              speed={800}
-      slidesPerView={2}
-      effect="coverflow"
-      coverflowEffect={{ rotate: 0,
-        slideShadows : false}}
+      slidesPerView={1}
       centeredSlides
       centeredSlidesBounds
-      navigation={{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'}}
       loop
-      pagination={{ clickable: true,el:'.swiper-pagination',type:'custom', renderCustom}}
+      pagination={{clickable:true,el:'.swiper-pagination',type:'custom', renderCustom}}
       onSwiper={(swiper) => console.log(swiper)}
       onSlideChange={() => console.log('slide change')}
     >
@@ -53,7 +48,7 @@ const Sw=(props)=>{
           banners.map((item,index)=>(
             <SwiperSlide key={index}>
                 {({isActive,isPrev,isNext})=> 
-                (<div className={classnames(styles.imgWrapper,{[styles.activeItem]:isActive,[styles.preItem]:isPrev,[styles.nextItem]:isNext})}>
+                (<div className={classnames(styles.imgWrapper)}>
                     <img className={styles.swiperImg} src={item} alt="" />
                     {isActive ? <img className={styles.playIcon} src="playBtn.png" alt="" /> : null }
                     </div>)
@@ -61,12 +56,8 @@ const Sw=(props)=>{
                 </SwiperSlide>
           ))
       }
-      <div className="swiper-pagination"></div>
-      <div className="swiper-button-prev"></div>
-	    <div className="swiper-button-next"></div>      
+      <div className="swiper-pagination"></div>     
     </Swiper>
-          <div className={styles.leftMask}></div>
-          <div className={styles.rightMask}></div>
         </div>
     )
 }
