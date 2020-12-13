@@ -1,0 +1,61 @@
+.container{
+   background-color: #1d1d1d;
+   padding-left: 0.2rem;
+   padding-right: 0.2rem; 
+}
+.listItem{
+   background-color: #000;
+   margin-bottom: 0.2rem;
+   padding-bottom: 0.11rem;
+}
+.imgWrapper{
+   height: 3.9rem;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   overflow: hidden;
+   position: relative;
+}
+.playIcon{
+   position: absolute;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   margin: auto;
+   width: 0.85rem;
+   height: auto;
+   cursor: pointer;
+}
+.listImg{
+   height: 100%;
+   width: auto;
+}
+.nameWrapper{
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   padding-left: 0.14rem;
+   padding-right: 0.14rem;
+}
+.nameText{
+   font-family: 'Roboto';
+   color: #fff;
+   font-size: 0.26rem;
+}
+.dateText{
+   font-family: 'Roboto';
+   color: rgba(255,255,255,0.6);
+   font-size: 0.17rem;
+   margin-left: 0.32rem;
+}
+.descWrapper{
+   padding-left: 0.14rem;
+   display: flex;
+   align-items: center;
+}
+.descText{
+   font-family: 'Roboto';
+   color: rgba(255,255,255,0.6);
+   font-size: 0.18rem;
+}

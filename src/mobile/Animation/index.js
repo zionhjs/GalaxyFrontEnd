@@ -8,11 +8,19 @@
 import React from 'react'
 import {connect} from 'dva'
 import Swiper from './swiper'
+import NavBar from '../components/NavBar'
+import VideoList from '../components/VideoList'
+import LoadMore from '../components/LoadMore'
+import GetNews from '../components/GetNews'
 import styles from './index.css'
 const AnimationPage=(props)=>{
     return (
         <div className={styles.container}>
             <Swiper />
+            <NavBar />
+            <VideoList />
+            <LoadMore />
+            <GetNews />
         </div>
     )
 }

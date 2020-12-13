@@ -9,6 +9,7 @@ import React from 'react'
 import {connect} from 'dva'
 import Swiper from './swiper'
 import NavBar from '../NavBar'
+import LoadMore from '../LoadMore'
 import styles from './index.css'
 const ImageMobile=({images})=>{
     return (
@@ -23,7 +24,8 @@ const ImageMobile=({images})=>{
                 <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
                     </div>
                 ))}
-           </div>            
+           </div>
+           <LoadMore />            
         </div>
     )
 }

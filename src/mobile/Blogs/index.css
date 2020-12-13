@@ -1,0 +1,66 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    background-color: #1d1d1d;
+    padding-bottom: 1.71rem;
+}
+.bannerBox{
+    height: 3.48rem;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+.bannerImg{
+    width: 100%;
+    height: auto;
+}
+.searchBox{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.searchTitle{
+    font-family: 'Microsoft YaHei';
+    font-weight: bold;
+    font-size: 0.51rem;
+    color: #fff;
+}
+.searchText{
+    font-family: 'Roboto';
+    font-size: 0.2rem;
+    color: #fff;
+}
+.inputView{
+    width: 7.12rem;
+    height: 0.57rem;
+    border-radius: 28.5px;
+    opacity: 0.6;
+    background-color: #000;
+    padding-left: 0.32rem;
+    padding-right: 0.29rem;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.36rem;
+}
+.searchIcon{
+    width: 0.23rem;
+    height: auto;
+    flex-grow: 0;
+    align-self: center;
+}
+.searchInput {
+    font-family: 'Segoe UI';
+    font-style: italic;
+    color: #fff;
+    font-size: 0.23rem;
+    background-color: transparent;
+    flex: 1;
+    border: none;
+}

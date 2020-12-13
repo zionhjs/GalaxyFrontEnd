@@ -11,6 +11,8 @@
     opacity: 0.9;
     padding-left: 0.21rem;
     padding-right: 0.21rem;
+    margin-top: 0.2rem;
+    margin-bottom: 0.2rem;
   }
   .menuItem{
     position: relative;

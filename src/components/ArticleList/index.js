@@ -5,39 +5,35 @@
  * @LastEditTime: 2020-11-10 01:23:28
  * @FilePath: \test\src\components\ArticleList\index.js
  */
-import React,{Fragment,useState} from 'react'
+import React,{useState,useCallback} from 'react'
 import { RightOutlined,FormOutlined } from '@ant-design/icons'
 import router from 'umi/router'
 import TweenOne from 'rc-tween-one';
 import { OverPack } from 'rc-scroll-anim';
+import {connect} from 'dva'
 import styles from './index.css'
 import Swiper from './swiper'
 import LoadMore from '../LoadMore'
 import Confirm from '../Confirm'
-export default function (props) {
-    const { data,role } = props
+const ArticleList=(props)=> {
+    const {articles,role,dispatch } = props
     const [visible,setVisible]=useState(false)
     const [curItem,setCurItem]=useState(null)
-    function todetail(item){
-        router.push('blogDetail')
-    }
-    function delPost(item){
- setCurItem(item)
- setVisible(true)
-    }
-    function toEdit(item){
+    const delPost=useCallback((item)=>{
+        dispatch({type:'blog/setDelItem',payload:item})
+        dispatch({type:'blog/openConfirm'})
+    },[])
+    const todetail=useCallback((item)=>{
+        router.push('blogDetail?id='+item.id)
+    },[])
+    const toEdit=useCallback((item)=>{
         router.push('editBlog?id='+item.id)
-    }
-    function onConfirm(item){
-        console.log('confirm',item)
-        setVisible(false)
-    }
-    function closeConfirm(){
-        setVisible(false)
-    }
+    },[])
+    
+    
     return (
         <div className={styles.container}>
-            {data.map((item, index) => (
+            {articles.length!==0&&articles.map((item, index) => (
                 <OverPack key={index+'listitem'} playScale={0.3}>
                 <TweenOne animation={{ x: '-=50',opacity: 0,type: 'from', ease: 'easeInCirc'}} key={index} className={styles.listItem}>
                     <div className={styles.leftBox}>
@@ -65,7 +61,8 @@ export default function (props) {
                 </OverPack>
             ))}
             <LoadMore />
-            <Confirm visible={visible} onConfirm={onConfirm.bind(null,curItem)} close={closeConfirm} />
+            <Confirm  />
         </div>
     )
 }
+export default connect(({blog:{articles},global:{role}})=>({articles,role}))(ArticleList)

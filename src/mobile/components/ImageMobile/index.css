@@ -1,5 +1,6 @@
 .container{
-    background-color: #000;
+    background-color: #1d1d1d;
+    padding-bottom: 2.26rem;
 }
 .list{
     margin-left: 0.2rem;
@@ -12,6 +13,7 @@
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    background-color: #000;
 }
 .listImg{
     width: 100%;

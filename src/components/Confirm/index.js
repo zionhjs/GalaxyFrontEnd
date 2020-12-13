@@ -5,12 +5,19 @@
  * @LastEditTime: 2020-11-20 07:11:37
  * @FilePath: \test\src\components\Confirm\index.js
  */
-import React from 'react'
+import React,{useCallback} from 'react'
+import {connect} from 'dva'
 import classnames from 'classnames'
 import styles from './index.css'
 
-export default function(props){
-    const {visible,close,onConfirm}=props
+const Confirm=(props)=>{
+    const {visible,dispatch}=props
+    const close=useCallback(()=>{
+     dispatch({type:'blog/closeConfirm'})
+    },[])
+    const onConfirm=useCallback(()=>{
+
+    },[])
     return (
         <div className={classnames(styles.container,{[styles.show]:visible})}>
             <div className={styles.header}>
@@ -28,3 +35,4 @@ export default function(props){
         </div>
     )
 }
+export default connect(({blog:{confirmVisible}})=>({visible:confirmVisible}))(Confirm)
