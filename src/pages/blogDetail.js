@@ -5,30 +5,36 @@
  * @LastEditTime: 2020-11-14 05:46:56
  * @FilePath: \test\src\pages\blogDetail.js
  */
-import React, { useState, useMemo } from 'react'
+import React, { useMemo,useEffect, useCallback } from 'react'
 import { RightOutlined, CheckOutlined } from '@ant-design/icons'
+import { useMediaQuery } from 'react-responsive'
+import {connect} from 'dva'
+import DetailMobile from '../mobile/BlogDetail'
 import styles from './blogDetail.css'
-import res from '../data/blogDetail.json'
-export default function (props) {
+const BlogDetail= (props)=> {
+    const {data,dispatch,location:{query},checked}=props;
+    const isMobile = useMediaQuery({ maxWidth: 767 })
+    useEffect(()=>{
+        dispatch({type:'blogdetail/getDetailData',payload:query.id})
+        },[])
     let richText = useMemo(() => {
-        return res.article.replace(/\<img/gi, '<img class="rich-img" ')
-    }, res)
-    const [checked, setChecked] = useState(false)
-    function toggleChecked() {
-        setChecked(!checked)
-    }
-    return (
+        return data.article.replace(/\<img/gi, '<img class="rich-img" ')
+    }, [data])
+    const toggleChecked=useCallback(()=>{
+        dispatch({type:'blogdetail/toggleChecked'})
+    },[])
+    return isMobile ? (<DetailMobile />) : (
         <div className={styles.container}>
-            <div className={styles.articleTitle}>{res.title}</div>
+            <div className={styles.articleTitle}>{data.title}</div>
             <div className={styles.articleInfo}>
-                <span className={styles.authorText}>{res.author}</span>
-                <span className={styles.dateText}>{res.date}</span>
+                <span className={styles.authorText}>{data.author}</span>
+                <span className={styles.dateText}>{data.date}</span>
                 <img src="read.png" className={styles.readIcon} />
-                <span className={styles.readText}>{res.read}</span>
+                <span className={styles.readText}>{data.read}</span>
                 <img src="liked.png" className={styles.likedIcon} />
-                <span className={styles.likedText}>{res.likes}</span>
+                <span className={styles.likedText}>{data.likes}</span>
                 <img src="comment.png" className={styles.commentIcon} />
-                <span className={styles.commentText}>{res.commentNum}</span>
+                <span className={styles.commentText}>{data.commentNum}</span>
                 <img src="share.png" className={styles.shareIcon} />
                 <span className={styles.shareText}>Share</span>
             </div>
@@ -45,14 +51,14 @@ export default function (props) {
                     </div>
                     <div className={styles.getNews}>
                         <div className={styles.getNewsTitle}>Get News</div>
-                        <div className={styles.newsText}>{res.news}</div>
+                        <div className={styles.newsText}>{data.news}</div>
                         <input className={styles.nameInput} placeholder="Name" />
                         <input className={styles.emailInput} placeholder="Email" />
                         <div className={styles.signupBtn}>Sign Me Up</div>
                     </div>
                     <div className={styles.recentPost}>
                         <div className={styles.recentPostTitle}>Recent Posts</div>
-                        {res.recentPosts.map((item, index) => (
+                        {data.recentPosts.map((item, index) => (
                             <div key={index} className={styles.recentPostItem}>
                                 <div className={styles.itemContent}>
                                     <img src={item.imgUrl} className={styles.itemImg} alt="" />
@@ -68,7 +74,7 @@ export default function (props) {
                     <div className={styles.tagsBox}>
                         <div className={styles.tagsTitle}>Tags</div>
                         <div className={styles.tagInner}>
-                            {res.tags.map((item, index) => (
+                            {data.tags.map((item, index) => (
                                 <div key={index} className={styles.tag}>{item}</div>
                             ))}
                         </div>
@@ -77,11 +83,11 @@ export default function (props) {
             </div>
             <div className={styles.postInfo}>
                 <img src="read.png" className={styles.readIcon} style={{ marginLeft: 0 }} />
-                <span className={styles.readText}>{res.read}</span>
+                <span className={styles.readText}>{data.read}</span>
                 <img src="liked.png" className={styles.likedIcon} />
-                <span className={styles.likedText}>{res.likes}</span>
+                <span className={styles.likedText}>{data.likes}</span>
                 <img src="comment.png" className={styles.commentIcon} />
-                <span className={styles.commentText}>{res.commentNum}</span>
+                <span className={styles.commentText}>{data.commentNum}</span>
                 <img src="share.png" className={styles.shareIcon} />
                 <span className={styles.shareText}>Share</span>
                 <span className={styles.nextText}>Next Post</span>
@@ -97,7 +103,7 @@ export default function (props) {
                 <div className={styles.checkedRow}>{checked ? <span onClick={toggleChecked} className={styles.checked}><CheckOutlined /></span> : <span onClick={toggleChecked} className={styles.unChecked}></span>}<span className={styles.checkedText}>Save my name, email, and website in this browser for the next time I comment.</span></div>
                 <div className={styles.sendBtn}>SEND</div>
                 <div className={styles.commentLabel}>User comment</div>
-                {res.comments.map((item,index)=>(
+                {data.comments.map((item,index)=>(
                     <div key={index} className={styles.commentRow}>
                         <div className={styles.commentInfo}>
                             <img className={styles.avatar} src={item.avatar} alt="" />
@@ -113,3 +119,4 @@ export default function (props) {
         </div>
     )
 }
+export default connect(({blogdetail})=>({data:blogdetail.data,checked:blogdetail.checked}))(BlogDetail)

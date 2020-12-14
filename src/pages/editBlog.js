@@ -5,17 +5,15 @@
  * @LastEditTime: 2020-11-16 00:31:38
  * @FilePath: \test\src\pages\editBlog.js
  */
-import React, { useState, useEffect } from 'react'
+import React, { useRef, useEffect,useCallback } from 'react'
 import ReactQuill from 'react-quill'
 import classnames from 'classnames'
+import {connect} from 'dva'
 import 'react-quill/dist/quill.snow.css';
 import styles from './editBlog.css'
-import res from '../data/editBlog.json'
-export default function (props) {
-    const [data, setData] = useState({ caption: '', author: '', tags: [], article: '',comments:[] })
-    const [saveDate, setSaveDate] = useState('（ Auto save：2020-11-3 13:40:18 ）')
-    const [article, setArticle] = useState('')
-    const [images,setImages]=useState([])
+const EditBlog= (props)=> {
+    const {data,dispatch,location:{query},images,checked,lastUpdate}=props;
+    const quill=useRef()
     const modules = {
         toolbar: [
             [{ 'header': [1, 2, false] }],
@@ -32,32 +30,32 @@ export default function (props) {
             'link', 'image'
         ]
     useEffect(() => {
-        setData(res)
-        setArticle(res.article)
+        dispatch({type:'editblog/getEditBlogData',payload:query.id})
     }, [])
-    const [checked, setChecked] = useState(false)
-    function captionChange(e) {
-        setData({ ...data, caption: e.target.value })
-    }
-    function authorChange(e) {
-        setData({ ...data, author: e.target.value })
-    }
-    function checkedChange() {
-        setChecked(!checked)
-    }
-    function onHtmChange(value) {
-        setArticle(value)
-    }
-    function selectFiles(e){
+    const captionChange=useCallback((e)=>{
+        dispatch({type:'editblog/changeCaption',payload:e.target.value})
+    },[])
+    const authorChange=useCallback((e)=>{
+        dispatch({type:'editblog/changeAuthor',payload:e.target.value})
+    },[])
+    const checkedChange=useCallback(()=>{
+        dispatch({type:'editblog/toggleChecked'})
+    },[])
+    const onHtmChange=useCallback((value)=>{
+        dispatch({type:'editblog/changeArticle',payload:value})
+    },[])
+    const selectFiles=useCallback((e)=>{
         let files=e.target.files
         let len=files.length
         let imgArr=[]
         for(let i=0;i<len;i++){
             imgArr.push(URL.createObjectURL(files[i]))
         }
-        setImages(imgArr.concat(images))
-    }
-
+        dispatch({type:'editblog/selectImages',payload:imgArr})  
+    },[])
+    const handleSubmit=useCallback(()=>{
+        dispatch({type:'editblog/submit'})
+    },[])
 
     return (
         <div className={styles.container}>
@@ -101,9 +99,10 @@ export default function (props) {
                 }
                 <div className={styles.checkedText}>The cover image appears in the text</div>
             </div>
-            <div className={styles.textRow}><span className={styles.textStyle}>Text</span><span className={styles.saveText}>{saveDate}</span></div>
+            <div className={styles.textRow}><span className={styles.textStyle}>Text</span><span className={styles.saveText}>{data.lastUpdate}</span></div>
             <ReactQuill
-                value={article}
+            ref={quill}
+                value={data.article}
                 theme="snow"
                 modules={modules}
                 formats={formats}
@@ -128,7 +127,8 @@ export default function (props) {
                     ))
                 }
             </div>
-            <div className={styles.submit}>Submit</div>
+            <div onClick={handleSubmit} className={styles.submit}>Submit</div>
         </div>
     )
 }
+export default connect(({editblog:{data,images,checked}})=>({data,images,checked}))(EditBlog)

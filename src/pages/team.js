@@ -1,36 +1,29 @@
-import React, { useMemo,useState,useEffect } from 'react'
+import React, { useMemo,useState,useEffect,useCallback } from 'react'
 import classnames from 'classnames'
 import TweenOne from 'rc-tween-one';
 import { OverPack } from 'rc-scroll-anim';
+import { useMediaQuery } from 'react-responsive'
 import {connect} from 'dva'
 import styles from './team.css'
 import LoadMore from '../components/LoadMore'
-import teamJson from '../data/team.json'
 
-const role="admin"
 const TeamPage=(props)=> {
-    const {dispatch}=props;
-    function addMember(index){
-     teamData.list[index].data.push({name:'',job:'',email:''})
-     setTeamData({...teamData})
-     window.scrollBy(0,1)
-    }
-    function nameChange(index,i,e)
-    {
-        teamData.list[index]['data'][i]['name']=e.target.value
-        setTeamData({...teamData})
-    }
-    function jobChange(index,i,e){
-        teamData.list[index]['data'][i]['job']=e.target.value
-        setTeamData({...teamData})
-    }
-    function emailChange(index,i,e){
-        teamData.list[index]['data'][i]['email']=e.target.value
-        setTeamData({...teamData})
-    }
-    const [teamData,setTeamData]=useState({})
+    const {dispatch,teamData,role}=props;
+    const isMobile = useMediaQuery({ maxWidth: 767 })
+    const addMember=useCallback((index)=>{
+        dispatch({type:'team/addMember',payload:index})
+        window.scrollBy(0,1)
+    },[])
+    const nameChange=useCallback((index,i,e)=>{
+        dispatch({type:'team/changeName',payload:{index,i,e}})
+    },[])
+    const jobChange=useCallback((index,i,e)=>{
+        dispatch({type:'team/changeJob',payload:{index,i,e}})
+    },[])
+    const emailChange=useCallback((index,i,e)=>{
+        dispatch({type:'team/changeEmail',payload:{index,i,e}})
+    },[])
     useEffect(()=>{
-  setTeamData(teamJson)
   dispatch({type:'team/getTeamData'})
     },[])
     return (
@@ -84,4 +77,4 @@ const TeamPage=(props)=> {
         </div>
     )
 }
-export default connect(({team})=>({}))(TeamPage)
+export default connect(({team:{data},global:{role}})=>({teamData:data,role}))(TeamPage)

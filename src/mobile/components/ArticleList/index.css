@@ -12,6 +12,7 @@
     font-family: 'Roboto';
     color: #fff;
     margin-top: 0.12rem;
+    cursor: pointer;
 }
 .authorWrapper{
     display: flex;
@@ -41,6 +42,7 @@ color: rgba(255,255,255,0.6);
     width: 100%;
     -webkit-line-clamp: 6;
     -webkit-box-orient: vertical;
+    cursor: pointer;
 }
 .descBox{
     display: flex;
