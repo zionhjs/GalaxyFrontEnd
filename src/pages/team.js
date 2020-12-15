@@ -1,9 +1,10 @@
-import React, { useMemo,useState,useEffect,useCallback } from 'react'
+import React, {useEffect,useCallback } from 'react'
 import classnames from 'classnames'
 import TweenOne from 'rc-tween-one';
 import { OverPack } from 'rc-scroll-anim';
 import { useMediaQuery } from 'react-responsive'
 import {connect} from 'dva'
+import TeamMobile from '../mobile/Team'
 import styles from './team.css'
 import LoadMore from '../components/LoadMore'
 
@@ -26,7 +27,7 @@ const TeamPage=(props)=> {
     useEffect(()=>{
   dispatch({type:'team/getTeamData'})
     },[])
-    return (
+    return isMobile ? (<TeamMobile />) : (
         <div className={styles.container}>
             <div className={styles.banner}>
                 <img src={teamData.bannerImg} className={styles.bannerImg} alt="" />

@@ -183,3 +183,81 @@
   .illuListItemTitle{
     margin-left: 0.16rem;
   }
+  .stillTitleBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.63rem;
+  }
+  .stillIcon{
+    width: 0.4rem;
+    height: auto;
+  }
+  .stillTitle{
+    font-size: 0.38rem;
+    font-family: 'Roboto';
+    color: #fff;
+    margin-left: 0.09rem;
+  }
+  .stillContainer,.animationContainer{
+    width: 100%;
+    overflow-x: scroll;
+  }
+  .wfOutterBox{
+    display: flex;
+    height: 2.71rem;
+    width: 18.5rem;
+  }
+  .wfInnerBox{
+    width: 3.7rem;
+    height: 2.71rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  .workflowImg{
+    height: 100%;
+    width: auto;
+  }
+  .stepBox{
+    display: flex;
+    padding-left: 0.18rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+  }
+  .stepItem{
+    width: 2.18rem;
+    color: #fff;
+    text-align: left;
+    margin-left: 0.94rem;
+  }
+  .stepTitle{
+    font-size: 0.2rem;
+    font-family: 'Microsoft YaHei';
+    height: 0.39rem;
+    line-height: 0.39rem;
+    position: relative;
+    padding-left: 0.1rem;
+    margin-bottom: 0.05rem;
+  }
+  .stepImg{
+    position: absolute;
+    left: 0;
+    height: 100%;  
+    width: auto;
+  }
+  .stepArrow{
+    width: 0.2rem;
+    height: auto;
+    align-self: center;
+  }
+  .stepArrowWrapper{
+    align-self: center;
+    margin-left: 0.53rem;
+  }
+  .stepContent{
+    font-size: 0.16rem;
+    font-family: 'Roboto';
+    opacity: 0.6;
+  }

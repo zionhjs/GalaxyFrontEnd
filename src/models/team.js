@@ -60,7 +60,7 @@ export default {
     },
     effects:{
      *getTeamData({payload},{call,put}){
-       yield put({type:'team/save',payload:teamJson})
+       yield put({type:'save',payload:teamJson})
      }
     }
 }

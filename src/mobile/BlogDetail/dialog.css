@@ -1,0 +1,64 @@
+.container{
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 30001;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    padding-bottom: 0.1rem;
+    padding-top: 0.4rem;
+}
+.nameInput{
+height: 0.91rem;
+background-color: #F5F5F5;
+border: 0.01rem solid #E5E5E5;
+margin-bottom: 0.2rem;
+font-size: 0.26rem;
+padding-left: 0.18rem;
+}
+.emailInput{
+    height: 0.91rem;
+    background-color: #F5F5F5;
+    border: 0.01rem solid #E5E5E5;
+    margin-bottom: 0.35rem;
+    font-size: 0.26rem;
+    padding-left: 0.18rem;
+}
+.commentContent{
+    display: flex;
+    align-items: stretch;
+    height: 1.82rem;
+}
+.commentTextarea{
+    font-size: 0.26rem;
+    padding: 0.2rem;
+    width: 6.44rem;
+    border: 0.01rem solid #E5E5E5;
+    background-color: #F5F5F5;
+}
+.iconWrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.zoomIcon{
+    width: 0.41rem;
+    height: auto;
+}
+.planeIcon{
+    width: 0.58rem;
+    height: auto;
+}
+.mask{
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+}

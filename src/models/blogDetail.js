@@ -9,6 +9,7 @@ import res from '../data/blogDetail.json'
 export default {
     namespace:'blogdetail',
     state:{
+        commentDialogVisible:false,//移动端底部评论对话框是否可见
         checked:false,//复选框是否选中（Save my name, email, and website in this browser for the next time I comment.）
        data:{
            article:'',
@@ -18,6 +19,18 @@ export default {
        }
     },
     reducers:{
+        openComment(state){
+         return {
+             ...state,
+             commentDialogVisible:true,
+         }
+        },
+        closeComment(state){
+         return {
+             ...state,
+             commentDialogVisible:false
+         }
+        },
         save(state,{payload}){
             console.log('payload===',payload)
             return {

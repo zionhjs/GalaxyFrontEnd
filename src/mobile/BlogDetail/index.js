@@ -7,6 +7,8 @@
  */
 import React,{useMemo} from 'react'
 import {connect} from 'dva'
+import Block from './Block'
+import Dialog from './Dialog'
 import styles from './index.css'
 const BlogDetail=(props)=>{
     const {data}=props;
@@ -47,6 +49,9 @@ const BlogDetail=(props)=>{
                     </div>
                 ))}
             </div>
+            <div className={styles.commentFooter}>All comments have been displayed</div>
+            <Block />
+            <Dialog />
         </div>
     )
 }

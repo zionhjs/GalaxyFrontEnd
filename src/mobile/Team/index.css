@@ -1,0 +1,71 @@
+.container{
+    
+}
+.banner{
+    height: 3.48rem;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    position: relative;
+}
+.bannerImg{
+    width: 100%;
+    height: auto;
+}
+.bannerTextBox{
+position: absolute;
+}
+.bannerTitle{
+color: #fff;
+font-family: 'Microsoft YaHei';
+font-size: 0.51rem;
+text-align: center;
+}
+.bannerText{
+color: #fff;
+font-family: 'Roboto';
+font-size: 0.2rem;
+width: 5.42rem;
+}
+.list {
+background-color: #1d1d1d;
+}
+.section{
+
+}
+.sectionTitle{
+    font-size: 0.4rem;
+    color: #fff;
+    font-family: 'Roboto';
+    text-align: center;
+    height: 1.6rem;
+    line-height: 1.6rem;
+
+}
+.sectionItem{
+    height: 2.18rem;
+    background-color: #000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.1rem;
+
+}
+.nameText{
+font-size: 0.3rem;
+font-family: 'Roboto';
+color: #fff;
+}
+.jobText{
+font-family: 'Roboto';
+color: #fff;
+font-size: 0.26rem;
+}
+.emailText{
+    background: transparent linear-gradient(92deg, #06D5DE 0%, #D81FFA 100%) 0% 0% no-repeat;
+    background-clip: text;
+    color: transparent;
+    font-size: 0.26rem;
+}

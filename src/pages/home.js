@@ -29,10 +29,8 @@ import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import TweenOne from 'rc-tween-one';
 import { useMediaQuery } from 'react-responsive'
 import MobileHome from '../mobile/Home'
-const stillImages = ['wf1.png', 'wf2.png', 'wf3.png', 'wf4.png', 'wf5.png']
-const aniImages = stillImages
 const HomePage=(props)=> {
-  const {profiles,illustration}=props;  
+  const {profiles,illustration,stillImages,aniImages}=props;  
   const isMobile = useMediaQuery({ maxWidth: 767 })
   
   
@@ -236,4 +234,4 @@ const HomePage=(props)=> {
     </div>
   );
 }
-export default connect(({home})=>({profiles:home.profiles,illustration:home.illustration}))(HomePage)
+export default connect(({home})=>({profiles:home.profiles,illustration:home.illustration,stillImages:home.stillImages,aniImages:home.aniImages}))(HomePage)

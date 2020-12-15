@@ -1,0 +1,55 @@
+.container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0.8rem;
+    background: linear-gradient(to right,#02D9DE 0%,#E217FC 50%,#E217FC 100%);
+    z-index: 30000;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.container1{
+    position: fixed;
+    bottom: 6.72rem;
+    left: 0;
+    right: 0;
+    height: 0.8rem;
+    background: linear-gradient(to right,#02D9DE 0%,#E217FC 50%,#E217FC 100%);
+    z-index: 30000;
+    padding-left: 0.2rem;
+    padding-right: 0.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;  
+}
+.ellipseBox{
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 0.3rem;
+    height: 0.6rem;
+    line-height: 0.6rem;
+    width: 4.5rem;
+    padding-left: 0.2rem;
+}
+.pencilIcon{
+    width: 0.23rem;
+    height: auto;
+}
+.ellipseText{
+    font-size: 0.26rem;
+    color: #666;
+    font-family: 'Roboto';
+    margin-left: 0.08rem;
+    border: none;
+    line-height: 0.35rem;
+    padding: 0;
+}
+.planeIcon{
+    width: 0.36rem;
+    height: auto;
+}

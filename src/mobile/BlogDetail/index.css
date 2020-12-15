@@ -118,5 +118,12 @@
     color: rgba(255,255,255,0.6);
     margin-top: 0.09rem;
   }
+  .commentFooter{
+    margin-top: 0.37rem;
+    font-size: 0.2rem;
+    color: rgba(255,255,255,0.6);
+    font-family: 'Roboto';
+    text-align: center;
+  }
   
   
