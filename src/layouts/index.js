@@ -9,6 +9,7 @@ import Subscribe from '../components/Subscribe'
 import Dashboard from '../components/Dashboard'
 import MobileLayout from '../mobile/Layout'
 import ThreeLine from '../components/ThreeLine';
+import Chat from '../components/Chat'
 
 const avatar="avatar.jpg"
 
@@ -34,6 +35,7 @@ return  isMobile ? (<MobileLayout>{props.children}</MobileLayout>) :(
       <div className={styles.placeholder}></div>      
       {props.children}
       <Footer />
+      <Chat />
     </div>
   );
 }
