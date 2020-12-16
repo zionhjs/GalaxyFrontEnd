@@ -1,0 +1,156 @@
+.container{
+    position: fixed;
+    bottom: 2.13rem;
+    left: 0.32rem;
+    right: 0.32rem;
+    margin: auto;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.27rem;
+    z-index: 30000;
+}
+.closeIcon{
+    position: absolute;
+    width: 0.28rem;
+    height: auto;
+    top: 0.22rem;
+    right: 0.31rem;
+}
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.41rem;
+    margin-bottom: 0.37rem;
+}
+.chatIcon{
+    width: 0.43rem;
+    height: auto;
+}
+.chatTitle{
+    font-weight: bold;
+    font-size: 0.4rem;
+    font-family: 'Roboto';
+    margin-left: 0.1rem;
+}
+.messageBox{
+    padding-left: 0.14rem;
+    padding-right: 0.14rem;
+    padding-top: 0.17rem;
+    background-color: #F5F5F5;
+    height: 5.69rem;
+    overflow-y: scroll;
+    margin-left:0.29rem;
+    margin-right: 0.29rem;
+}
+.msgItem{
+    display: flex;
+    margin-bottom: 0.49rem;
+}
+
+.leftBox{
+    width: 0.78rem;
+}
+.avatar{
+    width: 0.78rem;
+    height: 0.78rem;
+    border-radius: 0.39rem;    
+}
+.rightBox{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+.normal{
+    order: 0;
+    margin-left: 0.14rem;
+    margin-right: 0.23rem;
+}
+.reverse{
+    order: 1;
+    margin-right: 0.14rem;
+    margin-left: 0.23rem;
+}
+.normalMsg{
+order:1;
+}
+.reverseMsg{
+order: 0;
+}
+.nameText{
+    height: 0.43rem;
+    line-height: 0.43rem;
+    font-size: 0.32rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+}
+.reverseText{
+    height: 0.43rem;
+    line-height: 0.43rem;
+    font-size: 0.32rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.msgContent{
+    background-color: #fff;
+    border-radius: 0.04rem;
+    font-size: 0.26rem;
+    padding-left: 0.21rem;
+    padding-right: 0.56rem;
+    padding-top: 0.17rem;
+    padding-bottom: 0.17rem;
+}
+.msgReverse{
+    background-color: #9EEA6A;
+    border-radius: 0.04rem;
+    font-size: 0.26rem;
+    padding-left: 0.21rem;
+    padding-right: 0.56rem;
+    padding-top: 0.17rem;
+    padding-bottom: 0.17rem;
+}
+.emojiBox{
+    display: flex;
+    align-items: center;
+    margin-top: 0.15rem;
+    margin-left: 0.53rem;
+}
+.xiaolianIcon{
+width: 0.36rem;
+height: auto;
+}
+.folderIcon{
+ width: 0.4rem;
+ height: auto;
+ margin-left: 0.29rem;
+}
+.chatTextarea{
+    font-size: 0.26rem;
+    border: none;
+    margin-left: 0.53rem;
+    margin-right: 0.53rem;
+    color: #C5C5C5;
+    margin-top: 0.23rem;
+    height: 1.18rem;
+
+}
+.chatBtnWrapper{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.sendBtn{
+    background-color: #F5F5F5;
+    border: 0.01rem solid #E5E5E5;
+    color: #606060;
+    font-size: 0.26rem;
+    font-family: 'Roboto';
+    margin-right: 0.24rem;
+    padding-left: 0.17rem;
+    padding-right: 0.17rem;
+    cursor: pointer;
+}

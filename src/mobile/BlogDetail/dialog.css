@@ -31,12 +31,20 @@ padding-left: 0.18rem;
 .commentContent{
     display: flex;
     align-items: stretch;
-    height: 1.82rem;
 }
 .commentTextarea{
     font-size: 0.26rem;
     padding: 0.2rem;
+    height: 1.82rem;
     width: 6.44rem;
+    border: 0.01rem solid #E5E5E5;
+    background-color: #F5F5F5;
+}
+.zoomInTextarea{
+    font-size: 0.26rem;
+    padding: 0.2rem;
+    width: 6.44rem;
+    height: 2.7rem;
     border: 0.01rem solid #E5E5E5;
     background-color: #F5F5F5;
 }

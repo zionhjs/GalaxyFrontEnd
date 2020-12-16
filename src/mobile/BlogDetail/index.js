@@ -7,6 +7,8 @@
  */
 import React,{useMemo} from 'react'
 import {connect} from 'dva'
+import { OverPack } from 'rc-scroll-anim';
+import TweenOne from 'rc-tween-one';
 import Block from './Block'
 import Dialog from './Dialog'
 import styles from './index.css'
@@ -17,12 +19,15 @@ const BlogDetail=(props)=>{
     }, [data])
     return (
         <div className={styles.container}>
-            <div className={styles.articleTitle}>{data.title}</div>
-            <div className={styles.authorWrapper}>
+            <OverPack playScale={0.3}><TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key="title" className={styles.articleTitle}>{data.title}</TweenOne></OverPack>
+            <OverPack playScale={0.3}>
+            <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key="authorwrapper" className={styles.authorWrapper}>
                 <span>{data.author}</span>
                 <span>{data.date}</span>
-            </div>
-            <div className={styles.postHeader}>
+            </TweenOne>
+            </OverPack>
+            <OverPack playScale={0.3}>
+            <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key="postheader" className={styles.postHeader}>
                 <img src="read.png" alt="" className={styles.readIcon} />
                 <span className={styles.readText}>{data.read}</span>
                 <img src="liked.png" alt="" className={styles.likedIcon} />
@@ -31,13 +36,19 @@ const BlogDetail=(props)=>{
                 <span className={styles.commentText}>{data.commentNum}</span>
                 <img src="share.png" className={styles.shareIcon} />
                 <span className={styles.shareText}>Share</span>
-            </div>
-            <div dangerouslySetInnerHTML={{ __html: richText }} className={styles.post}>
-            </div>
-            <div className={styles.commentLabel}>User comment</div>
+            </TweenOne>
+            </OverPack>
+            <OverPack playScale={0.3}>
+            <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key="post" dangerouslySetInnerHTML={{ __html: richText }} className={styles.post}>
+            </TweenOne>
+            </OverPack>
+            <OverPack playScale={0.3}>
+            <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key="commentLabel" className={styles.commentLabel}>User comment</TweenOne>
+            </OverPack>
             <div className={styles.commentList}>
                 {data.comments.map((item,index)=>(
-                    <div key={index} className={styles.commentItem}>
+                    <OverPack key={index} playScale={0.3}>
+                    <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={'comment'+index} className={styles.commentItem}>
                         <div className={styles.commentHeader}>
                             <img src={item.avatar} alt="" className={styles.commentAvatar} />
                             <span className={styles.commentName}>{item.name}</span>
@@ -46,7 +57,8 @@ const BlogDetail=(props)=>{
                             <span className={styles.commentLikedText}>{item.likes}</span>
                         </div>
                          <div className={styles.commentContent}>{item.content}</div>
-                    </div>
+                    </TweenOne>
+                    </OverPack>
                 ))}
             </div>
             <div className={styles.commentFooter}>All comments have been displayed</div>

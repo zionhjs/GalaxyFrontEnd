@@ -6,11 +6,13 @@
  * @FilePath: \GalaxyFrontEnd\src\mobile\Team\index.js
  */
 import React from 'react'
-import {connect} from 'dva'
+import { connect } from 'dva'
+import { OverPack } from 'rc-scroll-anim';
+import TweenOne from 'rc-tween-one';
 import GetNew from '../components/GetNews'
 import styles from './index.css'
-const TeamPage=props=>{
-    const {teamData}=props
+const TeamPage = props => {
+    const { teamData } = props
     return (
         <div className={styles.container}>
             <div className={styles.banner}>
@@ -22,16 +24,18 @@ const TeamPage=props=>{
             </div>
             <div className={styles.list}>
                 {
-                    teamData?.list?.map((item,index)=>(
+                    teamData?.list?.map((item, index) => (
                         <div className={styles.section} key={index}>
-                            <div className={styles.sectionTitle}>{item.title}</div>
+                            <OverPack playScale={0.3}><TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={'title'+index} className={styles.sectionTitle}>{item.title}</TweenOne></OverPack>
                             {
-                                item.data.map((v,i)=>(
-                                    <div className={styles.sectionItem} key={i}>
+                                item.data.map((v, i) => (
+                                    <OverPack playScale={0.3} key={i}>
+                                    <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={'team'+index+i} className={styles.sectionItem}>
                                         <div className={styles.nameText}>{v.name}</div>
                                         <div className={styles.jobText}>{v.job}</div>
-                                <div className={styles.emailText}>{v.email}</div>
-                                    </div>
+                                        <div className={styles.emailText}>{v.email}</div>
+                                    </TweenOne>
+                                    </OverPack>
                                 ))
                             }
                         </div>
@@ -43,4 +47,4 @@ const TeamPage=props=>{
     )
 }
 
-export default connect(({team:{data}})=>({teamData:data}))(TeamPage)
+export default connect(({ team: { data } }) => ({ teamData: data }))(TeamPage)

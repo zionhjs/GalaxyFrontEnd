@@ -12,6 +12,7 @@ import classnames from 'classnames'
 import ThreeLine from '../../mobile/components/ThreeLine'
 import Menus from '../../mobile/components/Menus'
 import Footer from '../../mobile/components/Footer'
+import Chat from '../components/Chat'
 import styles from './index.css'
 export default function (props) {
     const [active,setActive]=useState(false)
@@ -34,7 +35,8 @@ export default function (props) {
             <div className={styles.placeholder}></div>
             <Menus />
             {props.children}
-            <Footer />            
+            <Footer />
+            <Chat />            
         </div>
     )
 }

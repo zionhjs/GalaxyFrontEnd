@@ -12,14 +12,13 @@ import styles from './block.css'
 const Block=props=>{
     const {dispatch,visible}=props
     const handleClick=useCallback(()=>{
-        console.log('aaaa')
         dispatch({type:'blogdetail/openComment'})
     },[])
     return (
         <div className={classnames({[styles.container]:!visible,[styles.container1]:visible})} onClick={handleClick}>
             <div className={styles.ellipseBox}>
                 <img src="pencil.png" alt="" className={styles.pencilIcon} />
-                <input className={styles.ellipseText} placeholder="Write a Review..." />
+                <span className={styles.ellipseText}>Write a Review...</span>
             </div>
             <img src="plane.png" alt="" className={styles.planeIcon} />            
         </div>

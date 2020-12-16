@@ -6,27 +6,31 @@
  * @FilePath: \GalaxyFrontEnd\src\mobile\components\ImageMobile\index.js
  */
 import React from 'react'
-import {connect} from 'dva'
+import { connect } from 'dva'
+import { OverPack } from 'rc-scroll-anim';
+import TweenOne from 'rc-tween-one';
 import Swiper from './swiper'
 import NavBar from '../NavBar'
 import LoadMore from '../LoadMore'
 import styles from './index.css'
-const ImageMobile=({images})=>{
+const ImageMobile = ({ images }) => {
     return (
         <div className={styles.container}>
             <Swiper />
             <NavBar />
             <div className={styles.list}>
-                {images.map((item,index)=>(
-                    <div className={styles.listItem}>
+                {images.map((item, index) => (
+                    <OverPack key={index} playScale={0.3}>
+                    <TweenOne className={styles.listItem} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'tw'}>
                         <img className={styles.listImg} src={item.imgUrl} alt="" />
-                <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
-                <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
-                    </div>
+                        <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
+                        <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
+                    </TweenOne>
+                    </OverPack>
                 ))}
-           </div>
-           <LoadMore />            
+            </div>
+            <LoadMore />
         </div>
     )
 }
-export default connect(({image:{images}})=>({images}))(ImageMobile)
+export default connect(({ image: { images } }) => ({ images }))(ImageMobile)

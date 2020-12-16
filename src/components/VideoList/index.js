@@ -4,7 +4,6 @@ import { FullscreenOutlined } from '@ant-design/icons'
 import classnames from 'classnames'
 import ReactPlayer from 'react-player'
 import {OverPack} from 'rc-scroll-anim';
-import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import LoadMore from '../LoadMore'
 import _ from 'lodash'

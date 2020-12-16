@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-12-10 01:27:10
  * @FilePath: \GalaxyFrontEnd\src\mobile\components\Footer\index.js
  */
-import React, { useState } from 'react'
+import React, {useCallback } from 'react'
 import { Link } from 'rc-scroll-anim';
 import classnames from 'classnames'
 import {connect} from 'dva'
@@ -15,12 +15,16 @@ import styles from './index.css'
 
 const Footer=(props)=>{
   const {dispatch,contactVisible}=props
-  function closeDialog() {
+  const closeDialog=useCallback(()=>{
     dispatch({type:'global/closeContact'})
-  }
-  function openDialog() {
+  },[])
+  const openDialog=useCallback(()=>{
     dispatch({type:'global/toggleContact'})
-  }
+  },[])
+ const handleSubmit=useCallback(()=>{
+   dispatch({type:'chat/openChat'})
+   dispatch({type:'global/closeContact'})
+ },[])
   return (
     <div className={styles.footer}>
       <OverPack playScale={0.3}>
@@ -54,7 +58,7 @@ const Footer=(props)=>{
         <div className={styles.dialogLabel}>information first</div>
         <input className={styles.nameInput} placeholder="Name" />
         <input className={styles.emailInput} placeholder="Email" />
-        <div className={styles.submitButton}>SUBMIT</div>
+        <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div>
       </div>
       <Link className={styles.anchor} to="top"><img src="up.png" className={styles.upIcon} alt="" /></Link>
       <img onClick={openDialog} src="contact.png" className={styles.btn} alt="" />
