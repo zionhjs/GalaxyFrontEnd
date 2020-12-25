@@ -8,7 +8,8 @@ import BigImage from '../BigImage'
 import styles from './index.css'
 
 const Waterfall=(props)=> {
-    let { col1,col2,col3,col4,currentItem,showEdit,dispatch, role} = props
+    let { col1,col2,col3,col4,currentItem,showEdit,dispatch, role,uploadImg,uploadName,uploadDesc} = props
+    const [url,seturl]=useState('')
     const nameChange=useCallback((e)=>{
         dispatch({type:'image/setName',payload:e.target.value})
     },[])
@@ -24,6 +25,34 @@ const Waterfall=(props)=> {
     },[])
     const closeEdit=useCallback(()=>{
         dispatch({type:'image/setCurrent',payload:{}})
+    },[])
+    const selectUploadFile=useCallback((e)=>{
+        let file=e.target.files[0]
+        let url;
+        if (window.createObjectURL!=undefined) { // basic
+
+            url = window.createObjectURL(file) ;
+
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+
+            url = window.webkitURL.createObjectURL(file) ;
+
+        }
+        seturl(url)
+        dispatch({type:'image/setuploadImg',payload:file})
+    },[])
+    const uploadNameChange=useCallback((e)=>{
+    dispatch({type:'image/setuploadName',payload:e.target.value})
+    },[])
+    const uploadDescChange=useCallback(e=>{
+        dispatch({type:'image/setuploadDesc',payload:e.target.value})
+    },[])
+    const onConfirm=useCallback(()=>{
+        seturl('')
+        dispatch({type:'image/upload'})
     },[])
     return (
         <div className={styles.container}>
@@ -45,7 +74,7 @@ const Waterfall=(props)=> {
                             </div>
                             <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                                 <div className={styles.editLeft}>
-                                    <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                    <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
                                     <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                                 </div>
                                 <div className={styles.editRight}>
@@ -72,7 +101,7 @@ const Waterfall=(props)=> {
                         </div>
                         <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                             <div className={styles.editLeft}>
-                                <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
                                 <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                             </div>
                             <div className={styles.editRight}>
@@ -100,7 +129,7 @@ const Waterfall=(props)=> {
                         </div>
                         <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                             <div className={styles.editLeft}>
-                                <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
                                 <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                             </div>
                             <div className={styles.editRight}>
@@ -128,7 +157,7 @@ const Waterfall=(props)=> {
                         </div>
                         <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                             <div className={styles.editLeft}>
-                                <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
                                 <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                             </div>
                             <div className={styles.editRight}>
@@ -143,18 +172,20 @@ const Waterfall=(props)=> {
                     {   <OverPack playScale={0.2}>
                         <TweenOne key="upload" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.uploadBox}>
                             <div className={styles.upperBox}>
+                            <input type="file" className={styles.fileUpload} accept="image/*" onChange={selectUploadFile} />
+                            <img src={url} alt="" className={styles.preview} />
                                 <img src="uploadB.png" className={styles.uploadIcon} alt="" />
                                 <div className={styles.uploadText}>Upload image</div>
                             </div>
                             <div className={styles.uploadFooter}>
                                 <div className={styles.uploadLeft}>
-                                    <input className={styles.uploadInput} />
-                                    <textarea className={styles.uploadTextArea} />
+                                    <input value={uploadName} onChange={uploadNameChange} className={styles.uploadInput} />
+                                    <textarea value={uploadDesc} onChange={uploadDescChange} className={styles.uploadTextArea} />
                                 </div>
                                 <div className={styles.uploadRight}>
                                     <img src="close.png" className={styles.closeIcon} />
                                     <img src="uploadS.png"  className={styles.uploadSmallIcon}/>
-                                    <img src="confirm.png" className={styles.checkIcon} />
+                                    <img src="confirm.png" onClick={onConfirm} className={styles.checkIcon} />
                                 </div>
                             </div>
                         </TweenOne>
@@ -167,4 +198,4 @@ const Waterfall=(props)=> {
         </div>
     )
 }
-export default connect(({image:{col1,col2,col3,col4,currentItem,bigImageVisible},global:{role}})=>({col1,col2,col3,col4,currentItem,showEdit:!bigImageVisible,role}))(Waterfall)
+export default connect(({image:{col1,col2,col3,col4,currentItem,bigImageVisible,name,desc,uploadImg},global:{role}})=>({col1,col2,col3,col4,currentItem,showEdit:!bigImageVisible,role,uploadName:name,uploadDesc:desc,uploadImg}))(Waterfall)

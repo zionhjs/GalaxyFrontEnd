@@ -47,6 +47,9 @@ const VideoList=(props)=> {
     const uploadDescChange=useCallback((e)=>{
         dispatch({type:'animation/setUploadDesc',payload:{desc:e.target.value}})
     },[])
+    const confirmUpload=useCallback(e=>{
+        dispatch({type:'animation/upload'})
+    },[])
     return (
         <div className={styles.container}>
             {list.map((item, index) => {
@@ -61,7 +64,7 @@ const VideoList=(props)=> {
                             <div className={styles.desc}>{item[0].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[0])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
                             <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item[0].id)&&showEdit })}>
                                 <div className={styles.editLeft}>
-                                    <input value={currentItem.name} onChange={nameChange} className={styles.editInput} />
+                                    <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} />
                                     <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} />
                                 </div>
                                 <div className={styles.editRight}>
@@ -80,13 +83,13 @@ const VideoList=(props)=> {
                                 </div>
                                 <div className={classnames(styles.editBox, styles.editShow)}>
                                     <div className={styles.editLeft}>
-                                        <input value={uploadFile.name} onChange={uploadNameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                        <input value={uploadFile.name||''} onChange={uploadNameChange} className={styles.editInput} style={{ height: '42px' }} />
                                         <textarea onChange={uploadDescChange} value={uploadFile.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                                     </div>
                                     <div className={styles.editRight}>
                                         <img src="close.png" className={styles.editClose} alt="" />
                                         <div className={styles.uploadView}><img src="uploadS.png" className={styles.editUpdate} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} /></div>
-                                        <img src="confirm.png" className={styles.checkIcon} alt="" />
+                                        <img onClick={confirmUpload} src="confirm.png" className={styles.checkIcon} alt="" />
                                     </div>
                                 </div>
                             </div>) 
@@ -121,13 +124,13 @@ const VideoList=(props)=> {
                                 </div>
                                 <div className={classnames(styles.editBox, styles.editShow)}>
                                     <div className={styles.editLeft}>
-                                        <input value={uploadFile.name} onChange={uploadNameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                        <input value={uploadFile.name||''} onChange={uploadNameChange} className={styles.editInput} style={{ height: '42px' }} />
                                         <textarea onChange={uploadDescChange} value={uploadFile.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                                     </div>
                                     <div className={styles.editRight}>
                                         <img src="close.png" className={styles.editClose} alt="" />
                                         <div className={styles.uploadView}><img src="uploadS.png" className={styles.editUpdate} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} /></div>
-                                        <img src="confirm.png" className={styles.checkIcon} alt="" />
+                                        <img onClick={confirmUpload} src="confirm.png" className={styles.checkIcon} alt="" />
                                     </div>
                                 </div>
                             </div>)}
@@ -157,13 +160,13 @@ const VideoList=(props)=> {
                                 </div>
                                 <div className={classnames(styles.editBox, styles.editShow)}>
                                     <div className={styles.editLeft}>
-                                        <input value={uploadFile.name} onChange={uploadNameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                        <input value={uploadFile.name||''} onChange={uploadNameChange} className={styles.editInput} style={{ height: '42px' }} />
                                         <textarea onChange={uploadDescChange} value={uploadFile.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                                     </div>
                                     <div className={styles.editRight}>
                                         <img src="close.png" className={styles.editClose} alt="" />
                                         <div className={styles.uploadView}><img src="uploadS.png" className={styles.editUpdate} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} /></div>
-                                        <img src="confirm.png" className={styles.checkIcon} alt="" />
+                                        <img onClick={confirmUpload} src="confirm.png" className={styles.checkIcon} alt="" />
                                     </div>
                                 </div>
                             </div>)}

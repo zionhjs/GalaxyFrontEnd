@@ -60,6 +60,8 @@ export default {
     },
     effects:{
      *getTeamData({payload},{call,put}){
+       const ret=yield call(getTeam)
+       console.log('team===',ret)
        yield put({type:'save',payload:teamJson})
      }
     }

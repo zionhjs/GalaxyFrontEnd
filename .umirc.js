@@ -4,10 +4,10 @@ import px2rem from 'postcss-plugin-px2rem';
 export default {
   treeShaking: true,
   proxy:{
-    "/api":{
-      'target':'http://ec2-52-53-188-202.us-west-1.compute.amazonaws.com:8088',
-      'changeOrigin':true,
-      'pathRewrite':{'^/api':''},
+    "/gateway":{
+      'target':'http://localhost:9400',
+      //'changeOrigin':true,
+      //'pathRewrite':{'^/api':''},
     }
   },
   routes: [

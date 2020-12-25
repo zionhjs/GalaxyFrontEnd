@@ -166,6 +166,25 @@ margin-left: 9px;
     align-items: center;
     display: flex;
     flex-direction: column;
+    position: relative;
+}
+.fileUpload{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    opacity: 0;
+    width: 100%;
+    cursor: pointer;
+}
+.preview{
+    position: absolute;
+    height: 100%;
+    width: auto;
+    left: 0;
+    right: 0;
+    margin: auto;
 }
 .uploadIcon{
     width: 42px;

@@ -53,16 +53,15 @@ errorHandler, // 默认错误处理
 credentials: 'include', // 默认请求是否带上cookie
 });
 request.use(async (ctx,next)=>{
-  const whiteList=['/user/login']
+  const whiteList=['/gateway/ucenter/user/login']
   const { req } = ctx;
   const { url, options } = req;
-   ctx.req.url='/api'+url
   if (!whiteList.includes(url)) {
     let token=await localStorage.getItem('artjwt')
-    console.log('token',token)
     ctx.req.options={
       ...options,
       headers:{
+        ...options.headers,
         'accessToken': `${token}`,
       }
     }

@@ -14,16 +14,14 @@ const Login=(props)=> {
     const { visible,dispatch} = props
     const [account,setAccount]=useState('')
     const [pass,setPass]=useState('')
-    function accountChange(e){
-        setAccount(e.target.value)
-        console.log(account)
-    }
-    function passwordChange(e){
+   const accountChange=useCallback(e=>{
+       setAccount(e.target.value)
+   },[])
+    const passwordChange=useCallback(e=>{
         setPass(e.target.value)
-        console.log(pass)
-    } 
+    },[]) 
     async function Log(){
-    dispatch({type:'login/login',payload:{id:account,password:pass}})        
+    dispatch({type:'login/login',payload:{phone:account,password:pass}})        
     }
     const cancel=useCallback(()=>{
         dispatch({type:'global/closeLogin'})
