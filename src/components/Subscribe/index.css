@@ -1,6 +1,6 @@
 .container {
     position: fixed;
-    height: 103px;
+    height: 78px;
     left: 0;
     right: 0;
     bottom: 0;
@@ -12,8 +12,8 @@
     opacity: 0.9;
   }
   .closeIcon{
-    width: 16px;
-    height: auto;
+    font-size: 16px;
+    color: #fff;
     position: absolute;
     top: 15px;
     right: 15px;
@@ -33,9 +33,24 @@
     height: 40px;
     border-radius: 20px;
     border: none;
-    color: #D2D2D2;
-    font-size: 30px;
+    color: #4e4e4e;
+    font-size: 20px;
     margin-left: 90px;
     padding-left: 39px;
     line-height: 40px;
+  }
+  .sendBtn{
+    width: 62px;
+    height: 62px;
+    border-radius: 31px;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 32px;
+    cursor: pointer;
+  }
+  .sendIcon{
+   width: 32px;
+   height: auto;
   }

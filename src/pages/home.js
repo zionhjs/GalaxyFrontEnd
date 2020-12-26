@@ -41,11 +41,9 @@ const HomePage=(props)=> {
   return isMobile ? (<MobileHome />) : (
     <div className={styles.container}>
        <Swiper />
-      <div className={styles.aboutBox}>
-        <OverPack playScale={0.3}><QueueAnim duration={1000} ease="easeInCirc"  animConfig={[
-            { opacity: [1, 0] },
-            { opacity: [1, 0]}
-          ]} className={styles.titleBox}><img key="logoAni" src="logo.png" className={styles.aboutLogo} /><span key="aboutText" className={styles.aboutTitle}>ABOUT US</span></QueueAnim></OverPack>
+      <OverPack playScale={0.1} className={styles.aboutBox}>
+        <TweenOne key="aniTitle" animation={{y:'+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.titleBox}><img key="logoAni" src="logo.png" className={styles.aboutLogo} /><span key="aboutText" className={styles.aboutTitle}>ABOUT US</span></TweenOne>
+        <TweenOne key="textAnim" animation={{y:'+=50', opacity: 0,type: 'from', ease: "easeInCirc"}}>
         <div className={styles.aboutText}>GalaxyCGI is an Architural Visualization Company which focus on provide affordable photorealistic CG imagery &amp; Animation marketing campaigns and design presentations.</div>
         <div className={styles.aboutText}>Founded in 2010 by a group of architects and CGI artists in China ,
         the company seized the opportunity of China's blooming architectural revolution and organized &amp; trained a</div>
@@ -56,7 +54,8 @@ const HomePage=(props)=> {
         <div className={styles.aboutText}>Animation/Cutting edge 360 VR/AR illustration etc.All these allows us to provide our client in this industry in the future to embrace a brighter
         future for architecture and</div>
         <div className={styles.aboutText}>continuing provide our affordable high quality renders service.</div>
-      </div>
+        </TweenOne>
+      </OverPack>
       <div className={styles.profileBox}>
         {profiles.map((item, index) => (
           <div key={index} className={styles.profile}>
@@ -78,7 +77,7 @@ const HomePage=(props)=> {
         </QueueAnim>
         </OverPack>
         <div className={styles.illuListMask}></div>
-        <OverPack playScale={0.3}>
+        <OverPack playScale={0.1}>
           <QueueAnim
             animConfig={[
               { opacity: [1, 0], translateY: [0, 50] },
@@ -102,13 +101,13 @@ const HomePage=(props)=> {
         </OverPack>
       </div>
       <div className={styles.stillWrapper}>
-      <OverPack playScale={0.4}>
+      <OverPack playScale={0.1}>
         <QueueAnim animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} ease="easeInCirc" duration={500} className={styles.stillTitleBox}>
           <img key="stillImg" src="still.png" style={{ width: '41px', height: 'auto' }} />
           <span key="stillText" className={styles.stillTitle}>Still Image WorkFlow</span>
         </QueueAnim>
         </OverPack>
-        <OverPack playScale={0.4}>
+        <OverPack playScale={0.1}>
           <QueueAnim
            animConfig={[
             { opacity: [1, 0], translateY: [0, 250] },
@@ -169,14 +168,14 @@ const HomePage=(props)=> {
       </div>
 
       <div className={styles.animationWrapper}>
-        <OverPack playScale={0.3}>
+        <OverPack playScale={0.1}>
         <QueueAnim animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} ease="easeInCirc" duration={500} className={styles.animationTitleBox}>
           <img key="stiImg" src="still.png" style={{ width: '41px', height: 'auto' }} />
           <span key="stiText" className={styles.animationTitle}>Animation WorkFlow</span>
         </QueueAnim>
         </OverPack>
 
-        <OverPack playScale={0.4}>
+        <OverPack playScale={0.1}>
           <QueueAnim
              animConfig={[
               { opacity: [1, 0], translateY: [0, 250] },
@@ -190,7 +189,7 @@ const HomePage=(props)=> {
             className={styles.wfOutterBox}>{aniImages.map((item, index) => (<div key={index} className={styles.wfInnerBox}><img src={item} className={styles.workflowImg} alt="" /></div>))}
           </QueueAnim>
         </OverPack>
-        <OverPack playScale={0.3} className={styles.stepBox}>
+        <OverPack playScale={0.1} className={styles.stepBox}>
           <TweenOne key="step1" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 1<img src="step.png" className={styles.stepImg} /></div>
