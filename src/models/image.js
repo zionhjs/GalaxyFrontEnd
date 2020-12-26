@@ -126,15 +126,15 @@ export default {
                 images:payload
             }
         },
-       /*  sortByLiked(state){
+         sortByRate(state){
       const {images}=state;
-      images.sort((a,b)=>{return parseInt(b.liked)-parseInt(a.liked)})
+      images.sort((a,b)=>{return parseInt(b.rating)-parseInt(a.rating)})
       console.log('sort',images)
       return {
           ...state,
           images,
       }
-        }, */
+        }, 
         divideCol(state){
             const {images}=state;
             console.log('imagesdivide===',images)
@@ -180,7 +180,7 @@ export default {
                 }
             })          
             yield put({type:'save',payload:list})
-           // yield put({type:'sortByLiked'})
+            yield put({type:'sortByRate'})
             yield put({type:'divideCol'}) 
         },
         *upload({payload},{call,put,select}){

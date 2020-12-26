@@ -73,7 +73,7 @@ input,textarea{
   margin:8px 6px 8px 6px;
   width:27px;
   height: 2px;
-  transform: translate(0, 9px) rotate(45deg);
+  transform: translate(0, 10px) rotate(45deg);
 }
 .nav-icon .nav-line-actived-2{
   margin:8px 6px 8px 6px;
@@ -85,5 +85,5 @@ input,textarea{
   margin:8px 6px 8px 6px;
   width:27px;
   height: 2px;
-  transform: translate(0, -9px) rotate(-45deg);
+  transform: translate(0, -10px) rotate(-45deg);
 }

@@ -37,6 +37,7 @@ const Sw=(props)=>{
         <div className={styles.container}>            
              <Swiper
              speed={800}
+             spaceBetween={20}
       slidesPerView={2}
       effect="coverflow"
       coverflowEffect={{ rotate: 0,
