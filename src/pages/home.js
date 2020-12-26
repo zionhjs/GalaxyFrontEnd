@@ -20,8 +20,9 @@
  * @LastEditTime: 2020-11-07 06:00:11
  * @FilePath: \test\src\pages\index.js
  */
-import React from 'react';
+import React,{useCallback} from 'react';
 import {connect} from 'dva'
+import router from 'umi/router'
 import styles from './home.css';
 import Swiper from '../components/Swiper'
 import QueueAnim from 'rc-queue-anim';
@@ -30,9 +31,12 @@ import TweenOne from 'rc-tween-one';
 import { useMediaQuery } from 'react-responsive'
 import MobileHome from '../mobile/Home'
 const HomePage=(props)=> {
-  const {profiles,illustration,stillImages,aniImages}=props;  
+  const {profiles,illustration,stillImages,aniImages,dispatch}=props;  
   const isMobile = useMediaQuery({ maxWidth: 767 })
-  
+  const toPage=useCallback(item=>{
+    dispatch({type:'global/setCurrentNav',payload:item.nav})
+    router.push(item.route)
+  },[])  
   
   return isMobile ? (<MobileHome />) : (
     <div className={styles.container}>
@@ -57,7 +61,7 @@ const HomePage=(props)=> {
         {profiles.map((item, index) => (
           <div key={index} className={styles.profile}>
             <img src={item.imgUrl} alt="" className={styles.profileImg} />
-            <div className={styles.profileTitleBox}>
+            <div onClick={toPage.bind(null,item)} className={styles.profileTitleBox}>
               <div className={styles.profileTitle}>{item.title}</div>
               <div className={styles.profileText}>{item.desc}</div>
             </div>

@@ -184,10 +184,7 @@ export default {
             yield put({type:'divideCol'}) 
         },
         *upload({payload},{call,put,select}){
-            const {uploadImg,name,desc}=yield select(state=>state.image)   
-            console.log(uploadImg)
-            console.log(name)
-            console.log(desc)
+            const {uploadImg,name,desc}=yield select(state=>state.image)
             let form=new FormData()
             form.append('multipartFile',uploadImg)
             form.append('title',name)
@@ -195,7 +192,7 @@ export default {
             form.append('suffix','in')
             form.append('level','star')
            const result= yield call(uploadImage,form)
-           console.log(result)
+           console.log('uploadimg',result)
         }
     }
 }

@@ -15,6 +15,7 @@ export default {
       { icon: 'edit.png', text: 'Blogs',route:'/blogs' },
       { icon: 'team.png', text: 'Team',route:'/team' }],//顶部导航菜单
       navButtons: ['Interior','Exterior','360','Mixed','Nav to Animation'],//副导航菜单
+      currentNav:3,//副导航当前选中索引
       contactVisible:false,//底部聊天对话框是否可见
       menuVisible:false,//右上角3条杠打开的菜单是否可见
       loginVisible:false,//登录对话框是否可见
@@ -22,6 +23,12 @@ export default {
       menuVisibleMobile:false,//移动端导航栏是否可见
     },
     reducers:{
+      setCurrentNav(state,{payload}){
+       return {
+         ...state,
+         currentNav:payload
+       }
+      },
       toggleMenuMobile(state){
        return {
          ...state,

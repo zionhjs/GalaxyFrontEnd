@@ -7,11 +7,11 @@
  */
 
 .container{
-  height: 101px;
+  height: 80px;
   background-color:#000;
   display: flex;
   justify-content: center;
-  line-height: 101px;
+  line-height: 80px;
   position: sticky;
   top: 80px;
   z-index: 20000;
@@ -37,7 +37,7 @@
  height: 4px;
  background: transparent linear-gradient(90deg, #02D9DE 0%, #E217FC 96%, #E217FC 100%) 0% 0% no-repeat;
  margin: auto;
- bottom: 28px;
+ bottom: 13px;
  left: 0;
  right: 0;
 }
