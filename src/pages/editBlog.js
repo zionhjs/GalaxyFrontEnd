@@ -12,7 +12,8 @@ import {connect} from 'dva'
 import 'react-quill/dist/quill.snow.css';
 import styles from './editBlog.css'
 const EditBlog= (props)=> {
-    const {data,dispatch,location:{query},images,checked,lastUpdate}=props;
+    const {data,dispatch,location:{query},checked,lastUpdate}=props;
+    const {images}=data;
     const quill=useRef()
     const modules = {
         toolbar: [
@@ -45,13 +46,8 @@ const EditBlog= (props)=> {
         dispatch({type:'editblog/changeArticle',payload:value})
     },[])
     const selectFiles=useCallback((e)=>{
-        let files=e.target.files
-        let len=files.length
-        let imgArr=[]
-        for(let i=0;i<len;i++){
-            imgArr.push(URL.createObjectURL(files[i]))
-        }
-        dispatch({type:'editblog/selectImages',payload:imgArr})  
+        let file=e.target.files[0]
+        dispatch({type:'editblog/uploadCover',payload:{file}})  
     },[])
     const handleSubmit=useCallback(()=>{
         dispatch({type:'editblog/submit'})
@@ -131,4 +127,4 @@ const EditBlog= (props)=> {
         </div>
     )
 }
-export default connect(({editblog:{data,images,checked}})=>({data,images,checked}))(EditBlog)
+export default connect(({editblog:{data,checked}})=>({data,checked}))(EditBlog)

@@ -47,7 +47,7 @@ export default {
            let list=result.data.list
            list=list.map(item=>{
                return {
-                   images:[],
+                   images:item.blogImagesList,
                    title:item.title||'',
                    author:item.author||'',
                    date:item.updatedAt||'',

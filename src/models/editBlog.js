@@ -6,13 +6,13 @@
  * @FilePath: \GalaxyFrontEnd\src\models\editBlog.js
  */
 import res from '../data/editBlog.json'
-import {addArticle} from '../service/api'
+import {addArticle,uploadImgNotLogo} from '../service/api'
 export default {
     namespace:'editblog',
     state:{
       checked:false,//上传的图片是否显示在文章中
-      images:[],//要上传的图片的地址
         data:{
+          images:[],//封面图片
           comments:[],
           tags:[],
           caption:'',
@@ -27,6 +27,18 @@ export default {
               ...state,
               data:payload
           }
+      },
+      saveCover(state,{payload}){
+        const {data}=state;
+        const {images}=data
+        images.push(payload.imgUrl)
+       return {
+         ...state,
+         data:{
+           ...data
+         }
+
+       }
       },
       changeCaption(state,{payload}){
         const {data}=state;
@@ -55,17 +67,19 @@ export default {
           data:{...data,article:payload}
         }
       },
-      selectImages(state,{payload}){
-        const {images}=state;
-        return {
-          ...state,
-          images:images.concat(payload)
-        }
-      }
+      
     },
     effects:{
     *getEditBlogData({payload},{call,put}){
       yield put({type:'save',payload:res})
+    },
+    *uploadCover({payload},{call,put,select}){
+      let form=new FormData()
+      form.append('multipartFile',payload.file)
+      let result=yield call(uploadImgNotLogo,form)
+      if(result.code===200){
+        yield put({type:'saveCover',payload:{imgUrl:result.data}})
+      }
     },
     *submit({payload},{call,put,select}){
          const editblog=yield select(state=>state.editblog)

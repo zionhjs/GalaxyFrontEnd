@@ -213,7 +213,8 @@ export default {
                     name:item.title,
                     date:item.createdAt,
                     desc:item.description,
-                    imgUrl:item.objectUrl240
+                    imgUrl:item.objectUrl240,
+                    rating:item.rating
                 }
             })          
             yield put({type:'save',payload:list})

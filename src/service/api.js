@@ -61,3 +61,7 @@ export async function delArticle(params){
   let result=await request('/blog/delete?id='+params.id,{method:'POST'})
   return result;
 }
+export async function uploadImgNotLogo(params){
+  let result=await request('/gateway/upload/images/uploadImagesNotLogo',{method:'POST',body:params})
+  return result
+}

@@ -20,7 +20,7 @@
  * @LastEditTime: 2020-11-07 06:00:11
  * @FilePath: \test\src\pages\index.js
  */
-import React,{useCallback} from 'react';
+import React,{useCallback,useEffect} from 'react';
 import {connect} from 'dva'
 import router from 'umi/router'
 import styles from './home.css';
@@ -36,6 +36,9 @@ const HomePage=(props)=> {
   const toPage=useCallback(item=>{
     dispatch({type:'global/setCurrentNav',payload:item.nav})
     router.push(item.route)
+  },[])
+  useEffect(()=>{
+    dispatch({type:'home/getBanners'})
   },[])  
   
   return isMobile ? (<MobileHome />) : (
