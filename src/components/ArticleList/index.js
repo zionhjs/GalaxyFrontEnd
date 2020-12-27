@@ -20,6 +20,7 @@ const ArticleList=(props)=> {
     const [visible,setVisible]=useState(false)
     const [curItem,setCurItem]=useState(null)
     const delPost=useCallback((item)=>{
+        console.log('item===',item)
         dispatch({type:'blog/setDelItem',payload:item})
         dispatch({type:'blog/openConfirm'})
     },[])
@@ -43,7 +44,7 @@ const ArticleList=(props)=> {
                          {role==='admin' ? <img onClick={delPost.bind(null,item)} src="redClose.png" alt="" className={styles.redClose} /> : null}
                         <div className={styles.listTitle}>{item.title}</div>
                         <div className={styles.listMidBox}><div className={styles.listAuthor}>{item.author}</div><div className={styles.listDate}>{item.date}</div></div>
-                        <div className={styles.listContent}>{item.content}</div>
+                        <div className={styles.listContent}><div dangerouslySetInnerHTML={{ __html: item.content }}></div></div>
                         <div className={styles.listFooter}>
                             <img src="read.png" className={styles.readIcon} />
                             <div className={styles.readText}>{item.read}</div>

@@ -70,7 +70,9 @@
   margin-top: 23.5px;
   height: 154px;
   width: 1007px;
-  word-break: break-all;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .listFooter {

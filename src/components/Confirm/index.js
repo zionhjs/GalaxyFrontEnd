@@ -16,7 +16,7 @@ const Confirm=(props)=>{
      dispatch({type:'blog/closeConfirm'})
     },[])
     const onConfirm=useCallback(()=>{
-
+     dispatch({type:'blog/delArticle'})
     },[])
     return (
         <div className={classnames(styles.container,{[styles.show]:visible})}>

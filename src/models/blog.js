@@ -6,7 +6,7 @@
  * @FilePath: \GalaxyFrontEnd\src\models\blog.js
  */
 import data from '../data/blog.json'
-import {getArticle} from '../service/api'
+import {getArticle,delArticle} from '../service/api'
 export default {
     namespace:'blog',
     state:{
@@ -44,7 +44,30 @@ export default {
        *getArticles({payload},{call,put}){
            let result=yield call(getArticle)
            console.log('blog',result)
-           yield put({type:'save',payload:data.articles})
-       } 
+           let list=result.data.list
+           list=list.map(item=>{
+               return {
+                   images:[],
+                   title:item.title||'',
+                   author:item.author||'',
+                   date:item.updatedAt||'',
+                   content:item.content,
+                   read:item.browseNum,
+                   liked:item.likeNum,
+                   comment:'',
+                   id:item.id,
+               }
+           })
+
+           yield put({type:'save',payload:list})
+       } ,
+       *delArticle({payload},{call,put,select}){
+           const {delItem}=yield select(state=>state.blog)
+           console.log('delaaaa=',delItem)
+           let result=yield call(delArticle,{id:delItem.id})
+           console.log(result)
+        
+           yield put({type:'closeConfirm'})
+       }
     }
 }

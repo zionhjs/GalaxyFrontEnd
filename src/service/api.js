@@ -57,3 +57,7 @@ export async function getArticle(params){
   let result=await request('/blog/findByModal?page=1&size=20',{method:'POST',data:{...params}})
   return result;
 }
+export async function delArticle(params){
+  let result=await request('/blog/delete?id='+params.id,{method:'POST'})
+  return result;
+}
