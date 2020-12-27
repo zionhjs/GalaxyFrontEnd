@@ -54,6 +54,14 @@ const Waterfall=(props)=> {
         seturl('')
         dispatch({type:'image/upload'})
     },[])
+    const updateImage=useCallback((id,e)=>{
+        console.log('id',id)
+        let file=e.target.files[0]
+        dispatch({type:'image/updateImg',payload:{id,file}})
+    },[])
+    const confirmUpdate=useCallback((item)=>{
+        dispatch({type:'image/updateImgText',payload:item})
+    },[])
     return (
         <div className={styles.container}>
             <div className={styles.waterfall}>
@@ -79,8 +87,8 @@ const Waterfall=(props)=> {
                                 </div>
                                 <div className={styles.editRight}>
                                     <img onClick={closeEdit} src="close.png" className={styles.editClose} alt="" />
-                                    <img src="update.png" className={styles.editUpdate} alt="" />
-                                    <img src="confirm.png" className={styles.checkIcon} alt="" />
+                                    <div className={styles.updateView}><img src="update.png" className={styles.editUpdate} alt="" /><input type="file" className={styles.fileUpload} accept="image/*" onChange={updateImage.bind(null,item.id)} /></div>
+                                    <img onClick={confirmUpdate.bind(null,item)} src="confirm.png" className={styles.checkIcon} alt="" />
                                 </div>
                             </div>
                         </TweenOne>
@@ -106,8 +114,8 @@ const Waterfall=(props)=> {
                             </div>
                             <div className={styles.editRight}>
                                 <img onClick={closeEdit} src="close.png" className={styles.editClose} alt="" />
-                                <img src="update.png" className={styles.editUpdate} alt="" />
-                                <img src="confirm.png" className={styles.checkIcon} alt="" />
+                                <div className={styles.updateView}><img src="update.png" className={styles.editUpdate} alt="" /><input type="file" className={styles.fileUpload} accept="image/*" onChange={updateImage.bind(null,item.id)} /></div>
+                                <img onClick={confirmUpdate.bind(null,item)} src="confirm.png" className={styles.checkIcon} alt="" />
                             </div>
                         </div>
                     </TweenOne>
@@ -134,8 +142,8 @@ const Waterfall=(props)=> {
                             </div>
                             <div className={styles.editRight}>
                                 <img onClick={closeEdit} src="close.png" className={styles.editClose} alt="" />
-                                <img src="update.png" className={styles.editUpdate} alt="" />
-                                <img src="confirm.png" className={styles.checkIcon} alt="" />
+                                <div className={styles.updateView}><img src="update.png" className={styles.editUpdate} alt="" /><input type="file" className={styles.fileUpload} accept="image/*" onChange={updateImage.bind(null,item.id)} /></div>
+                                <img onClick={confirmUpdate.bind(null,item)} src="confirm.png" className={styles.checkIcon} alt="" />
                             </div>
                         </div>
                     </TweenOne>
@@ -162,8 +170,8 @@ const Waterfall=(props)=> {
                             </div>
                             <div className={styles.editRight}>
                                 <img onClick={closeEdit} src="close.png" className={styles.editClose} alt="" />
-                                <img src="update.png" className={styles.editUpdate} alt="" />
-                                <img src="confirm.png" className={styles.checkIcon} alt="" />
+                                <div className={styles.updateView}><img src="update.png" className={styles.editUpdate} alt="" /><input type="file" className={styles.fileUpload} accept="image/*" onChange={updateImage.bind(null,item.id)} /></div>
+                                <img onClick={confirmUpdate.bind(null,item)} src="confirm.png" className={styles.checkIcon} alt="" />
                             </div>
                         </div>
                     </TweenOne>

@@ -33,3 +33,27 @@ export async function uploadVideo(params){
   let result=await request('/video/uploadVideo',{method:'POST',body:params})
   return result
 }
+export async function addTeamMember(params){
+  let result=await request('/gateway/cms/team/member/add',{method:'POST',data:{...params}})
+  return result
+}
+export async function updateMember(params){
+  let result=await request('/gateway/cms/team/member/update',{method:'POST',data:{...params}})
+  return result
+}
+export async function updateImg(params){
+  let result=await request('/gateway/upload/images/uploadImagesUrl',{method:'POST',body:params})
+  return result
+}
+export async function updateImgText(params){
+  let result=await request('/gateway/upload/images/updateImages',{method:'POST',data:{...params}})
+  return result
+}
+export async function addArticle(params){
+  let result=await request('/blog/add',{method:'POST',data:{...params}})
+  return result
+}
+export async function getArticle(params){
+  let result=await request('/blog/findByModal?page=1&size=20',{method:'POST',data:{...params}})
+  return result;
+}

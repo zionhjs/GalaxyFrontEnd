@@ -6,6 +6,7 @@
  * @FilePath: \GalaxyFrontEnd\src\models\editBlog.js
  */
 import res from '../data/editBlog.json'
+import {addArticle} from '../service/api'
 export default {
     namespace:'editblog',
     state:{
@@ -66,9 +67,12 @@ export default {
     *getEditBlogData({payload},{call,put}){
       yield put({type:'save',payload:res})
     },
-    *submit({payload},{caption,put,select}){
+    *submit({payload},{call,put,select}){
          const editblog=yield select(state=>state.editblog)
          const {data}=editblog;
+         const {caption,author,article}=data
+        let result= yield call(addArticle,{author,content:article,title:caption})
+        console.log('addArticle===',result)
     }
     }
 }

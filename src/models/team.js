@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-12-09 03:38:20
  * @FilePath: \GalaxyFrontEnd\src\models\team.js
  */
-import {getTeam} from '../service/api'
+import {getTeam,addTeamMember,updateMember} from '../service/api'
 import teamJson from '../data/team.json'
 export default {
     namespace:'team',
@@ -63,6 +63,15 @@ export default {
        const ret=yield call(getTeam)
        console.log('team===',ret)
        yield put({type:'save',payload:teamJson})
+     },
+     *addTeamMember({payload},{call,put}){
+       let result;
+       if(payload.id!==undefined){
+        result=yield call(updateMember,payload)
+       } else{
+         result=yield call(addTeamMember,payload)
+       }
+       console.log('addTeam',result)
      }
     }
 }

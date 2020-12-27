@@ -84,6 +84,7 @@ align-items: center;
 .editUpdate{
     width: 15px;
     height: auto;
+    cursor: pointer;
 }
 .updateView{
     position: relative;
@@ -95,6 +96,7 @@ align-items: center;
 .checkIcon{
     width: 15px;
     height: auto;
+    cursor: pointer;  
 }
 .loadMore{
     position: relative;

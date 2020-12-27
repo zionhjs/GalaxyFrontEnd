@@ -8,7 +8,14 @@ export default {
       'target':'http://localhost:9400',
       //'changeOrigin':true,
       //'pathRewrite':{'^/api':''},
-    }
+    },
+    "/video":{
+      'target':'http://localhost:9800',
+    },
+    "/blog":{
+      'target':'http://localhost:9900',
+    },
+
   },
   routes: [
     {

@@ -27,6 +27,9 @@ const TeamPage=(props)=> {
     useEffect(()=>{
   dispatch({type:'team/getTeamData'})
     },[])
+    const confirmAdd=useCallback((item,v)=>{
+        dispatch({type:'team/addTeamMember',payload:{email:v.email,title:v.job,name:v.name,teamId:item.id,id:v.id}})
+    },[])
     return isMobile ? (<TeamMobile />) : (
         <div className={styles.container}>
             <div className={styles.banner}>
@@ -51,7 +54,7 @@ const TeamPage=(props)=> {
                                     <input placeholder="Name" className={styles.nameInput} value={v.name} onChange={nameChange.bind(null,index,i)} />
                                     <input placeholder="Profession" className={styles.jobInput} value={v.job} onChange={jobChange.bind(null,index,i)} />
                                     <input placeholder="email" className={styles.emailInput} value={v.email} onChange={emailChange.bind(null,index,i)} />
-                                    <div className={styles.confirmBtn}>Confirm</div>
+                                    <div onClick={confirmAdd.bind(null,item,v)} className={styles.confirmBtn}>Confirm</div>
                                 </TweenOne>
                                 </OverPack>
                                 ) : 

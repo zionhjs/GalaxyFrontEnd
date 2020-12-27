@@ -6,6 +6,7 @@
  * @FilePath: \GalaxyFrontEnd\src\models\blog.js
  */
 import data from '../data/blog.json'
+import {getArticle} from '../service/api'
 export default {
     namespace:'blog',
     state:{
@@ -41,6 +42,8 @@ export default {
     },
     effects:{
        *getArticles({payload},{call,put}){
+           let result=yield call(getArticle)
+           console.log('blog',result)
            yield put({type:'save',payload:data.articles})
        } 
     }

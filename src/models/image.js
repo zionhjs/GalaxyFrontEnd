@@ -13,7 +13,7 @@
  * @FilePath: \GalaxyFrontEnd\src\models\image.js
  */
 import _ from 'lodash'
-import {getImages,uploadImage} from '../service/api'
+import {getImages,uploadImage,updateImg,updateImgText} from '../service/api'
 let temp=[]
 for(let i=1;i<=35;i++){
     let img=require('../assets/waterfall/'+i+'.jpeg')
@@ -38,6 +38,43 @@ export default {
 
     },
     reducers:{
+        saveUpdateImg(state,{payload}){
+         let {col1,col2,col3,col4,images}=state;
+         let {id,imgUrl}=payload
+         images.forEach(item => {
+            if(item.id===id){
+                item.imgUrl=imgUrl
+            }             
+        });
+         col1.forEach(item => {
+             if(item.id===id){
+                 item.imgUrl=imgUrl
+             }             
+         });
+         col2.forEach(item => {
+            if(item.id===id){
+                item.imgUrl=imgUrl
+            }             
+        });
+        col3.forEach(item => {
+            if(item.id===id){
+                item.imgUrl=imgUrl
+            }             
+        });
+        col4.forEach(item => {
+            if(item.id===id){
+                item.imgUrl=imgUrl
+            }             
+        });
+        return {
+            ...state,
+            images:[...images],
+            col1:[...col1],
+            col2:[...col2],
+            col3:[...col3],
+            col4:[...col4]
+        }
+        },
         setuploadImg(state,{payload}){
           return {
               ...state,
@@ -193,6 +230,19 @@ export default {
             form.append('level','star')
            const result= yield call(uploadImage,form)
            console.log('uploadimg',result)
+        },
+        *updateImg({payload},{call,put}){
+            let {id,file}=payload
+            let form=new FormData()
+            form.append('multipartFile',file)
+            let result=yield call(updateImg,form)
+            if(result.code==200){
+                yield put({type:'saveUpdateImg',payload:{id,imgUrl:result.data}})
+            }            
+        },
+        *updateImgText({payload},{call,put}){
+           let result= yield call(updateImgText,{id:payload.id,description:payload.desc,title:payload.name})
+           console.log('updateText',result)
         }
     }
 }
