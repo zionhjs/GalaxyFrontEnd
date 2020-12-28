@@ -20,6 +20,10 @@ export async function login(params){
     let result=await request('/gateway/cms/team/findByModal?page=1&size=20',{method:'POST',data:{}})
     return result;
   }
+  export async function delTeamMember(params){
+    let result=await request('/gateway/cms/team/delete?id='+params.id)
+    return result
+  }
 export async function getImages(params){
   let result=await request('/gateway/upload/images/findByModal?page=1&size=20',{method:'POST',data:{}})
   return result
@@ -31,6 +35,10 @@ export async function uploadImage(params){
 }
 export async function uploadVideo(params){
   let result=await request('/video/uploadVideo',{method:'POST',body:params})
+  return result
+}
+export async function fetchVideoCover(params){
+  let result=await request('/video/fetchFrame?videofile='+params.videoFile,{method:'POST',data:{id:params.id,frameImages:params.frameImages}})
   return result
 }
 export async function addTeamMember(params){

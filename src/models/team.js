@@ -2,20 +2,29 @@
  * @Author: xingzai
  * @Date: 2020-12-09 03:38:19
  * @LastEditors: xingzai
+ * @LastEditTime: 2020-12-28 08:02:03
+ * @FilePath: \GalaxyFrontEnd\src\models\team.js
+ */
+/*
+ * @Author: xingzai
+ * @Date: 2020-12-09 03:38:19
+ * @LastEditors: xingzai
  * @LastEditTime: 2020-12-09 03:38:20
  * @FilePath: \GalaxyFrontEnd\src\models\team.js
  */
-import {getTeam,addTeamMember,updateMember} from '../service/api'
+import {getTeam,addTeamMember,updateMember,delTeamMember} from '../service/api'
 import teamJson from '../data/team.json'
 export default {
     namespace:'team',
     state:{
-      data:{
-
-      }
+      bannerImg:'splash.jpeg',
+      bannerText:'We have more than 200 employees across the world. Here we only showing our permanent and business manager & technical director list',
+      bannerTitle:'Team',
+      data:[],
     },
     reducers:{
       save(state,{payload}){
+        console.log('payload==p',payload)
         return {
           ...state,
           data:payload
@@ -23,46 +32,60 @@ export default {
       },
       addMember(state,{payload}){
         const {data}=state;
-        data.list[payload].data.push({name:'',job:'',email:''})
+        data[payload].data.push({name:'',job:'',email:''})
         return {
           ...state,
-          data:{...data}
+          data:[...data]
         }
       },
       changeName(state,{payload}){
         const {index,i,e}=payload
         const {data}=state;
-        data.list[index]['data'][i]['name']=e.target.value
+        data[index]['data'][i]['name']=e.target.value
         return {
           ...state,
-          data:{...data}
+          data:[...data]
         }
       },
       changeJob(state,{payload}){
         const {index,i,e}=payload
         const {data}=state;
-        data.list[index]['data'][i]['job']=e.target.value
+        data[index]['data'][i]['job']=e.target.value
         return {
           ...state,
-          data:{...data}
+          data:[...data]
         }
       },
       changeEmail(state,{payload}){
         const {index,i,e}=payload
         const {data}=state;
-        data.list[index]['data'][i]['email']=e.target.value
+        data[index]['data'][i]['email']=e.target.value
         return {
           ...state,
-          data:{...data}
+          data:[...data]
         }
       }
 
     },
     effects:{
      *getTeamData({payload},{call,put}){
-       const ret=yield call(getTeam)
-       console.log('team===',ret)
-       yield put({type:'save',payload:teamJson})
+       let  {code,data}=yield call(getTeam)
+       let list=data?.list||[]
+       list=list.map(item=>{
+         let {teamMemberList}=item
+         teamMemberList.map(v=>({
+           id:v.id,
+           name:v.name,
+           job:v.title,
+           email:v.email,
+         }))
+         return {
+           id:item.id,
+           title:item.name,
+           data: teamMemberList
+         }
+       })              
+       yield put({type:'save',payload:list})
      },
      *addTeamMember({payload},{call,put}){
        let result;
@@ -72,6 +95,14 @@ export default {
          result=yield call(addTeamMember,payload)
        }
        console.log('addTeam',result)
+     },
+     *delMember({payload},{call,put}){
+       let result;
+       console.log(payload)
+       result=yield call(delTeamMember,payload)
+       if(result.code==200){
+         yield put({type:'getTeamData'})
+       }
      }
     }
 }

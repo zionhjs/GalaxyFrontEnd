@@ -9,7 +9,8 @@ import styles from './team.css'
 import LoadMore from '../components/LoadMore'
 
 const TeamPage=(props)=> {
-    const {dispatch,teamData,role}=props;
+    const {dispatch,teamData,role,bannerImg,bannerTitle,bannerText}=props;
+    console.log('teamdata===d=d',teamData)
     const isMobile = useMediaQuery({ maxWidth: 767 })
     const addMember=useCallback((index)=>{
         dispatch({type:'team/addMember',payload:index})
@@ -30,17 +31,20 @@ const TeamPage=(props)=> {
     const confirmAdd=useCallback((item,v)=>{
         dispatch({type:'team/addTeamMember',payload:{email:v.email,title:v.job,name:v.name,teamId:item.id,id:v.id}})
     },[])
+    const delMember=useCallback(item=>{
+        dispatch({type:'team/delMember',payload:{id:item.id}})
+    },[])
     return isMobile ? (<TeamMobile />) : (
         <div className={styles.container}>
             <div className={styles.banner}>
-                <img src={teamData.bannerImg} className={styles.bannerImg} alt="" />
+                <img src={bannerImg} className={styles.bannerImg} alt="" />
                 <div className={styles.bannerTextBox}>
-                    <div className={styles.bannerTitle}>{teamData.bannerTitle}</div>
-                    <div className={styles.bannerText}>{teamData.bannerText}</div>
+                    <div className={styles.bannerTitle}>{bannerTitle}</div>
+                    <div className={styles.bannerText}>{bannerText}</div>
                 </div>
             </div>
             <div className={styles.midBox}>
-                {teamData?.list?.map((item, index) => (
+                {teamData?.map((item, index) => (
                     <div key={index} className={styles.midInnerBox}>
                         <OverPack playScale={0.3}>
                         <TweenOne animation={{opacity: 0,type: 'from', ease: 'easeInCirc'}} className={styles.listTitle}>{item.title}</TweenOne>
@@ -50,10 +54,10 @@ const TeamPage=(props)=> {
                                role==='admin' ? (
                                    <OverPack className={classnames(styles.listItem)} playScale={0.3} key={i}>
                                <TweenOne className={styles.adminBox} key={i+'listItem'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: 'easeInCirc'}}>
-                                    <img src="redClose.png" alt="" className={styles.closeIcon} />
-                                    <input placeholder="Name" className={styles.nameInput} value={v.name} onChange={nameChange.bind(null,index,i)} />
-                                    <input placeholder="Profession" className={styles.jobInput} value={v.job} onChange={jobChange.bind(null,index,i)} />
-                                    <input placeholder="email" className={styles.emailInput} value={v.email} onChange={emailChange.bind(null,index,i)} />
+                                    <img onClick={delMember.bind(null,v)} src="redClose.png" alt="" className={styles.closeIcon} />
+                                    <input placeholder="Name" className={styles.nameInput} value={v.name||''} onChange={nameChange.bind(null,index,i)} />
+                                    <input placeholder="Profession" className={styles.jobInput} value={v.job||''} onChange={jobChange.bind(null,index,i)} />
+                                    <input placeholder="email" className={styles.emailInput} value={v.email||''} onChange={emailChange.bind(null,index,i)} />
                                     <div onClick={confirmAdd.bind(null,item,v)} className={styles.confirmBtn}>Confirm</div>
                                 </TweenOne>
                                 </OverPack>
@@ -81,4 +85,4 @@ const TeamPage=(props)=> {
         </div>
     )
 }
-export default connect(({team:{data},global:{role}})=>({teamData:data,role}))(TeamPage)
+export default connect(({team:{data,bannerTitle,bannerText,bannerImg},global:{role}})=>({teamData:data,role,bannerTitle,bannerText,bannerImg}))(TeamPage)

@@ -40,31 +40,51 @@ export default {
     reducers:{
         saveUpdateImg(state,{payload}){
          let {col1,col2,col3,col4,images}=state;
-         let {id,imgUrl}=payload
-         images.forEach(item => {
+         const {id}=payload
+         images= images.map(item => {
             if(item.id===id){
-                item.imgUrl=imgUrl
-            }             
+                return {
+                    ...item,
+                    ...payload
+                }
+            }
+            return item;             
         });
-         col1.forEach(item => {
+        col1= col1.map(item => {
              if(item.id===id){
-                 item.imgUrl=imgUrl
-             }             
+                 return {
+                     ...item,
+                     ...payload
+                 }
+             }
+             return item;             
          });
-         col2.forEach(item => {
+         col2= col2.map(item => {
             if(item.id===id){
-                item.imgUrl=imgUrl
-            }             
+                return {
+                    ...item,
+                    ...payload
+                }
+            }
+            return item;             
         });
-        col3.forEach(item => {
+        col3= col3.map(item => {
             if(item.id===id){
-                item.imgUrl=imgUrl
-            }             
+                return {
+                    ...item,
+                    ...payload
+                }
+            }
+            return item;             
         });
-        col4.forEach(item => {
+        col4= col4.map(item => {
             if(item.id===id){
-                item.imgUrl=imgUrl
-            }             
+                return {
+                    ...item,
+                    ...payload
+                }
+            }
+            return item;             
         });
         return {
             ...state,
@@ -75,6 +95,7 @@ export default {
             col4:[...col4]
         }
         },
+        
         setuploadImg(state,{payload}){
           return {
               ...state,
@@ -201,6 +222,12 @@ export default {
                 col3,
                 col4
             }
+        },
+        closeEditor(state){
+            return {
+                ...state,
+                currentItem:{}
+            }
         }
     },
     effects:{
@@ -231,19 +258,25 @@ export default {
             form.append('level','star')
            const result= yield call(uploadImage,form)
            console.log('uploadimg',result)
+           let data= yield put({type:'getImage'})
+               console.log('data===',data)
         },
         *updateImg({payload},{call,put}){
             let {id,file}=payload
             let form=new FormData()
             form.append('multipartFile',file)
             let result=yield call(updateImg,form)
+            console.log('resu',result)
             if(result.code==200){
                 yield put({type:'saveUpdateImg',payload:{id,imgUrl:result.data}})
             }            
         },
-        *updateImgText({payload},{call,put}){
-           let result= yield call(updateImgText,{id:payload.id,description:payload.desc,title:payload.name})
-           console.log('updateText',result)
+        *updateImgText({payload},{call,put,select}){
+            let image=yield select(state=>state.image)
+            let {name,desc,id}=image?.currentItem
+           let result= yield call(updateImgText,{id,description:desc,title:name})
+           yield put({type:'saveUpdateImg',payload:{id,name:result.data.title,desc:result.data.description}})
+           yield put({type:'closeEditor'})
         }
     }
 }

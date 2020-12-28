@@ -24,7 +24,7 @@ const TeamPage = props => {
             </div>
             <div className={styles.list}>
                 {
-                    teamData?.list?.map((item, index) => (
+                    teamData?.map((item, index) => (
                         <div className={styles.section} key={index}>
                             <OverPack playScale={0.3}><TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={'title'+index} className={styles.sectionTitle}>{item.title}</TweenOne></OverPack>
                             {

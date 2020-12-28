@@ -40,9 +40,9 @@
     line-height: 40px;
   }
   .sendBtn{
-    width: 62px;
-    height: 62px;
-    border-radius: 31px;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
     background-color: #fff;
     display: flex;
     justify-content: center;

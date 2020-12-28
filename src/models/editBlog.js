@@ -84,8 +84,12 @@ export default {
     *submit({payload},{call,put,select}){
          const editblog=yield select(state=>state.editblog)
          const {data}=editblog;
-         const {caption,author,article}=data
-        let result= yield call(addArticle,{author,content:article,title:caption})
+         const {caption,author,article,images}=data
+         let temp=images.map(item=>({
+           url:item,
+           status:1,
+         }))
+        let result= yield call(addArticle,{author,content:article,title:caption,blogImagesList:temp})
         console.log('addArticle===',result)
     }
     }

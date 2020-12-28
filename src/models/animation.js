@@ -2,6 +2,13 @@
  * @Author: xingzai
  * @Date: 2020-12-11 23:20:50
  * @LastEditors: xingzai
+ * @LastEditTime: 2020-12-28 07:33:20
+ * @FilePath: \GalaxyFrontEnd\src\models\animation.js
+ */
+/*
+ * @Author: xingzai
+ * @Date: 2020-12-11 23:20:50
+ * @LastEditors: xingzai
  * @LastEditTime: 2020-12-11 23:20:51
  * @FilePath: \GalaxyFrontEnd\src\models\animation.js
  */
@@ -136,6 +143,9 @@ export default {
            }))
             yield put({type:'save',payload:list})
         },
+        *fetchVideoCover({payload},{call,put}){
+
+        },
         *upload({payload},{call,put,select}){
             let state=yield select(state=>state.animation)
             let file=state?.uploadFile?.file||''
@@ -150,6 +160,7 @@ export default {
             console.log('form===',form)
            const result= yield call(uploadVideo,form)
            console.log('videoupload====',result)
+           yield put({type:'fetchVideoCover'})
         }
     }
 }

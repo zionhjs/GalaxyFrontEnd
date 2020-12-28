@@ -103,7 +103,7 @@ const VideoList=(props)=> {
                                 <div className={styles.desc}>{item[1].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[1])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
                                 <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item[1].id)&&showEdit })}>
                                     <div className={styles.editLeft}>
-                                        <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                        <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
                                         <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                                     </div>
                                     <div className={styles.editRight}>
@@ -141,7 +141,7 @@ const VideoList=(props)=> {
                                 <div className={styles.desc}>{item[2].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[2])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
                                 <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item[2].id)&&showEdit })}>
                                     <div className={styles.editLeft}>
-                                        <input value={currentItem.name} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
+                                        <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
                                         <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
                                     </div>
                                     <div className={styles.editRight}>
