@@ -73,7 +73,7 @@ export default {
        let list=data?.list||[]
        list=list.map(item=>{
          let {teamMemberList}=item
-         teamMemberList.map(v=>({
+        let ret= teamMemberList.map(v=>({
            id:v.id,
            name:v.name,
            job:v.title,
@@ -82,7 +82,7 @@ export default {
          return {
            id:item.id,
            title:item.name,
-           data: teamMemberList
+           data: ret
          }
        })              
        yield put({type:'save',payload:list})
