@@ -46,8 +46,9 @@ export default {
            console.log('blog',result)
            let list=result.data.list
            list=list.map(item=>{
+               let temp=item.blogImagesList.map(v=>v.url||'')
                return {
-                   images:item.blogImagesList,
+                   images:temp,
                    title:item.title||'',
                    author:item.author||'',
                    date:item.updatedAt||'',
@@ -65,9 +66,9 @@ export default {
            const {delItem}=yield select(state=>state.blog)
            console.log('delaaaa=',delItem)
            let result=yield call(delArticle,{id:delItem.id})
-           console.log(result)
-        
+           console.log(result)        
            yield put({type:'closeConfirm'})
+           yield put({type:'getArticles'})
        }
     }
 }

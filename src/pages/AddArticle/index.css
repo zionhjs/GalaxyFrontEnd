@@ -1,0 +1,260 @@
+.container{
+    background-color: #1d1d1d;
+    padding-top: 31px;
+    padding-left: 302px;
+    padding-right: 302px;
+    display: flex;
+    flex-direction: column;
+}
+.label{
+    font-family: 'Roboto';
+    font-size: 20px;
+    color: #d9d9d9;
+}
+.inputView{
+    border: 1px solid #4E4E4E;
+    background-color: #272727;
+    font-family: 'Roboto';
+    font-size: 16px;
+    color: #d9d9d9;
+    margin-top: 16px;
+    margin-bottom: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 16px;
+    padding-right: 16px;
+    height: 42px;
+}
+.inputStyle{
+    border: none;
+    background-color: transparent;
+    flex: 1;
+    height: 100%;
+}
+.tagBox{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 16px;
+}
+.tagItem{
+    border: 1px solid #4E4E4E;
+    background-color: #272727;
+    color: #fff;  
+    font-family: 'Roboto';
+    font-size: 14px;
+    width: 24.5%;
+    height: 42px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 8px;
+    padding-right: 8px;
+    margin-bottom: 10px;
+    margin-right: 5px;
+}
+.tagItem:nth-child(4n+4){
+    margin-right: 0;
+}
+.tagInput{
+    background-color: transparent;
+    height: 100%;
+    border: none;
+}
+.tagRight{
+    font-family: 'Roboto';
+    font-size: 14px;
+    color:#D9D9D9;
+}
+.addIcon{
+    width: 20px;
+    height: auto;
+}
+.frontCover{
+    display: flex;
+    font-family: 'Roboto';
+    font-size: 20px;
+    color: #d9d9d9;
+    margin-top: 49px;
+}
+.imageBox{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+.extra:nth-child(4n+4){
+    margin-right: 0;
+}
+.imageItem{
+    width: 24%;
+    overflow: hidden;
+    height: 164px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-right: calc(4%/3);
+}
+.imgStyle{
+    width: 100%;
+    height: auto;
+}
+.uploadBox,.chooseBox{
+    width: 24%;
+    height: 164px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; 
+    background-color: #272727;
+    border: 1px solid #4E4E4E;
+    margin-bottom: 15px;
+    position: relative;
+    margin-right: calc(4%/3);
+}
+.fileSelect{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    border: none;
+    opacity: 0;
+    width: 100%;
+}
+.uploadIcon{
+    width: 27px;
+    height: auto;
+}
+.chooseIcon{
+    width: 28px;
+    height: auto;
+}
+.uploadText,.chooseText{
+ color: #9E9E9E;
+ font-size: 14px;
+}
+.checkedRow{
+    display: flex;
+    align-items: center;
+}
+.checked,.unChecked{
+    width: 15px;
+    height: 15px;
+    border: 1px solid #4E4E4E;
+    background-color: #272727;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.checkedText{
+    font-family: 'Roboto';
+    font-size: 20px;
+    color: rgba(255,255,255,0.6);
+    margin-left: 17px;
+}
+.textRow{
+    display: flex;
+    align-items: center;
+    margin-top: 60px;
+}
+.textStyle{
+    font-family: 'Roboto';
+    font-size: 20px;
+    color: #fff;
+}
+.saveText{
+    margin-left: 11px;
+    font-size: 20px;
+    font-family: 'Roboto';
+    color: rgba(255,255,255,0.6);
+}
+.editContainer{
+    font-family: 'Roboto';
+    font-size: 16px;
+    color: #fff;
+}
+.commentLabel{
+    font-family: 'Roboto';
+    font-size: 30px;
+    color: #fff;
+    margin-top: 49px;
+}
+.commentBox{
+    background-color: #272727;
+    border: 1px solid #707070;
+    display: flex;
+    flex-direction: column;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 37px;
+}
+.commentItem{
+    border: 1px solid #4E4E4E;
+    padding: 18px;
+    margin-bottom: 20px;
+    position: relative;
+}
+.postInfo{
+    display: flex;
+    align-items: center;
+}
+.commentBody{
+    font-size: 18px;
+    color: #9e9e9e;
+    font-family: 'Roboto';
+}
+.avatar{
+    width: 38px;
+    height: 38px;
+    border-radius: 19px;
+}
+.commentNameText{
+    font-family: 'Roboto';
+    color: #fff;
+    font-size: 20px;
+    margin-left: 24px;
+}
+.dateText{
+    color: rgba(255,255,255,0.6);
+    font-size: 16px;
+    font-family: 'Roboto';
+    margin-left: 34px;
+}
+.likedIcon{
+    width: 19px;
+    height: auto;
+    margin-left: auto;
+}
+.likesText{
+    font-size: 14px;
+    color: #fff;
+    font-family: 'Roboto';
+    margin-left: 5px;
+}
+.closeIcon{
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%,-50%);
+    width: 20px;
+    height: auto;
+}
+.submit{
+    background-image: linear-gradient(to right,#0dd0e0, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+    color: #fff;
+    height: 42px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    color: #fff;
+    margin-top: 63px;
+    margin-bottom: 228px;
+    cursor: pointer;
+}
+

@@ -29,6 +29,7 @@ export default {
         {path:'/blogs',exact:true,component:'../pages/blogs'},
         {path:'/blogDetail',exact:true,component:'../pages/blogDetail'},
         {path:'/editBlog',exact:true,component:'../pages/editBlog'},
+        {path:'/addArticle',exact:true,component:'../pages/AddArticle'},
         {path:'/team',exact:true,component:'../pages/team'},
         {path:'/test',exact:true,component:'../pages/test'}
       ]

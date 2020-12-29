@@ -13,6 +13,7 @@ import { OverPack } from 'rc-scroll-anim';
 import {connect} from 'dva'
 import styles from './index.css'
 import Swiper from './swiper'
+import AddButton from '../AddButton'
 import LoadMore from '../LoadMore'
 import Confirm from '../Confirm'
 const ArticleList=(props)=> {
@@ -61,6 +62,7 @@ const ArticleList=(props)=> {
                 </TweenOne>
                 </OverPack>
             ))}
+            {role==='admin'? (<AddButton />):null}
             <LoadMore />
             <Confirm  />
         </div>

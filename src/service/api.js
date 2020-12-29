@@ -21,7 +21,7 @@ export async function login(params){
     return result;
   }
   export async function delTeamMember(params){
-    let result=await request('/gateway/cms/team/delete?id='+params.id)
+    let result=await request('/gateway/cms/team/delete?id='+params.id,{method:'POST'})
     return result
   }
 export async function getImages(params){

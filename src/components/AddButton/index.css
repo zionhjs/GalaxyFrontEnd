@@ -1,0 +1,22 @@
+.addBtn{
+    width: 319px;
+    border: 1px solid #4E4E4E;
+    background-color: #272727;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    padding-top: 45px;
+    padding-bottom: 45px;
+    cursor: pointer;
+    margin: auto;
+}
+.addIcon{
+    font-size: 50px;
+    color: #9e9e9e;
+}
+.addText{
+    color: #9e9e9e;
+    font-size: 20px;
+}
