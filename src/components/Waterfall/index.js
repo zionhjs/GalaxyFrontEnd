@@ -197,7 +197,7 @@ const Waterfall=(props)=> {
                         <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                <input onChange={descChange} value={currentItem.desc} className={styles.editTextArea} />
+                                <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
                                 <Select bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
                                     <Option className={styles.dropOption} value="Interior">Interior</Option>
                                     <Option className={styles.dropOption} value="Exterior">Exterior</Option>
