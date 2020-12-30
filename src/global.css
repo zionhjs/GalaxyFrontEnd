@@ -14,6 +14,8 @@ body {
 ::selection{
   background-color: transparent;
 }
+/*清除ie的默认选择框样式清除，隐藏下拉箭头*/
+select::-ms-expand { display: none; }
 input,textarea{
   outline: none;
 }

@@ -2,11 +2,12 @@ import React, { useState,useCallback } from 'react'
 import classnames from 'classnames'
 import LazyLoad from 'react-lazyload';
 import {connect} from 'dva'
+import {Select} from 'antd'
 import { OverPack } from 'rc-scroll-anim';
 import TweenOne from 'rc-tween-one';
 import BigImage from '../BigImage'
 import styles from './index.css'
-
+const {Option}=Select
 const Waterfall=(props)=> {
     let { col1,col2,col3,col4,currentItem,showEdit,dispatch, role,uploadImg,uploadName,uploadDesc} = props
     const [url,seturl]=useState('')
@@ -83,7 +84,17 @@ const Waterfall=(props)=> {
                             <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                                 <div className={styles.editLeft}>
                                     <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                    <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                    <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
+                                    <Select bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
+                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
+                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
+                                    <Option className={styles.dropOption} value="360">360</Option>
+                                    </Select>
+                                    <Select bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
+                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    </Select>
                                 </div>
                                 <div className={styles.editRight}>
                                     <img onClick={closeEdit} src="close.png" className={styles.editClose} alt="" />
@@ -110,7 +121,17 @@ const Waterfall=(props)=> {
                         <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
+                                <Select bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
+                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
+                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
+                                    <Option className={styles.dropOption} value="360">360</Option>
+                                </Select>
+                                <Select bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
+                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    </Select>
                             </div>
                             <div className={styles.editRight}>
                                 <img onClick={closeEdit} src="close.png" className={styles.editClose} alt="" />
@@ -138,7 +159,17 @@ const Waterfall=(props)=> {
                         <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
+                                <Select bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
+                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
+                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
+                                    <Option className={styles.dropOption} value="360">360</Option>
+                                </Select>
+                                <Select bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
+                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    </Select>
                             </div>
                             <div className={styles.editRight}>
                                 <img onClick={closeEdit} src="close.png" className={styles.editClose} alt="" />
@@ -166,7 +197,17 @@ const Waterfall=(props)=> {
                         <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item.id)&&showEdit })}>
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
-                                <textarea onChange={descChange} value={currentItem.desc} className={styles.editTextArea} style={{ height: '70px' }} />
+                                <input onChange={descChange} value={currentItem.desc} className={styles.editTextArea} />
+                                <Select bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
+                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
+                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
+                                    <Option className={styles.dropOption} value="360">360</Option>
+                                </Select>
+                                <Select bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
+                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    </Select>
                             </div>
                             <div className={styles.editRight}>
                                 <img onClick={closeEdit} src="close.png" className={styles.editClose} alt="" />
@@ -187,12 +228,12 @@ const Waterfall=(props)=> {
                             </div>
                             <div className={styles.uploadFooter}>
                                 <div className={styles.uploadLeft}>
-                                    <input value={uploadName} onChange={uploadNameChange} className={styles.uploadInput} />
-                                    <textarea value={uploadDesc} onChange={uploadDescChange} className={styles.uploadTextArea} />
+                                    <input value={uploadName||''} onChange={uploadNameChange} className={styles.uploadInput} />
+                                    <input value={uploadDesc||''} onChange={uploadDescChange} className={styles.uploadTextArea} />
                                 </div>
                                 <div className={styles.uploadRight}>
                                     <img src="close.png" className={styles.closeIcon} />
-                                    <img src="uploadS.png"  className={styles.uploadSmallIcon}/>
+                                    <div className={styles.uploadView}><img src="uploadS.png"  className={styles.uploadSmallIcon}/><input type="file" className={styles.fileUpload} accept="image/*" onChange={selectUploadFile} /></div>
                                     <img src="confirm.png" onClick={onConfirm} className={styles.checkIcon} />
                                 </div>
                             </div>

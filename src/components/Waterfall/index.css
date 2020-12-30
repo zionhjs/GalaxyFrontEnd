@@ -47,6 +47,49 @@
  flex-direction: column;
  justify-content: center;
 }
+.editLeft :global(.ant-select-selection){
+    border-radius: 0;
+    background-color: #272727!important;
+    height: 42px;
+    border-color: #4e4e4e;
+    color: #fff;
+}
+.editLeft :global(.ant-select-enabled):hover,.editLeft :global(.ant-select-enabled):active {
+    border-color: #4e4e4e!important;
+
+}
+.editLeft :global(.ant-select-open){
+  background-color: #272727!important;
+}
+.editLeft :global(.ant-select-selection):active{
+    border: 0!important;
+    border-color: #4e4e4e;
+}
+.editLeft :global(.ant-select-focused),.editLeft :global(.ant-select-selection),.editLeft :global(.ant-select-selection):focus,.editLeft :global(.ant-select-selection) :active{
+    box-shadow: none;
+    border-color: #4e4e4e!important;
+}
+.dropDown{
+    width: 100%;
+    border-radius: 0;
+    border: 1px solid #4e4e4e!important;
+}
+.dropOption{
+    border-radius: 0;
+    
+}
+.levelDropdown{
+    width: 100%;
+    border-radius: 0;
+    border: 1px solid #4e4e4e!important;
+}
+.levelDropdownoption{
+    border-radius: 0;
+}
+.editLeft :global(.ant-select){
+    margin-bottom: 10px!important;
+}
+
 .editInput{
     height: 42px;
     border: 1px solid #4E4E4E;
@@ -60,15 +103,16 @@
     padding-right: 20px;
 }
 .editTextArea{
+    height: 42px;
     border: 1px solid #4E4E4E;
     background-color: #272727;
-    height: 126px;
+    margin-bottom: 10px;
     font-family: 'Roboto';
-    font-size: 14px;
-    color: rgba(255,255,255,0.6);
+    font-size: 18px;
+    color: #fff;
+    line-height: 42px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 10px;
 }
 .editRight{
 width: 46px;
@@ -207,6 +251,13 @@ margin-left: 9px;
 }
 .uploadLeft{
     flex: 1;
+}
+.uploadView{
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .uploadInput{
     height: 42px;
