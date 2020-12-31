@@ -130,6 +130,13 @@ cursor: pointer;
   width: 100%;
   height: auto;
 }
+.swiperImgWrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 429px;
+}
 .swiperContainer{
   position: relative;
 }
