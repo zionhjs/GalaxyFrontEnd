@@ -9,6 +9,7 @@ import React from 'react'
 import {connect} from 'dva'
 import { OverPack } from 'rc-scroll-anim';
 import TweenOne from 'rc-tween-one';
+//import * as moment from 'moment'
 import styles from './index.css'
 const VideoList=(props)=>{
     const {list}=props

@@ -14,7 +14,7 @@
  */
 import data from '../data/animation.json'
 import _ from 'lodash'
-import {getAnimation,uploadVideo} from '../service/api'
+import {getAnimation,uploadVideo,updateVideo,updateVideoUrl} from '../service/api'
 const banners=['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg']
 export default {
     namespace:'animation',
@@ -22,16 +22,19 @@ export default {
         videoVisible:false,//播放器对话框是否可见
         currentIndex:0,//当前选中的视频的索引
         currentItem:{},//当前选中的视频
-        updateFile:{},//当前要更新的视频
         uploadFile:{},//当前要上传的视频        
        videoList: [],//视频列表
        banners:banners,//轮播图
     },
     reducers: {
         setUpdateFile(state,{payload}){
+            const {currentItem}=state;
          return {
              ...state,
-             updateFile:payload
+             currentItem:{
+                 ...currentItem,
+                 imgUrl:payload
+             }
          }
         },
         setUploadFile(state,{payload}){
@@ -54,6 +57,26 @@ export default {
             ...state,
             uploadFile:{...uploadFile,desc:payload.desc}
         }
+        },
+        setuploadSuffix(state,{payload}){
+          const {uploadFile}=state
+          return {
+              ...state,
+              uploadFile:{
+                  ...uploadFile,
+                  suffix:payload
+              }
+          }
+        },
+        setuploadLevel(state,{payload}){
+            const {uploadFile}=state;
+            return {
+                ...state,
+                uploadFile:{
+                    ...uploadFile,
+                    level:payload
+                }
+            }
         },
         save(state,{payload}){
             console.log('animation',payload)
@@ -98,6 +121,28 @@ export default {
             currentItem:{...currentItem,desc:payload}
         }
         },
+        setSuffix(state,{payload}){
+            const {currentItem}=state;
+            return {
+                ...state,
+                currentItem:{
+                    ...currentItem,
+                    suffix:payload
+                }
+            }
+        },
+        setLevel(state,{payload}){
+            const {currentItem}=state;
+            console.log('currentItem===',currentItem)
+            console.log(payload)
+            return {
+                ...state,
+                currentItem:{
+                    ...currentItem,
+                    level:payload
+                }
+            }
+        },
         pre(state){
             let {currentIndex,videoList}=state;
             let len=videoList.length;
@@ -137,30 +182,49 @@ export default {
                name:item.title,
                date:item.createdAt,
                desc:item.description,
-               imgUrl:'',
-               video:item.objectUrl480
+               imgUrl:item.frameImages,
+               video:item.objectUrl480,
+               suffix:item.suffix,
+               level:item.level
 
            }))
             yield put({type:'save',payload:list})
-        },
-        *fetchVideoCover({payload},{call,put}){
-
         },
         *upload({payload},{call,put,select}){
             let state=yield select(state=>state.animation)
             let file=state?.uploadFile?.file||''
             let name=state?.uploadFile?.name||''
-            let desc=state?.uploadFile.desc||''   
+            let desc=state?.uploadFile.desc||''  
+            let suffix=state?.uploadFile.suffix||''
+            let level=state?.uploadFile.level||'' 
             let form=new FormData()
             form.append('multipartFile',file)
             form.append('title',name)
             form.append('description',desc)
-            form.append('suffix','in')
-            form.append('level','star')
+            form.append('suffix',suffix)
+            form.append('level',level)
             console.log('form===',form)
            const result= yield call(uploadVideo,form)
-           console.log('videoupload====',result)
-           yield put({type:'fetchVideoCover'})
+           if(result.code===200){
+               yield put({type:'getAnimation'})
+           }
+        },
+        *updateVideoUrl({payload},{call,put}){
+            let form=new FormData()
+            form.append('multipartFile',payload.file)
+          let result=yield call(updateVideoUrl,form)
+          if(result.code===200){
+              yield put({type:'setUpdateFile',payload:result.data})
+          }
+        },
+        *confirmEdit({payload},{call,put,select}){
+            let {currentItem}=yield select(state=>state.animation)
+            let {imgUrl,name,desc,suffix,level,id}=currentItem
+            let result=yield call(updateVideo,{id,objectUrl480:imgUrl,title:name,description:desc,suffix,level})
+            if(result.code===200){
+                yield put({type:'getAnimation'})
+            }            
+
         }
     }
 }

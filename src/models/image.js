@@ -29,6 +29,8 @@ export default {
         uploadImg:'',//要上传的图片的路径
         name:'',//要上传的图片的标题
         desc:'',//要上传的图片的描述
+        suffix:'',//要上传图片的suffix
+        level:'',//要上传图片的level
         banners:banners,
         images:[],
         col1:[],
@@ -114,6 +116,18 @@ export default {
                 name:payload
             }
         },
+        setuploadSuffix(state,{payload}){
+        return {
+            ...state,
+            suffix:payload
+        }
+        },
+        setuploadLevel(state,{payload}){
+            return {
+                ...state,
+                level:payload
+            }
+        },
         openBigImage(state){
          return {
              ...state,
@@ -147,6 +161,26 @@ export default {
         return {
             ...state,
             currentItem:{...currentItem,desc:payload}
+        }
+        },
+        setSuffix(state,{payload}){
+         const {currentItem}=state;
+         return {
+             ...state,
+             currentItem:{
+                 ...currentItem,
+                 suffix:payload
+             }
+         }
+        },
+        setLevel(state,{payload}){
+        const {currentItem}=state
+        return {
+            ...state,
+            currentItem:{
+                ...currentItem,
+                level:payload
+            }
         }
         },
         next(state){
@@ -241,7 +275,9 @@ export default {
                     date:item.createdAt,
                     desc:item.description,
                     imgUrl:item.objectUrl240,
-                    rating:item.rating
+                    rating:item.rating,
+                    suffix:item.suffix,
+                    level:item.level,
                 }
             })          
             yield put({type:'save',payload:list})
@@ -249,13 +285,13 @@ export default {
             yield put({type:'divideCol'}) 
         },
         *upload({payload},{call,put,select}){
-            const {uploadImg,name,desc}=yield select(state=>state.image)
+            const {uploadImg,name,desc,suffix,level}=yield select(state=>state.image)
             let form=new FormData()
             form.append('multipartFile',uploadImg)
             form.append('title',name)
             form.append('description',desc)
-            form.append('suffix','in')
-            form.append('level','star')
+            form.append('suffix',suffix)
+            form.append('level',level)
            const result= yield call(uploadImage,form)
            console.log('uploadimg',result)
            let data= yield put({type:'getImage'})
@@ -273,9 +309,9 @@ export default {
         },
         *updateImgText({payload},{call,put,select}){
             let image=yield select(state=>state.image)
-            let {name,desc,id}=image?.currentItem
-           let result= yield call(updateImgText,{id,description:desc,title:name})
-           yield put({type:'saveUpdateImg',payload:{id,name:result.data.title,desc:result.data.description}})
+            let {name,desc,id,suffix,level}=image?.currentItem
+           let result= yield call(updateImgText,{id,description:desc,title:name,suffix,level})
+           yield put({type:'saveUpdateImg',payload:{id,name:result.data.title,desc:result.data.description,suffix:result.data.suffix,level:result.data.level}})
            yield put({type:'closeEditor'})
         }
     }

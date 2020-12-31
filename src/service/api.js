@@ -37,8 +37,12 @@ export async function uploadVideo(params){
   let result=await request('/video/uploadVideo',{method:'POST',body:params})
   return result
 }
-export async function fetchVideoCover(params){
-  let result=await request('/video/fetchFrame?videofile='+params.videoFile,{method:'POST',data:{id:params.id,frameImages:params.frameImages}})
+export async function updateVideoUrl(params){
+  let result=await request('/video/uploadVideoUrl',{method:'POST',body:params})
+  return result;
+}
+export async function updateVideo(params){
+  let result=await request('/gateway/upload/video/update',{method:'POST',data:{...params}})
   return result
 }
 export async function addTeamMember(params){

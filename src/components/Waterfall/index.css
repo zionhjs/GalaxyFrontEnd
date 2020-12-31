@@ -251,6 +251,40 @@ margin-left: 9px;
 }
 .uploadLeft{
     flex: 1;
+    display: flex;
+ flex-direction: column;
+ justify-content: center;
+}
+.uploadLeft{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+   }
+   .uploadLeft :global(.ant-select-selection){
+       border-radius: 0;
+       background-color: #272727!important;
+       height: 42px;
+       border-color: #4e4e4e;
+       color: #fff;
+   }
+   .uploadLeft :global(.ant-select-enabled):hover,.uploadLeft :global(.ant-select-enabled):active {
+       border-color: #4e4e4e!important;
+   
+   }
+   .uploadLeft :global(.ant-select-open){
+     background-color: #272727!important;
+   }
+   .uploadLeft :global(.ant-select-selection):active{
+       border: 0!important;
+       border-color: #4e4e4e;
+   }
+   .uploadLeft :global(.ant-select-focused),.uploadLeft :global(.ant-select-selection),.uploadLeft :global(.ant-select-selection):focus,.uploadLeft :global(.ant-select-selection) :active{
+       box-shadow: none;
+       border-color: #4e4e4e!important;
+   }
+   .uploadLeft :global(.ant-select){
+    margin-bottom: 10px!important;
 }
 .uploadView{
     position: relative;
@@ -280,15 +314,16 @@ margin-left: 9px;
     align-items: center;
 }
 .uploadTextArea{
+    height: 42px;
     border: 1px solid #4E4E4E;
     background-color: #272727;
-    height: 70px;
+    margin-bottom: 10px;
     font-family: 'Roboto';
-    font-size: 14px;
-    color: rgba(255,255,255,0.6);
+    font-size: 18px;
+    color: #fff;
+    line-height: 42px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 10px;
     width: 100%;
 }
 .closeIcon{
