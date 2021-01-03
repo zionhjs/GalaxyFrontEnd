@@ -5,14 +5,15 @@
  * @LastEditTime: 2020-11-14 05:46:56
  * @FilePath: \test\src\pages\blogDetail.js
  */
-import React, { useMemo,useEffect, useCallback } from 'react'
+import React, { useMemo,useEffect, useCallback,useState } from 'react'
 import { RightOutlined, CheckOutlined } from '@ant-design/icons'
 import { useMediaQuery } from 'react-responsive'
 import {connect} from 'dva'
+import * as moment from 'moment'
 import DetailMobile from '../mobile/BlogDetail'
 import styles from './blogDetail.css'
 const BlogDetail= (props)=> {
-    const {data,dispatch,location:{query},checked}=props;
+    const {data,dispatch,location:{query}}=props;
     const isMobile = useMediaQuery({ maxWidth: 767 })
     useEffect(()=>{
         dispatch({type:'blogdetail/getDetailData',payload:query.id})
@@ -20,15 +21,31 @@ const BlogDetail= (props)=> {
     let richText = useMemo(() => {
         return data.article.replace(/\<img/gi, '<img class="rich-img" ')
     }, [data])
+    const [checked,setChecked]=useState(false)
+    const [name,setName]=useState('')
+    const [email,setEmail]=useState('')
+    const [comment,setComment]=useState('')
     const toggleChecked=useCallback(()=>{
-        dispatch({type:'blogdetail/toggleChecked'})
+        setChecked(!checked)
+    },[])
+    const nameChange=useCallback(e=>{
+        setName(e.target.value)
+    },[])
+    const eamilChange=useCallback(e=>{
+        setEmail(e.target.value)
+    },[])
+    const commentChange=useCallback(e=>{
+        setComment(e.target.value)
+    },[])
+    const send=useCallback(()=>{
+        dispatch({type:'blogdetail/addComment',payload:{momentId:query.id,comment,name,email,checked}})
     },[])
     return isMobile ? (<DetailMobile />) : (
         <div className={styles.container}>
             <div className={styles.articleTitle}>{data.title}</div>
             <div className={styles.articleInfo}>
                 <span className={styles.authorText}>{data.author}</span>
-                <span className={styles.dateText}>{data.date}</span>
+                <span className={styles.dateText}>{moment(data.date).format('YYYY[.]MM[.]DD')}</span>
                 <img src="read.png" className={styles.readIcon} />
                 <span className={styles.readText}>{data.read}</span>
                 <img src="liked.png" className={styles.likedIcon} />
@@ -96,12 +113,12 @@ const BlogDetail= (props)=> {
             <div className={styles.commentBox}>
                 <div className={styles.commentTitle}>Leave a Comment</div>
                 <div className={styles.commentInputView}>
-                    <input className={styles.commentInput} placeholder="Name" style={{ marginRight: '37px' }} />
-                    <input className={styles.commentInput} placeholder="Email" />
+                    <input value={name} onChange={nameChange} className={styles.commentInput} placeholder="Name" style={{ marginRight: '37px' }} />
+                    <input value={email} onChange={eamilChange} className={styles.commentInput} placeholder="Email" />
                 </div>
-                <textarea className={styles.commentTextArea} placeholder="Enter your comment..." />
+                <textarea value={comment} onChange={commentChange} className={styles.commentTextArea} placeholder="Enter your comment..." />
                 <div className={styles.checkedRow}>{checked ? <span onClick={toggleChecked} className={styles.checked}><CheckOutlined /></span> : <span onClick={toggleChecked} className={styles.unChecked}></span>}<span className={styles.checkedText}>Save my name, email, and website in this browser for the next time I comment.</span></div>
-                <div className={styles.sendBtn}>SEND</div>
+                <div onClick={send} className={styles.sendBtn}>SEND</div>
                 <div className={styles.commentLabel}>User comment</div>
                 {data.comments.map((item,index)=>(
                     <div key={index} className={styles.commentRow}>
@@ -119,4 +136,4 @@ const BlogDetail= (props)=> {
         </div>
     )
 }
-export default connect(({blogdetail})=>({data:blogdetail.data,checked:blogdetail.checked}))(BlogDetail)
+export default connect(({blogdetail})=>({data:blogdetail.data}))(BlogDetail)

@@ -10,6 +10,7 @@ import { RightOutlined,FormOutlined } from '@ant-design/icons'
 import router from 'umi/router'
 import TweenOne from 'rc-tween-one';
 import { OverPack } from 'rc-scroll-anim';
+import * as moment from 'moment'
 import {connect} from 'dva'
 import styles from './index.css'
 import Swiper from './swiper'
@@ -18,8 +19,6 @@ import LoadMore from '../LoadMore'
 import Confirm from '../Confirm'
 const ArticleList=(props)=> {
     const {articles,role,dispatch } = props
-    const [visible,setVisible]=useState(false)
-    const [curItem,setCurItem]=useState(null)
     const delPost=useCallback((item)=>{
         console.log('item===',item)
         dispatch({type:'blog/setDelItem',payload:item})
@@ -44,7 +43,7 @@ const ArticleList=(props)=> {
                     <div className={styles.rightBox}>
                          {role==='admin' ? <img onClick={delPost.bind(null,item)} src="redClose.png" alt="" className={styles.redClose} /> : null}
                         <div className={styles.listTitle}>{item.title}</div>
-                        <div className={styles.listMidBox}><div className={styles.listAuthor}>{item.author}</div><div className={styles.listDate}>{item.date}</div></div>
+                        <div className={styles.listMidBox}><div className={styles.listAuthor}>{item.author}</div><div className={styles.listDate}>{moment(item.date).format('YYYY[.]MM[.]DD')}</div></div>
                         <div className={styles.listContent}><div dangerouslySetInnerHTML={{ __html: item.content }}></div></div>
                         <div className={styles.listFooter}>
                             <img src="read.png" className={styles.readIcon} />

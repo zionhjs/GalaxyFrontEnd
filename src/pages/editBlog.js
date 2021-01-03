@@ -45,6 +45,12 @@ const EditBlog= (props)=> {
     const onHtmChange=useCallback((value)=>{
         dispatch({type:'editblog/changeArticle',payload:value})
     },[])
+    const tagChange=useCallback((index,e)=>{
+        dispatch({type:'editblog/tagChange',payload:{index,value:e.target.value}})
+    },[])
+    const addTag=useCallback(()=>{
+        dispatch({type:'editblog/addTag'})
+    },[])
     const selectFiles=useCallback((e)=>{
         let file=e.target.files[0]
         dispatch({type:'editblog/uploadCover',payload:{file}})  
@@ -58,23 +64,23 @@ const EditBlog= (props)=> {
             <div className={styles.label}>Caption</div>
             <div className={styles.inputView}>
                 <input onChange={captionChange} className={styles.inputStyle} value={data.caption} />
-                <span>{data.captionRightText}</span>
+                <span>{`${data.caption?.length||0}/100`}</span>
             </div>
             <div className={styles.label}>Author</div>
             <div className={styles.inputView}>
                 <input onChange={authorChange} className={styles.inputStyle} value={data.author} />
-                <span>{data.authorRightText}</span>
+                <span>{`${data.author?.length||0}/20`}</span>
             </div>
             <div className={styles.label}>Tag</div>
             <div className={styles.tagBox}>
                 {
                     data.tags.map((item, index) => (
-                        <div key={index} className={styles.tagItem}><div>{item.text}</div>
-                            <span className={styles.tagRight}>{item.rightText}</span>
+                        <div key={index} className={styles.tagItem}><input className={styles.tagInput} onChange={tagChange.bind(null,index)} value={item.text||''} />
+                            <span className={styles.tagRight}>{`${index}/20`}</span>
                         </div>
                     ))
                 }
-                <div className={styles.tagItem} style={{ justifyContent: 'center', alignItems: 'center' }}><img className={styles.addIcon} src="add.png" alt="" /></div>
+                <div onClick={addTag} className={styles.tagItem} style={{ justifyContent: 'center', alignItems: 'center' }}><img className={styles.addIcon} src="add.png" alt="" /></div>
             </div>
             <div className={styles.frontCover}><span>Front Cover</span><span>（Recommended size：900px*500px）</span></div>
             <div className={styles.imageBox}>

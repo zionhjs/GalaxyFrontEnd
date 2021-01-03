@@ -36,11 +36,7 @@ const HomePage=(props)=> {
   const toPage=useCallback(item=>{
     dispatch({type:'global/setCurrentNav',payload:item.nav})
     router.push(item.route)
-  },[])
-  useEffect(()=>{
-    dispatch({type:'home/getBanners'})
   },[])  
-  
   return isMobile ? (<MobileHome />) : (
     <div className={styles.container}>
        <Swiper />

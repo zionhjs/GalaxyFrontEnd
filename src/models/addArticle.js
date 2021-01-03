@@ -5,6 +5,7 @@
  * @LastEditTime: 2020-12-14 02:42:59
  * @FilePath: \GalaxyFrontEnd\src\models\editBlog.js
  */
+import router from 'umi/router'
 import {addArticle,uploadImgNotLogo} from '../service/api'
 export default {
     namespace:'addArticle',
@@ -97,15 +98,18 @@ export default {
       }
     },
     *submit({payload},{call,put,select}){
-         const {data}=yield select(state=>state.addArticle)
-         const {caption,author,article,images}=data
+         const {data,checked}=yield select(state=>state.addArticle)
+         const {caption,author,article,images,tags}=data
          let temp=images.map(item=>({
            url:item,
-           status:1,
+           status:checked ? 1 : 0,
          }))
+         let tagName=tags.map(item=>item.text).join('/')
          console.log('temp==',temp)
-        let result= yield call(addArticle,{author,content:article,title:caption,blogImagesList:temp})
-        console.log('addArticle===',result)
+        let result= yield call(addArticle,{author,content:article,title:caption,blogImagesList:temp,tagName})
+        if(result.code==200){
+          router.goBack()
+        }
     }
     }
 }

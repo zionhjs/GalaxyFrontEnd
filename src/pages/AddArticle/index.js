@@ -60,19 +60,19 @@ const AddarticlePage= (props)=> {
             <div className={styles.label}>Caption</div>
             <div className={styles.inputView}>
                 <input onChange={captionChange} className={styles.inputStyle} value={data.caption} />
-                <span>{data.captionRightText}</span>
+                <span>{`${data.caption?.length||0}/100`}</span>
             </div>
             <div className={styles.label}>Author</div>
             <div className={styles.inputView}>
                 <input onChange={authorChange} className={styles.inputStyle} value={data.author} />
-                <span>{data.authorRightText}</span>
+                <span>{`${data.author?.length||0}/20`}</span>
             </div>
             <div className={styles.label}>Tag</div>
             <div className={styles.tagBox}>
                 {
                     data.tags.map((item, index) => (
                         <div key={index} className={styles.tagItem}><input className={styles.tagInput} onChange={tagChange.bind(null,index)} value={item.text||''} />
-                            <span className={styles.tagRight}>{item.rightText}</span>
+                            <span className={styles.tagRight}>{`${index}/20`}</span>
                         </div>
                     ))
                 }

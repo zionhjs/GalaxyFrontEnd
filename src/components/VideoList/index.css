@@ -22,7 +22,7 @@
     justify-content: space-between;
     margin-bottom: 40px;
 }
-.box1,.box2,.box3{
+.box1{
    display: flex;
    flex-direction: column;
    overflow: hidden; 
@@ -33,11 +33,24 @@
    justify-content: space-between;
 }
 .box2,.box3{
+    width: 512px;
     height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #000;
+    position: relative;
+    flex-direction: column;
+}
+.box2{
+    margin-bottom: 40px;
 }
 .box1Img{
-    height: 708px;
-    width: auto;
+    /*  height: 708px;
+    width: auto;  */
+    width: 100%;
+    height: auto;
 }
 .nameWrapper{
     align-self: stretch;
@@ -76,10 +89,6 @@
 }
 .box1{
     width: 1288px;
-}
-.box2,.box3{
-    height: 383px;
-    width: 514px;
 }
 .hidden{
     display: none;
@@ -208,19 +217,20 @@ align-items: center;
     cursor: pointer;
 }
 .box2Img,.box3Img{
-    height: 304px;
-    width: auto;
+   /*  height: 304px;
+    width: auto; */
+    width: 100%;
+    height: auto;
 }
 .playBtn1{
     position: absolute;
     left: 0;
     right: 0;
     top: 0;
-    bottom: 0;
+    bottom: 101px;
     margin: auto;
     width: 85px;
     height: auto;
-    margin-top: 308px;
     cursor: pointer;
 }
 .playBtn2,.playBtn3{
@@ -228,11 +238,10 @@ align-items: center;
     left: 0;
     right: 0;
     top: 0;
-    bottom: 0;
+    bottom: 101px;
     margin: auto;
     width: 85px;
     height: auto;
-    margin-top: 99px;
     cursor: pointer;
 }
 .fullScreen{

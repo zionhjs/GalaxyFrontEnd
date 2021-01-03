@@ -14,16 +14,17 @@
  */
 import _ from 'lodash'
 import {getImages,uploadImage,updateImg,updateImgText} from '../service/api'
-let temp=[]
-for(let i=1;i<=35;i++){
+//let temp=[]
+/* for(let i=1;i<=35;i++){
     let img=require('../assets/waterfall/'+i+'.jpeg')
     temp.push({id:i,name:'voluptatem',date:'2020.11.23',desc:'GalaxyCGI is an Architectural Visualization',imgUrl:img,liked:parseInt(Math.random()*1000)})
-}
-const banners=['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg']
+} */
+const banners=['imageBanner1.jpeg', 'imageBanner2.jpeg', 'imageBanner3.jpeg', 'imageBanner4.jpeg']
 export default {
     namespace:'image',
     state:{
         bigImageVisible:false,//大图对话框是否可见
+        img360Visible:false,//360对话框是否可见
         currentIndex:0,
         currentItem:{},
         uploadImg:'',//要上传的图片的路径
@@ -139,6 +140,18 @@ export default {
               ...state,
               bigImageVisible:false
           }
+        },
+        openImg360(state){
+            return {
+                ...state,
+                img360Visible:true,
+            }
+        },
+        closeImg360(state){
+            return {
+                ...state,
+                img360Visible:false
+            }
         },
         setCurrent(state,{payload}){
             const {images}=state;

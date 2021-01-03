@@ -38,6 +38,7 @@ const VideoList=(props)=> {
         dispatch({type:'animation/setCurrent',payload:{id:null}})
     },[])
     const play=useCallback((item)=>{
+        console.log('item',item)
         dispatch({type:'animation/setCurrent',payload:item})
         dispatch({type:'animation/openVideo'})
     },[])
@@ -79,7 +80,7 @@ const VideoList=(props)=> {
                             <img src={item[0].imgUrl} className={styles.box1Img} />
                             <div className={styles.nameWrapper}><span className={styles.nameText}>{item[0].name}</span><span className={styles.dateText}>{moment(item[0].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                             <div className={styles.desc}>{item[0].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[0])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
-                            <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item[0].id)&&showEdit })}>
+                            <div className={classnames(styles.editBox, { [styles.editShow]: (role=='admin'&&currentItem.id === item[0].id)&&showEdit })}>
                                 <div className={styles.editLeft}>
                                     <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} />
                                     <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
@@ -103,7 +104,7 @@ const VideoList=(props)=> {
                             <img onClick={play.bind(null,item[0])} src="playBtn.png" className={styles.playBtn1} />
                         </TweenOne></OverPack>)
                          }{
-                            item[0]&&item[0].id===undefined&&(<div className={styles.bigUploadBox}>
+                            role=='admin'&&item[0]&&item[0].id===undefined&&(<div className={styles.bigUploadBox}>
                                 <div className={styles.bigUpperBox}>
                                     <img src="uploadB.png" className={styles.uploadIcon} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} />
                                     <div className={styles.uploadText}>Upload video</div>
@@ -138,7 +139,7 @@ const VideoList=(props)=> {
                                 <img src={item[1].imgUrl} className={styles.box2Img} />
                                 <div className={styles.nameWrapper}><span className={styles.nameText}>{item[1].name}</span><span className={styles.dateText}>{moment(item[1].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                                 <div className={styles.desc}>{item[1].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[1])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
-                                <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item[1].id)&&showEdit })}>
+                                <div className={classnames(styles.editBox, { [styles.editShow]: (role=='admin'&&currentItem.id === item[1].id)&&showEdit })}>
                                     <div className={styles.editLeft}>
                                         <input value={currentItem.name||''} onChange={nameChange||''} className={styles.editInput} />
                                         <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea}  />
@@ -160,11 +161,11 @@ const VideoList=(props)=> {
                                     </div>
                                 </div>
 
-                                <img src="playBtn.png" className={styles.playBtn2} />
+                                <img onClick={play.bind(null,item[1])} src="playBtn.png" className={styles.playBtn2} />
                             </TweenOne>)
                            }
 
-                           {item[1]&&item[1].id===undefined&&(<div className={styles.uploadBox}>
+                           {role=='admin'&&item[1]&&item[1].id===undefined&&(<div className={styles.uploadBox}>
                                 <div className={styles.upperBox}>
                                 <img src="uploadB.png" className={styles.uploadIcon} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} />
                                     <div className={styles.uploadText}>Upload video</div>
@@ -196,7 +197,7 @@ const VideoList=(props)=> {
                                 <img src={item[2].imgUrl} className={styles.box3Img} />
                                 <div className={styles.nameWrapper}><span className={styles.nameText}>{item[2].name}</span><span className={styles.dateText}>{moment(item[2].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                                 <div className={styles.desc}>{item[2].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[2])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
-                                <div className={classnames(styles.editBox, { [styles.editShow]: (currentItem.id === item[2].id)&&showEdit })}>
+                                <div className={classnames(styles.editBox, { [styles.editShow]: (role=='admin'&&currentItem.id === item[2].id)&&showEdit })}>
                                     <div className={styles.editLeft}>
                                         <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput}  />
                                         <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea}  />
@@ -217,10 +218,10 @@ const VideoList=(props)=> {
                                         <img onClick={confirmEdit} src="confirm.png" className={styles.checkIcon} alt="" />
                                     </div>
                                 </div>
-                                <img src="playBtn.png" className={styles.playBtn3} />
+                                <img onClick={play.bind(null,item[2])} src="playBtn.png" className={styles.playBtn3} />
                             </TweenOne>)}
 
-                            {item[2]&&item[2].id===undefined&&(<div className={styles.uploadBox}>
+                            {role=='admin'&&item[2]&&item[2].id===undefined&&(<div className={styles.uploadBox}>
                                 <div className={styles.upperBox}>
                                 <img src="uploadB.png" className={styles.uploadIcon} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} />
                                 <div className={styles.uploadText}>Upload video</div>

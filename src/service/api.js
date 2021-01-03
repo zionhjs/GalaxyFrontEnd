@@ -6,7 +6,6 @@
  * @FilePath: \GalaxyFrontEnd\src\service\api.js
  */
 import request from '../utils/request'
-import animation from '../data/animation.json'
 export async function getAnimation(params) {
   let result=await request('/gateway/upload/video/findByModal?page=1&size=20',{method:'POST',data:{}})
   console.log('animation=====',result)
@@ -65,13 +64,25 @@ export async function addArticle(params){
   let result=await request('/blog/add',{method:'POST',data:{...params}})
   return result
 }
+export async function updateArticle(params){
+  let result=await request('/gateway/cms/blog/update',{method:'POST',data:{...params}})
+  return result
+}
 export async function getArticle(params){
   let result=await request('/blog/findByModal?page=1&size=20',{method:'POST',data:{...params}})
   return result;
 }
+export async function getArticleDetail(params){
+  let result=await request('/gateway/cms/blog/detail?id='+params.id,{method:'POST',data:{}})
+  return result
+}
 export async function delArticle(params){
   let result=await request('/blog/delete?id='+params.id,{method:'POST'})
   return result;
+}
+export async function addComment(params){
+  let result=await request('/gateway/cms/moment/comment/add',{method:'POST',data:{...params}})
+  return result
 }
 export async function uploadImgNotLogo(params){
   let result=await request('/gateway/upload/images/uploadImagesNotLogo',{method:'POST',body:params})

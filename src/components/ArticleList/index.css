@@ -40,7 +40,6 @@
   font-size: 26px;
   margin-left: 51px;
   margin-top: 45px;
-  height: 64px;
   margin-right: 63px;
 }
 
@@ -71,7 +70,6 @@
   height: 154px;
   width: 1007px;
   display: flex;
-  justify-content: center;
   overflow: hidden;
 }
 

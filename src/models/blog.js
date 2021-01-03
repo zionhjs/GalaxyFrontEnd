@@ -47,15 +47,16 @@ export default {
            let list=result.data.list
            list=list.map(item=>{
                let temp=item.blogImagesList.map(v=>v.url||'')
+               let comment=item.momentCommentList?.length||0
                return {
                    images:temp,
                    title:item.title||'',
                    author:item.author||'',
-                   date:item.updatedAt||'',
+                   date:item.updatedAt||item.createdAt||'',
                    content:item.content,
                    read:item.browseNum,
                    liked:item.likeNum,
-                   comment:'',
+                   comment,
                    id:item.id,
                }
            })

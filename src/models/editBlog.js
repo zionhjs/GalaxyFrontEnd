@@ -5,8 +5,8 @@
  * @LastEditTime: 2020-12-14 02:42:59
  * @FilePath: \GalaxyFrontEnd\src\models\editBlog.js
  */
-import res from '../data/editBlog.json'
-import {addArticle,uploadImgNotLogo} from '../service/api'
+import router from 'umi/router'
+import {addArticle,uploadImgNotLogo,getArticleDetail,updateArticle} from '../service/api'
 export default {
     namespace:'editblog',
     state:{
@@ -67,11 +67,43 @@ export default {
           data:{...data,article:payload}
         }
       },
+      addTag(state){
+        let {data}=state;
+        let {tags}=data
+        tags.push({text:''})
+        return {
+          ...state,
+          data:{...data}
+        }
+        },
+        tagChange(state,{payload:{index,value}}){
+          console.log(index)
+          let {data}=state;
+          let {tags}=data;
+          tags[index].text=value
+          return {
+            ...state,
+            data:{...data}
+          }
+        }
       
     },
     effects:{
     *getEditBlogData({payload},{call,put}){
-      yield put({type:'save',payload:res})
+      let {data,code}=yield call(getArticleDetail,{id:payload})
+      let images=data.blogImagesList?.map(item=>item.url)||[]
+      let tags=data.tagName?.split('/')||[]
+      tags=tags.map(item=>({text:item}))
+      let result={
+        id:data.id,
+        caption:data.title,
+        author:data.author,
+        tags,
+        images,
+        article:data.content,
+        comments:data.momentCommentList
+      }
+      yield put({type:'save',payload:result})
     },
     *uploadCover({payload},{call,put,select}){
       let form=new FormData()
@@ -84,13 +116,16 @@ export default {
     *submit({payload},{call,put,select}){
          const editblog=yield select(state=>state.editblog)
          const {data}=editblog;
-         const {caption,author,article,images}=data
+         const {caption,author,article,images,tags}=data
          let temp=images.map(item=>({
            url:item,
            status:1,
          }))
-        let result= yield call(addArticle,{author,content:article,title:caption,blogImagesList:temp})
-        console.log('addArticle===',result)
+         let tagName=tags.map(item=>item.text).join('/')
+        let result= yield call(updateArticle,{author,content:article,title:caption,blogImagesList:temp,tagName})
+        if(result.code==200){
+          router.goBack()
+        }
     }
     }
 }

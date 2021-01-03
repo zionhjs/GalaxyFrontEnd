@@ -9,8 +9,7 @@ import {getImages} from '../service/api'
 export default {
     namespace:'home',
     state:{
-      banners:[],
-        //banners: ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg'],
+        banners: ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg'],
         profiles: [{ imgUrl: 'profile1.jpeg', title: 'Interior rendering', desc: 'Sed ut perspiciatis unde iste natus',route:'/image',nav:0 },
         { imgUrl: 'profile2.jpeg', title: 'Exterior rendering', desc: 'Sed ut perspiciatis unde iste natus',route:'/image',nav:1 },
         { imgUrl: 'profile3.jpeg', title: 'Architectural Animation', desc: 'Sed ut perspiciatis unde iste natus',route:'/animation',nav:3 }],
@@ -25,26 +24,8 @@ export default {
           aniImages:['wf1.png', 'wf2.png', 'wf3.png', 'wf4.png', 'wf5.png'],
     },
     reducers:{
-      save(state,{payload}){
-        return {
-          ...state,
-          banners:[...payload]
-        }
-      }
+      
     },
     effects:{
-     *getBanners({payload},{call,put}){
-      const ret=yield call(getImages)
-      let list=ret?.data?.list||[]
-      list.sort((a,b)=>{return parseInt(b.rating)-parseInt(a.rating)})
-      let temp;
-      if(list.length>4){
-        temp=list.slice(0,4)        
-      }else{
-        temp=list.slice()
-      }
-      temp=temp.map(v=>v.objectUrl240)
-      yield put({type:'save',payload:temp})
-     }
     }
 }

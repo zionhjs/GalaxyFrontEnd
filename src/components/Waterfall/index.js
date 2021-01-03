@@ -6,6 +6,7 @@ import {Select} from 'antd'
 import { OverPack } from 'rc-scroll-anim';
 import TweenOne from 'rc-tween-one';
 import BigImage from '../BigImage'
+import Image360 from '../Image360'
 import styles from './index.css'
 const {Option}=Select
 const Waterfall=(props)=> {
@@ -25,7 +26,8 @@ const Waterfall=(props)=> {
     },[])
     const openBigImg=useCallback((item)=>{
         dispatch({type:'image/setCurrent',payload:item})
-        dispatch({type:'image/openBigImage'})
+        //dispatch({type:'image/openBigImage'})
+        dispatch({type:'image/openImg360'})
     },[])
     const edit=useCallback((item)=>{
         dispatch({type:'image/setCurrent',payload:item})
@@ -230,7 +232,7 @@ const Waterfall=(props)=> {
                     </TweenOne>
                     </OverPack>
                     ))}
-                    {   <OverPack playScale={0.2}>
+                    { role!=='admin' ? null :   (<OverPack playScale={0.2}>
                         <TweenOne key="upload" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.uploadBox}>
                             <div className={styles.upperBox}>
                             <input type="file" className={styles.fileUpload} accept="image/*" onChange={selectUploadFile} />
@@ -260,12 +262,13 @@ const Waterfall=(props)=> {
                                 </div>
                             </div>
                         </TweenOne>
-                        </OverPack>
+                        </OverPack>)
                     }
                 </div>
             </div>
             <div className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></div>
             <BigImage  />
+            <Image360 />
         </div>
     )
 }

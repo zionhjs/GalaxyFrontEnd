@@ -12,10 +12,9 @@
  * @LastEditTime: 2020-12-11 23:20:51
  * @FilePath: \GalaxyFrontEnd\src\models\animation.js
  */
-import data from '../data/animation.json'
 import _ from 'lodash'
 import {getAnimation,uploadVideo,updateVideo,updateVideoUrl} from '../service/api'
-const banners=['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg']
+const banners=['animationBanner1.jpeg', 'animationBanner2.jpeg', 'animationBanner3.jpeg', 'animationBanner4.jpeg']
 export default {
     namespace:'animation',
     state: {
@@ -209,13 +208,19 @@ export default {
                yield put({type:'getAnimation'})
            }
         },
-        *updateVideoUrl({payload},{call,put}){
+        *updateVideoUrl({payload},{call,put,select}){
+            let {currentItem}=yield select(state=>state.animation)
+            let {name,desc,suffix,level,id}=currentItem
             let form=new FormData()
             form.append('multipartFile',payload.file)
           let result=yield call(updateVideoUrl,form)
           if(result.code===200){
               yield put({type:'setUpdateFile',payload:result.data})
-          }
+              let ret=yield call(updateVideo,{id,objectUrl480:result.data,title:name,description:desc,suffix,level})
+              if(ret.code===200){
+                yield put({type:'getAnimation'})
+            } 
+          }          
         },
         *confirmEdit({payload},{call,put,select}){
             let {currentItem}=yield select(state=>state.animation)
