@@ -16,7 +16,7 @@ export default function(props){
             <CloseOutlined onClick={close} src="close.png" alt="" className={styles.closeIcon} />
             <SmileFilled className={styles.smileIcon} />
             <div className={styles.subText}>Subscribe to our newsletter and get Quote!</div>
-            <input className={styles.subInput} placeholder="Enter you email" />
+            <input className={styles.subInput} placeholder="Enter your email" />
             <div className={styles.sendBtn}><img src="plane.png" alt="" className={styles.sendIcon} /></div>
         </div>
     )

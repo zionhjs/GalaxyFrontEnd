@@ -34,6 +34,9 @@ const TeamPage=(props)=> {
     const delMember=useCallback(item=>{
         dispatch({type:'team/delMember',payload:{id:item.id}})
     },[])
+    const loadMore=useCallback(()=>{
+        dispatch({type:'team/loadMore'})
+    },[])
     return isMobile ? (<TeamMobile />) : (
         <div className={styles.container}>
             <div className={styles.banner}>
@@ -81,7 +84,7 @@ const TeamPage=(props)=> {
                     </div>
                 ))}
             </div>
-            <LoadMore />
+            <LoadMore loadMore={loadMore} />
         </div>
     )
 }

@@ -68,6 +68,9 @@ const VideoList=(props)=> {
     const confirmEdit=useCallback(()=>{
         dispatch({type:'animation/confirmEdit'})
     },[])
+    const loadMore=useCallback(()=>{
+        dispatch({type:'animation/loadMore'})
+    },[])
     return (
         <div className={styles.container}>
             {list.map((item, index) => {
@@ -253,7 +256,7 @@ const VideoList=(props)=> {
                 )
             })
             }
-            <LoadMore />
+            <LoadMore loadMore={loadMore} />
         </div>
     )
 }

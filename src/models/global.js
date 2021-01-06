@@ -8,7 +8,7 @@
 export default {
     namespace:'global',
     state:{
-      role:'admi',
+      role:'adm',
       menus:[{ icon: 'home.png', text: 'Home',route:'/home' },
       { icon: 'image.png', text: 'Images',route:'/image' },
       { icon: 'animation.png', text: 'Animations',route:'/animation' },

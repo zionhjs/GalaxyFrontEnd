@@ -56,7 +56,7 @@ const EditBlog= (props)=> {
         dispatch({type:'editblog/uploadCover',payload:{file}})  
     },[])
     const handleSubmit=useCallback(()=>{
-        dispatch({type:'editblog/submit'})
+        dispatch({type:'editblog/submit',payload:query.id})
     },[])
 
     return (

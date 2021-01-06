@@ -11,9 +11,10 @@ import { OverPack } from 'rc-scroll-anim';
 import styles from './index.css'
 
 export default function(props){
+    const {loadMore}=props;
     return (
         <React.Fragment>
-            <div className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></div>
+            <div onClick={loadMore} className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></div>
             
             <OverPack playScale={0.3} className={styles.downBox}>
 

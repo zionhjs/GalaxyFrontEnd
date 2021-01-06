@@ -122,7 +122,7 @@ export default {
            status:1,
          }))
          let tagName=tags.map(item=>item.text).join('/')
-        let result= yield call(updateArticle,{author,content:article,title:caption,blogImagesList:temp,tagName})
+        let result= yield call(updateArticle,{id:payload,author,content:article,title:caption,blogImagesList:temp,tagName})
         if(result.code==200){
           router.goBack()
         }

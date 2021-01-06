@@ -11,6 +11,7 @@ import styles from './index.css'
 const {Option}=Select
 const Waterfall=(props)=> {
     let { col1,col2,col3,col4,currentItem,showEdit,dispatch, role,uploadImg,uploadName,uploadDesc} = props
+    console.log('col1====',col1)
     const [url,seturl]=useState('')
     const nameChange=useCallback((e)=>{
         dispatch({type:'image/setName',payload:e.target.value})
@@ -76,6 +77,9 @@ const Waterfall=(props)=> {
     },[])
     const confirmUpdate=useCallback(()=>{
         dispatch({type:'image/updateImgText'})
+    },[])
+    const loadMore=useCallback(()=>{
+        dispatch({type:'image/loadMore'})
     },[])
     return (
         <div className={styles.container}>
@@ -266,7 +270,7 @@ const Waterfall=(props)=> {
                     }
                 </div>
             </div>
-            <div className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></div>
+            <div onClick={loadMore} className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></div>
             <BigImage  />
             <Image360 />
         </div>

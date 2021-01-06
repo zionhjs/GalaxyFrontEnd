@@ -5,8 +5,9 @@
  * @LastEditTime: 2020-12-13 23:46:44
  * @FilePath: \GalaxyFrontEnd\src\models\blogDetail.js
  */
-import res from '../data/blogDetail.json'
-import {getArticleDetail,addComment} from '../service/api'
+import {getArticleDetail,addComment,addLike} from '../service/api'
+import router from 'umi/router'
+import _ from 'lodash'
 let news='Making brilliant architecture presentations is an art in itself. Because no matter how genius a concept is, poor delivery can bury it for good. The thing is, it’s not about just presenting a great idea. It’s about convincing a potential client that it’s the best solution for them. Now, this might seem a bit too complicated, but it absolutely isn’t. In fact, creating a successful demo is more like following a recipe that guarantees amazing results. ...'
 export default {
     namespace:'blogdetail',
@@ -47,11 +48,12 @@ export default {
         console.log('data===',data)
         let comments=data?.momentCommentList||[]
         comments=comments.map(item=>({
-            avatar:'',
-            content:'',
-            date:'',
-            likes:'',
-            name:''
+            id:item.id,
+            avatar:item.imageUrls||'',
+            content:item.comment,
+            date:item.updatedAt||item.createdAt||'',
+            likes:item.likeNum,
+            name:item.name
         }))
         let recentPosts=[]
         recentPosts=recentPosts.map(item=>({
@@ -73,12 +75,41 @@ export default {
             news,
             comments,
             recentPosts,
-            tags
+            tags,
         }
        yield put({type:'save',payload:result})
      },
-     *addComment({momentId,name,email,checked,comment},{call,put,select}){
-         yield call(addComment,{momentId,comment})
+     *addComment({payload:{momentId,name,email,checked,comment}},{call,put,select}){
+         let {code}=yield call(addComment,{momentId,comment,name,email,comment})
+         if(code==200){
+            yield put({type:'getDetailData',payload:momentId})
+         }
+         
+     },
+     *toNextPost({payload},{call,put,select}){
+         const {articleId}=payload
+         console.log('articleId',articleId)
+         const {articles}=yield select(state=>state.blog)
+         console.log('articles',articles)
+         let idx=_.findIndex(articles,function(o){return o.id==articleId})
+         let len=articles.length
+         let nextId
+         console.log('idx',idx)
+         console.log('len',len)
+         console.log('idx<len-1',idx<len-1)
+         if(idx<len-1){
+             nextId=_.nth(articles,idx+1).id
+         }else{
+             nextId=_.first(articles).id
+         }
+         console.log('nextid',nextId)
+         router.replace('blogDetail?id='+nextId)
+     },
+     *addLike({payload},{call,put}){
+      let {code}=yield call(addLike,{type:payload.type,subjectId:payload.id})
+      if(code==200){
+          yield put({type:'getDetailData',payload:payload.id})
+      }
      }
     }
 }

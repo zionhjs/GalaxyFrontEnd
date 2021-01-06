@@ -6,8 +6,8 @@
  * @FilePath: \GalaxyFrontEnd\src\service\api.js
  */
 import request from '../utils/request'
-export async function getAnimation(params) {
-  let result=await request('/gateway/upload/video/findByModal?page=1&size=20',{method:'POST',data:{}})
+export async function getAnimation({currentPage,pageSize}) {
+  let result=await request(`/gateway/upload/video/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{}})
   console.log('animation=====',result)
     return result;
   }
@@ -15,16 +15,17 @@ export async function login(params){
     let result=await request('/gateway/ucenter/user/login',{method:'POST',data:params})
     return result;
   }
-  export async function getTeam(){
-    let result=await request('/gateway/cms/team/findByModal?page=1&size=20',{method:'POST',data:{}})
+  export async function getTeam({currentPage,pageSize}){
+    let result=await request(`/gateway/cms/team/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{}})
     return result;
   }
   export async function delTeamMember(params){
     let result=await request('/gateway/cms/team/delete?id='+params.id,{method:'POST'})
     return result
   }
-export async function getImages(params){
-  let result=await request('/gateway/upload/images/findByModal?page=1&size=20',{method:'POST',data:{}})
+export async function getImages({currentPage,pageSize}){
+  console.log('currentPage',currentPage)
+  let result=await request(`/gateway/upload/images/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{}})
   return result
 }
 export async function uploadImage(params){
@@ -68,8 +69,8 @@ export async function updateArticle(params){
   let result=await request('/gateway/cms/blog/update',{method:'POST',data:{...params}})
   return result
 }
-export async function getArticle(params){
-  let result=await request('/blog/findByModal?page=1&size=20',{method:'POST',data:{...params}})
+export async function getArticle({currentPage,pageSize}){
+  let result=await request(`/blog/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{}})
   return result;
 }
 export async function getArticleDetail(params){
@@ -81,10 +82,15 @@ export async function delArticle(params){
   return result;
 }
 export async function addComment(params){
+  console.log('params',params)
   let result=await request('/gateway/cms/moment/comment/add',{method:'POST',data:{...params}})
   return result
 }
 export async function uploadImgNotLogo(params){
   let result=await request('/gateway/upload/images/uploadImagesNotLogo',{method:'POST',body:params})
+  return result
+}
+export async function addLike(params){
+  let result=await request("/gateway/cms/moment/like/add",{method:'POST',data:{...params}})
   return result
 }

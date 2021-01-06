@@ -15,14 +15,29 @@ import 'photo-sphere-viewer/dist/photo-sphere-viewer.css'
 const Image360=(props)=>{
     const {visible,currentItem,dispatch}=props;
        const [viewer,setViewer]=useState(null)
-    useEffect(()=>{        
+    useEffect(()=>{ 
+        console.log('effect')
+        let canvasUrl;
+        let imgs=new Image()
+        imgs.crossOrigin="Anonymous"
+        imgs.src=currentItem.imgUrl
+        imgs.onload=function(){
+            console.log('onload')
+            let canvas=document.createElement('canvas')
+            canvas.width=imgs.width
+            canvas.height=imgs.height
+            let ctx=canvas.getContext('2d')
+            ctx.drawImage(imgs,0,0,imgs.width,imgs.height)
+            canvasUrl=canvas.toDataURL("image/png")
+            console.log('canvasurl',canvasUrl)
+        }       
           if(viewer){
-              viewer.setPanorama(currentItem.imgUrl)
+              viewer.setPanorama(canvasUrl)
           }else{
               console.log(viewer)
          let temp = new Viewer({
                 container: document.querySelector('#viewer'),
-                panorama:currentItem.imgUrl
+                panorama:canvasUrl
               });
               setViewer(temp) 
           }

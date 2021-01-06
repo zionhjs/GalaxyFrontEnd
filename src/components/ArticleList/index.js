@@ -30,7 +30,12 @@ const ArticleList=(props)=> {
     const toEdit=useCallback((item)=>{
         router.push('editBlog?id='+item.id)
     },[])
-    
+    const loadMore=useCallback(()=>{
+        dispatch({type:'blog/loadMore'})
+    },[])
+    const addLike=useCallback((item)=>{
+        dispatch({type:'blog/addLike',payload:{id:item.id,type:1}})
+    },[])   
     
     return (
         <div className={styles.container}>
@@ -48,7 +53,7 @@ const ArticleList=(props)=> {
                         <div className={styles.listFooter}>
                             <img src="read.png" className={styles.readIcon} />
                             <div className={styles.readText}>{item.read}</div>
-                            <img src="liked.png" className={styles.likedIcon} />
+                            <img onClick={addLike.bind(null,item)} src="liked.png" className={styles.likedIcon} />
                             <div className={styles.likedText}>{item.liked}</div>
                             <img src="comment.png" className={styles.commentIcon} />
                             <div className={styles.commentText}>{item.comment}</div>
@@ -62,7 +67,7 @@ const ArticleList=(props)=> {
                 </OverPack>
             ))}
             {role==='admin'? (<AddButton />):null}
-            <LoadMore />
+            <LoadMore loadMore={loadMore} />
             <Confirm  />
         </div>
     )

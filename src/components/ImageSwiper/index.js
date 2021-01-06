@@ -10,7 +10,7 @@ import 'swiper/components/scrollbar/scrollbar.less';
 import styles from './index.css'
 SwiperCore.use([Pagination,Autoplay,Navigation]);
 const Sw=(props)=>{
-    const {dispatch,banners}=props
+    const {banners}=props
     const renderCustom=useCallback((swiper,current,total)=>{
         var paginationHtml = " ";
         for (var i = 0; i < total; i++) {

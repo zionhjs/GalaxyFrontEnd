@@ -17,7 +17,7 @@ const BlogDetail= (props)=> {
     const isMobile = useMediaQuery({ maxWidth: 767 })
     useEffect(()=>{
         dispatch({type:'blogdetail/getDetailData',payload:query.id})
-        },[])
+        },[query.id])
     let richText = useMemo(() => {
         return data.article.replace(/\<img/gi, '<img class="rich-img" ')
     }, [data])
@@ -39,7 +39,13 @@ const BlogDetail= (props)=> {
     },[])
     const send=useCallback(()=>{
         dispatch({type:'blogdetail/addComment',payload:{momentId:query.id,comment,name,email,checked}})
-    },[])
+    },[comment,name,email,checked,query.id])
+    const toNext=useCallback(()=>{
+        dispatch({type:'blogdetail/toNextPost',payload:{articleId:query.id}})
+    },[query.id])
+    const addLike=useCallback(()=>{
+        dispatch({type:'blogdetail/addLike',payload:{type:1,id:query.id}})
+    },[query.id])
     return isMobile ? (<DetailMobile />) : (
         <div className={styles.container}>
             <div className={styles.articleTitle}>{data.title}</div>
@@ -48,8 +54,8 @@ const BlogDetail= (props)=> {
                 <span className={styles.dateText}>{moment(data.date).format('YYYY[.]MM[.]DD')}</span>
                 <img src="read.png" className={styles.readIcon} />
                 <span className={styles.readText}>{data.read}</span>
-                <img src="liked.png" className={styles.likedIcon} />
-                <span className={styles.likedText}>{data.likes}</span>
+                <img onClick={addLike} src="liked.png" className={styles.likedIcon} />
+                <span  className={styles.likedText}>{data.likes}</span>
                 <img src="comment.png" className={styles.commentIcon} />
                 <span className={styles.commentText}>{data.commentNum}</span>
                 <img src="share.png" className={styles.shareIcon} />
@@ -101,14 +107,14 @@ const BlogDetail= (props)=> {
             <div className={styles.postInfo}>
                 <img src="read.png" className={styles.readIcon} style={{ marginLeft: 0 }} />
                 <span className={styles.readText}>{data.read}</span>
-                <img src="liked.png" className={styles.likedIcon} />
-                <span className={styles.likedText}>{data.likes}</span>
+                <img onClick={addLike} src="liked.png" className={styles.likedIcon} />
+                <span  className={styles.likedText}>{data.likes}</span>
                 <img src="comment.png" className={styles.commentIcon} />
                 <span className={styles.commentText}>{data.commentNum}</span>
                 <img src="share.png" className={styles.shareIcon} />
                 <span className={styles.shareText}>Share</span>
-                <span className={styles.nextText}>Next Post</span>
-                <RightOutlined className={styles.rightIcon} />
+                <span onClick={toNext} className={styles.nextText}>Next Post</span>
+                <RightOutlined onClick={toNext} className={styles.rightIcon} />
             </div>
             <div className={styles.commentBox}>
                 <div className={styles.commentTitle}>Leave a Comment</div>
@@ -125,7 +131,7 @@ const BlogDetail= (props)=> {
                         <div className={styles.commentInfo}>
                             <img className={styles.avatar} src={item.avatar} alt="" />
                             <span className={styles.commentNameText}>{item.name}</span>
-                            <span className={styles.commentDateText}>{item.date}</span>
+                            <span className={styles.commentDateText}>{moment(item.date).format('YYYY[.]MM[.]DD')}</span>
                             <img src="liked.png" alt="" className={styles.commentLikedIcon} />
                             <span className={styles.commentLikedText}>{item.likes}</span>
                         </div>

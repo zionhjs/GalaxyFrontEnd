@@ -18,6 +18,10 @@ const banners=['animationBanner1.jpeg', 'animationBanner2.jpeg', 'animationBanne
 export default {
     namespace:'animation',
     state: {
+        currentPage:1,//当前分页
+        pageSize:20,//分页大小
+        hasMore:true,//是否有更多数据
+        pages:0,//图片数据总页数
         videoVisible:false,//播放器对话框是否可见
         currentIndex:0,//当前选中的视频的索引
         currentItem:{},//当前选中的视频
@@ -26,6 +30,18 @@ export default {
        banners:banners,//轮播图
     },
     reducers: {
+        setHasMore(state,{payload}){
+            return {
+                ...state,
+                hasMore:payload
+            }
+        },
+        setPage(state,{payload}){
+            return {
+                ...state,
+                currentPage:payload
+            }       
+      },
         setUpdateFile(state,{payload}){
             const {currentItem}=state;
          return {
@@ -78,11 +94,19 @@ export default {
             }
         },
         save(state,{payload}){
-            console.log('animation',payload)
+            const {pages,list}=payload
             return {
                 ...state,
-                videoList:payload,
+                videoList:list,
+                pages
             }
+        },
+        saveMore(state,{payload}){
+            const {videoList}=state
+          return {
+              ...state,
+              videoList: videoList.concat(payload)
+          }
         },
         openVideo(state){
             return {
@@ -173,8 +197,10 @@ export default {
           },
     },
     effects: {
-        *getAnimation({payload},{call,put}){
-           const result= yield call(getAnimation)
+        *getAnimation({payload},{call,put,select}){
+            yield put({type:'setPage',payload:1})
+            let {currentPage,pageSize}=yield select(state=>state.animation)
+           const result= yield call(getAnimation,{currentPage,pageSize})
            let list=result?.data?.list||[]
            list=list.map((item)=>({
                id:item.id,
@@ -187,7 +213,51 @@ export default {
                level:item.level
 
            }))
-            yield put({type:'save',payload:list})
+            yield put({type:'save',payload:{list,pages:result?.data?.pages||0}})
+            if(currentPage<(result?.data?.pages||0)){
+                yield put({type:'setHasMore',payload:true})
+                yield put({type:'setPage',payload:(currentPage+1)})
+            }
+        },
+        *loadMore({payload},{call,put,select}){
+            let {currentPage,pageSize,pages,hasMore}=yield select(state=>state.animation)
+            if(currentPage<pages){
+                const ret=yield call(getAnimation,{currentPage,pageSize})
+                let list=ret?.data.list||[]
+                list= list.map((item,index)=>{
+                 return {
+                    id:item.id,
+                    name:item.title,
+                    date:item.createdAt,
+                    desc:item.description,
+                    imgUrl:item.frameImages,
+                    video:item.objectUrl480,
+                    suffix:item.suffix,
+                    level:item.level
+                 }
+             })
+             yield put({type:'saveMore',payload:list})
+             yield put({type:'setPage',payload:currentPage+1})
+             yield put({type:'setHasMore',payload:true})
+             }
+             else if(currentPage==pages&&hasMore){
+                const ret=yield call(getAnimation,{currentPage,pageSize})
+                let list=ret?.data.list||[]
+                list= list.map((item,index)=>{
+                 return {
+                    id:item.id,
+                    name:item.title,
+                    date:item.createdAt,
+                    desc:item.description,
+                    imgUrl:item.frameImages,
+                    video:item.objectUrl480,
+                    suffix:item.suffix,
+                    level:item.level
+                 }
+             })
+             yield put({type:'saveMore',payload:list})
+             yield put({type:'setHasMore',payload:false})
+            }
         },
         *upload({payload},{call,put,select}){
             let state=yield select(state=>state.animation)
