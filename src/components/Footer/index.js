@@ -3,17 +3,28 @@ import { Link } from 'rc-scroll-anim';
 import classnames from 'classnames'
 import {connect} from 'dva'
 import QueueAnim from 'rc-queue-anim';
+import {CloseCircleFilled} from '@ant-design/icons'
+import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import styles from './index.css'
 
 const Footer=(props)=>{
-  const {dispatch,contactVisible}=props
+  const {dispatch,contactVisible,chatToken,chatVisible}=props
   const closeDialog=useCallback(()=>{
-    dispatch({type:'global/closeContact'})
+    if(chatToken){
+      dispatch({type:'chat/closeChat'})
+    }else {
+      dispatch({type:'global/closeContact'})
+    }
   },[])
   const openDialog=useCallback(()=>{
-    dispatch({type:'global/toggleContact'})  
-  },[])
+    if(chatToken){
+      dispatch({type:'chat/toggleChat'})
+    }else {
+      dispatch({type:'global/toggleContact'})
+    }
+      
+  },[chatToken])
   const handleSubmit=useCallback(()=>{
     dispatch({type:'chat/openChat'})
     dispatch({type:'global/closeContact'})
@@ -43,7 +54,7 @@ const Footer=(props)=>{
       <div className={styles.footerText}> Copyright © GalaxyCGI www.galaxycgi.com all rights reserved.</div>
       <div className={styles.footerText}> The website design, the logo, the covers and gallery images are property of GalaxyCGI for its total or partial reproduction, as well as exploitation, distribution</div>
       <div className={styles.footerText}> and marketing.</div>
-      <div className={styles.dialog} style={contactVisible ? { display: 'flex' } : { display: 'none' }}>
+       {contactVisible ? <TweenOne animation={{ scale:0,x:'+=200',opacity: 0,type: 'from', ease:'easeInQuart',duration:100}} className={styles.dialog}>
         <div className={styles.closeBox} onClick={closeDialog}><img src="close.png" alt="" style={{ width: '14px', height: 'auto', opacity: 1 }} /></div>
         <div className={styles.dialogTitle}>conversation</div>
         <div className={styles.dialogLabel}>Please fill in the following</div>
@@ -51,10 +62,10 @@ const Footer=(props)=>{
         <input className={styles.nameInput} placeholder="Name" />
         <input className={styles.emailInput} placeholder="Email" />
         <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div>
-      </div>
+      </TweenOne> : null}
       <Link className={styles.anchor} to="top"><img src="up.png" className={styles.upIcon} alt="" /></Link>
-      <img onClick={openDialog} src="contact.png" className={styles.btn} alt="" />
+      {(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <CloseCircleFilled className={styles.closeBtn}  onClick={closeDialog} /> : <img alt="" src="contact.png" className={styles.btn}  onClick={openDialog} />}
     </div>
   )
 }
-export default connect(({global})=>({contactVisible:global.contactVisible}))(Footer)
+export default connect(({global,chat})=>({contactVisible:global.contactVisible,chatToken:global.chatToken,chatVisible:chat.chatVisible}))(Footer)

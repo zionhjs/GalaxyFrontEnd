@@ -6,6 +6,7 @@
  * @FilePath: \GalaxyFrontEnd\src\models\chat.js
  */
 import _ from 'lodash'
+import {updateImg} from '../service/api'
 export default {
     namespace:'chat',
     state:{
@@ -45,6 +46,12 @@ export default {
              ...state,
              visible:false
          }
+     },
+     toggleChat(state){
+         return {
+             ...state,
+             visible:!state.visible
+         }
      }
 
     },
@@ -52,6 +59,6 @@ export default {
         *sendMsg({payload,cb},{call,put}){
             yield put({type:'addMessage',payload:{owner:'other',sender:'fgdd',avatar:'avatar.jpg',msg:payload.msg}})
             cb()
-        }
+        },
     }
 }

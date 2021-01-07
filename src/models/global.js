@@ -1,5 +1,12 @@
 /*
  * @Author: xingzai
+ * @Date: 2020-12-05 08:42:57
+ * @LastEditors: xingzai
+ * @LastEditTime: 2021-01-07 08:27:59
+ * @FilePath: \GalaxyFrontEnd\src\models\global.js
+ */
+/*
+ * @Author: xingzai
  * @Date: 2020-12-04 07:36:51
  * @LastEditors: xingzai
  * @LastEditTime: 2020-12-04 07:36:52
@@ -8,6 +15,7 @@
 export default {
     namespace:'global',
     state:{
+      chatToken:null,
       role:'adm',
       menus:[{ icon: 'home.png', text: 'Home',route:'/home' },
       { icon: 'image.png', text: 'Images',route:'/image' },

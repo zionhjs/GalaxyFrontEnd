@@ -55,6 +55,7 @@
   cursor: pointer;
   }
   .dialog{
+    display: flex;
     position: fixed;
     bottom: 50px;
     right: 115px;
@@ -80,6 +81,8 @@
     width: 100%;
     height: auto;
   }
+  
+  
   .btn{
     width: 81px;
     height: auto;
@@ -88,6 +91,15 @@
     right: 15px;
     cursor: pointer;
     z-index: 20006;
+  }
+  .closeBtn{
+    position: fixed;
+    bottom: 150px;
+    right: 15px;
+    cursor: pointer;
+    z-index: 20006;
+    font-size: 81px;
+    color: #fff;
   }
   .closeBox{
     display: flex;

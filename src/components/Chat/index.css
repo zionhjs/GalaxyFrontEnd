@@ -2,8 +2,7 @@
     position: fixed;
     top: 50px;
     bottom: 50px;
-    left: 0;
-    right: 0;
+    right: 100px;
     width: 673px;
     margin: auto;
     background-color: #fff;
@@ -12,19 +11,24 @@
     padding-bottom: 27px;
     z-index: 30000;
 }
+.container :global(.emoji-mart-search){
+    display: none;
+}
+.container:global(.emoji-mart-preview){
+    display: none;
+}
 .closeIcon{
-    position: absolute;
     width: 28px;
     height: auto;
-    top: 22px;
-    right: 31px;
 }
 .header{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    margin-top: 41px;
-    margin-bottom: 37px;
+    margin-top: 21px;
+    margin-bottom: 21px;
+    margin-left: 29px;
+    margin-right: 29px;
 }
 .chatIcon{
     width: 43px;
@@ -32,9 +36,10 @@
 }
 .chatTitle{
     font-weight: bold;
-    font-size: 40px;
+    font-size: 30px;
     font-family: 'Roboto';
     margin-left: 10px;
+    text-align: center;
 }
 .messageBox{
     padding-left: 14px;
@@ -120,15 +125,18 @@ order: 0;
     align-items: center;
     margin-top: 15px;
     margin-left: 53px;
+    position: relative;
 }
 .xiaolianIcon{
 width: 36px;
 height: auto;
+cursor: pointer;
 }
 .folderIcon{
  width: 40px;
  height: auto;
  margin-left: 29px;
+ cursor: pointer;
 }
 .chatTextarea{
     font-size: 26px;

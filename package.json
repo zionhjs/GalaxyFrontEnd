@@ -13,6 +13,7 @@
     "antd": "^3.19.5",
     "classnames": "^2.2.6",
     "dva": "^2.6.0-beta.6",
+    "emoji-mart": "^3.0.0",
     "lodash": "^4.17.20",
     "moment": "^2.29.1",
     "photo-sphere-viewer": "^4.0.7",
