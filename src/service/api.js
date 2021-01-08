@@ -94,3 +94,7 @@ export async function addLike(params){
   let result=await request("/gateway/cms/moment/like/add",{method:'POST',data:{...params}})
   return result
 }
+export async function getRecentPost(params){
+  let result=await request('/gateway/cms/blog/findByModalOrderByTime?page=1&size=20',{method:'POST',data:{}})
+  return result
+}

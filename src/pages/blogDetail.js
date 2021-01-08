@@ -89,7 +89,7 @@ const BlogDetail= (props)=> {
                                 </div>
                                 <div className={styles.itemDesc}>
                                     <span className={styles.itemAuthor}>{item.author}</span>
-                                    <span className={styles.itemDate}>{item.date}</span>
+                                    <span className={styles.itemDate}>{moment(item.date).format('YYYY[.]MM[.]DD')}</span>
                                 </div>
                             </div>
                         ))}

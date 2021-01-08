@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-12-13 23:46:44
  * @FilePath: \GalaxyFrontEnd\src\models\blogDetail.js
  */
-import {getArticleDetail,addComment,addLike} from '../service/api'
+import {getArticleDetail,addComment,addLike,getRecentPost} from '../service/api'
 import router from 'umi/router'
 import _ from 'lodash'
 let news='Making brilliant architecture presentations is an art in itself. Because no matter how genius a concept is, poor delivery can bury it for good. The thing is, it’s not about just presenting a great idea. It’s about convincing a potential client that it’s the best solution for them. Now, this might seem a bit too complicated, but it absolutely isn’t. In fact, creating a successful demo is more like following a recipe that guarantees amazing results. ...'
@@ -55,13 +55,17 @@ export default {
             likes:item.likeNum,
             name:item.name
         }))
+        let recent=yield call(getRecentPost)
         let recentPosts=[]
-        recentPosts=recentPosts.map(item=>({
-            author:'',
-            date:'',
-            imgUrl:'',
-            title:''
-        }))
+        if(recent?.code==200){
+         recentPosts=recent.data.list.map(item=>({
+             id:item.id,
+             author:item.author,
+             date:item.createdAt||item.updatedAt||'',
+             imgUrl:item.blogImagesList[0]?.url||'',
+             title:item.title
+         }))
+        }
         let tags=data?.tagName||''
         tags=tags.split('/')
         let result={

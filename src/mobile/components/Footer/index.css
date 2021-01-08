@@ -70,20 +70,21 @@
     margin: auto;
   }
   .anchor{
-    width: 0.6rem;
+    width: 0.9rem;
     height: auto;
     position: fixed;
-    bottom: 1.35rem;
+    bottom: 1.2rem;
     right: 0.15rem;
     cursor: pointer;
     z-index: 20006;
+    
   }
   .upIcon{
     width: 100%;
     height: auto;
   }
   .btn{
-    width: 0.6rem;
+    width: 0.9rem;
     height: auto;
     position: fixed;
     bottom: 2.18rem;

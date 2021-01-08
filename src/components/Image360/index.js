@@ -9,38 +9,33 @@ import React,{useCallback, useEffect,useState} from 'react'
 import {connect} from 'dva'
 import classnames from 'classnames'
 import { Viewer } from 'photo-sphere-viewer';
+import * as THREE from 'three'
 import styles from './index.css'
 import 'photo-sphere-viewer/dist/photo-sphere-viewer.css'
 
+THREE.Cache.enabled = false;
 const Image360=(props)=>{
     const {visible,currentItem,dispatch}=props;
        const [viewer,setViewer]=useState(null)
     useEffect(()=>{ 
-        console.log('effect')
-        let canvasUrl;
-        let imgs=new Image()
-        imgs.crossOrigin="Anonymous"
-        imgs.src=currentItem.imgUrl
-        imgs.onload=function(){
-            console.log('onload')
-            let canvas=document.createElement('canvas')
-            canvas.width=imgs.width
-            canvas.height=imgs.height
-            let ctx=canvas.getContext('2d')
-            ctx.drawImage(imgs,0,0,imgs.width,imgs.height)
-            canvasUrl=canvas.toDataURL("image/png")
-            console.log('canvasurl',canvasUrl)
-        }       
-          if(viewer){
-              viewer.setPanorama(canvasUrl)
-          }else{
-              console.log(viewer)
-         let temp = new Viewer({
-                container: document.querySelector('#viewer'),
-                panorama:canvasUrl
-              });
-              setViewer(temp) 
-          }
+        if(viewer){
+            viewer.setPanorama('ciwo.jpg')
+        }else{
+            console.log(viewer)
+       let temp = new Viewer({
+              container: document.querySelector('#viewer'),
+              panorama:'ciwo.jpg'
+            });
+            setViewer(temp) 
+        }
+        if(document.createEvent) {
+            let event = document.createEvent("HTMLEvents");
+            event.initEvent("resize", true, true);
+            window.dispatchEvent(event);
+        } else if(document.createEventObject) {
+            window.fireEvent("onresize");
+        }    
+          
                 
     },[currentItem.imgUrl])
     
