@@ -52,7 +52,7 @@
     height: auto;
 }
 .confirmTitle{
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 38px;
     color: #F5F5F5;
     margin-left: 5px;
@@ -70,7 +70,7 @@
     height: 45px; 
     border-radius: 22.5px;
     color: #fff;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 18px;
     margin-top: auto;
     text-align: center;

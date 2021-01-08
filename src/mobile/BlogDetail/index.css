@@ -1,11 +1,11 @@
 .container{
-  background-color: #1d1d1d;
+  background-color: #2e2e2e;
   padding-top: 0.43rem;   
   padding-left: 0.2rem; 
   padding-right: 0.2rem;
 }
 .articleTitle {
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 0.4rem;
     color: #D9D9D9;
     height: 1.78rem;
@@ -15,7 +15,7 @@
     align-items: center;
     justify-content: space-between;
     font-size: 0.26rem;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     color: rgba(255,255,255,0.6);
   }
   .postHeader{
@@ -33,7 +33,7 @@
   .likedText,
   .commentText,
   .shareText {
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 0.2rem;
     color: #fff;
     margin-left: 0.06rem;
@@ -58,7 +58,7 @@
   }
   .post{
     width: 100%;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
   color: #fff;
   font-size: 0.16rem;
   }
@@ -66,7 +66,7 @@
     margin-top: 0.4rem;
     color: #fff;
     font-size: 0.3rem;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
   }
   .commentList{
     margin-top: 0.33rem;
@@ -93,13 +93,13 @@
     margin-left: 0.12rem;
     font-size: 0.26rem;
     color: #fff;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
   }
   .commentDate{
     margin-left: 0.19rem;
     font-size: 0.2rem;
     color: rgba(255,255,255,0.6);
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
   }
   .commentLiked{
     width: 0.26rem;
@@ -109,11 +109,11 @@
   }
   .commentLikedText{
     font-size: 0.2rem;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     color: #fff;
   }
   .commentContent{
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 0.2rem;
     color: rgba(255,255,255,0.6);
     margin-top: 0.09rem;
@@ -122,7 +122,7 @@
     margin-top: 0.37rem;
     font-size: 0.2rem;
     color: rgba(255,255,255,0.6);
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     text-align: center;
   }
   

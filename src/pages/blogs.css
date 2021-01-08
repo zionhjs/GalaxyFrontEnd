@@ -39,7 +39,7 @@
     color: #fff;
 }
 .searchText{
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 20px;
     color: #fff;
 }
@@ -60,6 +60,7 @@
     height: auto;
     flex-grow: 0;
     align-self: center;
+    cursor: pointer;
 }
 .searchInput {
     font-family: 'Segoe UI';

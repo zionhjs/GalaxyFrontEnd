@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    background-color: #1d1d1d;
+    background-color: #2e2e2e;
     overflow: hidden;
 }
 .imgWrapper{
@@ -63,7 +63,7 @@ z-index: 10;
       z-index: 10000;
   }
   .swiperText{
-      font-family: 'Roboto';
+      font-family: 'Microsoft YaHei';
       font-size: 0.2rem;
       color: #fff;
       position: absolute;

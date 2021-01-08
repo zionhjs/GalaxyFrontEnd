@@ -9,7 +9,7 @@ import React from 'react'
 import {connect} from 'dva'
 import { OverPack } from 'rc-scroll-anim';
 import TweenOne from 'rc-tween-one';
-//import * as moment from 'moment'
+import * as moment from 'moment'
 import styles from './index.css'
 const VideoList=(props)=>{
     const {list}=props
@@ -23,7 +23,7 @@ const VideoList=(props)=>{
                             <img src={item.imgUrl} alt="" className={styles.listImg} />
                             <img src="playBtn.png" className={styles.playIcon} alt="" />
                         </div>
-                        <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
+                        <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{moment(item.date).format('YYYY[.]MM[.]DD')}</span></div>
                         <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
                     </TweenOne>
                     </OverPack>

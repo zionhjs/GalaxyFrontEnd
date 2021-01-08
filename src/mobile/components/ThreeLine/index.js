@@ -7,24 +7,19 @@
  */
 import React,{useCallback} from 'react'
 import styles from './index.css'
+import classnames from 'classnames'
 import {connect} from 'dva'
 const ThreeLine=(props)=>{
-    const {dispatch}=props
+    const {dispatch,visible}=props
     const handleClick=useCallback(()=>{
         dispatch({type:'global/toggleMenuMobile'})
-        var nav_line_1 = document.getElementById('nav-line-1');
-        var nav_line_2 = document.getElementById('nav-line-2');
-        var nav_line_3 = document.getElementById('nav-line-3');
-        nav_line_1.classList.toggle(styles["nav-line-actived-1"]);
-        nav_line_2.classList.toggle(styles["nav-line-actived-2"]);
-        nav_line_3.classList.toggle(styles["nav-line-actived-3"]);
     },[])
     return (
         <div onClick={handleClick} className={styles['nav-icon']} id="nav-icon">
-          <div className={styles["nav-line"]} id="nav-line-1" />
-          <div className={styles["nav-line"]} id="nav-line-2" />
-          <div className={styles["nav-line"]} id="nav-line-3" />
+          <div className={classnames(styles["nav-line"],{[styles["nav-line-actived-1"]]:visible})} id="nav-line-1" />
+          <div className={classnames(styles["nav-line"],{[styles["nav-line-actived-2"]]:visible})} id="nav-line-2" />
+          <div className={classnames(styles["nav-line"],{[styles["nav-line-actived-3"]]:visible})} id="nav-line-3" />
         </div>
     )
 }
-export default connect()(ThreeLine)
+export default connect(({global})=>({visible:global.menuVisibleMobile}))(ThreeLine)

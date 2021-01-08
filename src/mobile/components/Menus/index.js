@@ -9,12 +9,15 @@ import React,{useCallback} from 'react'
 import {connect} from 'dva'
 import {Link} from 'umi'
 import styles from './index.css'
-const Menus=({menus,visible})=>{
+const Menus=({menus,visible,dispatch})=>{
+    const closeMenu=useCallback(()=>{
+        dispatch({type:'global/closeMenuMobile'})
+    },[])
     return visible ? (
         <div className={styles.container}>
             <div className={styles.menuBox}>
             {menus.map((item,index)=>(
-                <Link to={item.route} key={index} className={styles.menuItem}>
+                <Link onClick={closeMenu} to={item.route} key={index} className={styles.menuItem}>
                     <img src={item.icon} alt="" className={styles.menuIcon} />
                     <span className={styles.menuText}>{item.text}</span>
                 </Link>

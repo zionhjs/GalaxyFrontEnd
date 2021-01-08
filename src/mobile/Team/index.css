@@ -24,12 +24,12 @@ text-align: center;
 }
 .bannerText{
 color: #fff;
-font-family: 'Roboto';
+font-family: 'Microsoft YaHei';
 font-size: 0.2rem;
 width: 5.42rem;
 }
 .list {
-background-color: #1d1d1d;
+background-color: #2e2e2e;
 }
 .section{
 
@@ -37,7 +37,7 @@ background-color: #1d1d1d;
 .sectionTitle{
     font-size: 0.4rem;
     color: #fff;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     text-align: center;
     height: 1.6rem;
     line-height: 1.6rem;
@@ -55,11 +55,11 @@ background-color: #1d1d1d;
 }
 .nameText{
 font-size: 0.3rem;
-font-family: 'Roboto';
+font-family: 'Microsoft YaHei';
 color: #fff;
 }
 .jobText{
-font-family: 'Roboto';
+font-family: 'Microsoft YaHei';
 color: #fff;
 font-size: 0.26rem;
 }

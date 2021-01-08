@@ -6,7 +6,7 @@
  * @FilePath: \test\src\components\ArticleList\index.css
  */
 .container {
-  background-color: #1d1d1d;
+  background-color: #2e2e2e;
   padding: 40px;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .listTitle {
-  font-family: 'Roboto';
+  font-family: 'Microsoft YaHei';
   color: #fff;
   font-size: 26px;
   margin-left: 51px;
@@ -56,14 +56,14 @@
   align-items: center;
   margin-top: 22.5px;
   margin-left: 51px;
-  font-family: 'Roboto';
+  font-family: 'Microsoft YaHei';
   font-size: 16px;
   color: rgba(255, 255, 255, 0.6);
 }
 
 .listContent {
   margin-left: 51px;
-  font-family: 'Roboto';
+  font-family: 'Microsoft YaHei';
   font-size: 16px;
   color: rgba(255, 255, 255, 0.6);
   margin-top: 23.5px;
@@ -74,7 +74,7 @@
 }
 
 .listFooter {
-font-family: 'Roboto';
+font-family: 'Microsoft YaHei';
 color: #fff;
 font-size: 14px;
 display: flex;

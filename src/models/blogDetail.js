@@ -114,6 +114,12 @@ export default {
       if(code==200){
           yield put({type:'getDetailData',payload:payload.id})
       }
+     },
+     *addCommentLike({payload},{call,put}){
+        let {code}=yield call(addLike,{type:payload.type,subjectId:payload.commentId})
+      if(code==200){
+          yield put({type:'getDetailData',payload:payload.id})
+      } 
      }
     }
 }

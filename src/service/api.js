@@ -15,6 +15,10 @@ export async function login(params){
     let result=await request('/gateway/ucenter/user/login',{method:'POST',data:params})
     return result;
   }
+  export async function logout(params){
+    let result=await request(`/gateway/ucenter/user/logout?userId=${params.userId}`,{method:'POST',data:{}})
+    return result
+  }
   export async function getTeam({currentPage,pageSize}){
     let result=await request(`/gateway/cms/team/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{}})
     return result;
@@ -96,5 +100,9 @@ export async function addLike(params){
 }
 export async function getRecentPost(params){
   let result=await request('/gateway/cms/blog/findByModalOrderByTime?page=1&size=20',{method:'POST',data:{}})
+  return result
+}
+export async function searchBlog(params){
+  let result=await request('/gateway/cms/blog/findByModal?page=0&size=0',{method:'POST',data:{title:params.title}})
   return result
 }

@@ -1,11 +1,11 @@
 .container{
-    background-color: #1d1d1d;
+    background-color:#2e2e2e;
     padding-bottom: 2.26rem;
 }
 .list{
     margin-left: 0.2rem;
     margin-right: 0.2rem;
-    background-color: #1d1d1d;
+    background-color: #2e2e2e;
 }
 .listItem{
     margin-top: 0.2rem;
@@ -24,18 +24,18 @@
     padding-left: 0.14rem;
 }
 .nameText{
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     color: #fff;
     font-size: 0.26rem;
 }
 .dateText{
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     color: rgba(255,255,255,0.6);
     font-size: 0.17rem;
     margin-left: 0.32rem;
 }
 .descText{
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     color: rgba(255,255,255,0.6);
     font-size: 0.18rem;
 }

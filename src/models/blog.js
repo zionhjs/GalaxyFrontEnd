@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-12-13 03:24:41
  * @FilePath: \GalaxyFrontEnd\src\models\blog.js
  */
-import {getArticle,delArticle,addLike} from '../service/api'
+import {getArticle,delArticle,addLike,searchBlog} from '../service/api'
 export default {
     namespace:'blog',
     state:{
@@ -53,7 +53,7 @@ export default {
             console.log('save',list)
             return {
                 ...state,
-                articles:list,
+                articles:[...list],
                 pages
             }
         },
@@ -152,6 +152,29 @@ export default {
         if(code==200){
             yield put({type:'getArticles'})
         }
+       },
+       *search({payload},{call,put,select}){
+           const {title}=payload
+           let result=yield call(searchBlog,{title})
+           console.log('searchresult',result)
+           let list=result.data.list
+           console.log('search',list)
+           list=list.map(item=>{
+               let temp=item.blogImagesList.map(v=>v.url||'')
+               let comment=item.momentCommentList?.length||0
+               return {
+                   images:temp,
+                   title:item.title||'',
+                   author:item.author||'',
+                   date:item.updatedAt||item.createdAt||'',
+                   content:item.content,
+                   read:item.browseNum,
+                   liked:item.likeNum,
+                   comment,
+                   id:item.id,
+               }
+           })
+           yield put({type:'save',payload:{list,pages:result?.data?.pages||0}})
        }
     }
 }

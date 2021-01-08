@@ -32,12 +32,12 @@
     border-radius: 40px;
 }
 .nameText{
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 35px;
     color: #fff;
 }
 .jobText{
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 21px;
     color: #fff;
 }
@@ -49,7 +49,7 @@
     -webkit-background-clip: text;
     color: transparent;
     font-size: 21px;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     margin-bottom: 118px;
 }
 .menuItem{

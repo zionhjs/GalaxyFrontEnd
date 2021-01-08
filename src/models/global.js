@@ -43,6 +43,12 @@ export default {
          menuVisibleMobile:!state.menuVisibleMobile
        }
       },
+      closeMenuMobile(state){      
+      return {
+        ...state,
+        menuVisibleMobile:false
+      }
+      },
      openContact(state){
        return {
          ...state,

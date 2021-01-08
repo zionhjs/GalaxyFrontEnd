@@ -15,7 +15,7 @@
 .container{
     padding: 40px;
     padding-bottom: 56px;
-    background-color: #1d1d1d;
+    background-color:  #2e2e2e;
 }
 .row{
     display: flex;
@@ -61,7 +61,7 @@
     margin-bottom: 15px;
 }
 .nameText{
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 26px;
     color: #fff;
     margin-left: 15px;
@@ -69,11 +69,11 @@
 .dateText{
     margin-left: 75px;
     font-size: 19px;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     color: rgba(255,255,255,0.6);
 }
 .desc{
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 19px;
     color: rgba(255,255,255,0.6);
     align-self: stretch;
@@ -160,7 +160,7 @@
     border: 1px solid #4E4E4E;
     background-color: #272727;
     margin-bottom: 10px;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 18px;
     color: #fff;
     line-height: 42px;
@@ -172,7 +172,7 @@
     border: 1px solid #4E4E4E;
     background-color: #272727;
     margin-bottom: 10px;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 18px;
     color: #fff;
     line-height: 42px;

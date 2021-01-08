@@ -1,5 +1,5 @@
 .container{
-   background-color: #1d1d1d; 
+   background-color: #2e2e2e; 
 }
 .aboutBox{
     margin-top: 0.2rem;
@@ -36,7 +36,7 @@
   .profileBox{
     
     height: 10rem;
-    background-color: #1d1d1d;
+    background-color: #2e2e2e;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -71,7 +71,7 @@
   }
   .profileText{
     font-size: 0.26rem;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
   }
   .seeMoreBtn{
     width: 2.39rem;
@@ -170,7 +170,7 @@
   }
   .illuListText{
    font-size: 0.24rem;
-   font-family: 'Roboto';
+   font-family: 'Microsoft YaHei';
    text-align: left;
   }
   .illuListTitleBox{
@@ -195,7 +195,7 @@
   }
   .stillTitle{
     font-size: 0.38rem;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     color: #fff;
     margin-left: 0.09rem;
   }
@@ -258,6 +258,6 @@
   }
   .stepContent{
     font-size: 0.16rem;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     opacity: 0.6;
   }

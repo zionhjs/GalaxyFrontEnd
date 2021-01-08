@@ -22,7 +22,7 @@ import styles from './index.css'
 
 const menus = ['Login', 'Logout', 'Dashboard']
 const MenuComponent= (props)=> {
-    const {dispatch,openDashboard,menuVisible } = props
+    const {dispatch,menuVisible } = props
     const [idx, setIdx] = useState(0)
     
     async function handleCliked(item, index) {
@@ -31,7 +31,8 @@ const MenuComponent= (props)=> {
             dispatch({type:'global/openLogin'})//打开登录框
         }
         if(item==='Logout'){
-            Router.push('/test')
+            let userId=localStorage.getItem('userId')
+           dispatch({type:'login/logout',payload:{userId}}) 
         }
         if(item==='Dashboard'){
            dispatch({type:'global/openDashboard'})

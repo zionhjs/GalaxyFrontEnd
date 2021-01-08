@@ -14,7 +14,7 @@
   height: 800px;
   display: flex;
   align-items: center;
-  background-color: #1d1d1d;
+  background-color:  #2e2e2e;
 }
 .leftBox{
   width: 20%;
@@ -56,7 +56,7 @@
   width: auto;
 }
 .midBanner{
-  background-color: #1d1d1d;
+  background-color:  #2e2e2e;
 }
 .midImg{
   max-height: 750px;
@@ -190,7 +190,7 @@
 }
 .profileBox{
   height: 900px;
-  background-color: #1d1d1d;
+  background-color:  #2e2e2e;
   padding-top: 30px;
   padding-bottom: 30px;
   display: flex;
@@ -347,7 +347,7 @@ color: #fff;
   margin-left: 16px;
 }
 .stillWrapper{
-  background-color: #1d1d1d;
+  background-color: #2e2e2e;
 }
 .stillTitleBox{
   margin-top: 55px;
@@ -420,7 +420,7 @@ color: #fff;
 }
 .stepContent{
   font-size: 16px;
-  font-family: 'Roboto';
+  font-family: 'Microsoft YaHei';
   opacity: 0.6;
 }
 .animationTitleBox{
@@ -440,7 +440,7 @@ color: #fff;
   letter-spacing: 1.33px;
 }
 .animationWrapper{
-  background-color: #1d1d1d;
+  background-color:  #2e2e2e;
 }
 
 

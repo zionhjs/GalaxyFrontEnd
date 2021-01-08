@@ -44,7 +44,7 @@
     cursor: pointer;
   }
   .footerText{
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 0.16rem;
     opacity: 0.6;
     color: #fff;
@@ -109,7 +109,7 @@
     margin-bottom: 0.44rem;
   }
   .dialogLabel{
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     font-size: 0.3rem;
     color: #000;
   }
@@ -117,7 +117,7 @@
     width: 5.6rem;
     height: 0.86rem;
     margin-top: 1.05rem;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     color: #9E9E9E;
     padding-left: 0.23rem;
     background: #F5F5F5 0% 0% no-repeat;
@@ -128,7 +128,7 @@
     width: 5.6rem;
     height: 0.86rem;
     margin-top: 0.57rem;
-    font-family: 'Roboto';
+    font-family: 'Microsoft YaHei';
     color: #9E9E9E;
     padding-left: 0.23rem;
     background: #F5F5F5 0% 0% no-repeat;

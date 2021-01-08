@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-11-21 06:13:54
  * @FilePath: \test\src\components\Dashboard\index.js
  */
-import React,{useState} from 'react'
+import React,{useState,useCallback} from 'react'
 import {connect} from 'dva'
 import classnames from 'classnames'
 import styles from './index.css'
@@ -14,9 +14,10 @@ const menus=['Interior','Exterior','Mixed','Nav to Animation']
 const Dashboard=(props)=>{
     const {avatar,visible}=props
     const [idx,setIdx]=useState(0)
-    function selectMenu(index){
+    const selectMenu=useCallback(index=>{
+        console.log('index===',index)
         setIdx(index)
-    }
+    },[])
     return (
         <div className={classnames(styles.container,{[styles.visible]:visible})}>
             <div className={styles.header}>

@@ -46,6 +46,9 @@ const BlogDetail= (props)=> {
     const addLike=useCallback(()=>{
         dispatch({type:'blogdetail/addLike',payload:{type:1,id:query.id}})
     },[query.id])
+    const addCommentLike=useCallback((commentId)=>{
+        dispatch({type:'blogdetail/addCommentLike',payload:{type:2,commentId,id:query.id}})
+    },[query.id])
     return isMobile ? (<DetailMobile />) : (
         <div className={styles.container}>
             <div className={styles.articleTitle}>{data.title}</div>
@@ -132,7 +135,7 @@ const BlogDetail= (props)=> {
                             <img className={styles.avatar} src={item.avatar} alt="" />
                             <span className={styles.commentNameText}>{item.name}</span>
                             <span className={styles.commentDateText}>{moment(item.date).format('YYYY[.]MM[.]DD')}</span>
-                            <img src="liked.png" alt="" className={styles.commentLikedIcon} />
+                            <img onClick={addCommentLike.bind(null,item.id)} src="liked.png" alt="" className={styles.commentLikedIcon} />
                             <span className={styles.commentLikedText}>{item.likes}</span>
                         </div>
                 <div className={styles.commentContent}>{item.content}</div>
