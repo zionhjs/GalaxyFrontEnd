@@ -25,6 +25,7 @@ const BlogDetail= (props)=> {
     const [name,setName]=useState('')
     const [email,setEmail]=useState('')
     const [comment,setComment]=useState('')
+    const [keyword,setKeyword]=useState('')
     const toggleChecked=useCallback(()=>{
         setChecked(!checked)
     },[])
@@ -36,6 +37,9 @@ const BlogDetail= (props)=> {
     },[])
     const commentChange=useCallback(e=>{
         setComment(e.target.value)
+    },[])
+    const keywordChange=useCallback(e=>{
+        setKeyword(e.target.value)
     },[])
     const send=useCallback(()=>{
         dispatch({type:'blogdetail/addComment',payload:{momentId:query.id,comment,name,email,checked}})
@@ -49,6 +53,9 @@ const BlogDetail= (props)=> {
     const addCommentLike=useCallback((commentId)=>{
         dispatch({type:'blogdetail/addCommentLike',payload:{type:2,commentId,id:query.id}})
     },[query.id])
+    const searchText=useCallback(()=>{
+        dispatch({type:'blogdetail/searchText',payload:{id:query.id,keyword}})
+    },[keyword,query.id])
     return isMobile ? (<DetailMobile />) : (
         <div className={styles.container}>
             <div className={styles.articleTitle}>{data.title}</div>
@@ -71,8 +78,8 @@ const BlogDetail= (props)=> {
                     <div className={styles.searchBox}>
                         <div className={styles.searchTitle}>Blog Search</div>
                         <div className={styles.inputView}>
-                            <input placeholder="Blog Search" className={styles.searchInput} />
-                            <img src="search.png" className={styles.searchIcon} />
+                            <input value={keyword} onChange={keywordChange} placeholder="Blog Search" className={styles.searchInput} />
+                            <img onClick={searchText} src="search.png" className={styles.searchIcon} />
                         </div>
                     </div>
                     <div className={styles.getNews}>

@@ -5,15 +5,15 @@ export default {
   treeShaking: true,
   proxy:{
     "/gateway":{
-      'target':'http://localhost:9400',
+      'target':'http://54.183.157.253:9400',
       //'changeOrigin':true,
       //'pathRewrite':{'^/api':''},
     },
     "/video":{
-      'target':'http://localhost:9800',
+      'target':'http://54.183.157.253:9800',
     },
     "/blog":{
-      'target':'http://localhost:9900',
+      'target':'http://54.183.157.253:9900',
     },
 
   },

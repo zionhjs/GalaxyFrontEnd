@@ -18,7 +18,8 @@ export default {
            recentPosts:[],
            tags:[],
            comments:[]
-       }
+       },
+       backup:''//文章的缓存用于恢复文章原来的数据
     },
     reducers:{
         openComment(state){
@@ -40,6 +41,36 @@ export default {
                 data:payload
             }
         },
+        replaceText(state,{payload}){
+            const {data}=state
+            let {article}=data
+            article=article.replace(payload,'<span class="text-selection">$&</span>')
+            console.log('replaceText')
+            return {
+                ...state,
+                data:{
+                    ...data,
+                    article
+                }
+
+            }
+        },
+        restoreArticle(state,{payload}){
+            const {data}=state;
+            return {
+                ...state,
+                data:{
+                    ...data,
+                    article:payload
+                }
+            }
+        },
+        backupArticle(state,{payload}){
+        return {
+            ...state,
+            backup:payload
+        }
+        }
        
     },
     effects:{
@@ -82,6 +113,7 @@ export default {
             tags,
         }
        yield put({type:'save',payload:result})
+       yield put({type:'backupArticle',payload:data?.content||''})
      },
      *addComment({payload:{momentId,name,email,checked,comment}},{call,put,select}){
          let {code}=yield call(addComment,{momentId,comment,name,email,comment})
@@ -120,6 +152,11 @@ export default {
       if(code==200){
           yield put({type:'getDetailData',payload:payload.id})
       } 
+     },
+     *searchText({payload},{call,put,select}){
+         const {backup}=yield select(state=>state.blogdetail)        
+          yield put({type:'restoreArticle',payload:backup})        
+         yield put({type:'replaceText',payload:payload.keyword})
      }
     }
 }

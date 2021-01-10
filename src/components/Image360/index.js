@@ -9,22 +9,22 @@ import React,{useCallback, useEffect,useState} from 'react'
 import {connect} from 'dva'
 import classnames from 'classnames'
 import { Viewer } from 'photo-sphere-viewer';
-import * as THREE from 'three'
+//import * as THREE from 'three'
 import styles from './index.css'
 import 'photo-sphere-viewer/dist/photo-sphere-viewer.css'
 
-THREE.Cache.enabled = false;
+//THREE.Cache.enabled = false;
 const Image360=(props)=>{
     const {visible,currentItem,dispatch}=props;
        const [viewer,setViewer]=useState(null)
     useEffect(()=>{ 
         if(viewer){
-            viewer.setPanorama('ciwo.jpg')
+            viewer.setPanorama(currentItem.imgUrl)
         }else{
             console.log(viewer)
        let temp = new Viewer({
               container: document.querySelector('#viewer'),
-              panorama:'ciwo.jpg'
+              panorama:currentItem.imgUrl
             });
             setViewer(temp) 
         }
