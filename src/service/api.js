@@ -38,11 +38,11 @@ export async function uploadImage(params){
   return result
 }
 export async function uploadVideo(params){
-  let result=await request('/video/uploadVideo',{method:'POST',body:params})
+  let result=await request('/gateway/video/uploadVideo',{method:'POST',body:params})
   return result
 }
 export async function updateVideoUrl(params){
-  let result=await request('/video/uploadVideoUrl',{method:'POST',body:params})
+  let result=await request('/gateway/video/uploadVideoUrl',{method:'POST',body:params})
   return result;
 }
 export async function updateVideo(params){
@@ -66,7 +66,7 @@ export async function updateImgText(params){
   return result
 }
 export async function addArticle(params){
-  let result=await request('/blog/add',{method:'POST',data:{...params}})
+  let result=await request('/gateway/cms/blog/add',{method:'POST',data:{...params}})
   return result
 }
 export async function updateArticle(params){
@@ -74,7 +74,7 @@ export async function updateArticle(params){
   return result
 }
 export async function getArticle({currentPage,pageSize}){
-  let result=await request(`/blog/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{}})
+  let result=await request(`/gateway/cms/blog/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{}})
   return result;
 }
 export async function getArticleDetail(params){
@@ -82,7 +82,7 @@ export async function getArticleDetail(params){
   return result
 }
 export async function delArticle(params){
-  let result=await request('/blog/delete?id='+params.id,{method:'POST'})
+  let result=await request('/gateway/cms/blog/delete?id='+params.id,{method:'POST'})
   return result;
 }
 export async function addComment(params){

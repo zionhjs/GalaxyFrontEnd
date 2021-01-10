@@ -19,6 +19,7 @@
 .swiperImg {
     height: 835px;
     width: auto;
+    transform: scaleX(0.7047);
 }
 .activeItem {
   transform: scaleX(1.35); 
