@@ -3,20 +3,12 @@
 import px2rem from 'postcss-plugin-px2rem';
 export default {
   treeShaking: true,
-  /* proxy:{
+   /* proxy:{
     "/gateway":{
       'target':'http://54.183.157.253:9400',
-      'changeOrigin':true,
-      'pathRewrite':{'^/api':''},
     },
-     "/video":{
-      'target':'http://54.183.157.253:9800',
-    },
-    "/blog":{
-      'target':'http://54.183.157.253:9900',
-    }, 
 
-  }, */
+  },  */
   routes: [
     {
       path: '/',
