@@ -56,7 +56,7 @@ return response;
 * 配置request请求时的默认参数
 */
 const request = extend({
-  prefix:'http://ec2-54-177-193-162.us-west-1.compute.amazonaws.com:8082',
+  prefix:'https://ec2-54-177-193-162.us-west-1.compute.amazonaws.com:8082',
    errorHandler, // 默认错误处理
 //credentials: 'include', // 默认请求是否带上cookie
 });
