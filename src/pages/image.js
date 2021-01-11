@@ -2,6 +2,13 @@
  * @Author: xingzai
  * @Date: 2020-11-25 05:29:09
  * @LastEditors: xingzai
+ * @LastEditTime: 2021-01-12 05:15:10
+ * @FilePath: \GalaxyFrontEnd\src\pages\image.js
+ */
+/*
+ * @Author: xingzai
+ * @Date: 2020-11-25 05:29:09
+ * @LastEditors: xingzai
  * @LastEditTime: 2020-12-11 07:56:52
  * @FilePath: \GalaxyFrontEnd\src\pages\image.js
  */
@@ -15,7 +22,7 @@ import ImageMobile from '../mobile/components/ImageMobile'
 import styles from './image.css'
 const role="admin"
 const ImagePage= ({dispatch})=> {
-    const isMobile = useMediaQuery({ maxWidth: 767 })
+    const isMobile = useMediaQuery({ maxWidth: 1224 })
     useEffect(()=>{
         dispatch({type:'image/getImage'})
     },[])    

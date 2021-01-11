@@ -50,6 +50,14 @@ export default {
                 isLast:payload
             }
         },
+        reset(state){
+            return {
+                ...state,
+                currentPage:1,
+                isLast:false,
+                images:[]
+            }
+        },
         saveUpdateImg(state,{payload}){
          let {col1,col2,col3,col4,images}=state;
          const {id}=payload
@@ -336,6 +344,7 @@ export default {
             form.append('level',level)
            const result= yield call(uploadImage,form)
            console.log('uploadimg',result)
+           yield put({type:'reset'})
            let data= yield put({type:'getImage'})
                console.log('data===',data)
         },
