@@ -7,6 +7,7 @@
  */
 import _ from 'lodash'
 import {updateImg} from '../service/api'
+import {subscribe} from '../service/chat'
 export default {
     namespace:'chat',
     state:{
@@ -60,5 +61,9 @@ export default {
             yield put({type:'addMessage',payload:{owner:'other',sender:'fgdd',avatar:'avatar.jpg',msg:payload.msg}})
             cb()
         },
+        *subscribe({payload},{call,put}){
+            const {userEmail,userNumber}=payload
+            let result=yield call(subscribe,{userEmail,userNumber})
+        }
     }
 }

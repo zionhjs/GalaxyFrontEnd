@@ -10,6 +10,8 @@ import styles from './index.css'
 
 const Footer=(props)=>{
   const {dispatch,contactVisible,chatToken,chatVisible}=props
+  const [name,setName]=useState('')
+  const [email,setEmail]=useState('')
   const closeDialog=useCallback(()=>{
     if(chatToken){
       dispatch({type:'chat/closeChat'})
@@ -26,8 +28,15 @@ const Footer=(props)=>{
       
   },[chatToken])
   const handleSubmit=useCallback(()=>{
+    dispatch({type:'chat/subscribe',payload:{userEmail:email,userNumber:name}})
     dispatch({type:'chat/openChat'})
     dispatch({type:'global/closeContact'})
+  },[email,name])
+  const nameChange=useCallback(e=>{
+    setName(e.target.value)
+  },[])
+  const emailChange=useCallback(e=>{
+    setEmail(e.target.value)
   },[])
   return (
     <div className={styles.footer}>
@@ -59,8 +68,8 @@ const Footer=(props)=>{
         <div className={styles.dialogTitle}>conversation</div>
         <div className={styles.dialogLabel}>Please fill in the following</div>
         <div className={styles.dialogLabel}>information first</div>
-        <input className={styles.nameInput} placeholder="Name" />
-        <input className={styles.emailInput} placeholder="Email" />
+        <input value={name} onChange={nameChange} className={styles.nameInput} placeholder="Name" />
+        <input value={email} onChange={emailChange} className={styles.emailInput} placeholder="Email" />
         <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div>
       </TweenOne> : null}
       <Link className={styles.anchor} to="top"><img src="up.png" className={styles.upIcon} alt="" /></Link>

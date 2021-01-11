@@ -79,7 +79,7 @@ const Waterfall=(props)=> {
         dispatch({type:'image/updateImgText'})
     },[])
     const loadMore=useCallback(()=>{
-        dispatch({type:'image/loadMore'})
+        dispatch({type:'image/getImage'})
     },[])
     return (
         <div className={styles.container}>

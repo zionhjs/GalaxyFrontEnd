@@ -41,9 +41,10 @@ export default {
         const res=yield call(login,{phone,password})
         console.log(res)
         if(res.code==200){
-            const {token,userId}=res.data;
+            const {token,userId,roleName}=res.data;
             localStorage.setItem('artjwt',token)
             localStorage.setItem('userId',userId)
+            yield put({type:'global/setRole',payload:roleName})
             yield put({type:'global/closeAll'})
             yield put({type:'global/closeMenu'})
         }

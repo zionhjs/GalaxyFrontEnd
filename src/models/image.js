@@ -25,7 +25,7 @@ export default {
     state:{
         currentPage:1,//当前分页
         pageSize:20,//分页大小
-        hasMore:true,//是否有更多数据
+        isLast:false,//是否是最后一页
         bigImageVisible:false,//大图对话框是否可见
         img360Visible:false,//360对话框是否可见
         currentIndex:0,
@@ -33,11 +33,10 @@ export default {
         uploadImg:'',//要上传的图片的路径
         name:'',//要上传的图片的标题
         desc:'',//要上传的图片的描述
-        suffix:'',//要上传图片的suffix
-        level:'',//要上传图片的level
+        suffix:'Interior',//要上传图片的suffix
+        level:'star',//要上传图片的level
         banners:banners,
         images:[],
-        pages:0,//图片数据总页数
         col1:[],
         col2:[],
         col3:[],
@@ -45,10 +44,10 @@ export default {
 
     },
     reducers:{
-        setHasMore(state,{payload}){
+        setIsLast(state,{payload}){
             return {
                 ...state,
-                hasMore:payload
+                isLast:payload
             }
         },
         saveUpdateImg(state,{payload}){
@@ -242,20 +241,13 @@ export default {
          }
         },
         save(state,{payload}){
-            const {list,pages}=payload
-            console.log('pages====',pages)
+            const {list}=payload
+            const {images}=state
             return {
                 ...state,
-                images:list,
-                pages
-            }
-        },
-        saveMore(state,{payload}){
-            const {images}=state
-          return {
-              ...state,
-              images: images.concat(payload)
-          }
+                images:images.concat(list)
+            }            
+            
         },
          sortByRate(state){
       const {images}=state;
@@ -305,8 +297,8 @@ export default {
     },
     effects:{
         *getImage({payload},{call,put,select}){
-            yield put({type:'setPage',payload:1})
-         let {currentPage,pageSize}=yield select(state=>state.image)
+         let {currentPage,pageSize,isLast}=yield select(state=>state.image)
+         if(isLast!=true){
             const ret=yield call(getImages,{currentPage,pageSize})
             let list=ret?.data?.list||[]
             console.log('ret===',ret)
@@ -322,59 +314,18 @@ export default {
                     level:item.level,
                 }
             })          
-            yield put({type:'save',payload:{list,pages:ret?.data?.pages||0}})
-            console.log('ret.data.pages',ret?.data?.pages)
-            console.log('currentPage<ret.data.pages?',currentPage<(ret?.data?.pages||0))
-            if(currentPage<(ret?.data?.pages||0)){
-                yield put({type:'setHasMore',payload:true})
-                console.log('sethasmore')
+            yield put({type:'save',payload:{list}})
+            yield put({type:'setIsLast',payload:ret?.data?.isLastPage})
+            if(ret?.data?.hasNextPage==true){
                 yield put({type:'setPage',payload:(currentPage+1)})
             }
             yield put({type:'sortByRate'})
             yield put({type:'divideCol'}) 
+
+         }
+            
         },
-        *loadMore({payload},{call,put,select}){
-            let {currentPage,pageSize,pages,hasMore}=yield select(state=>state.image)           
-            if(currentPage<pages){
-               const ret=yield call(getImages,{currentPage,pageSize})
-               let list=ret?.data.list||[]
-               list= list.map((item,index)=>{
-                return {
-                    id:item.id,
-                    name:item.title,
-                    date:item.createdAt,
-                    desc:item.description,
-                    imgUrl:item.objectUrl240,
-                    rating:item.rating,
-                    suffix:item.suffix,
-                    level:item.level,
-                }
-            })
-            yield put({type:'saveMore',payload:list})
-            yield put({type:'setPage',payload:currentPage+1})
-            yield put({type:'setHasMore',payload:true})
-            }
-            else if(currentPage==pages&&hasMore){
-                const ret=yield call(getImages,{currentPage,pageSize})
-                let list=ret?.data.list||[]
-                list= list.map((item,index)=>{
-                 return {
-                     id:item.id,
-                     name:item.title,
-                     date:item.createdAt,
-                     desc:item.description,
-                     imgUrl:item.objectUrl240,
-                     rating:item.rating,
-                     suffix:item.suffix,
-                     level:item.level,
-                 }
-             })
-             yield put({type:'saveMore',payload:list})
-             yield put({type:'setHasMore',payload:false})
-            }
-            yield put({type:'sortByRate'})
-            yield put({type:'divideCol'}) 
-        },
+        
         *upload({payload},{call,put,select}){
             const {uploadImg,name,desc,suffix,level}=yield select(state=>state.image)
             let form=new FormData()

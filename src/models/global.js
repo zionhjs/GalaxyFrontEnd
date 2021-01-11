@@ -16,7 +16,7 @@ export default {
     namespace:'global',
     state:{
       chatToken:null,
-      role:'admin',
+      role:'',
       menus:[{ icon: 'home.png', text: 'Home',route:'/home' },
       { icon: 'image.png', text: 'Images',route:'/image' },
       { icon: 'animation.png', text: 'Animations',route:'/animation' },
@@ -31,6 +31,12 @@ export default {
       menuVisibleMobile:false,//移动端导航栏是否可见
     },
     reducers:{
+      setRole(state,{payload}){
+        return {
+          ...state,
+          role:payload
+        }
+      },
       setCurrentNav(state,{payload}){
        return {
          ...state,
