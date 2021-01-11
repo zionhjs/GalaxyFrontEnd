@@ -305,6 +305,7 @@ export default {
     },
     effects:{
         *getImage({payload},{call,put,select}){
+            console.log('更新了')
          let {currentPage,pageSize,isLast}=yield select(state=>state.image)
          if(isLast!=true){
             const ret=yield call(getImages,{currentPage,pageSize})
