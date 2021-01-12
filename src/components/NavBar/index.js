@@ -2,6 +2,7 @@ import React,{useState,useCallback, useEffect} from 'react'
 import {connect} from 'dva'
 import { Element } from 'rc-scroll-anim';
 import _ from 'lodash'
+import router from 'umi/router'
 import classnames from 'classnames'
 import styles from './index.css'
 const NavBar=(props)=>{
@@ -11,6 +12,15 @@ const NavBar=(props)=>{
     let {navButtons,currentNav,dispatch}=props;    
     const handleClick=useCallback((item,index)=>{
      dispatch({type:'global/setCurrentNav',payload:index})
+     if(index==4){
+       dispatch({type:'global/setCurrentMenu',payload:2})
+      router.push('/animation')
+     }else {
+      dispatch({type:'global/setCurrentMenu',payload:1})
+      dispatch({type:'image/divideCol',payload:{currentNav:index}})
+       router.push('/image')
+       
+     }
     },[])
     useEffect(()=>{
      

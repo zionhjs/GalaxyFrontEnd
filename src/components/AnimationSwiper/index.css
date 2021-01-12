@@ -19,12 +19,23 @@
 .swiperImg {
     height: 835px;
     width: auto;
+    transform: scaleX(0.7047);
 }
 .activeItem {
   transform: scaleX(1.35); 
 }
 .preItem,.nextItem{
  transform: scale(0.48,0.9);
+}
+.preItem .swiperImg{
+    height: 835px;
+    width: auto;
+    transform: scale(2.083,1.111); 
+}
+.nextItem .swiperImg{
+    height: 835px;
+    width: auto;
+    transform: scale(2.083,1.111); 
 }
 .container :global(.swiper-pagination-custom){
     bottom: 0.03906rem;

@@ -22,6 +22,7 @@ export default {
       { icon: 'animation.png', text: 'Animations',route:'/animation' },
       { icon: 'edit.png', text: 'Blogs',route:'/blogs' },
       { icon: 'team.png', text: 'Team',route:'/team' }],//顶部导航菜单
+      currentMenu:0,//当前菜单选中索引
       navButtons: ['Interior','Exterior','360','Mixed','Nav to Animation'],//副导航菜单
       currentNav:3,//副导航当前选中索引
       contactVisible:false,//底部聊天对话框是否可见
@@ -31,6 +32,12 @@ export default {
       menuVisibleMobile:false,//移动端导航栏是否可见
     },
     reducers:{
+      setCurrentMenu(state,{payload}){
+       return {
+         ...state,
+         currentMenu:payload
+       }
+      },
       setRole(state,{payload}){
         return {
           ...state,

@@ -13,11 +13,11 @@ import {Link} from 'umi'
 import classnames from 'classnames'
 import styles from './index.css'
 const Header=(props)=>{
-  const {menus,openSub=function(){}}=props
+  const {menus,openSub=function(){},idx,dispatch}=props
   const [active,setActive]=useState(false)
   function handleClick(item, index) {
     //props.history.push('/test')
-    setIdx(index)
+    dispatch({type:'global/setCurrentMenu',payload:index})
     openSub()
     if(item.text==='Home'){
       router.push('home')
@@ -37,8 +37,6 @@ const Header=(props)=>{
   const blurHandler=useCallback(()=>{
     setActive(false)
   },[])
-  
-    const [idx, setIdx] = useState(0);//顶部导航菜单索引
     return (
         <div className={styles.header}>
         <Link to="/"><img src="/purplelogo.png" alt="" className={styles.logo} /></Link>
@@ -59,4 +57,4 @@ const Header=(props)=>{
       </div>
     )
 }
-export default connect(({global})=>({menus:global.menus}))(Header)
+export default connect(({global})=>({menus:global.menus,idx:global.currentMenu}))(Header)

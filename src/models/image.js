@@ -266,11 +266,20 @@ export default {
           images,
       }
         }, 
-        divideCol(state){
+        divideCol(state,{payload}){
+            const {currentNav}=payload
             const {images}=state;
-            console.log('imagesdivide===',images)
-            console.log('divide',images)
-            let len=images.length;
+            let temp;
+            if(currentNav==0){
+                temp=_.filter(images,{suffix:'interior'})
+            }else if(currentNav==1){
+                temp=_.filter(images,{suffix:'exterior'})
+            }else if(currentNav==2){
+                temp=_.filter(images,{suffix:'360'})
+            }else {
+                temp=images
+            }
+            let len=temp.length;
             let col1=[]
             let col2=[]
             let col3=[]
@@ -307,7 +316,9 @@ export default {
         *getImage({payload},{call,put,select}){
             console.log('更新了')
          let {currentPage,pageSize,isLast}=yield select(state=>state.image)
+         let {currentNav}=yield select(state=>state.global)
          if(isLast!=true){
+             console.log('isLast',isLast!=true)
             const ret=yield call(getImages,{currentPage,pageSize})
             let list=ret?.data?.list||[]
             console.log('ret===',ret)
@@ -329,7 +340,7 @@ export default {
                 yield put({type:'setPage',payload:(currentPage+1)})
             }
             yield put({type:'sortByRate'})
-            yield put({type:'divideCol'}) 
+            yield put({type:'divideCol',payload:{currentNav}}) 
 
          }
             

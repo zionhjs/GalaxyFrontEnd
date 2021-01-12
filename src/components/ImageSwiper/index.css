@@ -22,11 +22,10 @@
     background-color: transparent;
 }
 .swiperImg {
-    height: 937px;
-    width: auto;
+   width: 100%;
+   height: auto;
 }
 .activeItem {
-  transform: scaleX(1.35); 
 }
 
 .container :global(.swiper-pagination-custom){

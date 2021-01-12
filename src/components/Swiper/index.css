@@ -27,6 +27,16 @@
 .preItem,.nextItem{
  transform: scale(0.48,0.9);
 }
+.preItem .swiperImg{
+    height: 835px;
+    width: auto;
+    transform: scale(2.083,1.111); 
+}
+.nextItem .swiperImg{
+    height: 835px;
+    width: auto;
+    transform: scale(2.083,1.111); 
+}
 .container :global(.swiper-pagination-custom){
     bottom: 0.03906rem;
     left: 0;

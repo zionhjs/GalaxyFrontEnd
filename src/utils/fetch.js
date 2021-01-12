@@ -2,6 +2,13 @@
  * @Author: xingzai
  * @Date: 2021-01-11 22:00:49
  * @LastEditors: xingzai
+ * @LastEditTime: 2021-01-12 07:48:03
+ * @FilePath: \GalaxyFrontEnd\src\utils\fetch.js
+ */
+/*
+ * @Author: xingzai
+ * @Date: 2021-01-11 22:00:49
+ * @LastEditors: xingzai
  * @LastEditTime: 2021-01-11 22:00:50
  * @FilePath: \GalaxyFrontEnd\src\utils\fetch.js
  */
@@ -56,7 +63,7 @@ return response;
 * 配置request请求时的默认参数
 */
 const request = extend({
-  prefix:'https://ec2-54-177-193-162.us-west-1.compute.amazonaws.com:8082',
+  prefix:'http://ec2-54-177-193-162.us-west-1.compute.amazonaws.com:8082',
    errorHandler, // 默认错误处理
 //credentials: 'include', // 默认请求是否带上cookie
 });
