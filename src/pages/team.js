@@ -11,7 +11,7 @@ import LoadMore from '../components/LoadMore'
 const TeamPage=(props)=> {
     const {dispatch,teamData,role,bannerImg,bannerTitle,bannerText}=props;
     console.log('teamdata===d=d',teamData)
-    const isMobile = useMediaQuery({ maxDeviceWidth: 1224 })
+    const isMobile = useMediaQuery({ maxWidth: 1224 })
     const addMember=useCallback((index)=>{
         dispatch({type:'team/addMember',payload:index})
         window.scrollBy(0,1)

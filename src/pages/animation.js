@@ -15,7 +15,7 @@ import AnimationSwiper from '../components/AnimationSwiper'
 import AnimationMobile from '../mobile/Animation'
 import styles from './animation.css'
 const AnimationPage=({dispatch})=> {
-  const isMobile = useMediaQuery({ maxDeviceWidth: 1224 })
+  const isMobile = useMediaQuery({ maxWidth: 1224 })
   useEffect(()=>{
     dispatch({type:'animation/getAnimation'})},[])
   return isMobile ? (<AnimationMobile />) : (

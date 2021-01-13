@@ -14,7 +14,7 @@ import DetailMobile from '../mobile/BlogDetail'
 import styles from './blogDetail.css'
 const BlogDetail= (props)=> {
     const {data,dispatch,location:{query}}=props;
-    const isMobile = useMediaQuery({ maxDeviceWidth: 1224 })
+    const isMobile = useMediaQuery({ maxWidth: 1224 })
     useEffect(()=>{
         dispatch({type:'blogdetail/getDetailData',payload:query.id})
         },[query.id])
