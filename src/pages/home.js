@@ -32,7 +32,7 @@ import { useMediaQuery } from 'react-responsive'
 import MobileHome from '../mobile/Home'
 const HomePage=(props)=> {
   const {profiles,illustration,stillImages,aniImages,dispatch}=props;  
-  const isMobile = useMediaQuery({ maxWidth: 1224 })
+  const isMobile = useMediaQuery({ maxDeviceWidth: 1224 })
   const toPage=useCallback(item=>{
     dispatch({type:'global/setCurrentNav',payload:item.nav})
     router.push(item.route)

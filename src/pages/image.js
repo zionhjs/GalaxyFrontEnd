@@ -22,7 +22,7 @@ import ImageMobile from '../mobile/components/ImageMobile'
 import styles from './image.css'
 const role="admin"
 const ImagePage= ({dispatch})=> {
-    const isMobile = useMediaQuery({ maxWidth: 1224 })
+    const isMobile = useMediaQuery({ maxDeviceWidth: 1224 })
     useEffect(()=>{
         dispatch({type:'image/getImage'})
     },[])    

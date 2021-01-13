@@ -11,7 +11,6 @@
     right:0.3rem;
     height:0.36rem;
     width:0.36rem;
-    transform-style: preserve-3d;
     perspective: 6rem;
     z-index: 20005;
     cursor: pointer;
@@ -25,7 +24,6 @@
     background: white;
     transition: all .1s ease-out;
   }
-  
   /* onhover */
   .nav-icon:hover #nav-line-1{
     /* margin-right:0; */
