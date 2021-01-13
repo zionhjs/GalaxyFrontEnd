@@ -18,7 +18,7 @@ const Image360=(props)=>{
     const {visible,currentItem,dispatch}=props;
        const [viewer,setViewer]=useState(null)
     useEffect(()=>{ 
-        if(viewer){
+       if(viewer){
             viewer.setPanorama(currentItem.imgUrl)
         }else{
             console.log(viewer)
@@ -34,7 +34,7 @@ const Image360=(props)=>{
             window.dispatchEvent(event);
         } else if(document.createEventObject) {
             window.fireEvent("onresize");
-        }    
+        }
           
                 
     },[currentItem.imgUrl])
@@ -54,8 +54,9 @@ const Image360=(props)=>{
             <img onClick={close} src="close.png" className={styles.closeIcon} alt="" />
             <img onClick={pre} className={styles.pre} src="pre.png" alt="" />
             <img onClick={next} className={styles.next} src="next.png" alt="" />
-           <div id="viewer" className={styles.picBox}></div>
-    <div className={styles.desc}>{currentItem.desc}</div>
+           <div id="viewer" className={classnames(styles.picBox,{[styles.hidden]:currentItem.suffix!='360'})}></div>
+           <div className={classnames(styles.picBox,{[styles.hidden]:currentItem.suffix=='360'})}><img src={currentItem.imgUrl} alt="" className={styles.pic} /></div>
+          <div className={styles.desc}>{currentItem.desc}</div>
         </div>
     )
 }

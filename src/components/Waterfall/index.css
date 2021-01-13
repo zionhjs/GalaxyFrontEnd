@@ -2,7 +2,6 @@
     background-color:  #2e2e2e;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 .waterfall{
     display: flex;
@@ -151,6 +150,7 @@ align-items: center;
     text-align: center;
     line-height: 45px;
     cursor: pointer;
+    align-self: center;
 }
 .loadMoreImg{
     position: absolute;

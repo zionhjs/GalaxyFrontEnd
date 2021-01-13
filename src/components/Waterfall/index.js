@@ -12,6 +12,9 @@ const {Option}=Select
 const Waterfall=(props)=> {
     let { col1,col2,col3,col4,currentItem,showEdit,dispatch, role,uploadImg,uploadName,uploadDesc} = props
     console.log('col1====',col1)
+    console.log('col2',col2)
+    console.log('col3',col3)
+    console.log('col4',col4)
     const [url,seturl]=useState('')
     const nameChange=useCallback((e)=>{
         dispatch({type:'image/setName',payload:e.target.value})
@@ -104,8 +107,8 @@ const Waterfall=(props)=> {
                                     <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} />
                                     <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
                                     <Select value={currentItem.suffix} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
-                                    <Option className={styles.dropOption} value="interior">Interior</Option>
-                                    <Option className={styles.dropOption} value="exterior">Exterior</Option>
+                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
+                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>
                                     </Select>
                                     <Select value={currentItem.level} onChange={levelChange} bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">

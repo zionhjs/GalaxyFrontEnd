@@ -271,10 +271,13 @@ export default {
             const {images}=state;
             let temp;
             if(currentNav==0){
-                temp=_.filter(images,{suffix:'interior'})
+                temp=_.filter(images,{suffix:'Interior'})
+                console.log('temp===interior',temp)
             }else if(currentNav==1){
-                temp=_.filter(images,{suffix:'exterior'})
+                console.log('temp===exterior',temp)
+                temp=_.filter(images,{suffix:'Exterior'})
             }else if(currentNav==2){
+                console.log('temp===360',temp)
                 temp=_.filter(images,{suffix:'360'})
             }else {
                 temp=images
@@ -285,16 +288,16 @@ export default {
             let col3=[]
             let col4=[]
             for(let i=0;i<len;i=i+4){
-                console.log('images',images[i])
-              col1.push(images[i])
+                console.log('images',temp[i])
+              col1.push(temp[i])
               if(i<len-1){
-                col2.push(images[i+1])
+                col2.push(temp[i+1])
               }
               if(i<len-2){
-                col3.push(images[i+2])
+                col3.push(temp[i+2])
               }
               if(i<len-3){
-                col4.push(images[i+3])
+                col4.push(temp[i+3])
               }
             }    
             return {
@@ -320,6 +323,7 @@ export default {
          if(isLast!=true){
              console.log('isLast',isLast!=true)
             const ret=yield call(getImages,{currentPage,pageSize})
+            console.log('status==1',ret)
             let list=ret?.data?.list||[]
             console.log('ret===',ret)
            list= list.map((item,index)=>{

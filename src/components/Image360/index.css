@@ -46,6 +46,9 @@ align-items: center;
     height: auto;
     cursor: pointer;
 }
+.hidden{
+    display: none;
+}
 .next{
     right: 32px;
     position: absolute;
