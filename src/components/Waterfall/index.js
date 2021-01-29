@@ -106,15 +106,15 @@ const Waterfall=(props)=> {
                                 <div className={styles.editLeft}>
                                     <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} />
                                     <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
-                                    <Select value={currentItem.suffix} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
-                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
-                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
+                                    <Select value={currentItem.status} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
+                                    <Option className={styles.dropOption} value="interior">Interior</Option>
+                                    <Option className={styles.dropOption} value="exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>
                                     </Select>
                                     <Select value={currentItem.level} onChange={levelChange} bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
-                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
-                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
-                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    <Option className={styles.levelDropdownoption} value="star">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="galaxy">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="universe">universe</Option>
                                     </Select>
                                 </div>
                                 <div className={styles.editRight}>
@@ -143,15 +143,15 @@ const Waterfall=(props)=> {
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} />
                                 <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
-                                <Select value={currentItem.suffix} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
-                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
-                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
+                                <Select value={currentItem.status} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
+                                    <Option className={styles.dropOption} value="interior">Interior</Option>
+                                    <Option className={styles.dropOption} value="exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>
                                 </Select>
                                 <Select value={currentItem.level} onChange={levelChange} bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
-                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
-                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
-                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    <Option className={styles.levelDropdownoption} value="star">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="galaxy">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="universe">universe</Option>
                                     </Select>
                             </div>
                             <div className={styles.editRight}>
@@ -181,15 +181,15 @@ const Waterfall=(props)=> {
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} />
                                 <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
-                                <Select value={currentItem.suffix} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
-                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
-                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
+                                <Select value={currentItem.status} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
+                                    <Option className={styles.dropOption} value="interior">Interior</Option>
+                                    <Option className={styles.dropOption} value="exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>
                                 </Select>
                                 <Select value={currentItem.level} onChange={levelChange} bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
-                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
-                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
-                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    <Option className={styles.levelDropdownoption} value="star">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="galaxy">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="universe">universe</Option>
                                     </Select>
                             </div>
                             <div className={styles.editRight}>
@@ -219,15 +219,15 @@ const Waterfall=(props)=> {
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
                                 <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
-                                <Select value={currentItem.suffix} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
-                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
-                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
+                                <Select value={currentItem.status} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
+                                    <Option className={styles.dropOption} value="interior">Interior</Option>
+                                    <Option className={styles.dropOption} value="exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>
                                 </Select>
                                 <Select value={currentItem.level} onChange={levelChange} bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
-                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
-                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
-                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    <Option className={styles.levelDropdownoption} value="star">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="galaxy">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="universe">universe</Option>
                                     </Select>
                             </div>
                             <div className={styles.editRight}>
@@ -251,15 +251,15 @@ const Waterfall=(props)=> {
                                 <div className={styles.uploadLeft}>
                                     <input value={uploadName||''} onChange={uploadNameChange} className={styles.uploadInput} />
                                     <input value={uploadDesc||''} onChange={uploadDescChange} className={styles.uploadTextArea} />
-                                    <Select onChange={uploadSuffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
-                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
-                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
+                                    <Select onChange={uploadSuffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
+                                    <Option className={styles.dropOption} value="interior">Interior</Option>
+                                    <Option className={styles.dropOption} value="exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>
                                 </Select>
                                 <Select onChange={uploadLevelChange} bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
-                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
-                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
-                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    <Option className={styles.levelDropdownoption} value="star">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="galaxy">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="universe">universe</Option>
                                     </Select>
                                 </div>
                                 <div className={styles.uploadRight}>

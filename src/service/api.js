@@ -27,9 +27,9 @@ export async function login(params){
     let result=await request('/gateway/cms/team/delete?id='+params.id,{method:'POST'})
     return result
   }
-export async function getImages({currentPage,pageSize,status}){
+export async function getImages({currentPage,pageSize}){
   console.log('currentPage',currentPage)
-  let result=await request(`/gateway/upload/images/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{status}})
+  let result=await request(`/gateway/upload/images/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{}})
   return result
 }
 export async function uploadImage(params){
