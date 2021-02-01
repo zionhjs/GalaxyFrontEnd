@@ -87,7 +87,7 @@ const VideoList=(props)=> {
                                 <div className={styles.editLeft}>
                                     <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} />
                                     <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
-                                    <Select value={currentItem.suffix} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
+                                    <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
                                     <Option className={styles.dropOption} value="Interior">Interior</Option>
                                     <Option className={styles.dropOption} value="Exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>
@@ -146,7 +146,7 @@ const VideoList=(props)=> {
                                     <div className={styles.editLeft}>
                                         <input value={currentItem.name||''} onChange={nameChange||''} className={styles.editInput} />
                                         <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea}  />
-                                        <Select value={currentItem.suffix} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
+                                        <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
                                     <Option className={styles.dropOption} value="Interior">Interior</Option>
                                     <Option className={styles.dropOption} value="Exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>
@@ -204,7 +204,7 @@ const VideoList=(props)=> {
                                     <div className={styles.editLeft}>
                                         <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput}  />
                                         <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea}  />
-                                        <Select value={currentItem.suffix} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
+                                        <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
                                     <Option className={styles.dropOption} value="Interior">Interior</Option>
                                     <Option className={styles.dropOption} value="Exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>

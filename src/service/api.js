@@ -90,6 +90,10 @@ export async function addComment(params){
   let result=await request('/gateway/cms/moment/comment/add',{method:'POST',data:{...params}})
   return result
 }
+export async function deleteComment(params) {
+  let result=await request('/gateway/cms/moment/comment/delete?id='+params.id,{method:'POST'})
+  return result
+}
 export async function uploadImgNotLogo(params){
   let result=await request('/gateway/upload/images/uploadImagesNotLogo',{method:'POST',body:params})
   return result

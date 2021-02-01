@@ -79,7 +79,7 @@ export default {
               ...state,
               uploadFile:{
                   ...uploadFile,
-                  suffix:payload
+                  statusName:payload
               }
           }
         },
@@ -150,7 +150,7 @@ export default {
                 ...state,
                 currentItem:{
                     ...currentItem,
-                    suffix:payload
+                    statusName:payload
                 }
             }
         },
@@ -209,7 +209,7 @@ export default {
                desc:item.description,
                imgUrl:item.frameImages,
                video:item.objectUrl480,
-               suffix:item.suffix,
+               statusName:item.statusName,
                level:item.level
 
            }))
@@ -232,7 +232,7 @@ export default {
                     desc:item.description,
                     imgUrl:item.frameImages,
                     video:item.objectUrl480,
-                    suffix:item.suffix,
+                    statusName:item.statusName,
                     level:item.level
                  }
              })
@@ -251,7 +251,7 @@ export default {
                     desc:item.description,
                     imgUrl:item.frameImages,
                     video:item.objectUrl480,
-                    suffix:item.suffix,
+                    statusName:item.statusName,
                     level:item.level
                  }
              })
@@ -264,13 +264,13 @@ export default {
             let file=state?.uploadFile?.file||''
             let name=state?.uploadFile?.name||''
             let desc=state?.uploadFile.desc||''  
-            let suffix=state?.uploadFile.suffix||''
+            let statusName=state?.uploadFile.statusName||''
             let level=state?.uploadFile.level||'' 
             let form=new FormData()
             form.append('multipartFile',file)
             form.append('title',name)
             form.append('description',desc)
-            form.append('suffix',suffix)
+            form.append('statusName',statusName)
             form.append('level',level)
             console.log('form===',form)
            const result= yield call(uploadVideo,form)
@@ -280,13 +280,13 @@ export default {
         },
         *updateVideoUrl({payload},{call,put,select}){
             let {currentItem}=yield select(state=>state.animation)
-            let {name,desc,suffix,level,id}=currentItem
+            let {name,desc,statusName,level,id}=currentItem
             let form=new FormData()
             form.append('multipartFile',payload.file)
           let result=yield call(updateVideoUrl,form)
           if(result.code===200){
               yield put({type:'setUpdateFile',payload:result.data})
-              let ret=yield call(updateVideo,{id,objectUrl480:result.data,title:name,description:desc,suffix,level})
+              let ret=yield call(updateVideo,{id,objectUrl480:result.data,title:name,description:desc,statusName,level})
               if(ret.code===200){
                 yield put({type:'getAnimation'})
             } 
@@ -294,8 +294,8 @@ export default {
         },
         *confirmEdit({payload},{call,put,select}){
             let {currentItem}=yield select(state=>state.animation)
-            let {imgUrl,name,desc,suffix,level,id}=currentItem
-            let result=yield call(updateVideo,{id,objectUrl480:imgUrl,title:name,description:desc,suffix,level})
+            let {imgUrl,name,desc,statusName,level,id}=currentItem
+            let result=yield call(updateVideo,{id,objectUrl480:imgUrl,title:name,description:desc,statusName,level})
             if(result.code===200){
                 yield put({type:'getAnimation'})
             }            

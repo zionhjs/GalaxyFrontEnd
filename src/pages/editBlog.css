@@ -243,6 +243,7 @@
     transform: translate(50%,-50%);
     width: 20px;
     height: auto;
+  cursor: pointer;
 }
 .submit{
     background-image: linear-gradient(to right,#0dd0e0, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);

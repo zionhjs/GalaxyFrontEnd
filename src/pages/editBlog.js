@@ -32,7 +32,7 @@ const EditBlog= (props)=> {
         ]
     useEffect(() => {
         dispatch({type:'editblog/getEditBlogData',payload:query.id})
-    }, [])
+    }, [query.id])
     const captionChange=useCallback((e)=>{
         dispatch({type:'editblog/changeCaption',payload:e.target.value})
     },[])
@@ -57,7 +57,10 @@ const EditBlog= (props)=> {
     },[])
     const handleSubmit=useCallback(()=>{
         dispatch({type:'editblog/submit',payload:query.id})
-    },[])
+    },[query.id])
+  const deleteComment=useCallback((item)=>{
+ dispatch({type:'editblog/deleteComment',payload:{commentId:item.id,blogId:query.id}})
+  },[query.id])
 
     return (
         <div className={styles.container}>
@@ -116,7 +119,7 @@ const EditBlog= (props)=> {
                 {
                     data.comments.map((item,index)=>(
                         <div key={index} className={styles.commentItem}>
-                            <img src="redClose.png" className={styles.closeIcon} alt="" />
+                            <img onClick={deleteComment.bind(null,item)} src="redClose.png" className={styles.closeIcon} alt="" />
                             <div className={styles.postInfo}>
                                 <img src={item.avatar} alt="" className={styles.avatar} />
                                <div className={styles.commentNameText}>{item.name}</div>

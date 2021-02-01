@@ -6,7 +6,7 @@
  * @FilePath: \GalaxyFrontEnd\src\models\editBlog.js
  */
 import router from 'umi/router'
-import {addArticle,uploadImgNotLogo,getArticleDetail,updateArticle} from '../service/api'
+import {addArticle,uploadImgNotLogo,getArticleDetail,updateArticle,deleteComment} from '../service/api'
 export default {
     namespace:'editblog',
     state:{
@@ -126,6 +126,11 @@ export default {
         if(result.code==200){
           router.goBack()
         }
-    }
+    },
+      *deleteComment({payload},{call,put}){
+      const {commentId,blogId}=payload
+      let result=yield call(deleteComment,{id:commentId})
+        yield put({type:'getEditBlogData',payload:blogId})
+      }
     }
 }
