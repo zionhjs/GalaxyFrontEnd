@@ -106,7 +106,7 @@ const Waterfall=(props)=> {
                                 <div className={styles.editLeft}>
                                     <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} />
                                     <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
-                                    <Select value={currentItem.status} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
+                                    <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
                                     <Option className={styles.dropOption} value="interior">Interior</Option>
                                     <Option className={styles.dropOption} value="exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>
@@ -143,7 +143,7 @@ const Waterfall=(props)=> {
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} />
                                 <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
-                                <Select value={currentItem.status} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
+                                <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
                                     <Option className={styles.dropOption} value="interior">Interior</Option>
                                     <Option className={styles.dropOption} value="exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>
@@ -181,7 +181,7 @@ const Waterfall=(props)=> {
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} />
                                 <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
-                                <Select value={currentItem.status} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
+                                <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
                                     <Option className={styles.dropOption} value="interior">Interior</Option>
                                     <Option className={styles.dropOption} value="exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>
@@ -219,7 +219,7 @@ const Waterfall=(props)=> {
                             <div className={styles.editLeft}>
                                 <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} style={{ height: '42px' }} />
                                 <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
-                                <Select value={currentItem.status} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
+                                <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="interior">
                                     <Option className={styles.dropOption} value="interior">Interior</Option>
                                     <Option className={styles.dropOption} value="exterior">Exterior</Option>
                                     <Option className={styles.dropOption} value="360">360</Option>

@@ -1,88 +1,137 @@
-/*
- * @Author: xingzai
- * @Date: 2020-12-11 02:38:27
- * @LastEditors: xingzai
- * @LastEditTime: 2020-12-11 02:41:10
- * @FilePath: \GalaxyFrontEnd\src\components\ImageSwiper\index.css
- */
 .container{
-    height: 937px;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    background-color:#2e2e2e;
-    overflow: hidden;
+  height: 835px;
+  padding-top: 17px;
+  padding-bottom: 17px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  background-color: #2e2e2e;
+  overflow: hidden;
 }
 .imgWrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-    height: 100%;
-    background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 100%;
+  background-color: transparent;
 }
 .swiperImg {
-   width: 100%;
-   height: auto;
+  height: 835px;
+  width: auto;
+  transform: scaleX(0.7047);
 }
 .activeItem {
+  transform: scaleX(1.35);
 }
-
+.preItem,.nextItem{
+  transform: scale(0.48,0.9);
+}
+.preItem .swiperImg{
+  height: 835px;
+  width: auto;
+  transform: scale(2.083,1.111);
+}
+.nextItem .swiperImg{
+  height: 835px;
+  width: auto;
+  transform: scale(2.083,1.111);
+}
 .container :global(.swiper-pagination-custom){
-    bottom: 32px;
-    left: 0;
-    width: 100%;
+  bottom: 0.03906rem;
+  left: 0;
+  width: 100%;
 }
 .container :global(.swiper-pagination){
-    position: absolute;
-text-align: center;
-transition: 300ms opacity;
-transform: translate3d(0, 0, 0);
-z-index: 10;
+  position: absolute;
+  text-align: center;
+  transition: 300ms opacity;
+  transform: translate3d(0, 0, 0);
+  z-index: 10;
 }
 .container :global(.swiper-pagination-customs){
-    display:inline-block;
-    border-radius: 50%;
-    margin: 0 5px;
-    outline: 0;
-    width: 16px;
-    height: 16px;
-    background-color: #fff;
-    background-clip: content-box;
-    padding: 4px;
+  display:inline-block;
+  border-radius: 50%;
+  margin: 0 5px;
+  outline: 0;
+  width: 16px;
+  height: 16px;
+  background-color: #fff;
+  background-clip: content-box;
+  padding: 4px;
 }
 .container :global(.swiper-pagination-customs-active) {
-    border: 1px solid #fff;
-    }
-    .container :global(.swiper-button-prev){
-        left: 40px;
-        width: 75px;
-        height: 75px;
-        cursor: pointer;
-        background: url(../../../public/pre.png)  no-repeat;
-        background-size: contain;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        z-index: 10;   
-    }
-    .container :global(.swiper-button-next){
-        right:40px;
-        width: 75px;
-        height: 75px;
-        cursor: pointer;
-        background: url(../../../public/next.png)  no-repeat;
-        background-size: contain;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        margin: auto;
-        z-index: 10;
-    }
-    .container :global(.swiper-button-next)::after{
-        content:'';
-    }
-    .container :global(.swiper-button-prev)::after{
-        content:'';
-    }
+  border: 1px solid #fff;
+}
+.container :global(.swiper-button-prev){
+  left: 130px;
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
+  background: url(../../../public/pre.png)  no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10;
+}
+.container :global(.swiper-button-next){
+  right:130px;
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
+  background: url(../../../public/next.png)  no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 10;
+}
+.container :global(.swiper-button-next)::after{
+  content:'';
+}
+.container :global(.swiper-button-prev)::after{
+  content:'';
+}
+.leftMask{
+  position: absolute;
+  left:  0;
+  width: 90px;
+  height: 810px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  -moz-box-shadow:  0 0 45px 30px #000;
+  -webkit-box-shadow:  0 0 45px 30px #000;
+  box-shadow:  0 0 45px 30px #000;
+  background-color: #000;
+  z-index: 10000;
+}
+.rightMask{
+  position: absolute;
+  right:  0;
+  width: 90px;
+  height: 810px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  -moz-box-shadow:  0 0 45px 30px #000;
+  -webkit-box-shadow:  0 0 45px 30px #000;
+  box-shadow:  0 0 45px 30px #000;
+  background-color: #000;
+  z-index: 10000;
+}
+.playIcon{
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  margin: auto;
+  width: 85px;
+  height: auto;
+  transform: scaleX(0.75);
+  cursor: pointer;
+}

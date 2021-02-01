@@ -28,7 +28,7 @@ export default {
         uploadImg:'',//要上传的图片的路径
         name:'',//要上传的图片的标题
         desc:'',//要上传的图片的描述
-        status:'3',//要上传图片的status
+        statusName:'',//要上传图片的statusName
         level:'star',//要上传图片的level
         banners:banners,
         images:[],
@@ -132,7 +132,7 @@ export default {
         setuploadSuffix(state,{payload}){
         return {
             ...state,
-            status:payload
+            statusName:payload
         }
         },
         setuploadLevel(state,{payload}){
@@ -174,6 +174,16 @@ export default {
               currentItem:payload
           }
         },
+      setCurrentImgUrl(state,{payload}){
+          const {currentItem}=state;
+         return {
+           ...state,
+           currentItem:{
+             ...currentItem,
+             imgUrl:payload
+           }
+         }
+      },
         setName(state,{payload}){
             const {currentItem}=state;
         return {
@@ -194,7 +204,7 @@ export default {
              ...state,
              currentItem:{
                  ...currentItem,
-                 status:payload
+                 statusName:payload
              }
          }
         },
@@ -266,14 +276,14 @@ export default {
             const {images}=state;
             let temp;
             if(currentNav==0){
-                temp=_.filter(images,{status:'interior'})
+                temp=_.filter(images,{statusName:'interior'})
                 console.log('temp===interior',temp)
             }else if(currentNav==1){
                 console.log('temp===exterior',temp)
-                temp=_.filter(images,{status:'exterior'})
+                temp=_.filter(images,{statusName:'exterior'})
             }else if(currentNav==2){
                 console.log('temp===360',temp)
-                temp=_.filter(images,{status:'360'})
+                temp=_.filter(images,{statusName:'360'})
             }else {
                 temp=images
             }
@@ -328,7 +338,7 @@ export default {
                     desc:item.description,
                     imgUrl:item.objectUrl240,
                     rating:item.rating,
-                    status:item.status,
+                    statusName:item.statusName,
                     level:item.level,
                 }
             })          
@@ -344,12 +354,12 @@ export default {
             
         },      
         *upload({payload},{call,put,select}){
-            const {uploadImg,name,desc,status,level}=yield select(state=>state.image)
+            const {uploadImg,name,desc,statusName,level}=yield select(state=>state.image)
             let form=new FormData()
             form.append('multipartFile',uploadImg)
             form.append('title',name)
             form.append('description',desc)
-            form.append('status',status)
+            form.append('statusName',statusName)
             form.append('level',level)
            const result= yield call(uploadImage,form)
            console.log('uploadimg',result)
@@ -365,6 +375,7 @@ export default {
             let ret;
             if(result.code==200){
                 yield put({type:'saveUpdateImg',payload:{id,imgUrl:result.data}})
+              yield put({type:'setCurrentImgUrl',payload:result.data})
                 yield put({type:'updateImgText'})
             }
             if(ret.code==200){
@@ -374,9 +385,9 @@ export default {
         },
         *updateImgText({payload},{call,put,select}){
             let image=yield select(state=>state.image)
-            let {name,desc,id,status,level}=image?.currentItem
-           let result= yield call(updateImgText,{id,description:desc,title:name,status,level})
-           yield put({type:'saveUpdateImg',payload:{id,name:result.data.title,desc:result.data.description,status:result.data.status,level:result.data.level}})
+            let {name,desc,id,statusName,level,imgUrl}=image?.currentItem
+           let result= yield call(updateImgText,{id,description:desc,title:name,statusName,level,objectUrl240:imgUrl})
+           yield put({type:'saveUpdateImg',payload:{id,name:result.data.title,desc:result.data.description,statusName:result.data.statusName,level:result.data.level}})
            yield put({type:'closeEditor'})
         }
     }
