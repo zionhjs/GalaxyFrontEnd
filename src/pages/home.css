@@ -182,11 +182,12 @@
   font-size: 38px;
   margin-left: 14px;
   color: #fff;
-  font-family: 'Oswald';
+  font-family: 'OswaldRegular';
 }
 .aboutText{
   font-size: 20px;
   color: #999;
+  font-family: 'RobotoRegular';
 }
 .profileBox{
   height: 900px;
@@ -235,11 +236,11 @@
 }
 .profileTitle{
   font-size: 36px;
-  font-family: 'Microsoft YaHei';
+  font-family: 'RubikBold';
 }
 .profileText{
   font-size: 16px;
-  font-family: 'Microsoft YaHei';
+  font-family: 'RobotoRegular';
 }
 .seeMoreBtn{
   width: 200px;
@@ -256,7 +257,7 @@
   right: 0;
   bottom: 35px;
   margin: auto;
-  font-family: 'Oswald';
+  font-family: 'RobotoRegular';
   cursor: pointer;
 }
 .seeMoreBtn:hover{
@@ -290,7 +291,7 @@
 }
 .illuTitle{
   font-size: 38px;
-  font-family: 'Oswald';
+  font-family: 'OswaldRegular';
   text-transform: uppercase;
   margin-left: 12px;
   color: #fff;
@@ -334,14 +335,14 @@ color: #fff;
 }
 .illuListText{
  font-size: 18px;
- font-family: 'Microsoft YaHei';
+ font-family: 'RobotoRegular';
  text-align: left;
 }
 .illuListTitleBox{
   text-align: left;
   font-size: 27px;
   font-weight: bold;
-  font-family: 'Segoe UI';
+  font-family: 'RubikBold';
 }
 .illuListItemTitle{
   margin-left: 16px;
@@ -355,7 +356,7 @@ color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Oswald';
+  font-family: 'OswaldBold';
   font-size: 38px;
   color: #fff;
 }
@@ -397,7 +398,7 @@ color: #fff;
 }
 .stepTitle{
   font-size: 20px;
-  font-family: 'Microsoft YaHei';
+  font-family: 'RobotoRegular';
   height: 39px;
   line-height: 39px;
   position: relative;
@@ -420,7 +421,7 @@ color: #fff;
 }
 .stepContent{
   font-size: 16px;
-  font-family: 'Microsoft YaHei';
+  font-family: 'RobotoRegular';
   opacity: 0.6;
 }
 .animationTitleBox{
@@ -429,13 +430,13 @@ color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-family: 'Oswald';
+  font-family: 'OswaldRegular';
   font-size: 38px;
   color: #fff;
 }
 .animationTitle{
   margin-left: 8px;
-  font-family: 'Oswald';
+  font-family: 'OswaldRegular';
   text-transform: uppercase;
   letter-spacing: 1.33px;
 }

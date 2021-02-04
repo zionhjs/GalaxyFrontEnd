@@ -28,7 +28,7 @@
   .footerTitle{
     margin-left: 13px;
     color: #fff;
-    font-family: 'Oswald';
+    font-family: 'OswaldRegular';
   }
   .footerIconBox{
     display: flex;
@@ -44,7 +44,7 @@
     cursor: pointer;
   }
   .footerText{
-    font-family: 'Microsoft YaHei';
+    font-family: 'RobotoRegular';
     font-size: 16px;
     opacity: 0.6;
     color: #fff;
@@ -109,7 +109,7 @@
     align-self: flex-end;
   }
   .dialogTitle{
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikBold';
     font-size: 22px;
     opacity: 1;
     color: #000;
@@ -118,7 +118,7 @@
     margin-bottom: 19px;
   }
   .dialogLabel{
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
     font-size: 16px;
     color: #000;
   }
@@ -126,7 +126,7 @@
     width: 272px;
     height: 42px;
     margin-top: 47px;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
     color: #9E9E9E;
     padding-left: 11px;
     background: #F5F5F5 0% 0% no-repeat;
@@ -136,7 +136,7 @@
     width: 272px;
     height: 42px;
     margin-top: 28px;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
     color: #9E9E9E;
     padding-left: 11px;
     background: #F5F5F5 0% 0% no-repeat;
@@ -149,7 +149,7 @@
     background: transparent linear-gradient(90deg, #02D9DE 0%, #E117FC 100%) 0% 0% no-repeat;
     margin-top: 50px;
     color: #fff;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
     font-size: 16px;
     line-height: 42px;
     text-align: center;

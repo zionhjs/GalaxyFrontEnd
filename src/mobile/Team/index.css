@@ -18,13 +18,13 @@ position: absolute;
 }
 .bannerTitle{
 color: #fff;
-font-family: 'Microsoft YaHei';
+font-family: 'RubikBold';
 font-size: 0.51rem;
 text-align: center;
 }
 .bannerText{
 color: #fff;
-font-family: 'Microsoft YaHei';
+font-family: 'RubikRegular';
 font-size: 0.2rem;
 width: 5.42rem;
 }
@@ -37,7 +37,7 @@ background-color: #2e2e2e;
 .sectionTitle{
     font-size: 0.4rem;
     color: #fff;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikBold';
     text-align: center;
     height: 1.6rem;
     line-height: 1.6rem;
@@ -55,11 +55,11 @@ background-color: #2e2e2e;
 }
 .nameText{
 font-size: 0.3rem;
-font-family: 'Microsoft YaHei';
+font-family: 'RobotoRegular';
 color: #fff;
 }
 .jobText{
-font-family: 'Microsoft YaHei';
+font-family: 'RobotoRegular';
 color: #fff;
 font-size: 0.26rem;
 }
@@ -68,4 +68,5 @@ font-size: 0.26rem;
     background-clip: text;
     color: transparent;
     font-size: 0.26rem;
+  font-family: 'RobotoRegular';
 }

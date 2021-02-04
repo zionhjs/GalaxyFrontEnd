@@ -33,13 +33,13 @@
     justify-content: center;
 }
 .searchTitle{
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikBold';
     font-weight: bold;
     font-size: 51px;
     color: #fff;
 }
 .searchText{
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
     font-size: 20px;
     color: #fff;
 }
@@ -63,7 +63,7 @@
     cursor: pointer;
 }
 .searchInput {
-    font-family: 'Segoe UI';
+    font-family: 'RubikItalic';
     font-style: italic;
     color: #fff;
     font-size: 23px;

@@ -61,7 +61,7 @@
     margin-bottom: 15px;
 }
 .nameText{
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
     font-size: 26px;
     color: #fff;
     margin-left: 15px;
@@ -69,11 +69,11 @@
 .dateText{
     margin-left: 75px;
     font-size: 19px;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
     color: rgba(255,255,255,0.6);
 }
 .desc{
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
     font-size: 19px;
     color: rgba(255,255,255,0.6);
     align-self: stretch;
@@ -160,7 +160,7 @@
     border: 1px solid #4E4E4E;
     background-color: #272727;
     margin-bottom: 10px;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
     font-size: 18px;
     color: #fff;
     line-height: 42px;
@@ -172,7 +172,7 @@
     border: 1px solid #4E4E4E;
     background-color: #272727;
     margin-bottom: 10px;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
     font-size: 18px;
     color: #fff;
     line-height: 42px;
@@ -297,7 +297,7 @@ align-items: center;
     height: auto;
 }
 .uploadText{
-    font-family: 'Source Han Sans CN';
+    font-family: 'RubikRegular';
     font-size: 21px;
     color: #9e9e9e;
     margin-top: 14px;

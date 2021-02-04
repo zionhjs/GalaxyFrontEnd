@@ -35,7 +35,7 @@
 }
 
 .listTitle {
-  font-family: 'Microsoft YaHei';
+  font-family: 'RobotoRegular';
   color: #fff;
   font-size: 26px;
   margin-left: 51px;
@@ -56,14 +56,14 @@
   align-items: center;
   margin-top: 22.5px;
   margin-left: 51px;
-  font-family: 'Microsoft YaHei';
+  font-family: 'RobotoRegular';
   font-size: 16px;
   color: rgba(255, 255, 255, 0.6);
 }
 
 .listContent {
   margin-left: 51px;
-  font-family: 'Microsoft YaHei';
+  font-family: 'RobotoRegular';
   font-size: 16px;
   color: rgba(255, 255, 255, 0.6);
   margin-top: 23.5px;
@@ -74,7 +74,7 @@
 }
 
 .listFooter {
-font-family: 'Microsoft YaHei';
+font-family: 'RobotoRegular';
 color: #fff;
 font-size: 14px;
 display: flex;

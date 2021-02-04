@@ -39,12 +39,12 @@
    padding-right: 0.14rem;
 }
 .nameText{
-   font-family: 'Microsoft YaHei';
+   font-family: 'RobotoRegular';
    color: #fff;
    font-size: 0.26rem;
 }
 .dateText{
-   font-family: 'Microsoft YaHei';
+   font-family: 'RobotoRegular';
    color: rgba(255,255,255,0.6);
    font-size: 0.17rem;
    margin-left: 0.32rem;
@@ -55,7 +55,7 @@
    align-items: center;
 }
 .descText{
-   font-family: 'Microsoft YaHei';
+   font-family: 'RobotoRegular';
    color: rgba(255,255,255,0.6);
    font-size: 0.18rem;
 }

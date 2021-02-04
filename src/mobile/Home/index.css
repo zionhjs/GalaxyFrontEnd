@@ -24,7 +24,7 @@
     font-size: 0.38rem;
     margin-left: 0.09rem;
     color: #fff;
-    font-family: 'Oswald';
+    font-family: 'OswaldRegular';
   }
   .aboutText{
     font-size: 0.16rem;
@@ -32,6 +32,7 @@
     width: 6.23rem;
     text-align: center;
     margin-bottom: 0.22rem;
+    font-family: 'RobotoRegular';
   }
   .profileBox{
     
@@ -67,11 +68,11 @@
   }
   .profileTitle{
     font-size: 0.4rem;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikBold';
   }
   .profileText{
     font-size: 0.26rem;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RobotoRegular';
   }
   .seeMoreBtn{
     width: 2.39rem;
@@ -88,7 +89,7 @@
     right: 0;
     bottom: 0.4rem;
     margin: auto;
-    font-family: 'Oswald';
+    font-family: 'OswaldRegular';
     cursor: pointer;
   }
 
@@ -125,7 +126,7 @@
   }
   .illuTitle{
     font-size: 0.38rem;
-    font-family: 'Oswald';
+    font-family: 'OswaldBold';
     text-transform: uppercase;
     margin-left: 0.12rem;
     color: #fff;
@@ -170,7 +171,7 @@
   }
   .illuListText{
    font-size: 0.24rem;
-   font-family: 'Microsoft YaHei';
+   font-family: 'RobotoRegular';
    text-align: left;
   }
   .illuListTitleBox{
@@ -178,10 +179,11 @@
     text-align: left;
     font-size: 0.3rem;
     font-weight: bold;
-    font-family: 'Segoe UI';
+    font-family: 'OswaldRegular';
   }
   .illuListItemTitle{
     margin-left: 0.16rem;
+    font-family: 'RubikBold';
   }
   .stillTitleBox{
     display: flex;
@@ -195,7 +197,7 @@
   }
   .stillTitle{
     font-size: 0.38rem;
-    font-family: 'Microsoft YaHei';
+    font-family: 'OswaldRegular';
     color: #fff;
     margin-left: 0.09rem;
   }
@@ -234,7 +236,7 @@
   }
   .stepTitle{
     font-size: 0.2rem;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
     height: 0.39rem;
     line-height: 0.39rem;
     position: relative;
@@ -258,6 +260,6 @@
   }
   .stepContent{
     font-size: 0.16rem;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RobotoRegular';
     opacity: 0.6;
   }

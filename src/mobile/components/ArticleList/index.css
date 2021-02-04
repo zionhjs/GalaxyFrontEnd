@@ -9,7 +9,7 @@
 }
 .articleTitle{
     font-size: 0.3rem;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RobotoRegular';
     color: #fff;
     margin-top: 0.12rem;
     cursor: pointer;
@@ -20,12 +20,12 @@
 }
 .authorText{
 font-size: 0.22rem;
-font-family: 'Microsoft YaHei';
+font-family: 'RobotoRegular';
 color: rgba(255,255,255,0.6);
 }
 .dateText{
     font-size: 0.22rem;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RobotoRegular';
     color: rgba(255,255,255,0.6);
     margin-left: 0.47rem;
 }
@@ -33,7 +33,7 @@ color: rgba(255,255,255,0.6);
     display: -webkit-box;
     position: relative;
     margin-top: 0.13rem;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RobotoRegular';
     font-size: 0.2rem;
     color: rgba(255, 255, 255, 0.6);
     height: 1.45rem;
@@ -59,7 +59,7 @@ color: rgba(255,255,255,0.6);
     margin-left: 0.15rem;
     font-size: 0.2rem;
     color: #fff;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RobotoRegular';
 }
 .likedIcon{
     margin-left: 0.6rem;

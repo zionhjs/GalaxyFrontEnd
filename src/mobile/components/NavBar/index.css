@@ -16,7 +16,7 @@
   }
   .menuItem{
     position: relative;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
     font-size: 0.2rem;
     color: #9E9E9E;
     padding-left: 0.14rem;
@@ -48,5 +48,4 @@
     transform: translateY(0);
     transition: all 0.3s linear;
   }
-  
   

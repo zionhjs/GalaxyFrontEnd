@@ -49,7 +49,6 @@ const Sw=(props)=>{
               {({isActive,isPrev,isNext})=>
                 (<div className={classnames(styles.imgWrapper,{[styles.activeItem]:isActive,[styles.preItem]:isPrev,[styles.nextItem]:isNext})}>
                   <img className={styles.swiperImg} src={item} alt="" />
-                  {isActive ? <img className={styles.playIcon} src="playBtn.png" alt="" /> : null }
                 </div>)
               }
             </SwiperSlide>

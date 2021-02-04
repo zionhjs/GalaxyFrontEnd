@@ -128,7 +128,7 @@ z-index: 10;
       margin: auto;
       left: 0;
       right: 0;
-      font-family: 'Microsoft YaHei';
+      font-family: 'RubikBold';
       color: #fff;
       font-size: 51px;
       font-weight: bold;
@@ -136,7 +136,7 @@ z-index: 10;
       z-index: 10000;
   }
   .swiperText{
-      font-family: 'Microsoft YaHei';
+      font-family: 'RobotoRegular';
       font-size: 16px;
       color: #fff;
       position: absolute;
@@ -171,5 +171,5 @@ z-index: 10;
     background-repeat: no-repeat;
     background-size: cover;
     color: transparent;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikRegular';
   }

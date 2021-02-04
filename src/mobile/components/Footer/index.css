@@ -28,7 +28,7 @@
   .footerTitle{
     margin-left: 0.13rem;
     color: #fff;
-    font-family: 'Oswald';
+    font-family: 'OswaldRegular';
   }
   .footerIconBox{
     display: flex;
@@ -44,7 +44,7 @@
     cursor: pointer;
   }
   .footerText{
-    font-family: 'Microsoft YaHei';
+    font-family: 'RobotoRegular';
     font-size: 0.16rem;
     opacity: 0.6;
     color: #fff;
@@ -100,7 +100,7 @@
     align-self: flex-end;
   }
   .dialogTitle{
-    font-family: 'Microsoft YaHei';
+    font-family: 'RubikBold';
     font-size: 0.43rem;
     opacity: 1;
     color: #000;
@@ -109,7 +109,7 @@
     margin-bottom: 0.44rem;
   }
   .dialogLabel{
-    font-family: 'Microsoft YaHei';
+    font-family: 'RobotoRegular';
     font-size: 0.3rem;
     color: #000;
   }
@@ -117,7 +117,7 @@
     width: 5.6rem;
     height: 0.86rem;
     margin-top: 1.05rem;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RobotoRegular';
     color: #9E9E9E;
     padding-left: 0.23rem;
     background: #F5F5F5 0% 0% no-repeat;
@@ -128,7 +128,7 @@
     width: 5.6rem;
     height: 0.86rem;
     margin-top: 0.57rem;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RobotoRegular';
     color: #9E9E9E;
     padding-left: 0.23rem;
     background: #F5F5F5 0% 0% no-repeat;
@@ -142,7 +142,7 @@
     background: transparent linear-gradient(90deg, #02D9DE 0%, #E117FC 100%) 0% 0% no-repeat;
     margin-top: 1.03rem;
     color: #fff;
-    font-family: 'Microsoft YaHei';
+    font-family: 'RobotoRegular';
     font-size: 0.32rem;
     line-height: 0.86rem;
     text-align: center;
