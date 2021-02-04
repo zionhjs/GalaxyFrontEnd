@@ -116,7 +116,7 @@ export default {
        yield put({type:'backupArticle',payload:data?.content||''})
      },
      *addComment({payload:{momentId,name,email,checked,comment}},{call,put,select}){
-         let {code}=yield call(addComment,{momentId,comment,name,email,comment})
+         let {code}=yield call(addComment,{momentId,name,email,comment})
          if(code==200){
             yield put({type:'getDetailData',payload:momentId})
          }

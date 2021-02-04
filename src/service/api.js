@@ -38,11 +38,11 @@ export async function uploadImage(params){
   return result
 }
 export async function uploadVideo(params){
-  let result=await request('/gateway/video/uploadVideo',{method:'POST',body:params})
+  let result=await request('/gateway/upload/video/uploadVideo',{method:'POST',body:params})
   return result
 }
 export async function updateVideoUrl(params){
-  let result=await request('/gateway/video/uploadVideoUrl',{method:'POST',body:params})
+  let result=await request('/gateway/upload/video/uploadVideoUrl',{method:'POST',body:params})
   return result;
 }
 export async function updateVideo(params){
