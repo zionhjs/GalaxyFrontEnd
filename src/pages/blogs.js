@@ -17,7 +17,8 @@ import styles from './blogs.css'
 const Blogs=(props)=>{
     const {dispatch}=props;
     const [title,setTitle]=useState('')
-    const isMobile = useMediaQuery({ maxWidth: 767 })
+    //const isMobile = useMediaQuery({ maxWidth: 767 })
+  const isMobile=window.screen.width<768
     useEffect(()=>{
     dispatch({type:'blog/getArticles'})
     },[]) 

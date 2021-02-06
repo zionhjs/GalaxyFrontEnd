@@ -70,7 +70,7 @@
     margin: auto;
   }
   .anchor{
-    width: 0.9rem;
+    width: 1.2rem;
     height: auto;
     position: fixed;
     bottom: 1.2rem;
@@ -84,10 +84,10 @@
     height: auto;
   }
   .btn{
-    width: 0.9rem;
+    width: 1.2rem;
     height: auto;
     position: fixed;
-    bottom: 2.18rem;
+    bottom: 2.5rem;
     right: 0.15rem;
     cursor: pointer;
     z-index: 20006;

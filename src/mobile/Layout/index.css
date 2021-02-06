@@ -6,7 +6,7 @@
   top: 0;
   left: 0;
   right: 0;
-    height: 1rem;
+    height: 1.25rem;
     display: flex;
     align-items: center;
     background-color: #000;
@@ -19,22 +19,28 @@
 .logo{
     height: 0.43rem;
     width: auto;
-    margin-left: 0.28rem;
+    margin-left: 0.6rem;
+  -webkit-transform: scale(1.5);
+  -moz-transform: scale(1.5);
+  -ms-transform: scale(1.5);
+  -o-transform: scale(1.5);
+  transform: scale(1.5);
 }
 .searchBox{
     display: flex;
     align-items: center;
     justify-content: space-between;
     background-color: #373737;
-    border-radius: 0.2rem;
+    border-radius: 0.32rem;
     padding-left: 0.15rem;
     padding-right: 0.15rem;
     margin-left: auto;
-    margin-right: 1.36rem;
+    margin-right: 1rem;
+  height: 0.64rem;
     transition: all ease-in-out 0.3s;
   }
   .searchInactive{
-    width: 2rem;
+    width: 2.5rem;
   }
   .searchActive{
     width: 3.1rem;
@@ -52,5 +58,5 @@
   .searchIcon{
     color:#9E9E9E!important;
     cursor: pointer;
-    font-size: 0.30rem;
+    font-size: 0.45rem;
   }
