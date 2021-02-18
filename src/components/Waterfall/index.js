@@ -90,7 +90,7 @@ const Waterfall=(props)=> {
                 <div className={styles.col1}>
                     {col1.map((item, index) =>
                         (
-                        <OverPack playScale={0.2} key={index}>
+                        <OverPack playScale={0.2} key={index+item.imgUrl}>
                         <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                             <LazyLoad height={200} offset={100}>
                             <img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} />
@@ -129,7 +129,7 @@ const Waterfall=(props)=> {
                 </div>
                 <div className={styles.col2}>{col2.map((item, index) =>
                     (
-                        <OverPack key={index} playScale={0.2}>
+                        <OverPack key={index+item.imgUrl} playScale={0.2}>
                     <TweenOne key={index+'col2'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.imgWrapper}>
                         <LazyLoad height={200} offset={100}><img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} /></LazyLoad>
                         <div className={styles.imgFooter}>
@@ -165,7 +165,7 @@ const Waterfall=(props)=> {
                     ))}</div>
                 <div className={styles.col3}>{col3.map((item, index) =>
                     (
-                        <OverPack playScale={0.2} key={index}>
+                        <OverPack playScale={0.2} key={index+item.imgUrl}>
                     <TweenOne key={index+'col3'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.imgWrapper}>
                         <LazyLoad height={200} offset={100}>
                         <img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} />
@@ -203,7 +203,7 @@ const Waterfall=(props)=> {
                     ))}</div>
                 <div className={styles.col4}>{col4.map((item, index) =>
                     (
-                        <OverPack playScale={0.2} key={index}>
+                        <OverPack playScale={0.2} key={index+item.imgUrl}>
                     <TweenOne key={index+'col4'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.imgWrapper}>
                         <LazyLoad height={200} offset={100}>
                         <img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} />
