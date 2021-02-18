@@ -17,7 +17,7 @@ import 'photo-sphere-viewer/dist/photo-sphere-viewer.css'
 const Image360=(props)=>{
     const {visible,currentItem,dispatch}=props;
        const [viewer,setViewer]=useState(null)
-    useEffect(()=>{ 
+   /* useEffect(()=>{
        if(viewer){
             viewer.setPanorama(currentItem.imgUrl)
         }else{
@@ -37,7 +37,7 @@ const Image360=(props)=>{
         }
           
                 
-    },[currentItem.imgUrl])
+    },[currentItem.imgUrl])*/
     
     
     const close=useCallback(()=>{

@@ -274,6 +274,7 @@ export default {
         divideCol(state,{payload}){
             const {currentNav}=payload
             const {images}=state;
+            console.log('images====divide',images)
             let temp;
             if(currentNav==0){
                 temp=_.filter(images,{statusName:'interior'})
@@ -367,21 +368,49 @@ export default {
            let data= yield put({type:'getImage'})
                console.log('data===',data)
         },
-        *updateImg({payload},{call,put}){
+        *updateImg({payload},{call,put,select}){
             let {id,file}=payload
             let form=new FormData()
             form.append('multipartFile',file)
             let result=yield call(updateImg,form)
             let ret;
-            if(result.code==200){
-                yield put({type:'saveUpdateImg',payload:{id,imgUrl:result.data}})
-              yield put({type:'setCurrentImgUrl',payload:result.data})
-                yield put({type:'updateImgText'})
+            if(result.code==200) {
+              yield put({ type: 'saveUpdateImg', payload: { id, imgUrl: result.data } })
+              yield put({ type: 'setCurrentImgUrl', payload: result.data })
+              let image=yield  select(state=>state.image)
+              let {name,desc,id,statusName,level,imgUrl}=image?.currentItem
+              ret=yield call(updateImgText,{id,description:desc,title:name,statusName,level,objectUrl240:imgUrl})
             }
             if(ret.code==200){
-                yield put({type:'reset'}) 
-                yield put({type:'getImage'})               
-            }            
+              yield put({type:'reset'})
+              let {currentPage,pageSize,isLast}=yield select(state=>state.image)
+              let {currentNav}=yield select(state=>state.global)
+              if(isLast!=true){
+                const retVal=yield call(getImages,{currentPage,pageSize})
+                let list=retVal?.data?.list||[]
+                list= list.map((item,index)=>{
+                  return {
+                    id:item.id,
+                    name:item.title,
+                    date:item.createdAt,
+                    desc:item.description,
+                    imgUrl:item.objectUrl240,
+                    rating:item.rating,
+                    statusName:item.statusName,
+                    level:item.level,
+                  }
+                })
+                yield put.resolve({type:'save',payload:{list}})
+                yield put({type:'setIsLast',payload:ret?.data?.isLastPage})
+                if(retVal?.data?.hasNextPage==true){
+                  yield* put({type:'setPage',payload:(currentPage+1)})
+                }
+                yield put({type:'sortByRate'})
+                yield put({type:'divideCol',payload:{currentNav}})
+
+              }
+
+            }
         },
         *updateImgText({payload},{call,put,select}){
             let image=yield select(state=>state.image)
