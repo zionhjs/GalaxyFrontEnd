@@ -104,10 +104,10 @@ export default {
         return {
             ...state,
             images:[...images],
-            col1:[...col1],
-            col2:[...col2],
-            col3:[...col3],
-            col4:[...col4]
+            col1,
+            col2,
+            col3,
+            col4
         }
         },
         
@@ -305,13 +305,13 @@ export default {
               if(i<len-3){
                 col4.push(temp[i+3])
               }
-            }    
+            }
             return {
                 ...state,
                 col1,
                 col2,
                 col3,
-                col4
+                col4,
             }
         },
         closeEditor(state){
@@ -407,7 +407,7 @@ export default {
                 }
                 yield put({type:'sortByRate'})
                 yield put({type:'divideCol',payload:{currentNav}})
-
+                yield put ({type:'closeEditor'})
               }
 
             }
