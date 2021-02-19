@@ -63,7 +63,7 @@ return response;
 * 配置request请求时的默认参数
 */
 const request = extend({
-  prefix:'https://chatbot.garyjin.com',
+  prefix:'https://chatbot.galaxycgi.com',
    errorHandler, // 默认错误处理
 //credentials: 'include', // 默认请求是否带上cookie
 });
@@ -77,7 +77,7 @@ request.use(async (ctx,next)=>{
       ...options,
       headers:{
         ...options.headers,
-        'accessToken': `${token}`,
+        //'accessToken': `${token}`,
       }
     }
   }
