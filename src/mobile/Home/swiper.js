@@ -15,6 +15,7 @@ import 'swiper/components/navigation/navigation.less';
 import 'swiper/components/pagination/pagination.less';
 import 'swiper/components/scrollbar/scrollbar.less';
 import styles from './swiper.css'
+import router from 'umi/router';
 SwiperCore.use([Pagination,Autoplay]);
 const Sw=(props)=>{
     const {dispatch,banners}=props
@@ -30,7 +31,35 @@ const Sw=(props)=>{
         }
         return paginationHtml;
     },[])
-   
+  const handleClick=useCallback((item)=>{
+    if(item.title=='Interior Rendering'){
+      dispatch({type:'global/setCurrentMenu',payload: 1})
+      dispatch({type:'global/setCurrentNav',payload:0})
+      dispatch({type:'image/divideCol',payload:{currentNav:0}})
+      router.push('/image')
+    }else if(item.title=='MasterPlan Rendering'){
+      dispatch({type:'global/setCurrentMenu',payload: 1})
+      dispatch({type:'global/setCurrentNav',payload:1})
+      dispatch({type:'image/divideCol',payload:{currentNav:1}})
+      router.push('/image')
+
+    }else if(item.title=='Exterior Rendering'){
+      dispatch({type:'global/setCurrentMenu',payload: 1})
+      dispatch({type:'global/setCurrentNav',payload:1})
+      dispatch({type:'image/divideCol',payload:{currentNav:1}})
+      router.push('/image')
+    }else if(item.title=='Animations'){
+      dispatch({type:'global/setCurrentMenu',payload: 2})
+      router.push('/animation')
+
+    }else if(item.title=='360 Visualizations'){
+      dispatch({type:'global/setCurrentMenu',payload: 1})
+      dispatch({type:'global/setCurrentNav',payload:2})
+      dispatch({type:'image/divideCol',payload:{currentNav:2}})
+      router.push('/image')
+    }
+
+  },[])
     return (
         <div className={styles.container}>            
              <Swiper
@@ -48,16 +77,18 @@ const Sw=(props)=>{
       {
           banners.map((item,index)=>(
             <SwiperSlide key={index}>
-                {({isActive,isPrev,isNext})=> 
-                (<div className={classnames(styles.imgWrapper,{[styles.activeItem]:isActive,[styles.preItem]:isPrev,[styles.nextItem]:isNext})}><img className={styles.swiperImg} src={item} alt="" /></div>)
+                {()=>
+                (<div className={classnames(styles.imgWrapper)}>
+                  <img className={styles.swiperImg} src={item.imgUrl} alt="" />
+                  <p className={styles.swiperTitle}>{item.title}</p>
+                  <p onClick={handleClick.bind(null,item)} className={styles.swiperText}>{item.desc}</p>
+                </div>)
 }
                 </SwiperSlide>
           ))
       }
       <div className="swiper-pagination"></div>     
     </Swiper>
-          <span className={styles.swiperTitle}>Interior rendering</span>
-          <p className={styles.swiperText}>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
         </div>
     )
 }

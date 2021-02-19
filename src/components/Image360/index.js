@@ -17,27 +17,25 @@ import 'photo-sphere-viewer/dist/photo-sphere-viewer.css'
 const Image360=(props)=>{
     const {visible,currentItem,dispatch}=props;
        const [viewer,setViewer]=useState(null)
-   /* useEffect(()=>{
-       if(viewer){
-            viewer.setPanorama(currentItem.imgUrl)
+    useEffect(()=>{
+        if(viewer){
+          viewer.setPanorama(currentItem.imgUrl)
         }else{
-            console.log(viewer)
-       let temp = new Viewer({
-              container: document.querySelector('#viewer'),
-              panorama:currentItem.imgUrl
-            });
-            setViewer(temp) 
+          console.log(viewer)
+          let temp = new Viewer({
+            container: document.querySelector('#viewer'),
+            panorama:currentItem.imgUrl
+          });
+          setViewer(temp)
         }
         if(document.createEvent) {
-            let event = document.createEvent("HTMLEvents");
-            event.initEvent("resize", true, true);
-            window.dispatchEvent(event);
+          let event = document.createEvent("HTMLEvents");
+          event.initEvent("resize", true, true);
+          window.dispatchEvent(event);
         } else if(document.createEventObject) {
-            window.fireEvent("onresize");
+          window.fireEvent("onresize");
         }
-          
-                
-    },[currentItem.imgUrl])*/
+    },[currentItem.imgUrl])
     
     
     const close=useCallback(()=>{

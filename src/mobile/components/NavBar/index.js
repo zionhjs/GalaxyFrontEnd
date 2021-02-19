@@ -4,15 +4,25 @@ import { Element } from 'rc-scroll-anim';
 import _ from 'lodash'
 import classnames from 'classnames'
 import styles from './index.css'
+import router from 'umi/router';
 const NavBar=(props)=>{
-  const [idx,setIdx]=useState(0)
+  const {dispatch,currentNav}=props
   const [isTop,setIsTop]=useState(false)
   const [position,setPosition]=useState(0)
   const [direction,setDirection]=useState('down')
     let {navButtons}=props;
-    function handleClick(item,index){
-      setIdx(index)
+  const handleClick=useCallback((item,index)=>{
+    dispatch({type:'global/setCurrentNav',payload:index})
+    if(index==4){
+      dispatch({type:'global/setCurrentMenu',payload:2})
+      router.push('/animation')
+    }else {
+      dispatch({type:'global/setCurrentMenu',payload:1})
+      dispatch({type:'image/divideCol',payload:{currentNav:index}})
+      router.push('/image')
+
     }
+  },[])
     useEffect(()=>{
      
     },[])
@@ -33,12 +43,12 @@ const NavBar=(props)=>{
     return (
         <Element id="navBar" onScroll={handleScroll} className={classnames(styles.container,{[styles.top]:isTop&&direction==='down',[styles.top1]:isTop&&direction==='up'})}>
           {navButtons.map((item,index)=>(
-              <div onClick={()=>handleClick(item,index)} key={index} className={classnames(styles.menuItem,{[styles.activeItem]:idx===index})}>
+              <div onClick={()=>handleClick(item,index)} key={index} className={classnames(styles.menuItem,{[styles.activeItem]:currentNav===index})}>
                   {item}
-                  <div className={styles.underLine} style={idx===index ? {display:"block"}:{display:'none'}}></div>
+                  <div className={styles.underLine} style={currentNav===index ? {display:"block"}:{display:'none'}}></div>
                 </div>
           ))}
         </Element>
     )
 }
-export default connect(({global:{navButtons}})=>({navButtons}))(NavBar)
+export default connect(({global:{navButtons,currentNav}})=>({navButtons,currentNav}))(NavBar)
