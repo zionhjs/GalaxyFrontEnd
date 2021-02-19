@@ -36,6 +36,7 @@ export default {
         col2:[],
         col3:[],
         col4:[],
+      mobileImages:[],
 
     },
     reducers:{
@@ -270,7 +271,7 @@ export default {
           ...state,
           images,
       }
-        }, 
+        },
         divideCol(state,{payload}){
             const {currentNav}=payload
             const {images}=state;
@@ -312,6 +313,7 @@ export default {
                 col2,
                 col3,
                 col4,
+              mobileImages:temp
             }
         },
         closeEditor(state){

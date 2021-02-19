@@ -33,4 +33,4 @@ const ImageMobile = ({ images }) => {
         </div>
     )
 }
-export default connect(({ image: { images } }) => ({ images }))(ImageMobile)
+export default connect(({ image: { mobileImages } }) => ({ images:mobileImages }))(ImageMobile)

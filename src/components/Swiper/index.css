@@ -122,7 +122,7 @@ z-index: 10;
     background-color: #000;   
     z-index: 10000;
 }
-  .swiperTitle{
+  .activeItem .swiperTitle{
       position: absolute;
       top: 254px;
       margin: auto;
@@ -135,7 +135,7 @@ z-index: 10;
       text-align: center;
       z-index: 10000;
   }
-  .swiperText{
+ .activeItem .swiperText{
       font-family: 'RobotoRegular';
       font-size: 16px;
       color: #fff;
@@ -148,6 +148,13 @@ z-index: 10;
       top: 329px;
       z-index: 10000;
   }
+ .swiperText:hover{
+   text-decoration: underline;
+   cursor: pointer;
+ }
+ .nextItem .swiperTitle,.preItem .swiperTitle,.nextItem .swiperText,.preItem .swiperText{
+   display: none;
+ }
   .contactBtn{
     width: 200px;
     height: 40px;

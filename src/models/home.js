@@ -9,7 +9,13 @@ import {getImages} from '../service/api'
 export default {
     namespace:'home',
     state:{
-        banners: ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg','banner5.jpeg'],
+        banners: [
+          {title:'Interior Rendering',imgUrl:'banner1.jpeg',desc:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
+          {title:'MasterPlan Rendering',imgUrl:'banner2.jpeg',desc:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
+          {title:'Exterior Rendering',imgUrl:'banner3.jpeg',desc:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
+          {title:'Animations',imgUrl:'banner4.jpeg',desc:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'},
+          {title:'360 Visualizations',imgUrl:'banner5.jpeg',desc:'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.'}
+          ],
         profiles: [{ imgUrl: 'profile1.jpeg', title: 'Interior rendering', desc: 'Sed ut perspiciatis unde iste natus',route:'/image',nav:0 },
         { imgUrl: 'profile2.jpeg', title: 'Exterior rendering', desc: 'Sed ut perspiciatis unde iste natus',route:'/image',nav:1 },
         { imgUrl: 'profile3.jpeg', title: 'Architectural Animation', desc: 'Sed ut perspiciatis unde iste natus',route:'/animation',nav:3 }],
