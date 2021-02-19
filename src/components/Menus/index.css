@@ -12,14 +12,26 @@
   top: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.8);
-  z-index: 20001;
+  z-index: 20008;
 }
 
-.closeWrapper {
+.loginBox {
   height: 80px;
   display: flex;
-  justify-content: flex-end;
   align-items: center;
+  color: #fff;
+  padding-left: 30px;
+  font-size: 30px;
+}
+.loginText{
+  cursor: pointer;
+}
+.dashboardText{
+  cursor: pointer;
+  margin-right: 20px;
+}
+.logoutText{
+  cursor: pointer;
 }
 
 .closeIcon {

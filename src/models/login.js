@@ -44,6 +44,7 @@ export default {
             const {token,userId,roleName}=res.data;
             localStorage.setItem('artjwt',token)
             localStorage.setItem('userId',userId)
+          yield put({type:'global/setLogin',payload:true})
             yield put({type:'global/setRole',payload:roleName})
             yield put({type:'global/closeAll'})
             yield put({type:'global/closeMenu'})
@@ -53,6 +54,7 @@ export default {
            const {userId}=payload
            const result=yield call(logout,{userId})
            if(result.code==200){
+             yield put({type:'global/setLogin',payload:false})
                localStorage.removeItem('artjwt')
                yield put({type:'global/closeAll'})
                yield put({type:'global/closeMenu'})

@@ -122,7 +122,7 @@ const HomePage=(props)=> {
             className={styles.wfOutterBox}>{stillImages.map((item, index) => (<div key={index} className={styles.wfInnerBox}><img src={item} className={styles.workflowImg} alt="" /></div>))}
           </QueueAnim>
         </OverPack>
-        <OverPack className={styles.stepBox}>
+        <OverPack playScale={0.1} className={styles.stepBox}>
           <TweenOne key="step1" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 1<img src="step.png" className={styles.stepImg} /></div>

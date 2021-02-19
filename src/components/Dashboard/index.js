@@ -10,7 +10,7 @@ import {connect} from 'dva'
 import classnames from 'classnames'
 import styles from './index.css'
 
-const menus=['Interior','Exterior','Mixed','Nav to Animation']
+const menus=['WaterMarker','UnderDevelopment Features',]
 const Dashboard=(props)=>{
     const {avatar,visible}=props
     const [idx,setIdx]=useState(0)

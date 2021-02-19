@@ -161,7 +161,7 @@ input,textarea{
   width:36px;
   transform-style: preserve-3d;
   perspective: 600px;
-  z-index: 20005;
+  z-index: 20009;
   cursor: pointer;
   margin:auto;
 }
