@@ -124,18 +124,20 @@ z-index: 10;
 }
   .activeItem .swiperTitle{
       position: absolute;
+       transform: scaleX(0.74);
       top: 254px;
       margin: auto;
       left: 0;
       right: 0;
-      font-family: 'RubikBold';
+      font-family: 'RobotoBold';
       color: #fff;
       font-size: 51px;
       font-weight: bold;
       text-align: center;
       z-index: 10000;
   }
- .activeItem .swiperText{
+    .activeItem .swiperText{
+      transform: scaleX(0.74);
       font-family: 'RobotoRegular';
       font-size: 16px;
       color: #fff;
