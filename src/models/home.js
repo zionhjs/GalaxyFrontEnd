@@ -9,7 +9,7 @@ import {getImages} from '../service/api'
 export default {
     namespace:'home',
     state:{
-        banners: ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg'],
+        banners: ['banner1.jpeg', 'banner2.jpeg', 'banner3.jpeg', 'banner4.jpeg','banner5.jpeg'],
         profiles: [{ imgUrl: 'profile1.jpeg', title: 'Interior rendering', desc: 'Sed ut perspiciatis unde iste natus',route:'/image',nav:0 },
         { imgUrl: 'profile2.jpeg', title: 'Exterior rendering', desc: 'Sed ut perspiciatis unde iste natus',route:'/image',nav:1 },
         { imgUrl: 'profile3.jpeg', title: 'Architectural Animation', desc: 'Sed ut perspiciatis unde iste natus',route:'/animation',nav:3 }],
