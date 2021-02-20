@@ -1,0 +1,20 @@
+.container{
+  position:absolute;
+  top: 0;
+  bottom: 0;
+  left:40vw;
+  height: 400px;
+  margin: auto;
+  background: #f0f2f4;
+}
+.uploadText1{
+  font-size: 30px;
+  font-family: 'RobotoBold';
+  margin-left: 50px!important;
+  margin-right: 50px!important;
+}
+.uploadText2{
+  font-size:16px;
+  font-family: 'RobotoRegular';
+  color: #999;
+}
