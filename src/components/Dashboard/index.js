@@ -8,6 +8,7 @@
 import React,{useState,useCallback} from 'react'
 import {connect} from 'dva'
 import classnames from 'classnames'
+import Upload from './upload'
 import styles from './index.css'
 
 const menus=['WaterMarker','UnderDevelopment Features',]
@@ -39,6 +40,7 @@ const Dashboard=(props)=>{
                 <img src="facebook.png" className={styles.footerIcon} alt="" />
                 <img src="linkin.png" className={styles.footerIcon} alt="" />
             </div>
+          <Upload/>
         </div>
     )
 }
