@@ -79,6 +79,25 @@
     z-index: 20006;
     
   }
+.closeBtn{
+  position: fixed;
+  width: 1.2rem;
+  height:1.2rem;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  bottom: 2.5rem;
+  right: 0.15rem;
+  cursor: pointer;
+  z-index: 20006;
+  font-size: 1rem;
+  background-color:#fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
   .upIcon{
     width: 100%;
     height: auto;
@@ -148,3 +167,4 @@
     text-align: center;
     cursor: pointer;
   }
+
