@@ -52,8 +52,8 @@ const Image360=(props)=>{
             <img onClick={close} src="close.png" className={styles.closeIcon} alt="" />
             <img onClick={pre} className={styles.pre} src="pre.png" alt="" />
             <img onClick={next} className={styles.next} src="next.png" alt="" />
-           <div id="viewer" className={classnames(styles.picBox,{[styles.hidden]:currentItem.suffix!='360'})}></div>
-           <div className={classnames(styles.picBox,{[styles.hidden]:currentItem.suffix=='360'})}><img src={currentItem.imgUrl} alt="" className={styles.pic} /></div>
+           <div id="viewer" className={classnames(styles.picBox,{[styles.hidden]:currentItem.statusName!='360'})}></div>
+           <div className={classnames(styles.picBox,{[styles.hidden]:currentItem.statusName=='360'})}><img src={currentItem.imgUrl} alt="" className={styles.pic} /></div>
           <div className={styles.desc}>{currentItem.desc}</div>
         </div>
     )

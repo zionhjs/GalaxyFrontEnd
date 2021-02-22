@@ -38,18 +38,18 @@ const Sw=(props)=>{
     if(item.title=='Interior Rendering'){
       dispatch({type:'global/setCurrentMenu',payload: 1})
       dispatch({type:'global/setCurrentNav',payload:0})
-      dispatch({type:'image/divideCol',payload:{currentNav:0}})
+      dispatch({type:'image/reset'})
       router.push('/image')
     }else if(item.title=='MasterPlan Rendering'){
       dispatch({type:'global/setCurrentMenu',payload: 1})
       dispatch({type:'global/setCurrentNav',payload:1})
-      dispatch({type:'image/divideCol',payload:{currentNav:1}})
+      dispatch({type:'image/reset'})
       router.push('/image')
 
     }else if(item.title=='Exterior Rendering'){
       dispatch({type:'global/setCurrentMenu',payload: 1})
       dispatch({type:'global/setCurrentNav',payload:1})
-      dispatch({type:'image/divideCol',payload:{currentNav:1}})
+      dispatch({type:'image/reset'})
       router.push('/image')
     }else if(item.title=='Animations'){
       dispatch({type:'global/setCurrentMenu',payload: 2})
@@ -58,7 +58,7 @@ const Sw=(props)=>{
     }else if(item.title=='360 Visualizations'){
       dispatch({type:'global/setCurrentMenu',payload: 1})
       dispatch({type:'global/setCurrentNav',payload:2})
-      dispatch({type:'image/divideCol',payload:{currentNav:2}})
+      dispatch({type:'image/reset'})
       router.push('/image')
     }
 
