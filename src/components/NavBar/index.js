@@ -17,9 +17,9 @@ const NavBar=(props)=>{
       router.push('/animation')
      }else {
       dispatch({type:'global/setCurrentMenu',payload:1})
-      dispatch({type:'image/divideCol',payload:{currentNav:index}})
+      dispatch({type:'image/reset'})
+      dispatch({type:'image/getImage'})
        router.push('/image')
-       
      }
     },[])
     useEffect(()=>{

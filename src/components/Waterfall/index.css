@@ -26,6 +26,11 @@
     line-height: 21px;
     position: relative;
 }
+.listImg{
+  cursor: pointer;
+  width: 100%;
+  height: auto;
+}
 .editBox{
     position: absolute;
     left: 0;
@@ -139,7 +144,7 @@ align-items: center;
 .checkIcon{
     width: 15px;
     height: auto;
-    cursor: pointer;  
+    cursor: pointer;
 }
 .loadMore{
     position: relative;
@@ -201,6 +206,7 @@ margin-left: 9px;
 .editIcon{
     width: 21px;
     height: auto;
+  cursor: pointer;
 }
 .uploadBox{
     background-color: #000;

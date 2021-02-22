@@ -35,7 +35,6 @@
     font-family: 'RobotoRegular';
   }
   .profileBox{
-    
     height: 10rem;
     background-color: #2e2e2e;
     display: flex;
@@ -43,8 +42,6 @@
     overflow: hidden;
   }
   .profile{
-    flex: 1;
-    height: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
@@ -106,6 +103,7 @@
     height: 100%;
     width: auto;
     opacity: 0.6;
+    flex-shrink: 0;
   }
   .illustrationTitleBox{
     position: absolute;

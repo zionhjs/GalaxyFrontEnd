@@ -29,7 +29,7 @@ export default function (props) {
     return (
         <div className={styles.swiperContainer}>
             <Carousel ref={carousel} dots={false}>
-                {images.map((v, i) => (<div className={styles.swiperImgWrapper} key={i}><img src={v} className={styles.swiperImg} /></div>))}
+                {images.map((v, i) => (<div className={styles.swiperImgWrapper} key={v+i}><img src={v} className={styles.swiperImg} /></div>))}
             </Carousel>
             <div className={styles.btnGroup}>
               <LeftOutlined onClick={pre}  className={styles.swiperBtn} />

@@ -276,8 +276,8 @@ export default {
             const {currentNav}=payload
             const {images}=state;
             console.log('images====divide',images)
-            let temp;
-            if(currentNav==0){
+
+           /* if(currentNav==0){
                 temp=_.filter(images,{statusName:'interior'})
                 console.log('temp===interior',temp)
             }else if(currentNav==1){
@@ -288,23 +288,23 @@ export default {
                 temp=_.filter(images,{statusName:'360'})
             }else {
                 temp=images
-            }
-            let len=temp.length;
+            }*/
+            let len=images.length;
             let col1=[]
             let col2=[]
             let col3=[]
             let col4=[]
             for(let i=0;i<len;i=i+4){
-                console.log('images',temp[i])
-              col1.push(temp[i])
+                console.log('images',images[i])
+              col1.push(images[i])
               if(i<len-1){
-                col2.push(temp[i+1])
+                col2.push(images[i+1])
               }
               if(i<len-2){
-                col3.push(temp[i+2])
+                col3.push(images[i+2])
               }
               if(i<len-3){
-                col4.push(temp[i+3])
+                col4.push(images[i+3])
               }
             }
             return {
@@ -313,7 +313,6 @@ export default {
                 col2,
                 col3,
                 col4,
-              mobileImages:temp
             }
         },
         closeEditor(state){
@@ -329,7 +328,17 @@ export default {
          let {currentNav}=yield select(state=>state.global)
          if(isLast!=true){
              console.log('isLast',isLast!=true)
-            const ret=yield call(getImages,{currentPage,pageSize})
+           let s;
+           if(currentNav==0){
+             s='interior'}
+           else if(currentNav==1){
+           s='exterior'}
+           else if(currentNav==2){
+             s='360'
+             }else{
+             s=''
+           }
+            const ret=yield call(getImages,{currentPage,pageSize,statusName:s})
             console.log('status==1',ret)
             let list=ret?.data?.list||[]
             console.log('ret===',ret)
