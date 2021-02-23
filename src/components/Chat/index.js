@@ -63,19 +63,21 @@ const Chat = props => {
             </div>
             <div className={styles.chatTitle}>WELCOME TO CARVANA CHAT.</div>
             <div id="msg" className={styles.messageBox}>
-                {
-                    messages.map((item, index) => (
-                        <div className={classnames(styles.msgItem)} key={index}>
-                            <div className={classnames(styles.leftBox, { [styles.normal]: item.owner === 'me', [styles.reverse]: item.owner === 'other' })}>
-                                <img src={item.avatar} alt="" className={styles.avatar} />
-                            </div>
-                            <div className={classnames(styles.rightBox,{[styles.normalMsg]:item.owner==='me',[styles.reverseMsg]:item.owner==='other'})}>
-                                <div className={classnames({[styles.nameText]:item.owner==='me',[styles.reverseText]:item.owner==='other'})}>{item.sender}</div>
-                                <div className={classnames({ [styles.msgContent]: item.owner === 'me', [styles.msgReverse]: item.owner === 'other' })}>{item.msg}</div>
-                            </div>
-                        </div>
-                    ))
-                }
+              {
+                messages.map((item,index)=>
+                  index%2==0 ? (<div key={index} className={styles.userBox}>
+                    <p className={styles.userMsg}>{item}</p>
+                    </div>)
+                    : (<div key={index} className={styles.assistantBox}>
+                      <img src={'contact.png'} alt={''} className={styles.avatar} />
+                     <div>
+                       <p className={styles.assistantName}>galaxy assistant</p>
+                       <p className={styles.assistantMsg}>{item}</p>
+                     </div>
+                    </div>)
+                )
+              }
+
                 <div id="bottom" style={{height:'150px'}}></div>
             </div>
             <div className={styles.emojiBox}>

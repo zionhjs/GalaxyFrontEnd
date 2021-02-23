@@ -52,11 +52,6 @@
 .leftBox{
     width: 0.78rem;
 }
-.avatar{
-    width: 0.78rem;
-    height: 0.78rem;
-    border-radius: 0.39rem;    
-}
 .rightBox{
     flex: 1;
     display: flex;
@@ -153,4 +148,44 @@ height: auto;
     padding-left: 0.17rem;
     padding-right: 0.17rem;
     cursor: pointer;
+}
+.assistantBox{
+  display: flex;
+  margin-bottom: 0.2rem;
+  margin-top: 0.2rem;
+  align-items: flex-start;
+}
+.avatar{
+  width: 0.78rem;
+  height: 0.78rem;
+  border-radius: 0.39rem;
+  margin-right: 0.15rem;
+}
+.assistantMsg{
+  background-color: #fff;
+  -webkit-border-radius: 0.04rem;
+  -moz-border-radius: 0.04rem;
+  border-radius: 0.04rem;
+  font-size: 0.26rem;
+  line-height: 1.2;
+  margin-bottom: 0;
+  padding: 0.15rem;
+}
+.assistantName{
+  line-height: 0.43rem;
+  font-size: 0.32rem;
+  font-weight: bold;
+}
+.userBox{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.userMsg{
+  background-color: #9EEA6A;
+  border-radius: 0.04rem;
+  font-size: 0.26rem;
+  line-height: 1.2;
+  padding: 0.15rem;
+  margin-bottom: 0;
 }

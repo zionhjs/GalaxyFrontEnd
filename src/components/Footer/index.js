@@ -19,7 +19,7 @@ const Footer=(props)=>{
     }else {
       dispatch({type:'global/closeContact'})
     }
-  },[])
+  },[chatToken])
   const openDialog=useCallback(()=>{
     if(chatToken){
       dispatch({type:'chat/toggleChat'})

@@ -8,6 +8,13 @@
 import request from '../utils/fetch'
 export async function subscribe(params) {
   let result=await request(`/uservo/subscribe`,{method:'POST',data:{...params}})
-  console.log('subscribe=====',result)
     return result;
+  }
+  export async function sendMessage(params) {
+  let result=await request('/chatbot/sendmessage?userEmail='+params.email+'&message='+params.message,{method: 'POST',data:{}})
+  return result
+  }
+  export async function getMessage(params) {
+  let result=await request('/chatbot/getmessages?userEmail='+params.email,{method:'POST'})
+    return result
   }
