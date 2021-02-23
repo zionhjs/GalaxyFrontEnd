@@ -1,5 +1,5 @@
 import React ,{useState,useCallback,Fragment} from 'react'
-import {Upload,message} from 'antd';
+import {Upload,message,Button} from 'antd';
 import {CloudUploadOutlined,PaperClipOutlined,DeleteOutlined} from '@ant-design/icons'
 import classnames from 'classnames'
 import styles from './upload.css'
@@ -57,7 +57,7 @@ const UploadDialog=()=>{
             </div>
           ))
         }
-        <button onClick={handleSubmit} className={styles.submitBtn}>submit</button>
+        <Button onClick={handleSubmit} className={styles.submitBtn}>submit</Button>
       </div>
     </div>
   )

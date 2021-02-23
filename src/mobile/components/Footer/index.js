@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-12-10 01:27:10
  * @FilePath: \GalaxyFrontEnd\src\mobile\components\Footer\index.js
  */
-import React, {useCallback } from 'react'
+import React, { useCallback, useState } from 'react';
 import { Link } from 'rc-scroll-anim';
 import classnames from 'classnames'
 import Icon from '@ant-design/icons';
@@ -18,16 +18,33 @@ import styles from './index.css'
 const CloseIcon = props => <Icon component={CloseSvg} {...props} />;
 const Footer=(props)=>{
   const {dispatch,contactVisible,chatToken,chatVisible}=props
+  const [name,setName]=useState('')
+  const [email,setEmail]=useState('')
   const closeDialog=useCallback(()=>{
-    dispatch({type:'global/closeContact'})
-  },[])
+    if(chatToken){
+      dispatch({type:'chat/closeChat'})
+    }else {
+      dispatch({type:'global/closeContact'})
+    }
+  },[chatToken])
   const openDialog=useCallback(()=>{
-    dispatch({type:'global/toggleContact'})
-  },[])
+    if(chatToken){
+      dispatch({type:'chat/toggleChat'})
+    }else {
+      dispatch({type:'global/toggleContact'})
+    }
+  },[chatToken])
  const handleSubmit=useCallback(()=>{
+   dispatch({type:'chat/subscribe',payload:{userEmail:email,userNumber:name}})
    dispatch({type:'chat/openChat'})
    dispatch({type:'global/closeContact'})
- },[])
+ },[email,name])
+  const nameChange=useCallback(e=>{
+    setName(e.target.value)
+  },[])
+  const emailChange=useCallback(e=>{
+    setEmail(e.target.value)
+  },[])
   return (
     <div className={styles.footer}>
       <OverPack playScale={0.3}>
@@ -59,8 +76,8 @@ const Footer=(props)=>{
         <div className={styles.dialogTitle}>conversation</div>
         <div className={styles.dialogLabel}>Please fill in the following</div>
         <div className={styles.dialogLabel}>information first</div>
-        <input className={styles.nameInput} placeholder="Name" />
-        <input className={styles.emailInput} placeholder="Email" />
+        <input value={name} onChange={nameChange} className={styles.nameInput} placeholder="Name" />
+        <input value={email} onChange={emailChange} className={styles.emailInput} placeholder="Email" />
         <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div>
       </div>
       <Link className={styles.anchor} to="top"><img src="up.png" className={styles.upIcon} alt="" /></Link>
