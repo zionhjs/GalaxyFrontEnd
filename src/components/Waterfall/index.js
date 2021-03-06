@@ -5,7 +5,6 @@ import {connect} from 'dva'
 import {Select} from 'antd'
 import { OverPack } from 'rc-scroll-anim';
 import TweenOne from 'rc-tween-one';
-import BigImage from '../BigImage'
 import Image360 from '../Image360'
 import styles from './index.css'
 const {Option}=Select
@@ -30,7 +29,6 @@ const Waterfall=(props)=> {
     },[])
     const openBigImg=useCallback((item)=>{
         dispatch({type:'image/setCurrent',payload:item})
-        //dispatch({type:'image/openBigImage'})
         dispatch({type:'image/openImg360'})
     },[])
     const edit=useCallback((item)=>{
@@ -47,6 +45,7 @@ const Waterfall=(props)=> {
             url = window.createObjectURL(file) ;
 
         } else if (window.URL!=undefined) { // mozilla(firefox)
+          console.log('window.URL',window.URL)
             url = window.URL.createObjectURL(file) ;
 
         } else if (window.webkitURL!=undefined) { // webkit or chrome
@@ -274,7 +273,7 @@ const Waterfall=(props)=> {
                 </div>
             </div>
             <div onClick={loadMore} className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></div>
-            <BigImage  />
+           {/* <BigImage  />*/}
             <Image360 />
         </div>
     )

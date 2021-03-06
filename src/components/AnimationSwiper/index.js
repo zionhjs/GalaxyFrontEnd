@@ -7,7 +7,7 @@
  */
 import React,{useState,useCallback} from 'react'
 import classnames from 'classnames'
-import SwiperCore, { Navigation, Pagination,EffectCoverflow } from 'swiper';
+import SwiperCore, { Navigation, Pagination,EffectCoverflow,Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {connect} from 'dva'
 import 'swiper/swiper.less';
@@ -37,6 +37,7 @@ const Sw=(props)=>{
         <div className={styles.container}>            
              <Swiper
              speed={800}
+             autoplay={true}
              spaceBetween={20}
       slidesPerView={2}
       effect="coverflow"

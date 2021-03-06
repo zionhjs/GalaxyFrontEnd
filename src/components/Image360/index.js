@@ -9,16 +9,13 @@ import React,{useCallback, useEffect,useState} from 'react'
 import {connect} from 'dva'
 import classnames from 'classnames'
 import { Viewer } from 'photo-sphere-viewer';
-//import * as THREE from 'three'
 import styles from './index.css'
 import 'photo-sphere-viewer/dist/photo-sphere-viewer.css'
-
-//THREE.Cache.enabled = false;
 const Image360=(props)=>{
     const {visible,currentItem,dispatch}=props;
        const [viewer,setViewer]=useState(null)
     useEffect(()=>{
-        if(viewer){
+      if(viewer){
           viewer.setPanorama(currentItem.imgUrl)
         }else{
           console.log(viewer)
@@ -53,7 +50,7 @@ const Image360=(props)=>{
             <img onClick={pre} className={styles.pre} src="pre.png" alt="" />
             <img onClick={next} className={styles.next} src="next.png" alt="" />
            <div id="viewer" className={classnames(styles.picBox,{[styles.hidden]:currentItem.statusName!='360'})}></div>
-           <div className={classnames(styles.picBox,{[styles.hidden]:currentItem.statusName=='360'})}><img src={currentItem.imgUrl} alt="" className={styles.pic} /></div>
+           <div style={{backgroundImage:`url(${currentItem.imgUrl})`}} className={classnames(styles.picBox,{[styles.hidden]:currentItem.statusName=='360'})}>{/*<img src={currentItem.imgUrl} alt="" className={classnames({[styles.picL]:isLong},{[styles.picH]:!isLong})} />*/}</div>
           <div className={styles.desc}>{currentItem.desc}</div>
         </div>
     )

@@ -7,7 +7,6 @@
     align-items: center;
     flex-direction: column;
     background-color: #000;
-    margin-bottom: 0.33rem;
   }
   .titleBox{
     display: flex;
@@ -209,7 +208,8 @@
     width: 18.5rem;
   }
   .wfInnerBox{
-    width: 3.7rem;
+    width: 45.5vw;
+    margin-left: 3vw;
     height: 2.71rem;
     display: flex;
     justify-content: center;
@@ -230,7 +230,7 @@
     width: 2.18rem;
     color: #fff;
     text-align: left;
-    margin-left: 0.94rem;
+    margin-left: 0.89rem;
   }
   .stepTitle{
     font-size: 0.2rem;
@@ -254,7 +254,7 @@
   }
   .stepArrowWrapper{
     align-self: center;
-    margin-left: 0.53rem;
+    margin-left: 0.39rem;
   }
   .stepContent{
     font-size: 0.16rem;
