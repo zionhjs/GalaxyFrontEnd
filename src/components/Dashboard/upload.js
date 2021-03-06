@@ -1,12 +1,13 @@
 import React ,{useState,useCallback,Fragment} from 'react'
-import {Upload,message,Button} from 'antd';
+import {Progress,message,Button} from 'antd';
 import {CloudUploadOutlined,PaperClipOutlined,DeleteOutlined} from '@ant-design/icons'
 import classnames from 'classnames'
 import styles from './upload.css'
-const { Dragger } = Upload;
 const UploadDialog=()=>{
   const [enter,setEnter]=useState(false)
   const [fileList,setFileList]=useState([])
+  const [percent,setPercent]=useState(0)
+  const [uploading,setUploading]=useState(false)
   const handleDrop=useCallback((e)=>{
     e.preventDefault();
     setEnter(false)
@@ -23,8 +24,34 @@ const UploadDialog=()=>{
   const handleDelete=useCallback(index=>{
     setFileList(fileList.filter((v,i)=>i!==index))
   },[fileList.length])
+  function uploadProgress(evt) {
+    if (evt.lengthComputable) {
+      var percentComplete = Math.round(evt.loaded * 100 / evt.total);
+      setPercent(percentComplete)
+    }
+  }
+  function uploadComplete(evt) {
+    setUploading(false)
+  }
+  function uploadFailed(evt) {
+    setUploading(false)
+  }
+  function uploadCanceled(evt) {
+    setUploading(false)
+  }
   const handleSubmit=useCallback(()=>{
-    console.log(fileList)
+    setUploading(true)
+    let fd=new FormData()
+    fileList.forEach(function(file) {
+      fd.append('multipartFile',file,file.name)
+    })
+    let xhr= new XMLHttpRequest()
+    xhr.upload.addEventListener("progress", uploadProgress, false)
+    xhr.addEventListener("load", uploadComplete, false);
+    xhr.addEventListener("error", uploadFailed, false);
+    xhr.addEventListener("abort", uploadCanceled, false);
+    xhr.open("POST", "html5.action");
+    xhr.send(fd);
   },[fileList.length])
   const handleChange=useCallback((e)=>{
     let files=Array.prototype.slice.apply(e.target.files)

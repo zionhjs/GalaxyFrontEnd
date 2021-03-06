@@ -5,13 +5,6 @@
  * @LastEditTime: 2020-12-11 01:39:34
  * @FilePath: \GalaxyFrontEnd\src\models\image.js
  */
-/*
- * @Author: xingzai
- * @Date: 2020-12-10 23:29:17
- * @LastEditors: xingzai
- * @LastEditTime: 2020-12-10 23:29:17
- * @FilePath: \GalaxyFrontEnd\src\models\image.js
- */
 import _ from 'lodash'
 import {getImages,uploadImage,updateImg,updateImgText} from '../service/api'
 const banners=['imageBanner1.jpeg', 'imageBanner2.jpeg', 'imageBanner3.jpeg', 'imageBanner4.jpeg']
@@ -28,7 +21,7 @@ export default {
         uploadImg:'',//要上传的图片的路径
         name:'',//要上传的图片的标题
         desc:'',//要上传的图片的描述
-        statusName:'',//要上传图片的statusName
+        statusName:'interior',//要上传图片的statusName
         level:'star',//要上传图片的level
         banners:banners,
         images:[],
@@ -131,6 +124,7 @@ export default {
             }
         },
         setuploadSuffix(state,{payload}){
+          console.log('uploadSufixxChange',payload)
         return {
             ...state,
             statusName:payload
@@ -366,7 +360,11 @@ export default {
             
         },      
         *upload({payload},{call,put,select}){
-            const {uploadImg,name,desc,statusName,level}=yield select(state=>state.image)
+          const  image=yield select(state=>state.image)
+          const {uploadImg,name,desc,statusName,level}=image
+          console.log('uploadstatusnameimage',image)
+
+          console.log('uploadstatusName=====',statusName)
             let form=new FormData()
             form.append('multipartFile',uploadImg)
             form.append('title',name)

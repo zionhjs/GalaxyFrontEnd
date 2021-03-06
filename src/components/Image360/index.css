@@ -30,11 +30,17 @@ height: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
-   
+ background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.pic {
+.picL {
     width: 100%;
     height: auto;
+}
+.picH{
+  height:100%;
+  width: auto;
 }
 .pre{
     left: 32px;

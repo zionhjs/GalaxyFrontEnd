@@ -8,7 +8,7 @@
 import React,{useState,useCallback} from 'react'
 import classnames from 'classnames'
 import router from 'umi/router'
-import SwiperCore, { Navigation, Pagination,EffectCoverflow } from 'swiper';
+import SwiperCore, { Navigation, Pagination,EffectCoverflow,Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {connect} from 'dva'
 import 'swiper/swiper.less';
@@ -16,7 +16,7 @@ import 'swiper/components/navigation/navigation.less';
 import 'swiper/components/pagination/pagination.less';
 import 'swiper/components/scrollbar/scrollbar.less';
 import styles from './index.css'
-SwiperCore.use([Navigation, Pagination,EffectCoverflow]);
+SwiperCore.use([Navigation, Pagination,EffectCoverflow,Autoplay]);
 const Sw=(props)=>{
     const {dispatch,banners}=props
     const renderCustom=useCallback((swiper,current,total)=>{
@@ -67,6 +67,7 @@ const Sw=(props)=>{
         <div className={styles.container}>            
              <Swiper
              speed={800}
+             autoplay={true}
              spaceBetween={20}
       slidesPerView={2}
       effect="coverflow"
