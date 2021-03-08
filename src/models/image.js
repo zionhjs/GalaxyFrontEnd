@@ -157,7 +157,8 @@ export default {
         closeImg360(state){
             return {
                 ...state,
-                img360Visible:false
+                img360Visible:false,
+                 currentItem:{}
             }
         },
         setCurrent(state,{payload}){
