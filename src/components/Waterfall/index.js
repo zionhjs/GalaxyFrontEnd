@@ -278,4 +278,4 @@ const Waterfall=(props)=> {
         </div>
     )
 }
-export default connect(({image:{col1,col2,col3,col4,currentItem,bigImageVisible,name,desc,uploadImg},global:{role}})=>({col1,col2,col3,col4,currentItem,showEdit:!bigImageVisible&&role=='admin',role,uploadName:name,uploadDesc:desc,uploadImg}))(Waterfall)
+export default connect(({image:{col1,col2,col3,col4,currentItem,img360Visible,name,desc,uploadImg},global:{role}})=>({col1,col2,col3,col4,currentItem,showEdit:!img360Visible&&role=='admin',role,uploadName:name,uploadDesc:desc,uploadImg}))(Waterfall)

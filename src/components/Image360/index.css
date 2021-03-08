@@ -34,13 +34,10 @@ align-items: center;
   background-repeat: no-repeat;
   background-position: center;
 }
-.picL {
-    width: 100%;
-    height: auto;
-}
-.picH{
-  height:100%;
-  width: auto;
+.pic {
+  object-fit: contain;
+  max-width: 100%;
+  max-height: 100%;
 }
 .pre{
     left: 32px;
