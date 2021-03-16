@@ -83,6 +83,10 @@ const Waterfall=(props)=> {
     const loadMore=useCallback(()=>{
         dispatch({type:'image/getImage'})
     },[])
+  const handleDelete=useCallback(item=>{
+    console.log('del')
+    dispatch({type:'image/deleteImage',payload:item.id})
+  },[])
     return (
         <div className={styles.container}>
             <div className={styles.waterfall}>
@@ -91,6 +95,7 @@ const Waterfall=(props)=> {
                         (
                         <OverPack playScale={0.2} key={index+item.imgUrl}>
                         <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
+                          {role=='admin' ? (<img onClick={handleDelete.bind(null,item)}  className={styles.redClose} src={"redClose.png"} />) :null}
                             <LazyLoad height={200} offset={100}>
                             <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item)} src={item.imgUrl} />
                             </LazyLoad>
@@ -130,6 +135,7 @@ const Waterfall=(props)=> {
                     (
                         <OverPack key={index+item.imgUrl} playScale={0.2}>
                     <TweenOne key={index+'col2'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.imgWrapper}>
+                      {role=='admin' ? (<img onClick={handleDelete.bind(null,item)}  className={styles.redClose} src={"redClose.png"} />) :null}
                         <LazyLoad height={200} offset={100}><img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item)} src={item.imgUrl} /></LazyLoad>
                         <div className={styles.imgFooter}>
                             <div>
@@ -166,6 +172,7 @@ const Waterfall=(props)=> {
                     (
                         <OverPack playScale={0.2} key={index+item.imgUrl}>
                     <TweenOne key={index+'col3'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.imgWrapper}>
+                      {role=='admin' ? (<img onClick={handleDelete.bind(null,item)}  className={styles.redClose} src={"redClose.png"} />) :null}
                         <LazyLoad height={200} offset={100}>
                         <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item)} src={item.imgUrl}/>
                         </LazyLoad>
@@ -204,6 +211,7 @@ const Waterfall=(props)=> {
                     (
                         <OverPack playScale={0.2} key={index+item.imgUrl}>
                     <TweenOne key={index+'col4'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.imgWrapper}>
+                      {role=='admin' ? (<img onClick={handleDelete.bind(null,item)}  className={styles.redClose} src={"redClose.png"} />) :null}
                         <LazyLoad height={200} offset={100}>
                         <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item)} src={item.imgUrl} />
                         </LazyLoad>

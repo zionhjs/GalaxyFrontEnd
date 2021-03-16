@@ -37,6 +37,10 @@ export async function uploadImage(params){
   let result=await request('/gateway/upload/images/uploadImages',{method:'POST',body:params})
   return result
 }
+export async function deleteImage(params) {
+  let result=await request('/gateway/upload/images/delete?id='+params.id,{method:'POST',data:{}})
+  return result
+}
 export async function uploadVideo(params){
   let result=await request('/gateway/upload/video/uploadVideo',{method:'POST',body:params})
   return result

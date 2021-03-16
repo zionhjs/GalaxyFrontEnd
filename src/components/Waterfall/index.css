@@ -338,6 +338,15 @@ margin-left: 9px;
     width: 14px;
     height: auto;
 }
+.redClose{
+  width: 20px;
+  height: auto;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 25000;
+  cursor: pointer;
+}
 .uploadSmallIcon{
     width: 16px;
     height: auto;

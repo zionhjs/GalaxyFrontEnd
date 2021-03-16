@@ -6,7 +6,7 @@
  * @FilePath: \GalaxyFrontEnd\src\models\image.js
  */
 import _ from 'lodash'
-import {getImages,uploadImage,updateImg,updateImgText} from '../service/api'
+import {getImages,uploadImage,updateImg,updateImgText,deleteImage} from '../service/api'
 const banners=['imageBanner1.jpeg', 'imageBanner2.jpeg', 'imageBanner3.jpeg', 'imageBanner4.jpeg']
 export default {
     namespace:'image',
@@ -318,7 +318,7 @@ export default {
         }
     },
     effects:{
-        *getImage({payload},{call,put,select}){
+        *getImage(action,{call,put,select}){
          let {currentPage,pageSize,isLast}=yield select(state=>state.image)
          let {currentNav}=yield select(state=>state.global)
          if(isLast!=true){
@@ -428,6 +428,13 @@ export default {
            let result= yield call(updateImgText,{id,description:desc,title:name,statusName,level,objectUrl240:imgUrl})
            yield put({type:'saveUpdateImg',payload:{id,name:result.data.title,desc:result.data.description,statusName:result.data.statusName,level:result.data.level}})
            yield put({type:'closeEditor'})
+        },
+      *deleteImage({payload},{call,put}){
+          let result=yield call(deleteImage,{id:payload})
+        if(result.code==200){
+          yield put({type:'reset'})
+          yield put({type:'getImage'})
         }
+      }
     }
 }
