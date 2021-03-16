@@ -24,17 +24,21 @@ export async function login(params){
     return result;
   }
   export async function delTeamMember(params){
-    let result=await request('/gateway/cms/team/delete?id='+params.id,{method:'POST'})
+    let result=await request('/gateway/cms/team/member/delete?id='+params.id,{method:'POST'})
     return result
   }
-export async function getImages({currentPage,pageSize}){
+export async function getImages({currentPage,pageSize,statusName}){
   console.log('currentPage',currentPage)
-  let result=await request(`/gateway/upload/images/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{}})
+  let result=await request(`/gateway/upload/images/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName}})
   return result
 }
 export async function uploadImage(params){
   console.log('upload',params)
   let result=await request('/gateway/upload/images/uploadImages',{method:'POST',body:params})
+  return result
+}
+export async function deleteImage(params) {
+  let result=await request('/gateway/upload/images/delete?id='+params.id,{method:'POST',data:{}})
   return result
 }
 export async function uploadVideo(params){

@@ -5,15 +5,20 @@
  * @LastEditTime: 2020-12-02 04:49:32
  * @FilePath: \GalaxyFrontEnd\src\mobile\Home\index.js
  */
-import React from 'react'
+import React,{ useState,useCallback } from 'react'
 import {connect} from 'dva'
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import Swiper from './swiper'
+import classnames from 'classnames'
 import styles from './index.css'
 const HomePage= (props)=> {
   const {profiles,illustration,stillImages,aniImages}=props
+  const [currentProfile,setCurrentProfile]=useState(100);
+  const handleClick=useCallback(index=>{
+    setCurrentProfile(index)
+  },[])
   return (
     <div className={styles.container}>
       <Swiper />
@@ -35,7 +40,7 @@ const HomePage= (props)=> {
       </div>
       <div className={styles.profileBox}>
         {profiles.map((item, index) => (
-          <div key={index} className={styles.profile}>
+          <div onClick={handleClick.bind(null,index)} key={index} className={classnames(styles.profile,{[styles.activeProfile]:currentProfile==index})}>
             <img src={item.imgUrl} alt="" className={styles.profileImg} />
             <div className={styles.profileTitleBox}>
               <div className={styles.profileTitle}>{item.title}</div>
@@ -47,14 +52,14 @@ const HomePage= (props)=> {
       </div>
       <div className={styles.illustrationBox}>
         <img src={illustration.imgUrl} className={styles.illustrationImg} alt="" />
-        <OverPack playScale={0.05}>
+        <OverPack playScale={[0.1,0.1]}>
         <QueueAnim key="titleAni" duration={500} ease="easeInCirc" animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} className={styles.illustrationTitleBox}>
           <img key="illimgAni" src="diamon.png" style={{ width: '45px', height: 'auto' }} />
           <div key="illTitleAni" className={styles.illuTitle}>{illustration.title}</div>
         </QueueAnim>
         </OverPack>
         <div className={styles.illuListMask}></div>
-        <OverPack playScale={0.3}>
+        <OverPack playScale={[0.1,0.1]}>
           <QueueAnim
             animConfig={[
               { opacity: [1, 0], translateY: [0, 50] },
@@ -77,7 +82,7 @@ const HomePage= (props)=> {
           </QueueAnim>
         </OverPack>
       </div>
-      <OverPack playScale={0.3}>
+      <OverPack playScale={[0.1,0.1]}>
       <QueueAnim
       animConfig={[
         { opacity: [1, 0], translateY: [0, 50] },
@@ -93,7 +98,7 @@ const HomePage= (props)=> {
       </QueueAnim>
       </OverPack>
       <div className={styles.stillContainer}>
-      <OverPack playScale={0.4}>
+      <OverPack playScale={[0.1,0.1]}>
           <QueueAnim
            animConfig={[
             { opacity: [1, 0], translateY: [0, 250] },
@@ -107,7 +112,7 @@ const HomePage= (props)=> {
             className={styles.wfOutterBox}>{stillImages.map((item, index) => (<div key={index} className={styles.wfInnerBox}><img src={item} className={styles.workflowImg} alt="" /></div>))}
           </QueueAnim>
         </OverPack>
-        <OverPack className={styles.stepBox}>
+        <OverPack playScale={[0.1,0.1]} className={styles.stepBox}>
           <TweenOne key="step1" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 1<img src="step.png" className={styles.stepImg} /></div>
@@ -153,7 +158,7 @@ const HomePage= (props)=> {
         </OverPack>
       </div>
       <div className={styles.animationContainer}>
-      <OverPack playScale={0.4}>
+      <OverPack playScale={[0.1,0.1]}>
           <QueueAnim
            animConfig={[
             { opacity: [1, 0], translateY: [0, 250] },
@@ -167,7 +172,7 @@ const HomePage= (props)=> {
             className={styles.wfOutterBox}>{aniImages.map((item, index) => (<div key={index} className={styles.wfInnerBox}><img src={item} className={styles.workflowImg} alt="" /></div>))}
           </QueueAnim>
         </OverPack>
-        <OverPack className={styles.stepBox}>
+        <OverPack playScale={[0.1,0.1]} className={styles.stepBox}>
           <TweenOne key="step1" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}}>
           <div className={styles.stepItem}>
             <div className={styles.stepTitle}>STEP 1<img src="step.png" className={styles.stepImg} /></div>

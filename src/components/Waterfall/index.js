@@ -5,7 +5,6 @@ import {connect} from 'dva'
 import {Select} from 'antd'
 import { OverPack } from 'rc-scroll-anim';
 import TweenOne from 'rc-tween-one';
-import BigImage from '../BigImage'
 import Image360 from '../Image360'
 import styles from './index.css'
 const {Option}=Select
@@ -30,7 +29,6 @@ const Waterfall=(props)=> {
     },[])
     const openBigImg=useCallback((item)=>{
         dispatch({type:'image/setCurrent',payload:item})
-        //dispatch({type:'image/openBigImage'})
         dispatch({type:'image/openImg360'})
     },[])
     const edit=useCallback((item)=>{
@@ -47,6 +45,7 @@ const Waterfall=(props)=> {
             url = window.createObjectURL(file) ;
 
         } else if (window.URL!=undefined) { // mozilla(firefox)
+          console.log('window.URL',window.URL)
             url = window.URL.createObjectURL(file) ;
 
         } else if (window.webkitURL!=undefined) { // webkit or chrome
@@ -84,16 +83,21 @@ const Waterfall=(props)=> {
     const loadMore=useCallback(()=>{
         dispatch({type:'image/getImage'})
     },[])
+  const handleDelete=useCallback(item=>{
+    console.log('del')
+    dispatch({type:'image/deleteImage',payload:item.id})
+  },[])
     return (
         <div className={styles.container}>
             <div className={styles.waterfall}>
                 <div className={styles.col1}>
                     {col1.map((item, index) =>
                         (
-                        <OverPack playScale={0.2} key={index}>
+                        <OverPack playScale={0.2} key={index+item.imgUrl}>
                         <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
+                          {role=='admin' ? (<img onClick={handleDelete.bind(null,item)}  className={styles.redClose} src={"redClose.png"} />) :null}
                             <LazyLoad height={200} offset={100}>
-                            <img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} />
+                            <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item)} src={item.imgUrl} />
                             </LazyLoad>
                             <div className={styles.imgFooter}>
                                 <div>
@@ -129,9 +133,10 @@ const Waterfall=(props)=> {
                 </div>
                 <div className={styles.col2}>{col2.map((item, index) =>
                     (
-                        <OverPack key={index} playScale={0.2}>
+                        <OverPack key={index+item.imgUrl} playScale={0.2}>
                     <TweenOne key={index+'col2'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.imgWrapper}>
-                        <LazyLoad height={200} offset={100}><img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} /></LazyLoad>
+                      {role=='admin' ? (<img onClick={handleDelete.bind(null,item)}  className={styles.redClose} src={"redClose.png"} />) :null}
+                        <LazyLoad height={200} offset={100}><img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item)} src={item.imgUrl} /></LazyLoad>
                         <div className={styles.imgFooter}>
                             <div>
                                 <div><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
@@ -165,10 +170,11 @@ const Waterfall=(props)=> {
                     ))}</div>
                 <div className={styles.col3}>{col3.map((item, index) =>
                     (
-                        <OverPack playScale={0.2} key={index}>
+                        <OverPack playScale={0.2} key={index+item.imgUrl}>
                     <TweenOne key={index+'col3'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.imgWrapper}>
+                      {role=='admin' ? (<img onClick={handleDelete.bind(null,item)}  className={styles.redClose} src={"redClose.png"} />) :null}
                         <LazyLoad height={200} offset={100}>
-                        <img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} />
+                        <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item)} src={item.imgUrl}/>
                         </LazyLoad>
                         <div className={styles.imgFooter}>
                             <div>
@@ -203,10 +209,11 @@ const Waterfall=(props)=> {
                     ))}</div>
                 <div className={styles.col4}>{col4.map((item, index) =>
                     (
-                        <OverPack playScale={0.2} key={index}>
+                        <OverPack playScale={0.2} key={index+item.imgUrl}>
                     <TweenOne key={index+'col4'} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.imgWrapper}>
+                      {role=='admin' ? (<img onClick={handleDelete.bind(null,item)}  className={styles.redClose} src={"redClose.png"} />) :null}
                         <LazyLoad height={200} offset={100}>
-                        <img onClick={openBigImg.bind(null, item)} src={item.imgUrl} style={{ width: '100%', height: 'auto' }} />
+                        <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item)} src={item.imgUrl} />
                         </LazyLoad>
                         <div className={styles.imgFooter}>
                             <div>
@@ -274,9 +281,9 @@ const Waterfall=(props)=> {
                 </div>
             </div>
             <div onClick={loadMore} className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></div>
-            <BigImage  />
+           {/* <BigImage  />*/}
             <Image360 />
         </div>
     )
 }
-export default connect(({image:{col1,col2,col3,col4,currentItem,bigImageVisible,name,desc,uploadImg},global:{role}})=>({col1,col2,col3,col4,currentItem,showEdit:!bigImageVisible&&role=='admin',role,uploadName:name,uploadDesc:desc,uploadImg}))(Waterfall)
+export default connect(({image:{col1,col2,col3,col4,currentItem,img360Visible,name,desc,uploadImg},global:{role}})=>({col1,col2,col3,col4,currentItem,showEdit:!img360Visible&&role=='admin',role,uploadName:name,uploadDesc:desc,uploadImg}))(Waterfall)

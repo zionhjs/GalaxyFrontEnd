@@ -25,9 +25,16 @@
     background-color: #000;
     line-height: 21px;
     position: relative;
+  min-height: 250px;
+}
+.listImg{
+  cursor: pointer;
+  width: 100%;
+  height: auto;
 }
 .editBox{
     position: absolute;
+    bottom: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -139,7 +146,7 @@ align-items: center;
 .checkIcon{
     width: 15px;
     height: auto;
-    cursor: pointer;  
+    cursor: pointer;
 }
 .loadMore{
     position: relative;
@@ -201,6 +208,7 @@ margin-left: 9px;
 .editIcon{
     width: 21px;
     height: auto;
+  cursor: pointer;
 }
 .uploadBox{
     background-color: #000;
@@ -329,6 +337,15 @@ margin-left: 9px;
 .closeIcon{
     width: 14px;
     height: auto;
+}
+.redClose{
+  width: 20px;
+  height: auto;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 25000;
+  cursor: pointer;
 }
 .uploadSmallIcon{
     width: 16px;

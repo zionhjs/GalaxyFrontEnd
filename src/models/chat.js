@@ -6,36 +6,15 @@
  * @FilePath: \GalaxyFrontEnd\src\models\chat.js
  */
 import _ from 'lodash'
-import {updateImg} from '../service/api'
-import {subscribe} from '../service/chat'
+import {subscribe,sendMessage,getMessage} from '../service/chat'
 export default {
     namespace:'chat',
     state:{
         visible:false,
-       messages: [{
-           sender:'Bot',
-           avatar:'contact.png',
-           msg:'Please fill in the followinginformati- on first.',
-           owner:'me'
-       },{
-           sender:'abcddd',
-           avatar:'avatar.jpg',
-           msg:'Please fill in the followinginformati- on first.',
-           owner:'other'
-       }
-    ]
+      email:'',
+      messages: []
     },
     reducers:{
-     addMessage(state,{payload}){
-         const {messages}=state
-         console.log('payload',payload)
-         messages.concat(payload)
-         let ret=_.concat(messages,payload)
-         return {
-             ...state,
-             messages:ret,
-         }
-     },
      openChat(state){
          return {
              ...state,
@@ -53,16 +32,32 @@ export default {
              ...state,
              visible:!state.visible
          }
-     }
+     },
+      saveEmail(state,{payload}){
+       return {
+         ...state,
+         email:payload
+       }
+      },
+      saveMsg(state,{payload}){
+       return {
+         ...state,
+         messages: payload
+       }
+      }
 
     },
     effects:{
-        *sendMsg({payload,cb},{call,put}){
-            yield put({type:'addMessage',payload:{owner:'other',sender:'fgdd',avatar:'avatar.jpg',msg:payload.msg}})
+        *sendMsg({payload,cb},{call,put,select}){
+            let {email}=yield select(state=>state.chat)
+            let ret=yield call(sendMessage,{email,message:payload.msg})
+          console.log('ret==',ret)
+            yield put({type:'saveMsg',payload:ret.datas})
             cb()
         },
         *subscribe({payload},{call,put}){
             const {userEmail,userNumber}=payload
+          yield put({type:'saveEmail',payload:'admin@galaxy.com'})
             let result=yield call(subscribe,{userEmail,userNumber})
         }
     }

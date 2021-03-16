@@ -15,6 +15,7 @@
 export default {
     namespace:'global',
     state:{
+      isLogin:false,
       chatToken:null,
       role:'',
       menus:[{ icon: 'home.png', text: 'Home',route:'/home' },
@@ -32,6 +33,12 @@ export default {
       menuVisibleMobile:false,//移动端导航栏是否可见
     },
     reducers:{
+      setLogin(state,{payload}){
+        return {
+          ...state,
+          isLogin: payload
+        }
+      },
       setCurrentMenu(state,{payload}){
        return {
          ...state,

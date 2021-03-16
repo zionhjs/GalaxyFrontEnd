@@ -62,7 +62,7 @@
     width: 328px;
     height: 456px;
     background-color: #fff;
-    z-index: 20001;
+    z-index: 20008;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -98,8 +98,18 @@
     right: 15px;
     cursor: pointer;
     z-index: 20006;
-    font-size: 81px;
+    font-size: 60px;
+    height:81px;
+    width: 81px;
+    -webkit-border-radius: 40.5px;
+    -moz-border-radius: 40.5px;
+    border-radius: 40.5px;
     color: #fff;
+    background-color:#fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
   .closeBox{
     display: flex;

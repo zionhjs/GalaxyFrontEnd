@@ -11,7 +11,7 @@ import MobileLayout from '../mobile/Layout'
 import ThreeLine from '../components/ThreeLine';
 import Chat from '../components/Chat'
 
-const avatar="avatar.jpg"
+const avatar="avatar.png"
 
 function BasicLayout(props) {
   const [subVisible,setSubVisible]=useState(false)

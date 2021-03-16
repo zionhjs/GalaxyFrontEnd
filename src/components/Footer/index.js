@@ -3,11 +3,12 @@ import { Link } from 'rc-scroll-anim';
 import classnames from 'classnames'
 import {connect} from 'dva'
 import QueueAnim from 'rc-queue-anim';
-import {CloseCircleFilled} from '@ant-design/icons'
+import Icon from '@ant-design/icons';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import {ReactComponent  as CloseSvg} from '../../assets/icons/close.svg'
 import styles from './index.css'
-
+const CloseIcon = props => <Icon component={CloseSvg} {...props} />;
 const Footer=(props)=>{
   const {dispatch,contactVisible,chatToken,chatVisible}=props
   const [name,setName]=useState('')
@@ -18,7 +19,7 @@ const Footer=(props)=>{
     }else {
       dispatch({type:'global/closeContact'})
     }
-  },[])
+  },[chatToken])
   const openDialog=useCallback(()=>{
     if(chatToken){
       dispatch({type:'chat/toggleChat'})
@@ -64,7 +65,7 @@ const Footer=(props)=>{
       <div className={styles.footerText}> The website design, the logo, the covers and gallery images are property of GalaxyCGI for its total or partial reproduction, as well as exploitation, distribution</div>
       <div className={styles.footerText}> and marketing.</div>
        {contactVisible ? <TweenOne animation={{ scale:0,x:'+=200',opacity: 0,type: 'from', ease:'easeInQuart',duration:100}} className={styles.dialog}>
-        <div className={styles.closeBox} onClick={closeDialog}><img src="close.png" alt="" style={{ width: '14px', height: 'auto', opacity: 1 }} /></div>
+        {/*<div className={styles.closeBox} onClick={closeDialog}><img src="close.png" alt="" style={{ width: '14px', height: 'auto', opacity: 1 }} /></div>*/}
         <div className={styles.dialogTitle}>conversation</div>
         <div className={styles.dialogLabel}>Please fill in the following</div>
         <div className={styles.dialogLabel}>information first</div>
@@ -73,7 +74,7 @@ const Footer=(props)=>{
         <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div>
       </TweenOne> : null}
       <Link className={styles.anchor} to="top"><img src="up.png" className={styles.upIcon} alt="" /></Link>
-      {(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <CloseCircleFilled className={styles.closeBtn}  onClick={closeDialog} /> : <img alt="" src="contact.png" className={styles.btn}  onClick={openDialog} />}
+      {(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <span className={styles.closeBtn}  onClick={closeDialog}><CloseIcon /></span> : <img alt="" src="contact.png" className={styles.btn}  onClick={openDialog} />}
     </div>
   )
 }

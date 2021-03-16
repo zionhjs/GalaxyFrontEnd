@@ -7,7 +7,6 @@
     align-items: center;
     flex-direction: column;
     background-color: #000;
-    margin-bottom: 0.33rem;
   }
   .titleBox{
     display: flex;
@@ -35,7 +34,6 @@
     font-family: 'RobotoRegular';
   }
   .profileBox{
-    
     height: 10rem;
     background-color: #2e2e2e;
     display: flex;
@@ -43,14 +41,18 @@
     overflow: hidden;
   }
   .profile{
-    flex: 1;
-    height: 100%;
     overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
+    height: 33.3%;
   }
+.activeProfile{
+  height: 50%;
+  transition: all 500ms ease-in-out;
+}
+
   .profileImg{
     width: 100%;
     height: auto;
@@ -106,6 +108,7 @@
     height: 100%;
     width: auto;
     opacity: 0.6;
+    flex-shrink: 0;
   }
   .illustrationTitleBox{
     position: absolute;
@@ -211,7 +214,8 @@
     width: 18.5rem;
   }
   .wfInnerBox{
-    width: 3.7rem;
+    width: 45.5vw;
+    margin-left: 3vw;
     height: 2.71rem;
     display: flex;
     justify-content: center;
@@ -232,7 +236,7 @@
     width: 2.18rem;
     color: #fff;
     text-align: left;
-    margin-left: 0.94rem;
+    margin-left: 0.89rem;
   }
   .stepTitle{
     font-size: 0.2rem;
@@ -256,7 +260,7 @@
   }
   .stepArrowWrapper{
     align-self: center;
-    margin-left: 0.53rem;
+    margin-left: 0.39rem;
   }
   .stepContent{
     font-size: 0.16rem;

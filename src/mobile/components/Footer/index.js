@@ -5,26 +5,46 @@
  * @LastEditTime: 2020-12-10 01:27:10
  * @FilePath: \GalaxyFrontEnd\src\mobile\components\Footer\index.js
  */
-import React, {useCallback } from 'react'
+import React, { useCallback, useState } from 'react';
 import { Link } from 'rc-scroll-anim';
 import classnames from 'classnames'
+import Icon from '@ant-design/icons';
 import {connect} from 'dva'
 import QueueAnim from 'rc-queue-anim';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
+import {ReactComponent  as CloseSvg} from '../../../assets/icons/close.svg'
 import styles from './index.css'
 
+const CloseIcon = props => <Icon component={CloseSvg} {...props} />;
 const Footer=(props)=>{
-  const {dispatch,contactVisible}=props
+  const {dispatch,contactVisible,chatToken,chatVisible}=props
+  const [name,setName]=useState('')
+  const [email,setEmail]=useState('')
   const closeDialog=useCallback(()=>{
-    dispatch({type:'global/closeContact'})
-  },[])
+    if(chatToken){
+      dispatch({type:'chat/closeChat'})
+    }else {
+      dispatch({type:'global/closeContact'})
+    }
+  },[chatToken])
   const openDialog=useCallback(()=>{
-    dispatch({type:'global/toggleContact'})
-  },[])
+    if(chatToken){
+      dispatch({type:'chat/toggleChat'})
+    }else {
+      dispatch({type:'global/toggleContact'})
+    }
+  },[chatToken])
  const handleSubmit=useCallback(()=>{
+   dispatch({type:'chat/subscribe',payload:{userEmail:email,userNumber:name}})
    dispatch({type:'chat/openChat'})
    dispatch({type:'global/closeContact'})
- },[])
+ },[email,name])
+  const nameChange=useCallback(e=>{
+    setName(e.target.value)
+  },[])
+  const emailChange=useCallback(e=>{
+    setEmail(e.target.value)
+  },[])
   return (
     <div className={styles.footer}>
       <OverPack playScale={0.3}>
@@ -52,17 +72,17 @@ const Footer=(props)=>{
       <div className={styles.footerText}> property of GalaxyCGI for its total or partial reproduction,</div>
       <div className={styles.footerText}> as well as exploitation, distribution and marketing.</div>
       <div className={styles.dialog} style={contactVisible ? { display: 'flex' } : { display: 'none' }}>
-        <div className={styles.closeBox} onClick={closeDialog}><img src="close.png" alt="" style={{ width: '14px', height: 'auto', opacity: 1 }} /></div>
+        {/*<div className={styles.closeBox} onClick={closeDialog}><img src="close.png" alt="" style={{ width: '14px', height: 'auto', opacity: 1 }} /></div>*/}
         <div className={styles.dialogTitle}>conversation</div>
         <div className={styles.dialogLabel}>Please fill in the following</div>
         <div className={styles.dialogLabel}>information first</div>
-        <input className={styles.nameInput} placeholder="Name" />
-        <input className={styles.emailInput} placeholder="Email" />
+        <input value={name} onChange={nameChange} className={styles.nameInput} placeholder="Name" />
+        <input value={email} onChange={emailChange} className={styles.emailInput} placeholder="Email" />
         <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div>
       </div>
       <Link className={styles.anchor} to="top"><img src="up.png" className={styles.upIcon} alt="" /></Link>
-      <img onClick={openDialog} src="contact.png" className={styles.btn} alt="" />
+      {(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <span className={styles.closeBtn}  onClick={closeDialog}><CloseIcon /></span> : <img alt="" src="contact.png" className={styles.btn}  onClick={openDialog} />}
     </div>
   )
 }
-export default connect(({global})=>({contactVisible:global.contactVisible}))(Footer)
+export default connect(({global,chat})=>({chatVisible:chat.chatVisible,chatToken:global.chatToken,contactVisible:global.contactVisible}))(Footer)

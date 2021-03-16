@@ -5,15 +5,8 @@
  * @LastEditTime: 2020-12-11 01:39:34
  * @FilePath: \GalaxyFrontEnd\src\models\image.js
  */
-/*
- * @Author: xingzai
- * @Date: 2020-12-10 23:29:17
- * @LastEditors: xingzai
- * @LastEditTime: 2020-12-10 23:29:17
- * @FilePath: \GalaxyFrontEnd\src\models\image.js
- */
 import _ from 'lodash'
-import {getImages,uploadImage,updateImg,updateImgText} from '../service/api'
+import {getImages,uploadImage,updateImg,updateImgText,deleteImage} from '../service/api'
 const banners=['imageBanner1.jpeg', 'imageBanner2.jpeg', 'imageBanner3.jpeg', 'imageBanner4.jpeg']
 export default {
     namespace:'image',
@@ -28,7 +21,7 @@ export default {
         uploadImg:'',//要上传的图片的路径
         name:'',//要上传的图片的标题
         desc:'',//要上传的图片的描述
-        statusName:'',//要上传图片的statusName
+        statusName:'interior',//要上传图片的statusName
         level:'star',//要上传图片的level
         banners:banners,
         images:[],
@@ -36,6 +29,7 @@ export default {
         col2:[],
         col3:[],
         col4:[],
+      mobileImages:[],
 
     },
     reducers:{
@@ -104,10 +98,10 @@ export default {
         return {
             ...state,
             images:[...images],
-            col1:[...col1],
-            col2:[...col2],
-            col3:[...col3],
-            col4:[...col4]
+            col1,
+            col2,
+            col3,
+            col4
         }
         },
         
@@ -130,6 +124,7 @@ export default {
             }
         },
         setuploadSuffix(state,{payload}){
+          console.log('uploadSufixxChange',payload)
         return {
             ...state,
             statusName:payload
@@ -162,7 +157,8 @@ export default {
         closeImg360(state){
             return {
                 ...state,
-                img360Visible:false
+                img360Visible:false,
+                 currentItem:{}
             }
         },
         setCurrent(state,{payload}){
@@ -270,12 +266,13 @@ export default {
           ...state,
           images,
       }
-        }, 
+        },
         divideCol(state,{payload}){
             const {currentNav}=payload
             const {images}=state;
-            let temp;
-            if(currentNav==0){
+            console.log('images====divide',images)
+
+           /* if(currentNav==0){
                 temp=_.filter(images,{statusName:'interior'})
                 console.log('temp===interior',temp)
             }else if(currentNav==1){
@@ -286,31 +283,31 @@ export default {
                 temp=_.filter(images,{statusName:'360'})
             }else {
                 temp=images
-            }
-            let len=temp.length;
+            }*/
+            let len=images.length;
             let col1=[]
             let col2=[]
             let col3=[]
             let col4=[]
             for(let i=0;i<len;i=i+4){
-                console.log('images',temp[i])
-              col1.push(temp[i])
+                console.log('images',images[i])
+              col1.push(images[i])
               if(i<len-1){
-                col2.push(temp[i+1])
+                col2.push(images[i+1])
               }
               if(i<len-2){
-                col3.push(temp[i+2])
+                col3.push(images[i+2])
               }
               if(i<len-3){
-                col4.push(temp[i+3])
+                col4.push(images[i+3])
               }
-            }    
+            }
             return {
                 ...state,
                 col1,
                 col2,
                 col3,
-                col4
+                col4,
             }
         },
         closeEditor(state){
@@ -321,12 +318,22 @@ export default {
         }
     },
     effects:{
-        *getImage({payload},{call,put,select}){
+        *getImage(action,{call,put,select}){
          let {currentPage,pageSize,isLast}=yield select(state=>state.image)
          let {currentNav}=yield select(state=>state.global)
          if(isLast!=true){
              console.log('isLast',isLast!=true)
-            const ret=yield call(getImages,{currentPage,pageSize})
+           let s;
+           if(currentNav==0){
+             s='interior'}
+           else if(currentNav==1){
+           s='exterior'}
+           else if(currentNav==2){
+             s='360'
+             }else{
+             s=''
+           }
+            const ret=yield call(getImages,{currentPage,pageSize,statusName:s})
             console.log('status==1',ret)
             let list=ret?.data?.list||[]
             console.log('ret===',ret)
@@ -354,7 +361,11 @@ export default {
             
         },      
         *upload({payload},{call,put,select}){
-            const {uploadImg,name,desc,statusName,level}=yield select(state=>state.image)
+          const  image=yield select(state=>state.image)
+          const {uploadImg,name,desc,statusName,level}=image
+          console.log('uploadstatusnameimage',image)
+
+          console.log('uploadstatusName=====',statusName)
             let form=new FormData()
             form.append('multipartFile',uploadImg)
             form.append('title',name)
@@ -367,21 +378,49 @@ export default {
            let data= yield put({type:'getImage'})
                console.log('data===',data)
         },
-        *updateImg({payload},{call,put}){
+        *updateImg({payload},{call,put,select}){
             let {id,file}=payload
             let form=new FormData()
             form.append('multipartFile',file)
             let result=yield call(updateImg,form)
             let ret;
-            if(result.code==200){
-                yield put({type:'saveUpdateImg',payload:{id,imgUrl:result.data}})
-              yield put({type:'setCurrentImgUrl',payload:result.data})
-                yield put({type:'updateImgText'})
+            if(result.code==200) {
+              yield put({ type: 'saveUpdateImg', payload: { id, imgUrl: result.data } })
+              yield put({ type: 'setCurrentImgUrl', payload: result.data })
+              let image=yield  select(state=>state.image)
+              let {name,desc,id,statusName,level,imgUrl}=image?.currentItem
+              ret=yield call(updateImgText,{id,description:desc,title:name,statusName,level,objectUrl240:imgUrl})
             }
             if(ret.code==200){
-                yield put({type:'reset'}) 
-                yield put({type:'getImage'})               
-            }            
+              yield put({type:'reset'})
+              let {currentPage,pageSize,isLast}=yield select(state=>state.image)
+              let {currentNav}=yield select(state=>state.global)
+              if(isLast!=true){
+                const retVal=yield call(getImages,{currentPage,pageSize})
+                let list=retVal?.data?.list||[]
+                list= list.map((item,index)=>{
+                  return {
+                    id:item.id,
+                    name:item.title,
+                    date:item.createdAt,
+                    desc:item.description,
+                    imgUrl:item.objectUrl240,
+                    rating:item.rating,
+                    statusName:item.statusName,
+                    level:item.level,
+                  }
+                })
+                yield put.resolve({type:'save',payload:{list}})
+                yield put({type:'setIsLast',payload:ret?.data?.isLastPage})
+                if(retVal?.data?.hasNextPage==true){
+                  yield* put({type:'setPage',payload:(currentPage+1)})
+                }
+                yield put({type:'sortByRate'})
+                yield put({type:'divideCol',payload:{currentNav}})
+                yield put ({type:'closeEditor'})
+              }
+
+            }
         },
         *updateImgText({payload},{call,put,select}){
             let image=yield select(state=>state.image)
@@ -389,6 +428,13 @@ export default {
            let result= yield call(updateImgText,{id,description:desc,title:name,statusName,level,objectUrl240:imgUrl})
            yield put({type:'saveUpdateImg',payload:{id,name:result.data.title,desc:result.data.description,statusName:result.data.statusName,level:result.data.level}})
            yield put({type:'closeEditor'})
+        },
+      *deleteImage({payload},{call,put}){
+          let result=yield call(deleteImage,{id:payload})
+        if(result.code==200){
+          yield put({type:'reset'})
+          yield put({type:'getImage'})
         }
+      }
     }
 }

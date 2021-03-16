@@ -76,7 +76,7 @@
   }  
   .searchInput{
     height: 40px;
-    width: 200px;
+    width:calc(100% - 20px);
     box-sizing: border-box;
     background-color: #373737;
     border: 0;

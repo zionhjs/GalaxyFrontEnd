@@ -122,20 +122,22 @@ z-index: 10;
     background-color: #000;   
     z-index: 10000;
 }
-  .swiperTitle{
+  .activeItem .swiperTitle{
       position: absolute;
+       transform: scaleX(0.74);
       top: 254px;
       margin: auto;
       left: 0;
       right: 0;
-      font-family: 'RubikBold';
+      font-family: 'RobotoBold';
       color: #fff;
       font-size: 51px;
       font-weight: bold;
       text-align: center;
       z-index: 10000;
   }
-  .swiperText{
+    .activeItem .swiperText{
+      transform: scaleX(0.74);
       font-family: 'RobotoRegular';
       font-size: 16px;
       color: #fff;
@@ -148,6 +150,13 @@ z-index: 10;
       top: 329px;
       z-index: 10000;
   }
+ .swiperText:hover{
+   text-decoration: underline;
+   cursor: pointer;
+ }
+ .nextItem .swiperTitle,.preItem .swiperTitle,.nextItem .swiperText,.preItem .swiperText{
+   display: none;
+ }
   .contactBtn{
     width: 200px;
     height: 40px;
