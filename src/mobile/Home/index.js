@@ -5,15 +5,20 @@
  * @LastEditTime: 2020-12-02 04:49:32
  * @FilePath: \GalaxyFrontEnd\src\mobile\Home\index.js
  */
-import React from 'react'
+import React,{ useState,useCallback } from 'react'
 import {connect} from 'dva'
 import QueueAnim from 'rc-queue-anim';
 import TweenOne from 'rc-tween-one';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import Swiper from './swiper'
+import classnames from 'classnames'
 import styles from './index.css'
 const HomePage= (props)=> {
   const {profiles,illustration,stillImages,aniImages}=props
+  const [currentProfile,setCurrentProfile]=useState(100);
+  const handleClick=useCallback(index=>{
+    setCurrentProfile(index)
+  },[])
   return (
     <div className={styles.container}>
       <Swiper />
@@ -35,7 +40,7 @@ const HomePage= (props)=> {
       </div>
       <div className={styles.profileBox}>
         {profiles.map((item, index) => (
-          <div key={index} className={styles.profile}>
+          <div onClick={handleClick.bind(null,index)} key={index} className={classnames(styles.profile,{[styles.activeProfile]:currentProfile==index})}>
             <img src={item.imgUrl} alt="" className={styles.profileImg} />
             <div className={styles.profileTitleBox}>
               <div className={styles.profileTitle}>{item.title}</div>
