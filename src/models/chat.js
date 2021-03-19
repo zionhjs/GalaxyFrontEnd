@@ -6,7 +6,7 @@
  * @FilePath: \GalaxyFrontEnd\src\models\chat.js
  */
 import _ from 'lodash'
-import {subscribe,sendMessage,getMessage} from '../service/chat'
+import {subscribe,sendMessage,getMessage,connect} from '../service/chat'
 export default {
     namespace:'chat',
     state:{
@@ -57,8 +57,13 @@ export default {
         },
         *subscribe({payload},{call,put}){
             const {userEmail,userNumber}=payload
-          yield put({type:'saveEmail',payload:'admin@galaxy.com'})
+          yield put({type:'saveEmail',payload:userEmail})
             let result=yield call(subscribe,{userEmail,userNumber})
+            let ret=yield call(connect,{email:userEmail})
+          if(ret.code==200){
+           yield put({type:'openChat'})
+           yield put({type:'global/closeContact'})
+          }
         }
     }
 }
