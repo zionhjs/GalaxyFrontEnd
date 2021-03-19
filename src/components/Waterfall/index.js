@@ -3,8 +3,9 @@ import classnames from 'classnames'
 import LazyLoad from 'react-lazyload';
 import {connect} from 'dva'
 import {Select} from 'antd'
-import { OverPack } from 'rc-scroll-anim';
+import { OverPack,Element } from 'rc-scroll-anim';
 import TweenOne from 'rc-tween-one';
+import _ from 'lodash'
 import Image360 from '../Image360'
 import styles from './index.css'
 const {Option}=Select
@@ -87,6 +88,11 @@ const Waterfall=(props)=> {
     console.log('del')
     dispatch({type:'image/deleteImage',payload:item.id})
   },[])
+  const handleScroll=useCallback(_.debounce(({scrollTop,offsetTop,showHeight,id})=>{
+    if(showHeight>=0){
+      dispatch({type:'image/getImage'})
+    }
+  },2000),[])
     return (
         <div className={styles.container}>
             <div className={styles.waterfall}>
@@ -280,7 +286,7 @@ const Waterfall=(props)=> {
                     }
                 </div>
             </div>
-            <div onClick={loadMore} className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></div>
+            <Element onScroll={handleScroll} onClick={loadMore} className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></Element>
            {/* <BigImage  />*/}
             <Image360 />
         </div>

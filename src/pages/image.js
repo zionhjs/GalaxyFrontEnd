@@ -5,16 +5,9 @@
  * @LastEditTime: 2021-01-12 05:15:10
  * @FilePath: \GalaxyFrontEnd\src\pages\image.js
  */
-/*
- * @Author: xingzai
- * @Date: 2020-11-25 05:29:09
- * @LastEditors: xingzai
- * @LastEditTime: 2020-12-11 07:56:52
- * @FilePath: \GalaxyFrontEnd\src\pages\image.js
- */
 import React, {useEffect} from 'react'
 import {connect} from 'dva'
-import { useMediaQuery } from 'react-responsive'
+//import { useMediaQuery } from 'react-responsive'
 import ImageSwiper from '../components/ImageSwiper'
 import NavBar from '../components/NavBar'
 import Waterfall from '../components/Waterfall'
@@ -24,10 +17,10 @@ const role="admin"
 const ImagePage= ({dispatch})=> {
     //const isMobile = useMediaQuery({ maxWidth: 767 })
   const isMobile=window.screen.width<768
-    useEffect(()=>{
+      useEffect(()=>{
         dispatch({type:'image/getImage'})
-    },[])    
-    
+    },[])
+
    
     return isMobile ? (<ImageMobile />) : (
         <div className={styles.container}>

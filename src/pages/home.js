@@ -28,11 +28,10 @@ import Swiper from '../components/Swiper'
 import QueueAnim from 'rc-queue-anim';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import TweenOne from 'rc-tween-one';
-import { useMediaQuery } from 'react-responsive'
+//import { useMediaQuery } from 'react-responsive'
 import MobileHome from '../mobile/Home'
 const HomePage=(props)=> {
   const {profiles,illustration,stillImages,aniImages,dispatch}=props;
-  console.log('updated at 2021/2/20')
   //const isMobile = useMediaQuery({ maxWidth: 767 })
   const isMobile=window.screen.width<768
   const toPage=useCallback(item=>{
