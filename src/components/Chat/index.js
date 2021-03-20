@@ -10,7 +10,8 @@ import { connect } from 'dva'
 import {Picker} from 'emoji-mart'
 import classnames from 'classnames'
 import {Upload} from 'antd'
-import TweenOne from 'rc-tween-one';
+import QueueAnim from 'rc-queue-anim';
+import Animate from 'rc-animate';
 import _ from 'lodash'
 import styles from './index.css'
 import 'emoji-mart/css/emoji-mart.css'
@@ -54,40 +55,56 @@ const Chat = props => {
     const openEmoji=useCallback(()=>{
         setEmojiVisible(true)
     },[])
-    return visible ? (
-        <TweenOne animation={{ scale:0,x: '+=50',opacity: 0,type: 'from', ease:'easeInQuart',duration:100}} className={styles.container}>
-           
+    return (
+        <QueueAnim type={'right'} animConfig={[
+          { opacity: [1, 0], translateX: [0, 500] },
+          { opacity: [1, 0], translateX: [0, 500] }
+        ]} duration={500} >{
+          visible ? (<div className={styles.container} key={'chatani'}>
             <div className={styles.header}>
-                <img src="chat.png" className={styles.chatIcon} alt="" />
-                <img onClick={handleClose} src="close.png" alt="" className={styles.closeIcon} />
+              <img src="chat.png" className={styles.chatIcon} alt=""/>
+              <img onClick={handleClose} src="close.png" alt="" className={styles.closeIcon}/>
             </div>
-            <div className={styles.chatTitle}>WELCOME TO CARVANA CHAT.</div>
+            <div className={styles.chatTitle}>WELCOME TO GalaxyChat.</div>
             <div id="msg" className={styles.messageBox}>
               {
-                messages.map((item,index)=>
-                  index%2==0 ? (<div key={index} className={styles.userBox}>
-                    <p className={styles.userMsg}>{item}</p>
+                messages.map((item, index) =>
+                  index % 2 == 0 ? (<div key={index} className={styles.userBox}>
+                      <Animate transitionAppear transitionName={'slide'} ><p key={'userAni'+index} className={styles.userMsg}>{item}</p></Animate>
                     </div>)
-                    : (<div key={index} className={styles.assistantBox}>
-                      <img src={'contact.png'} alt={''} className={styles.avatar} />
-                     <div>
-                       <p className={styles.assistantName}>galaxy assistant</p>
-                       <p className={styles.assistantMsg}>{item}</p>
-                     </div>
-                    </div>)
+                    : (
+                      <Animate transitionAppear key={index} transitionName={'slideRight'}>
+                      <div key={index+'Slide'} className={styles.assistantBox}>
+                      <img src={'contact.png'} alt={''} className={styles.avatar}/>
+                      <div>
+                        <p className={styles.assistantName}>galaxy assistant</p>
+                        <p className={styles.assistantMsg}>{item}</p>
+                      </div>
+                    </div>
+                      </Animate>
+                        )
                 )
               }
 
-                <div id="bottom" style={{height:'150px'}}></div>
+              <div id="bottom" style={{ height: '150px' }}></div>
             </div>
             <div className={styles.emojiBox}>
-            {emojiVisible&&<Picker style={{ position: 'absolute', left:'0px',bottom:'0px' }}  set="apple" emoji="" showPreview={false} onClick={searchEmoji} />}
-                <img onClick={openEmoji} src="xiaolian.png" className={styles.xiaolianIcon} alt="" />
-                <Upload showUploadList={false} headers={{accessToken:token}} action="http://localhost:9400/gateway/upload/images/uploadImages" name="multipartFile"><img src="folder.png" className={styles.folderIcon} alt="" /></Upload>
+              {emojiVisible && <Picker style={{ position: 'absolute', left: '0px', bottom: '0px' }} set="apple" emoji=""
+                                       showPreview={false} onClick={searchEmoji}/>}
+              <img onClick={openEmoji} src="xiaolian.png" className={styles.xiaolianIcon} alt=""/>
+              <Upload showUploadList={false} headers={{ accessToken: token }}
+                      action="http://localhost:9400/gateway/upload/images/uploadImages" name="multipartFile"><img
+                src="folder.png" className={styles.folderIcon} alt=""/></Upload>
             </div>
-            <textarea onKeyDown={onEnter} value={msg} onChange={handleChange} className={styles.chatTextarea} placeholder="Please enter" />
-            <div onClick={sendMsg}  className={styles.chatBtnWrapper}><div className={styles.sendBtn}>Send out</div></div>
-        </TweenOne>
-    ) : null
+            <div className={styles.inputContainer}><textarea type="text" onKeyDown={onEnter} value={msg}
+                                                             onChange={handleChange} className={styles.chatTextarea}
+                                                             placeholder="Please enter"/></div>
+            <div onClick={sendMsg} className={styles.chatBtnWrapper}>
+              <div className={classnames(styles.sendBtn,{[styles.activeBtn]:msg!==''})}>Send out</div>
+            </div>
+          </div>) : null
+        }
+        </QueueAnim>
+    )
 }
 export default connect(({ chat: { messages,visible} }) => ({ messages,visible}))(Chat)

@@ -30,8 +30,6 @@ const Footer=(props)=>{
   },[chatToken])
   const handleSubmit=useCallback(()=>{
     dispatch({type:'chat/subscribe',payload:{userEmail:email,userNumber:name}})
-    dispatch({type:'chat/openChat'})
-    dispatch({type:'global/closeContact'})
   },[email,name])
   const nameChange=useCallback(e=>{
     setName(e.target.value)
@@ -78,4 +76,4 @@ const Footer=(props)=>{
     </div>
   )
 }
-export default connect(({global,chat})=>({contactVisible:global.contactVisible,chatToken:global.chatToken,chatVisible:chat.chatVisible}))(Footer)
+export default connect(({global,chat})=>({contactVisible:global.contactVisible,chatToken:global.chatToken,chatVisible:chat.visible}))(Footer)

@@ -33,6 +33,12 @@ export default {
       menuVisibleMobile:false,//移动端导航栏是否可见
     },
     reducers:{
+      setChatToken(state,{payload}){
+        return {
+          ...state,
+          chatToken: payload
+        }
+      },
       setLogin(state,{payload}){
         return {
           ...state,
