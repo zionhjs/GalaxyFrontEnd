@@ -23,7 +23,7 @@ phases:
       - echo current list of path is `ls -a`
       - cd ./aws
       - echo current list of path is `ls -a`
-      - sudo install
+      - sudo run install
       #- sudo ./aws/install
       - cd ..
       - aws --version
