@@ -7,7 +7,8 @@ phases:
     on-failure: ABORT
     runtime-versions:
       nodejs: 14
-      java: openjdk8
+      java: corretto8
+      # java: openjdk8
       # - image: circleci/node:15.3.0
     finally:
       - echo "successfully installed node and stared the build!"
@@ -28,6 +29,7 @@ phases:
       - yarn run test
       - yarn run build
       - yarn run deploy
+
 
 
 
