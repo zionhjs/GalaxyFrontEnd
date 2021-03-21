@@ -6,7 +6,7 @@ phases:
       - echo "trying to install node"
     on-failure: ABORT
     runtime-versions:
-      nodejs: 12
+      nodejs: 14
     finally:
       - echo "successfully installed node and stared the build!"
   build:
@@ -25,6 +25,5 @@ phases:
       - yarn run test
       - yarn run build
       - yarn run deploy
-
 
 
