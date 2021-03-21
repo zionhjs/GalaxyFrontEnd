@@ -3,27 +3,26 @@ version: 0.2
 phases:
   install:
     commands:
-      - echo "trying to install node"
-    on-failure: ABORT
-    runtime-versions:
-      nodejs: 14
-    finally:
-      - echo "successfully installed node and stared the build!"
+      - echo Installing Node 12...
+      - curl -sL https://deb.nodesource.com/setup_12.x | bash -
+      - apt install -y nodejs
+      - echo Installing Yarn...
+      - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+      - echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
+      - apt install --no-install-recommends yarn
+  pre_build:
+    commands:
+      - echo Installing dependencies...
+      - yarn
   build:
     commands:
-      - echo current path is `pwd`
-      - echo current list of path is `ls -a`
-      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-      - unzip awscliv2.zip
-      #- sudo -i
-      - bash ./aws/install
-      - aws --version
-      # configure AWS
-      - aws configure set aws_access_key_id $ACCESSKEY | aws configure set aws_secret_access_key $SECRETACCESSKEY | aws configure set region us-west-1
-      - aws configure list
-      - yarn run install
-      - yarn run test
-      - yarn run build
-      - yarn run deploy
-
+      - echo Testing...
+      - yarn test
+      - echo Building...
+      - yarn build
+artifacts:
+  files:
+    - "**/*"
+  discard-paths: no
+  base-directory: dist
 
