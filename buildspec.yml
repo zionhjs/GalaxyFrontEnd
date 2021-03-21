@@ -7,6 +7,7 @@ phases:
     on-failure: ABORT
     runtime-versions:
       nodejs: 14
+      java: openjdk8
       # - image: circleci/node:15.3.0
     finally:
       - echo "successfully installed node and stared the build!"
@@ -15,15 +16,18 @@ phases:
     commands:
       - echo current path is `pwd`
       - echo current list of path is `ls -a`
-      # run tests!
-      #- run: yarn test
-#      - sudo curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py
-#      - sudo apt-get update && sudo apt-get install -y python-dev
-#      - sudo python get-pip.py
-      - sudo pip install awscli --upgrade
+      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      - unzip awscliv2.zip
+      - sudo ./aws/install
       - aws --version
       # configure AWS
       - aws configure set aws_access_key_id $ACCESSKEY | aws configure set aws_secret_access_key $SECRETACCESSKEY | aws configure set region us-west-1
       - aws configure list
       - aws s3 ls
+      - yarn run install
+      - yarn run test
+      - yarn run build
       - yarn run deploy
+
+
+
