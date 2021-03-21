@@ -6,7 +6,7 @@ phases:
       - echo "trying to install node"
     on-failure: ABORT
     runtime-versions:
-      - nodejs: 14.0
+      nodejs: 14.0
       # - image: circleci/node:15.3.0
     finally:
       - echo "successfully installed node and stared the build!"
