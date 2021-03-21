@@ -21,6 +21,8 @@ phases:
       - unzip awscliv2.zip
       - echo current path is `pwd`
       - echo current list of path is `ls -a`
+      - cd ./aws
+      - echo current list of path is `ls -a`
       - sudo ./aws/install
       - aws --version
       # configure AWS
