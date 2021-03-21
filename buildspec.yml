@@ -14,12 +14,12 @@ phases:
     # working_directory: ~/repo
     commands:
       - echo current path is `pwd`
-      - echo current list of path is `ls list -a`
+      - echo current list of path is `ls -a`
       # run tests!
       #- run: yarn test
-      - sudo curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py
-      - sudo apt-get update && sudo apt-get install -y python-dev
-      - sudo python get-pip.py
+#      - sudo curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py
+#      - sudo apt-get update && sudo apt-get install -y python-dev
+#      - sudo python get-pip.py
       - sudo pip install awscli --upgrade
       - aws --version
       # configure AWS
