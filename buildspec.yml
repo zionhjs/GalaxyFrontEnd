@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "trying to install node"
+    on-failure: ABORT
+    runtime-versions:
+      - nodejs: 14.0
+      # - image: circleci/node:15.3.0
+    finally:
+      - echo "successfully installed node and stared the build!"
+  build:
+    # working_directory: ~/repo
+    commands:
+      - echo current path is `pwd`
+      - checkout
+      # run tests!
+      #- run: yarn test
+      - sudo apt-get update && sudo apt-get install -y python-dev
+      - sudo curl -O https://bootstrap.pypa.io/pip/2.7/get-pip.py
+      - sudo python get-pip.py
+      - sudo pip install awscli --upgrade
+      - aws --version
+      # configure AWS
+      - aws configure set aws_access_key_id $ACCESSKEY | aws configure set aws_secret_access_key $SECRETACCESSKEY | aws configure set region us-west-1
+      - aws configure list
+      - aws s3 ls
+      - yarn run deploy
