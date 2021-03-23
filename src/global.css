@@ -324,3 +324,117 @@ input,textarea{
     transform: translateX(-100%);
   }
 }
+
+.dialog-enter {
+  opacity: 0;
+  animation-duration: .5s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.dialog-appear {
+  opacity: 0;
+  animation-duration: .5s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.dialog-leave {
+  animation-duration: .5s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.dialog-enter.dialog-enter-active {
+  animation-name: dialogIn;
+  animation-play-state: running;
+}
+
+.dialog-appear.dialog-appear-active {
+  animation-name: dialogIn;
+  animation-play-state: running;
+}
+
+.dialog-leave.dialog-leave-active {
+  animation-name: dialogOut;
+  animation-play-state: running;
+}
+
+@keyframes dialogIn {
+  0% {
+    opacity:0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity:1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes dialogOut {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.toggle-enter {
+  opacity: 0;
+  animation-duration: .5s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.toggle-appear {
+  opacity: 0;
+  animation-duration: .5s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.toggle-leave {
+  animation-duration: .5s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.toggle-enter.toggle-enter-active {
+  animation-name: toggleIn;
+  animation-play-state: running;
+}
+
+.toggle-appear.toggle-appear-active {
+  animation-name: toggleIn;
+  animation-play-state: running;
+}
+
+.toggle-leave.toggle-leave-active {
+  animation-name: toggleOut;
+  animation-play-state: running;
+}
+
+@keyframes toggleIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@keyframes toggleOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

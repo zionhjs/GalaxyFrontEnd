@@ -1,4 +1,5 @@
-import React,{useState} from 'react'
+import React,{useState,useCallback} from 'react'
+import { Element } from 'rc-scroll-anim';
 import { useMediaQuery } from 'react-responsive'
 import styles from './index.css';
 import Header from '../components/Header'
@@ -24,9 +25,8 @@ function BasicLayout(props) {
   function openSub(){
     setSubVisible(true)
   }
-  
 return  isMobile ? (<MobileLayout>{props.children}</MobileLayout>) :(
-    <div id="top" className={styles.container}>
+    <Element id="top" className={styles.container}>
       <ThreeLine />
         <Dashboard avatar={avatar} />
         <Menus />
@@ -37,7 +37,7 @@ return  isMobile ? (<MobileLayout>{props.children}</MobileLayout>) :(
       {props.children}
       <Footer />
       <Chat />
-    </div>
+    </Element>
   );
 }
 

@@ -5,12 +5,13 @@ import {connect} from 'dva'
 import QueueAnim from 'rc-queue-anim';
 import Icon from '@ant-design/icons';
 import TweenOne from 'rc-tween-one';
+import Animate from 'rc-animate';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import {ReactComponent  as CloseSvg} from '../../assets/icons/close.svg'
 import styles from './index.css'
 const CloseIcon = props => <Icon component={CloseSvg} {...props} />;
 const Footer=(props)=>{
-  const {dispatch,contactVisible,chatToken,chatVisible}=props
+  const {dispatch,contactVisible,chatToken,chatVisible,isTop}=props
   const [name,setName]=useState('')
   const [email,setEmail]=useState('')
   const closeDialog=useCallback(()=>{
@@ -30,6 +31,7 @@ const Footer=(props)=>{
   },[chatToken])
   const handleSubmit=useCallback(()=>{
     dispatch({type:'chat/subscribe',payload:{userEmail:email,userNumber:name}})
+    dispatch({type:'chat/fetchMsg'})
   },[email,name])
   const nameChange=useCallback(e=>{
     setName(e.target.value)
@@ -37,8 +39,11 @@ const Footer=(props)=>{
   const emailChange=useCallback(e=>{
     setEmail(e.target.value)
   },[])
+  const toggleIsTop=useCallback(()=>{
+    dispatch({type:'global/toggleIsTop'})
+  },[])
   return (
-    <div className={styles.footer}>
+    <div id={'bottom'} className={styles.footer}>
       <OverPack playScale={0.3}>
       <QueueAnim animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} ease="easeInCirc" duration={500} className={styles.footerTitleBox}>
         <img key="userAni" src="user.png" alt="" className={styles.userIcon} />
@@ -62,18 +67,18 @@ const Footer=(props)=>{
       <div className={styles.footerText}> Copyright © GalaxyCGI www.galaxycgi.com all rights reserved.</div>
       <div className={styles.footerText}> The website design, the logo, the covers and gallery images are property of GalaxyCGI for its total or partial reproduction, as well as exploitation, distribution</div>
       <div className={styles.footerText}> and marketing.</div>
-       {contactVisible ? <TweenOne animation={{ scale:0,x:'+=200',opacity: 0,type: 'from', ease:'easeInQuart',duration:100}} className={styles.dialog}>
-        {/*<div className={styles.closeBox} onClick={closeDialog}><img src="close.png" alt="" style={{ width: '14px', height: 'auto', opacity: 1 }} /></div>*/}
-        <div className={styles.dialogTitle}>conversation</div>
+       <Animate key={'dialogContainerAni'} transitionName={'dialog'}>
+         {contactVisible ? <div key={"dialogAni"} className={styles.dialog}>
+         <div className={styles.dialogTitle}>conversation</div>
         <div className={styles.dialogLabel}>Please fill in the following</div>
         <div className={styles.dialogLabel}>information first</div>
         <input value={name} onChange={nameChange} className={styles.nameInput} placeholder="Name" />
         <input value={email} onChange={emailChange} className={styles.emailInput} placeholder="Email" />
-        <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div>
-      </TweenOne> : null}
-      <Link className={styles.anchor} to="top"><img src="up.png" className={styles.upIcon} alt="" /></Link>
-      {(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <span className={styles.closeBtn}  onClick={closeDialog}><CloseIcon /></span> : <img alt="" src="contact.png" className={styles.btn}  onClick={openDialog} />}
+           <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div></div> : null}
+      </Animate>
+      <Animate transitionName={'toggle'}>{isTop? (<Link key={'bottomAni'} onClick={toggleIsTop}  className={styles.anchor} to="bottom"><img src="up.png" className={styles.downIcon} alt="" /></Link>):(<Link key={'topAni'} onClick={toggleIsTop} className={styles.anchor} to="top"><img src="up.png" className={styles.upIcon} alt="" /></Link>)}</Animate>
+      <Animate className={styles.toggleBtn}  transitionLeave={false} transitionName={'toggle'}>{(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <span key={'closeAni'} className={styles.closeBtn}  onClick={closeDialog}><CloseIcon /></span> : <img key={'contactAni'} alt="" src="contact.png" className={styles.btn}  onClick={openDialog} />}</Animate>
     </div>
   )
 }
-export default connect(({global,chat})=>({contactVisible:global.contactVisible,chatToken:global.chatToken,chatVisible:chat.visible}))(Footer)
+export default connect(({global,chat})=>({isTop:global.isTop,contactVisible:global.contactVisible,chatToken:global.chatToken,chatVisible:chat.visible}))(Footer)

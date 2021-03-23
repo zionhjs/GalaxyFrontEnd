@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-12-16 03:14:52
  * @FilePath: \GalaxyFrontEnd\src\mobile\components\Chat\index.js
  */
-import React,{useState,useCallback,useEffect} from 'react'
+import React,{useState,useCallback,useEffect,useRef} from 'react'
 import { connect } from 'dva'
 import {Picker} from 'emoji-mart'
 import classnames from 'classnames'
@@ -68,7 +68,7 @@ const Chat = props => {
             <div className={styles.chatTitle}>WELCOME TO GalaxyChat.</div>
             <div id="msg" className={styles.messageBox}>
               {
-                messages.map((item, index) =>
+                messages?.map((item, index) =>
                   index % 2 == 0 ? (<div key={index} className={styles.userBox}>
                       <Animate transitionAppear transitionName={'slide'} ><p key={'userAni'+index} className={styles.userMsg}>{item}</p></Animate>
                     </div>)
@@ -88,19 +88,33 @@ const Chat = props => {
 
               <div id="bottom" style={{ height: '150px' }}></div>
             </div>
-            <div className={styles.emojiBox}>
+           {/* <div className={styles.emojiBox}>
               {emojiVisible && <Picker style={{ position: 'absolute', left: '0px', bottom: '0px' }} set="apple" emoji=""
                                        showPreview={false} onClick={searchEmoji}/>}
               <img onClick={openEmoji} src="xiaolian.png" className={styles.xiaolianIcon} alt=""/>
               <Upload showUploadList={false} headers={{ accessToken: token }}
                       action="http://localhost:9400/gateway/upload/images/uploadImages" name="multipartFile"><img
                 src="folder.png" className={styles.folderIcon} alt=""/></Upload>
+            </div>*/}
+            <div className={styles.sendBox}>
+            <div className={styles.inputContainer}>
+              <div className={classnames(styles.hidden)}>{msg}</div>
+              <textarea
+                type="text"
+                onKeyDown={onEnter}
+                value={msg}
+                onChange={handleChange}
+                className={styles.chatTextarea}
+                placeholder="Please enter"/>
             </div>
-            <div className={styles.inputContainer}><textarea type="text" onKeyDown={onEnter} value={msg}
-                                                             onChange={handleChange} className={styles.chatTextarea}
-                                                             placeholder="Please enter"/></div>
             <div onClick={sendMsg} className={styles.chatBtnWrapper}>
-              <div className={classnames(styles.sendBtn,{[styles.activeBtn]:msg!==''})}>Send out</div>
+              <div className={styles.emojiBox}>
+                {emojiVisible && <Picker style={{ position: 'absolute', right: '0px', bottom: '0px' }} set="apple" emoji=""
+                                         showPreview={false} onClick={searchEmoji}/>}
+                <img onClick={openEmoji} src="xiaolian.png" className={styles.xiaolianIcon} alt=""/>
+              </div>
+              <button className={classnames(styles.sendBtn,{[styles.activeBtn]:msg!==''})}><img className={styles.sendBtnIcon} src={'plane.png'} /> </button>
+            </div>
             </div>
           </div>) : null
         }

@@ -7,7 +7,7 @@
  */
 import _ from 'lodash'
 import {getImages,uploadImage,updateImg,updateImgText,deleteImage} from '../service/api'
-const banners=['imageBanner1.jpeg', 'imageBanner2.jpeg', 'imageBanner3.jpeg', 'imageBanner4.jpeg']
+const banners=['imageBanner1.jpeg', 'imageBanner2.jpeg', 'imageBanner3.jpeg', 'imageBanner4.jpeg','imageBanner5.jpeg','imageBanner6.jpeg','imageBanner7.jpeg']
 export default {
     namespace:'image',
     state:{

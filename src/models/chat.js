@@ -55,6 +55,11 @@ export default {
             yield put({type:'saveMsg',payload:ret.datas})
             cb()
         },
+      *fetchMsg({payload},{call,put,select}){
+          let {email}=yield select(state=>state.chat)
+        let ret=yield call(getMessage,{email})
+        yield put({type:'saveMsg',payload:ret.datas})
+      },
         *subscribe({payload},{call,put}){
             let {userEmail,userNumber}=payload
           userEmail='admin@galaxy.com'

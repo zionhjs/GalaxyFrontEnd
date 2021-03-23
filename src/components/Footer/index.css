@@ -57,16 +57,15 @@
   .dialog{
     display: flex;
     position: fixed;
-    bottom: 50px;
-    right: 115px;
-    width: 328px;
-    height: 456px;
+    bottom: 120px;
+    right: 125px;
+    width: 426.4px;
+    height: 592.8px;
     background-color: #fff;
     z-index: 20008;
     display: flex;
     flex-direction: column;
     align-items: center;
-    transform: scale(1.3,1.3) translate(-70px,-70px);
   }
   .anchor{
     width: 81px;
@@ -81,7 +80,11 @@
     width: 100%;
     height: auto;
   }
-  
+  .downIcon{
+    width: 100%;
+    height:auto;
+    transform: rotateX(180deg);
+  }
   
   .btn{
     width: 81px;
@@ -111,6 +114,25 @@
     align-items: center;
     overflow: hidden;
   }
+.toggleBtn{
+  position: fixed;
+  bottom: 150px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 20006;
+  font-size: 60px;
+  height:81px;
+  width: 81px;
+  -webkit-border-radius: 40.5px;
+  -moz-border-radius: 40.5px;
+  border-radius: 40.5px;
+  color: #fff;
+  background-color:#fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
   .closeBox{
     display: flex;
     justify-content: flex-end;
@@ -120,48 +142,48 @@
   }
   .dialogTitle{
     font-family: 'RubikBold';
-    font-size: 22px;
+    font-size: 28.6px;
     opacity: 1;
     color: #000;
-    margin-top: 25px;
+    margin-top: 32.5px;
     font-weight: bold;
-    margin-bottom: 19px;
+    margin-bottom: 24.7px;
   }
   .dialogLabel{
     font-family: 'RubikRegular';
-    font-size: 16px;
+    font-size: 20.8px;
     color: #000;
   }
   .nameInput{
-    width: 272px;
-    height: 42px;
-    margin-top: 47px;
+    width: 353.6px;
+    height: 54.6px;
+    margin-top: 61.1px;
     font-family: 'RubikRegular';
     color: #9E9E9E;
-    padding-left: 11px;
+    padding-left: 14.3px;
     background: #F5F5F5 0% 0% no-repeat;
     border: 1px solid #E5E5E5;
   }
   .emailInput{
-    width: 272px;
-    height: 42px;
-    margin-top: 28px;
+    width: 353.6px;
+    height: 54.6px;
+    margin-top: 36.4px;
     font-family: 'RubikRegular';
     color: #9E9E9E;
-    padding-left: 11px;
+    padding-left: 14.3px;
     background: #F5F5F5 0% 0% no-repeat;
     border: 1px solid #E5E5E5;
   }
   .submitButton{
-    width: 272px;
-    height: 42px;
-    border-radius: 21px;
+    width: 353.6px;
+    height: 54.6px;
+    border-radius: 27.3px;
     background: transparent linear-gradient(90deg, #02D9DE 0%, #E117FC 100%) 0% 0% no-repeat;
-    margin-top: 50px;
+    margin-top: 65px;
     color: #fff;
     font-family: 'RubikRegular';
-    font-size: 16px;
-    line-height: 42px;
+    font-size: 20.8px;
+    line-height: 54.6px;
     text-align: center;
     cursor: pointer;
   }

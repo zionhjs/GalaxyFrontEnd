@@ -17,6 +17,7 @@ export default {
     state:{
       isLogin:false,
       chatToken:null,
+      isTop:true,//是否在最顶部
       role:'',
       menus:[{ icon: 'home.png', text: 'Home',route:'/home' },
       { icon: 'image.png', text: 'Images',route:'/image' },
@@ -37,6 +38,12 @@ export default {
         return {
           ...state,
           chatToken: payload
+        }
+      },
+      toggleIsTop(state,{payload}){
+        return {
+          ...state,
+          isTop:!state.isTop
         }
       },
       setLogin(state,{payload}){

@@ -1,14 +1,13 @@
 .container{
     position: fixed;
-    top: 50px;
-    bottom: 50px;
+    top: 80px;
     right: 100px;
     width: 400px;
     margin: auto;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    padding-bottom: 27px;
+    padding-bottom: 20px;
     z-index: 30000;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -28,11 +27,11 @@
 .header{
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: 29px;
-    margin-right: 29px;
+    align-items: flex-start;
+    margin-top: 15px;
+    margin-bottom: 0px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 .chatIcon{
     width: 36px;
@@ -41,9 +40,10 @@
 .chatTitle{
     font-weight: bold;
     font-size: 18px;
-    font-family: 'RubikBold';
+    font-family: 'RobotoBold';
     margin-left: 10px;
     text-align: center;
+  font-weight: bold;
   margin-bottom:10px;
 }
 .messageBox{
@@ -51,46 +51,65 @@
     padding-right: 14px;
     padding-top: 17px;
     background-color: #F5F5F5;
-    height: 569px;
+    height: 400px;
     overflow-y: scroll;
-    margin-left:29px;
-    margin-right: 29px;
+    margin-left:0px;
+    margin-right: 0px;
 }
 .emojiBox{
     display: flex;
     align-items: center;
-    margin-top: 15px;
-    margin-left: 53px;
+    margin-top: 10px;
+    margin-left: 29px;
     position: relative;
 }
 .xiaolianIcon{
-width: 36px;
+width: 21px;
 height: auto;
 cursor: pointer;
 }
 .folderIcon{
- width: 40px;
+ width: 21px;
  height: auto;
  margin-left: 29px;
  cursor: pointer;
 }
-.inputContainer{
+.sendBox{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
+.inputContainer{
+  position: relative;
+  width:250px;
+}
+
+
 .chatTextarea{
-    font-size: 16px;
-    border: none;
-  padding-left:  53px;
-  padding-right: 24px;
-    color: #C5C5C5;
-    margin-top: 0px;
-    min-height: 24px;
-    resize: none;
-    font-family: 'RubikRegular';
+  position: absolute;
+  left:0;
+  top:0;
+  width:100%;
+  font-size: 16px;
+  border: none;
+  color: #C5C5C5;
+  margin-top: 0px;
+  resize: none;
+  font-family: 'RubikRegular';
   overflow-y: hidden;
   appearance: none;
+  height: 100%;
+  padding-left: 29px;
+}
+.hidden {
+  word-break: break-word;
   width: 100%;
-  
-
+  padding-left: 29px;
+  overflow-y: hidden;
+  font-family: 'RobotoRegular';
+  margin-top: 0px;
+  border: none;
+  font-size: 16px;
 }
 .chatBtnWrapper{
     display: flex;
@@ -98,22 +117,18 @@ cursor: pointer;
     align-items: center;
 }
 .sendBtn{
-    background-color: #F5F5F5;
-    border: 1px solid #E5E5E5;
-    color: #606060;
-    font-size: 16px;
-    font-family: 'RubikRegular';
+  margin-left: 5px;
     margin-right: 24px;
     padding-left: 8px;
     padding-right: 8px;
     cursor: pointer;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
+  border-radius: 12px;
+}
+.sendBtnIcon {
+  height: 24px;
+  width: auto;
 }
 .activeBtn{
-  background-color: #8468ef;
-  color:#fff;
 }
 .assistantBox{
   display: flex;
