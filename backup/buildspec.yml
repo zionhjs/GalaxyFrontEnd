@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "trying to install node"
+    on-failure: ABORT
+    runtime-versions:
+      nodejs: 14
+    finally:
+      - echo "successfully installed node and stared the build!"
+  build:
+    commands:
+      - echo current path is `pwd`
+      - echo current list of path is `ls -a`
+      - curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+      - unzip awscliv2.zip
+      #- sudo -i
+      - bash ./aws/install
+      - aws --version
+      # configure AWS
+      - aws configure set aws_access_key_id $ACCESSKEY | aws configure set aws_secret_access_key $SECRETACCESSKEY | aws configure set region us-west-1
+      - aws configure list
+      - yarn run install
+      - yarn run test
+      - yarn run build
+      - yarn run deploy
+
+
