@@ -107,13 +107,13 @@ const Chat = props => {
                 className={styles.chatTextarea}
                 placeholder="Please enter"/>
             </div>
-            <div onClick={sendMsg} className={styles.chatBtnWrapper}>
+            <div className={styles.chatBtnWrapper}>
               <div className={styles.emojiBox}>
                 {emojiVisible && <Picker style={{ position: 'absolute', right: '0px', bottom: '0px' }} set="apple" emoji=""
                                          showPreview={false} onClick={searchEmoji}/>}
                 <img onClick={openEmoji} src="xiaolian.png" className={styles.xiaolianIcon} alt=""/>
               </div>
-              <button className={classnames(styles.sendBtn,{[styles.activeBtn]:msg!==''})}><img className={styles.sendBtnIcon} src={'plane.png'} /> </button>
+              <span onClick={sendMsg} className={classnames(styles.sendBtn,{[styles.activeBtn]:msg!==''})}><img className={styles.sendBtnIcon} src={'plane.png'} /> </span>
             </div>
             </div>
           </div>) : null

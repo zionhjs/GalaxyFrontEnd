@@ -39,11 +39,18 @@ const Footer=(props)=>{
   const emailChange=useCallback(e=>{
     setEmail(e.target.value)
   },[])
-  const toggleIsTop=useCallback(()=>{
+  const gotoTop=useCallback(()=>{
+    let el=document.getElementById('top')
+    el.scrollIntoView({behavior:'smooth'})
+    dispatch({type:'global/toggleIsTop'})
+  },[])
+  const gotoFooter=useCallback(()=>{
+    let el=document.getElementById('footer')
+    el.scrollIntoView({behavior:'smooth'});
     dispatch({type:'global/toggleIsTop'})
   },[])
   return (
-    <div id={'bottom'} className={styles.footer}>
+    <div id={'footer'} className={styles.footer}>
       <OverPack playScale={0.3}>
       <QueueAnim animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} ease="easeInCirc" duration={500} className={styles.footerTitleBox}>
         <img key="userAni" src="user.png" alt="" className={styles.userIcon} />
@@ -76,7 +83,7 @@ const Footer=(props)=>{
         <input value={email} onChange={emailChange} className={styles.emailInput} placeholder="Email" />
            <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div></div> : null}
       </Animate>
-      <Animate transitionName={'toggle'}>{isTop? (<Link key={'bottomAni'} onClick={toggleIsTop}  className={styles.anchor} to="bottom"><img src="up.png" className={styles.downIcon} alt="" /></Link>):(<Link key={'topAni'} onClick={toggleIsTop} className={styles.anchor} to="top"><img src="up.png" className={styles.upIcon} alt="" /></Link>)}</Animate>
+      <Animate className={styles.anchorContainer} transitionLeave={false} transitionName={'td'}>{isTop?(<span className={styles.anchor} onClick={gotoFooter} key={'bottomAni'} to="footer"><img src="up.png" className={styles.downIcon} alt="" /></span>):<span className={styles.anchor} onClick={gotoTop} key={'topAni'} to="top"><img src="up.png" className={styles.upIcon} alt="" /></span>}</Animate>
       <Animate className={styles.toggleBtn}  transitionLeave={false} transitionName={'toggle'}>{(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <span key={'closeAni'} className={styles.closeBtn}  onClick={closeDialog}><CloseIcon /></span> : <img key={'contactAni'} alt="" src="contact.png" className={styles.btn}  onClick={openDialog} />}</Animate>
     </div>
   )

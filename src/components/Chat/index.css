@@ -115,6 +115,7 @@ cursor: pointer;
     display: flex;
     justify-content: flex-end;
     align-items: center;
+  position: relative;
 }
 .sendBtn{
   margin-left: 5px;
@@ -129,6 +130,11 @@ cursor: pointer;
   width: auto;
 }
 .activeBtn{
+  position: relative;
+}
+.sendBtn:active{
+  background: linear-gradient(to right, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+  filter: blur(5px);
 }
 .assistantBox{
   display: flex;

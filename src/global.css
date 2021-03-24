@@ -385,7 +385,7 @@ input,textarea{
 
 .toggle-enter {
   opacity: 0;
-  animation-duration: .5s;
+  animation-duration: .1s;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
   animation-play-state: paused;
@@ -393,14 +393,14 @@ input,textarea{
 
 .toggle-appear {
   opacity: 0;
-  animation-duration: .5s;
+  animation-duration: .1s;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
   animation-play-state: paused;
 }
 
 .toggle-leave {
-  animation-duration: .5s;
+  animation-duration: .1s;
   animation-fill-mode: both;
   animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
   animation-play-state: paused;
@@ -431,6 +431,62 @@ input,textarea{
 }
 
 @keyframes toggleOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.td-enter {
+  opacity: 0;
+  animation-duration: .1s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.td-appear {
+  opacity: 0;
+  animation-duration: .1s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.td-leave {
+  animation-duration: .1s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.td-enter.td-enter-active {
+  animation-name: tdIn;
+  animation-play-state: running;
+}
+
+.td-appear.td-appear-active {
+  animation-name: tdIn;
+  animation-play-state: running;
+}
+
+.td-leave.td-leave-active {
+  animation-name: tdOut;
+  animation-play-state: running;
+}
+
+@keyframes tdIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@keyframes tdOut {
   0% {
     opacity: 1;
   }

@@ -68,13 +68,23 @@
     align-items: center;
   }
   .anchor{
-    width: 81px;
-    height: auto;
     position: fixed;
     bottom: 50px;
     right: 15px;
     cursor: pointer;
     z-index: 20006;
+    font-size: 60px;
+    height:81px;
+    width: 81px;
+    -webkit-border-radius: 40.5px;
+    -moz-border-radius: 40.5px;
+    border-radius: 40.5px;
+    color: #fff;
+    background-color:#fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
   }
   .upIcon{
     width: 100%;
@@ -131,8 +141,50 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: hidden;
 }
+.anchorContainer{
+  position: fixed;
+  bottom: 50px;
+  right: 15px;
+  cursor: pointer;
+  z-index: 20006;
+  font-size: 60px;
+  height:81px;
+  width: 81px;
+  -webkit-border-radius: 40.5px;
+  -moz-border-radius: 40.5px;
+  border-radius: 40.5px;
+  color: #fff;
+  background-color:#fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.toggleBtn:after{
+  position: absolute;
+  border-radius: 50%;
+  content: '';
+  display: block;
+  background: linear-gradient(to right, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+  width: 100%;
+  height: 100%;
+  filter: blur(5px);
+  top: 5px;
+  z-index: -1000;
+}
+.anchorContainer:after{
+  position: absolute;
+  border-radius: 50%;
+  content: '';
+  display: block;
+  background: linear-gradient(to right, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
+  width: 100%;
+  height: 100%;
+  filter: blur(5px);
+  top: 5px;
+  z-index: -1000;
+}
+
   .closeBox{
     display: flex;
     justify-content: flex-end;
