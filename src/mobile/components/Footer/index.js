@@ -11,13 +11,14 @@ import classnames from 'classnames'
 import Icon from '@ant-design/icons';
 import {connect} from 'dva'
 import QueueAnim from 'rc-queue-anim';
+import Animate from 'rc-animate';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import {ReactComponent  as CloseSvg} from '../../../assets/icons/close.svg'
 import styles from './index.css'
 
 const CloseIcon = props => <Icon component={CloseSvg} {...props} />;
 const Footer=(props)=>{
-  const {dispatch,contactVisible,chatToken,chatVisible}=props
+  const {dispatch,contactVisible,chatToken,chatVisible,isTop}=props
   const [name,setName]=useState('')
   const [email,setEmail]=useState('')
   const closeDialog=useCallback(()=>{
@@ -45,8 +46,18 @@ const Footer=(props)=>{
   const emailChange=useCallback(e=>{
     setEmail(e.target.value)
   },[])
+  const gotoTop=useCallback(()=>{
+    let el=document.getElementById('top')
+    el.scrollIntoView({behavior:'smooth'})
+    dispatch({type:'global/toggleIsTop'})
+  },[])
+  const gotoFooter=useCallback(()=>{
+    let el=document.getElementById('footer')
+    el.scrollIntoView({behavior:'smooth'});
+    dispatch({type:'global/toggleIsTop'})
+  },[])
   return (
-    <div className={styles.footer}>
+    <div id={'footer'} className={styles.footer}>
       <OverPack playScale={0.3}>
       <QueueAnim animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} ease="easeInCirc" duration={500} className={styles.footerTitleBox}>
         <img key="userAni" src="user.png" alt="" className={styles.userIcon} />
@@ -71,18 +82,21 @@ const Footer=(props)=>{
       <div className={styles.footerText}> The website design, the logo, the covers and gallery images are</div>
       <div className={styles.footerText}> property of GalaxyCGI for its total or partial reproduction,</div>
       <div className={styles.footerText}> as well as exploitation, distribution and marketing.</div>
-      <div className={styles.dialog} style={contactVisible ? { display: 'flex' } : { display: 'none' }}>
-        {/*<div className={styles.closeBox} onClick={closeDialog}><img src="close.png" alt="" style={{ width: '14px', height: 'auto', opacity: 1 }} /></div>*/}
+      <Animate transitionName={'slide'}>
+        {contactVisible ? (<div key={'dialogAni'} className={styles.dialog}>
         <div className={styles.dialogTitle}>conversation</div>
         <div className={styles.dialogLabel}>Please fill in the following</div>
         <div className={styles.dialogLabel}>information first</div>
         <input value={name} onChange={nameChange} className={styles.nameInput} placeholder="Name" />
         <input value={email} onChange={emailChange} className={styles.emailInput} placeholder="Email" />
         <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div>
-      </div>
-      <Link className={styles.anchor} to="top"><img src="up.png" className={styles.upIcon} alt="" /></Link>
-      {(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <span className={styles.closeBtn}  onClick={closeDialog}><CloseIcon /></span> : <img alt="" src="contact.png" className={styles.btn}  onClick={openDialog} />}
+        </div>):null}
+      </Animate>
+      <Animate className={styles.anchorContainer} transitionLeave={false} transitionName={'td'}>{isTop?(<span className={styles.anchor} onClick={gotoFooter} key={'bottomAni'} to="footer"><img src="up.png" className={styles.downIcon} alt="" /></span>):<span className={styles.anchor} onClick={gotoTop} key={'topAni'} to="top"><img src="up.png" className={styles.upIcon} alt="" /></span>}</Animate>
+      <Animate className={styles.toggleBtn}  transitionLeave={false} transitionName={'toggle'}>{(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <span key={'closeAni'} className={styles.closeBtn}  onClick={closeDialog}><CloseIcon /></span> : <img key={'contactAni'} alt="" src="contact.png" className={styles.btn}  onClick={openDialog} />}</Animate>
+      {/*<Link className={styles.anchor} to="top"><img src="up.png" className={styles.upIcon} alt="" /></Link>
+      {(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <span className={styles.closeBtn}  onClick={closeDialog}><CloseIcon /></span> : <img alt="" src="contact.png" className={styles.btn}  onClick={openDialog} />}*/}
     </div>
   )
 }
-export default connect(({global,chat})=>({chatVisible:chat.chatVisible,chatToken:global.chatToken,contactVisible:global.contactVisible}))(Footer)
+export default connect(({global,chat})=>({isTop:global.isTop,chatVisible:chat.chatVisible,chatToken:global.chatToken,contactVisible:global.contactVisible}))(Footer)

@@ -12,6 +12,8 @@ import styles from './index.css'
 import { Picker } from 'emoji-mart';
 import { Upload } from 'antd';
 import TweenOne from 'rc-tween-one';
+import Animate from 'rc-animate';
+import QueueAnim from 'rc-queue-anim';
 import _ from 'lodash';
 
 const Chat = props => {
@@ -53,27 +55,18 @@ const Chat = props => {
   const openEmoji=useCallback(()=>{
     setEmojiVisible(true)
   },[])
-    return visible ? (
-        <div className={styles.container}>
+    return <QueueAnim type={'right'} animConfig={[
+      { opacity: [1, 0], translateX: [0, 500] },
+      { opacity: [1, 0], translateX: [0, 500] }
+    ]} duration={500} >{visible ? (
+        <div key={'chatAnimate'} className={styles.container}>
             <img onClick={handleClose} src="close.png" alt="" className={styles.closeIcon} />
             <div className={styles.header}>
                 <img src="chat.png" className={styles.chatIcon} alt="" />
                 <span className={styles.chatTitle}>conversation</span>
             </div>
             <div id="msg" className={styles.messageBox}>
-               {/* {
-                    messages.map((item, index) => (
-                        <div className={classnames(styles.msgItem)} key={index}>
-                            <div className={classnames(styles.leftBox, { [styles.normal]: item.owner === 'me', [styles.reverse]: item.owner === 'other' })}>
-                                <img src={item.avatar} alt="" className={styles.avatar} />
-                            </div>
-                            <div className={classnames(styles.rightBox,{[styles.normalMsg]:item.owner==='me',[styles.reverseMsg]:item.owner==='other'})}>
-                                <div className={classnames({[styles.nameText]:item.owner==='me',[styles.reverseText]:item.owner==='other'})}>{item.sender}</div>
-                                <div className={classnames({ [styles.msgContent]: item.owner === 'me', [styles.msgReverse]: item.owner === 'other' })}>{item.msg}</div>
-                            </div>
-                        </div>
-                    ))
-                }*/}
+
               {
                 messages.map((item,index)=>
                   index%2==0 ? (<div key={index} className={styles.userBox}>
@@ -90,14 +83,27 @@ const Chat = props => {
               }
                 <div id="bottom" style={{height:'150px'}}></div>
             </div>
-          <div className={styles.emojiBox}>
-            {emojiVisible&&<Picker style={{ position: 'absolute', left:'0px',bottom:'0px' }}  set="apple" emoji="" showPreview={false} onClick={searchEmoji} />}
-            <img onClick={openEmoji} src="xiaolian.png" className={styles.xiaolianIcon} alt="" />
-            <Upload showUploadList={false} headers={{accessToken:token}} action="http://localhost:9400/gateway/upload/images/uploadImages" name="multipartFile"><img src="folder.png" className={styles.folderIcon} alt="" /></Upload>
+          <div className={styles.sendBox}>
+            <div className={styles.inputContainer}>
+              <div className={classnames(styles.hidden)}>{msg}</div>
+              <textarea
+                type="text"
+                onKeyDown={onEnter}
+                value={msg}
+                onChange={handleChange}
+                className={styles.chatTextarea}
+                placeholder="Please enter"/>
+            </div>
+            <div className={styles.chatBtnWrapper}>
+              <div className={styles.emojiBox}>
+                {emojiVisible && <Picker emojiSize={50} style={{ position: 'absolute', right: '0px', bottom: '0px',width:'100%' }} set="apple" emoji=""
+                                         showPreview={false} onClick={searchEmoji}/>}
+                <img onClick={openEmoji} src="xiaolian.png" className={styles.xiaolianIcon} alt=""/>
+              </div>
+              <span onClick={sendMsg} className={classnames(styles.sendBtn,{[styles.activeBtn]:msg!==''})}><img className={styles.sendBtnIcon} src={'plane.png'} /> </span>
+            </div>
           </div>
-            <textarea onKeyDown={onEnter}  value={msg} onChange={handleChange} className={styles.chatTextarea} placeholder="Please enter" />
-            <div onClick={sendMsg} className={styles.chatBtnWrapper}><div className={styles.sendBtn}>Send out</div></div>
         </div>
-    ) : null
+    ) : null}</QueueAnim>
 }
 export default connect(({ chat: { messages,visible } }) => ({ messages,visible }))(Chat)
