@@ -85,8 +85,8 @@ const Chat = props => {
             <div id="msg" className={styles.messageBox}>
               {
                 messages?.map((item, index) =>
-                  index % 2 == 0 ? (<div key={index} className={styles.userBox}>
-                      <Animate transitionAppear transitionName={'slide'} ><p key={'userAni'+index} className={styles.userMsg}>{item}</p></Animate>
+                  item.from =='user' ? (<div key={index} className={styles.userBox}>
+                      <Animate transitionAppear transitionName={'slide'} ><p key={'userAni'+index} className={styles.userMsg}>{item.msg}</p></Animate>
                     </div>)
                     : (
                       <Animate transitionAppear key={index} transitionName={'slideRight'}>
@@ -94,7 +94,7 @@ const Chat = props => {
                       <img src={'contact.png'} alt={''} className={styles.avatar}/>
                       <div>
                         <p className={styles.assistantName}>galaxy assistant</p>
-                        <p className={styles.assistantMsg}>{item}</p>
+                        <p className={styles.assistantMsg}>{item.msg}</p>
                       </div>
                     </div>
                       </Animate>

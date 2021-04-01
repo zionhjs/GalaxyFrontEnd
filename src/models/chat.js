@@ -40,16 +40,25 @@ export default {
        }
       },
       saveMsg(state,{payload}){
+       let msgReg=/^From\:(system|user)\s#\s([^\s]*)\s#\smsg\.index:(\d+)$/
        return {
          ...state,
-         messages: payload
+         messages: payload.map(item=>{
+           let [ret,from,msg,index]=item.match(msgReg)
+           return {
+             from,
+             msg,index
+           }
+         })
        }
       },
       receiveMsg(state,{payload}){
        const {messages}=state;
+        let msgReg=/^From\:(system|user)\s#\s([^\s]*)\s#\smsg\.index:(\d+)$/
+        let [ret,from,msg,index]=payload[0].match(msgReg)
        return {
          ...state,
-         messages:messages.concat(payload)
+         messages:messages.concat([{from,msg,index}])
        }
       }
 

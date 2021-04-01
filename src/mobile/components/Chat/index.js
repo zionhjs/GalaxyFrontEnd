@@ -69,14 +69,14 @@ const Chat = props => {
 
               {
                 messages.map((item,index)=>
-                  index%2==0 ? (<div key={index} className={styles.userBox}>
-                      <p className={styles.userMsg}>{item}</p>
+                  item.from=='user' ? (<div key={index} className={styles.userBox}>
+                      <p className={styles.userMsg}>{item.msg}</p>
                     </div>)
                     : (<div key={index} className={styles.assistantBox}>
                       <img src={'contact.png'} alt={''} className={styles.avatar} />
                       <div>
                         <p className={styles.assistantName}>galaxy assistant</p>
-                        <p className={styles.assistantMsg}>{item}</p>
+                        <p className={styles.assistantMsg}>{item.msg}</p>
                       </div>
                     </div>)
                 )
