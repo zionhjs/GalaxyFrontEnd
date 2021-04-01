@@ -46,10 +46,10 @@ export default {
        }
       },
       receiveMsg(state,{payload}){
-       const {message}=state;
+       const {messages}=state;
        return {
          ...state,
-         message:message.concat(payload)
+         messages:messages.concat(payload)
        }
       }
 
