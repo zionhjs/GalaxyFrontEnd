@@ -62,14 +62,14 @@ export default {
       },
         *subscribe({payload},{call,put}){
             let {userEmail,userNumber}=payload
-          userEmail='admin@galaxy.com'
+          userEmail='admin@xingzai.com'
           userNumber=2138224642
           yield put({type:'saveEmail',payload:userEmail})
             let result=yield call(subscribe,{userEmail,userNumber})
             yield put({type:'global/setChatToken',payload:true})
 
             let ret=yield call(connect,{email:userEmail})
-          if(ret.code==200){
+          if(ret.code==200||ret.code==400){
            yield put({type:'openChat'})
            yield put({type:'global/closeContact'})
           }

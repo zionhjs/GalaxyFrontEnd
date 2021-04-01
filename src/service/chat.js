@@ -11,7 +11,7 @@ export async function subscribe(params) {
     return result;
   }
   export async function connect(params) {
-   let result=await request('/chatbot/connect?userEmail='+params.email,{method:'POST',data:{}})
+   let result=await request('/chatbot/connect',{method:'POST',requestType:'form',data:{userEmail:params.email}})
     return result
   }
   export async function disconnect(params) {
@@ -22,8 +22,8 @@ export async function subscribe(params) {
   let result=await request('/uservo/unsubscribe',{method:'POST',data:{userEmail:params.email}})
   return result
   }
-  export async function sendMessage(params) {
-  let result=await request('/chatbot/sendmessage?userEmail='+params.email+'&message='+params.message,{method: 'POST',data:{}})
+  export async function sendMessage({email,message}) {
+  let result=await request('/chatbot/sendmessage',{method: 'POST',requestType:'form',data:{userEmail:email,message}})
   return result
   }
   export async function getMessage(params) {

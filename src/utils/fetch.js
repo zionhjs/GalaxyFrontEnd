@@ -63,7 +63,8 @@ return response;
 * 配置request请求时的默认参数
 */
 const request = extend({
-  prefix:'https://chatbot.galaxycgi.com',
+  //prefix:'https://chatbot.galaxycgi.com',
+  prefix:'http://9db46bbf5105.ngrok.io',
    errorHandler, // 默认错误处理
 //credentials: 'include', // 默认请求是否带上cookie
 });
