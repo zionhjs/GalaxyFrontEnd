@@ -44,6 +44,13 @@ export default {
          ...state,
          messages: payload
        }
+      },
+      receiveMsg(state,{payload}){
+       const {message}=state;
+       return {
+         ...state,
+         message:message.concat(payload)
+       }
       }
 
     },
@@ -52,7 +59,7 @@ export default {
             let {email}=yield select(state=>state.chat)
             let ret=yield call(sendMessage,{email,message:payload.msg})
           console.log('ret==',ret)
-            yield put({type:'saveMsg',payload:ret.datas})
+            yield put({type:'receiveMsg',payload:ret.datas})
             cb()
         },
       *fetchMsg({payload},{call,put,select}){
