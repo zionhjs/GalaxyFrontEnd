@@ -23,6 +23,7 @@
     height: auto;
     right: 47px;
     top: 85px;
+  cursor: pointer;
 }
 .picBox{
 width: 100%;

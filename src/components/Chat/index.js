@@ -13,6 +13,7 @@ import {Upload} from 'antd'
 import QueueAnim from 'rc-queue-anim';
 import Animate from 'rc-animate';
 import _ from 'lodash'
+import {ReactComponent as PlaneIcon} from '@/assets/icons/plane.svg'
 import styles from './index.css'
 import 'emoji-mart/css/emoji-mart.css'
 
@@ -22,7 +23,22 @@ const Chat = props => {
     const [emoji,setEmoji]=useState('')
     const [emojiVisible,setEmojiVisible]=useState(false)
     const [token,setToken]=useState('')
+  function handleClick(e) {
+    const { layerX, layerY } = e;
+    const { width, height } = this.getBoundingClientRect();
+
+    this.style.setProperty('--top', `${(layerY / height) * 100}%`);
+    this.style.setProperty('--left', `${(layerX / width) * 100}%`);
+
+    // for the size consider the distance from the farthest angle
+    const dx = layerX > width / 2 ? layerX : width - layerX;
+    const dy = layerY > height / 2 ? layerY : height - layerY;
+    const size = Math.sqrt(dx ** 2 + dy ** 2) * 2;
+    this.style.setProperty('--size', `${size}px`);
+  }
     useEffect(()=>{
+      let btn=document.getElementById('sendBtn')
+      btn&&btn.addEventListener('mousedown',handleClick)
         let ret=localStorage.getItem('artjwt')
         setToken(ret)
     },[])
@@ -113,7 +129,7 @@ const Chat = props => {
                                          showPreview={false} onClick={searchEmoji}/>}
                 <img onClick={openEmoji} src="xiaolian.png" className={styles.xiaolianIcon} alt=""/>
               </div>
-              <span onClick={sendMsg} className={classnames(styles.sendBtn,{[styles.activeBtn]:msg!==''})}><img className={styles.sendBtnIcon} src={'plane.png'} /> </span>
+              <button id={'sendBtn'} onClick={sendMsg} className={styles.sendBtn}><PlaneIcon /> </button>
             </div>
             </div>
           </div>) : null
