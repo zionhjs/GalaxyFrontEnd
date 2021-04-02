@@ -13,6 +13,7 @@ import { Picker } from 'emoji-mart';
 import { Upload } from 'antd';
 import TweenOne from 'rc-tween-one';
 import Animate from 'rc-animate';
+import {ReactComponent as PlaneIcon} from '@/assets/icons/plane.svg'
 import QueueAnim from 'rc-queue-anim';
 import _ from 'lodash';
 
@@ -22,7 +23,22 @@ const Chat = props => {
   const [emoji,setEmoji]=useState('')
   const [emojiVisible,setEmojiVisible]=useState(false)
   const [token,setToken]=useState('')
+  function handleClick(e) {
+    const { layerX, layerY } = e;
+    const { width, height } = this.getBoundingClientRect();
+
+    this.style.setProperty('--top', `${(layerY / height) * 100}%`);
+    this.style.setProperty('--left', `${(layerX / width) * 100}%`);
+
+    // for the size consider the distance from the farthest angle
+    const dx = layerX > width / 2 ? layerX : width - layerX;
+    const dy = layerY > height / 2 ? layerY : height - layerY;
+    const size = Math.sqrt(dx ** 2 + dy ** 2) * 2;
+    this.style.setProperty('--size', `${size}px`);
+  }
   useEffect(()=>{
+    let btn=document.getElementById('sendBtn')
+    btn&&btn.addEventListener('mousedown',handleClick)
     let ret=localStorage.getItem('artjwt')
     setToken(ret)
   },[])
@@ -36,16 +52,16 @@ const Chat = props => {
     },[])
     const sendMsg=useCallback(()=>{
         dispatch({type:'chat/sendMsg',payload:{msg},cb:scrollIntoview})
-    },[msg])
+    },[dispatch, msg, scrollIntoview])
   const onEnter=useCallback((e)=>{
     let ev = document.all ? window.event : e;
     if(ev.keyCode==13) {
       dispatch({type:'chat/sendMsg',payload:{msg},cb:scrollIntoview})
     }
-  },[msg])
+  },[dispatch, msg, scrollIntoview])
     const handleClose=useCallback(()=>{
         dispatch({type:'chat/closeChat'})
-    },[])
+    },[dispatch])
   const searchEmoji=useCallback((emoji,e)=>{
     setEmoji(emoji)
     setEmojiVisible(false)
@@ -96,11 +112,11 @@ const Chat = props => {
             </div>
             <div className={styles.chatBtnWrapper}>
               <div className={styles.emojiBox}>
-                {emojiVisible && <Picker emojiSize={50} style={{ position: 'absolute', right: '0px', bottom: '0px',width:'100%' }} set="apple" emoji=""
+                {emojiVisible && <Picker style={{ position: 'absolute', right: '0px', bottom: '0px' }} set="apple" emoji=""
                                          showPreview={false} onClick={searchEmoji}/>}
                 <img onClick={openEmoji} src="xiaolian.png" className={styles.xiaolianIcon} alt=""/>
               </div>
-              <span onClick={sendMsg} className={classnames(styles.sendBtn,{[styles.activeBtn]:msg!==''})}><img className={styles.sendBtnIcon} src={'plane.png'} /> </span>
+              <button id={'sendBtn'} onClick={sendMsg} className={styles.sendBtn}><PlaneIcon /> </button>
             </div>
           </div>
         </div>

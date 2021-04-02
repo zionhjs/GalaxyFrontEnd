@@ -27,19 +27,20 @@ const Footer=(props)=>{
     }else {
       dispatch({type:'global/closeContact'})
     }
-  },[chatToken])
+  },[chatToken, dispatch])
   const openDialog=useCallback(()=>{
     if(chatToken){
       dispatch({type:'chat/toggleChat'})
     }else {
       dispatch({type:'global/toggleContact'})
     }
-  },[chatToken])
+  },[chatToken, dispatch])
  const handleSubmit=useCallback(()=>{
    dispatch({type:'chat/subscribe',payload:{userEmail:email,userNumber:name}})
+   dispatch({type:'chat/fetchMsg'})
   // dispatch({type:'chat/openChat'})
    //dispatch({type:'global/closeContact'})
- },[email,name])
+ },[dispatch, email, name])
   const nameChange=useCallback(e=>{
     setName(e.target.value)
   },[])
@@ -50,12 +51,12 @@ const Footer=(props)=>{
     let el=document.getElementById('top')
     el.scrollIntoView({behavior:'smooth'})
     dispatch({type:'global/toggleIsTop'})
-  },[])
+  },[dispatch])
   const gotoFooter=useCallback(()=>{
     let el=document.getElementById('footer')
     el.scrollIntoView({behavior:'smooth'});
     dispatch({type:'global/toggleIsTop'})
-  },[])
+  },[dispatch])
   return (
     <div id={'footer'} className={styles.footer}>
       <OverPack playScale={0.3}>

@@ -27,6 +27,6 @@ export async function subscribe(params) {
   return result
   }
   export async function getMessage(params) {
-  let result=await request('/chatbot/getmessages?userEmail='+params.email,{method:'POST',data:{}})
+  let result=await request('/chatbot/getmessages',{method:'POST',requestType:'form',data:{userEmail:params.email}})
     return result
   }

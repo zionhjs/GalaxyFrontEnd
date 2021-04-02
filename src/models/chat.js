@@ -40,31 +40,42 @@ export default {
        }
       },
       saveMsg(state,{payload}){
-       let msgReg=/^From\:(system|user)\s#\s([^\s]*)\s#\smsg\.index:(\d+)$/
+       console.log('chatpayload===',payload)
        return {
          ...state,
          messages: payload.map(item=>{
-           let [ret,from,msg,index]=item.match(msgReg)
+           let msgReg=/^From\:(system|user)\s#\s(.*)\s#\smsg\.index:(\d+)$/
+           let temp=item.match(msgReg)
+           console.log('reg',temp)
+           let [ret,from,msg,index]=temp
            return {
              from,
-             msg,index
+             msg
            }
          })
        }
       },
       receiveMsg(state,{payload}){
        const {messages}=state;
-        let msgReg=/^From\:(system|user)\s#\s([^\s]*)\s#\smsg\.index:(\d+)$/
+        let msgReg=/^From\:(system|user)\s#\s(.*)\s#\smsg\.index:(\d+)$/
         let [ret,from,msg,index]=payload[0].match(msgReg)
+        console.log('from',from)
        return {
          ...state,
-         messages:messages.concat([{from,msg,index}])
+         messages:messages.concat([{from,msg}])
+       }
+      },
+      addMsg(state,{payload}){
+       const {messages}=state;
+       return {
+         ...state,
+         messages:messages.concat([{from:'user',msg:payload}])
        }
       }
-
     },
     effects:{
         *sendMsg({payload,cb},{call,put,select}){
+          yield put({type:'addMsg',payload:payload.msg})
             let {email}=yield select(state=>state.chat)
             let ret=yield call(sendMessage,{email,message:payload.msg})
           console.log('ret==',ret)
@@ -74,11 +85,11 @@ export default {
       *fetchMsg({payload},{call,put,select}){
           let {email}=yield select(state=>state.chat)
         let ret=yield call(getMessage,{email})
-        yield put({type:'saveMsg',payload:ret.datas})
+        yield put({type:'saveMsg',payload:ret.datas||[]})
       },
         *subscribe({payload},{call,put}){
             let {userEmail,userNumber}=payload
-          userEmail='admin@xingzai.com'
+          userEmail='447166939@xingzai.com'
           userNumber=2138224642
           yield put({type:'saveEmail',payload:userEmail})
             let result=yield call(subscribe,{userEmail,userNumber})

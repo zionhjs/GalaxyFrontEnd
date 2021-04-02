@@ -19,6 +19,7 @@ import 'emoji-mart/css/emoji-mart.css'
 
 const Chat = props => {
     const { messages,dispatch,visible} = props;
+    console.log('messages===',messages)
     const [msg,setMsg]=useState('')
     const [emoji,setEmoji]=useState('')
     const [emojiVisible,setEmojiVisible]=useState(false)
@@ -52,16 +53,16 @@ const Chat = props => {
     },[])
     const sendMsg=useCallback(()=>{
         dispatch({type:'chat/sendMsg',payload:{msg},cb:scrollIntoview})
-    },[msg])
+    },[dispatch, msg, scrollIntoview])
     const onEnter=useCallback((e)=>{
         let ev = document.all ? window.event : e;
         if(ev.keyCode==13) {
          dispatch({type:'chat/sendMsg',payload:{msg},cb:scrollIntoview})
         }
-    },[msg])
+    },[dispatch, msg, scrollIntoview])
     const handleClose=useCallback(()=>{
         dispatch({type:'chat/closeChat'})
-    },[])
+    },[dispatch])
     const searchEmoji=useCallback((emoji,e)=>{
         setEmoji(emoji)
         setEmojiVisible(false)

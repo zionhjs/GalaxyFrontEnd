@@ -64,7 +64,7 @@ return response;
 */
 const request = extend({
   //prefix:'https://chatbot.galaxycgi.com',
-  prefix:'http://f3a210655048.ngrok.io',
+   prefix:'http://50.18.242.4:8082',
    errorHandler, // 默认错误处理
 //credentials: 'include', // 默认请求是否带上cookie
 });
