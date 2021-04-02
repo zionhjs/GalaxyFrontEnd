@@ -51,8 +51,8 @@ return response;
 const request = extend({
  //prefix:'https://gw.garyjin.com',
   //prefix:'https://ec2-54-177-73-241.us-west-1.compute.amazonaws.com:9400',
-  //prefix:'https://gw.galaxycgi.com',
-  prefix:'http://localhost:9400',
+  prefix:'https://gw.galaxycgi.com',
+  //prefix:'http://localhost:9400',
 errorHandler, // 默认错误处理
 //credentials: 'include', // 默认请求是否带上cookie
 });
