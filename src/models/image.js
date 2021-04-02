@@ -11,6 +11,7 @@ const banners=['imageBanner1.jpeg', 'imageBanner2.jpeg', 'imageBanner3.jpeg', 'i
 export default {
     namespace:'image',
     state:{
+      loading:false,
         currentPage:1,//当前分页
         pageSize:20,//分页大小
         isLast:false,//是否是最后一页
@@ -33,6 +34,12 @@ export default {
 
     },
     reducers:{
+      setLoading(state,{payload}){
+        return {
+          ...state,
+          loading: payload
+        }
+      },
         setIsLast(state,{payload}){
             return {
                 ...state,
@@ -319,7 +326,7 @@ export default {
     },
     effects:{
         *getImage(action,{call,put,select}){
-         let {currentPage,pageSize,isLast}=yield select(state=>state.image)
+         let {currentPage,pageSize,isLast,loading}=yield select(state=>state.image)
          let {currentNav}=yield select(state=>state.global)
          if(isLast!=true){
              console.log('isLast',isLast!=true)
@@ -333,30 +340,33 @@ export default {
              }else{
              s=''
            }
-            const ret=yield call(getImages,{currentPage,pageSize,statusName:s})
-            console.log('status==1',ret)
-            let list=ret?.data?.list||[]
-            console.log('ret===',ret)
-           list= list.map((item,index)=>{
-                return {
-                    id:item.id,
-                    name:item.title,
-                    date:item.createdAt,
-                    desc:item.description,
-                    imgUrl:item.objectUrl240,
-                    rating:item.rating,
-                    statusName:item.statusName,
-                    level:item.level,
-                }
-            })          
-            yield put({type:'save',payload:{list}})
-            yield put({type:'setIsLast',payload:ret?.data?.isLastPage})
-            if(ret?.data?.hasNextPage==true){
-                yield put({type:'setPage',payload:(currentPage+1)})
-            }
-            yield put({type:'sortByRate'})
-            yield put({type:'divideCol',payload:{currentNav}}) 
-
+           if(!loading){
+             yield put({type:'setLoading',payload:true})
+             const ret=yield call(getImages,{currentPage,pageSize,statusName:s})
+             console.log('status==1',ret)
+             let list=ret?.data?.list||[]
+             console.log('ret===',ret)
+             list= list.map((item,index)=>{
+               return {
+                 id:item.id,
+                 name:item.title,
+                 date:item.createdAt,
+                 desc:item.description,
+                 imgUrl:item.objectUrl240,
+                 rating:item.rating,
+                 statusName:item.statusName,
+                 level:item.level,
+               }
+             })
+             yield put({type:'save',payload:{list}})
+             yield put({type:'setIsLast',payload:ret?.data?.isLastPage})
+             if(ret?.data?.hasNextPage==true){
+               yield put({type:'setPage',payload:(currentPage+1)})
+             }
+             yield put({type:'sortByRate'})
+             yield put({type:'divideCol',payload:{currentNav}})
+             yield put({type:'setLoading',payload:false})
+           }
          }
             
         },      
