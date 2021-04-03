@@ -26,7 +26,7 @@ export default {
               { title: 'Match Expectations', text: 'Depends on the budget,we provide different quality of works.What we showed you we can do,we do it for you!', icon: 'expectation.png' }
             ]
           },
-          stillImages: ['wf1.png', 'wf2.png', 'wf3.png', 'wf4.png', 'wf5.png'],
+          stillImages: ['swf1.jpg', 'swf2.jpg', 'swf3.jpg', 'swf4.jpg', 'swf5.jpg'],
           aniImages:['wf1.png', 'wf2.png', 'wf3.png', 'wf4.png', 'wf5.png'],
     },
     reducers:{

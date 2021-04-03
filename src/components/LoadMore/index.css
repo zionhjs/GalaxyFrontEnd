@@ -9,6 +9,9 @@
   margin-left: auto;
   margin-right: auto;
 }
+.loadMore:active,.loadMore:focus{
+  opacity: 0.4;
+}
 .loadMoreImg{
   position: absolute;
   top: 0;
@@ -62,6 +65,9 @@ margin-right: 113.5px;
   line-height: 42px;
   background-image: linear-gradient(to right,#02D9DE , #E217FC 90%,#E217FC);
   cursor: pointer;
+}
+.signBtn:active,.signBtn:focus{
+  opacity: 0.4;
 }
 .nameInput,.emailInput{
 height: 42px;

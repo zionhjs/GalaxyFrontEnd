@@ -16,10 +16,10 @@ const NavBar=(props)=>{
        dispatch({type:'global/setCurrentMenu',payload:2})
       router.push('/animation')
      }else {
-      dispatch({type:'global/setCurrentMenu',payload:1})
+      //dispatch({type:'global/setCurrentMenu',payload:1})
       dispatch({type:'image/reset'})
       dispatch({type:'image/getImage'})
-       router.push('/image')
+       //router.push('/image')
      }
     },[])
     useEffect(()=>{

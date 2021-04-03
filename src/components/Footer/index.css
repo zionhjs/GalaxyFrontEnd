@@ -239,3 +239,6 @@
     text-align: center;
     cursor: pointer;
   }
+  .submitButton:active,.submitButton:focus{
+    opacity: 0.4;
+  }

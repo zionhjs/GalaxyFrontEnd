@@ -494,3 +494,89 @@ input,textarea{
     opacity: 0;
   }
 }
+
+.notification-enter {
+  opacity: 0;
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.notifycation-appear {
+  opacity: 0;
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.notification-leave {
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.notification-enter.notification-enter-active {
+  animation-name: notifyIn;
+  animation-play-state: running;
+}
+
+.notification-appear.notification-appear-active {
+  animation-name: notifyIn;
+  animation-play-state: running;
+}
+
+.notifycation-leave.notifycation-leave-active {
+  animation-name: notifyOut;
+  animation-play-state: running;
+}
+.notification{
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  margin: auto 100px;
+  color: #33691e;
+  background-color: #dcedc8;
+  z-index: 60000;
+  font-size: 30px;
+  border-radius: 2px;
+  padding-left: 1em;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.notification-error{
+  position: fixed;
+  top: 50px;
+  left: 0;
+  right: 0;
+  margin: auto 100px;
+  color: #b71c1c;
+  background-color: #ffccbc;
+  z-index: 60000;
+  font-size: 30px;
+  border-radius: 2px;
+  padding-left: 1em;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+@keyframes notifyIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes notifyOut {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

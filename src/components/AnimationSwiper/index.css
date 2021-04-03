@@ -89,6 +89,12 @@ z-index: 10;
     margin: auto;
     z-index: 10;
 }
+.container :global(.swiper-button-prev):active,.container :global(.swiper-button-prev):focus{
+  opacity: 0.4;
+}
+.container :global(.swiper-button-next):active,.container :global(.swiper-button-next):focus{
+  opacity: 0.4;
+}
 .container :global(.swiper-button-next)::after{
     content:'';
 }

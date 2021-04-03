@@ -10,6 +10,8 @@ import classnames from 'classnames'
 import router from 'umi/router'
 import SwiperCore, { Navigation, Pagination,EffectCoverflow,Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import {ReactComponent as PreIcon} from '@/assets/icons/pre.svg'
+import {ReactComponent as NextIcon} from '@/assets/icons/next.svg'
 import {connect} from 'dva'
 import 'swiper/swiper.less';
 import 'swiper/components/navigation/navigation.less';
@@ -96,7 +98,7 @@ const Sw=(props)=>{
       }
       <div className="swiper-pagination"></div>
       <div className="swiper-button-prev"></div>
-	    <div className="swiper-button-next"></div>      
+	    <div className="swiper-button-next"></div>
     </Swiper>
           <div className={styles.leftMask}></div>
           <div className={styles.rightMask}></div>

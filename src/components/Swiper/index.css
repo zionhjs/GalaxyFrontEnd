@@ -67,20 +67,7 @@ z-index: 10;
     width: 75px;
     height: 75px;
     cursor: pointer;
-    background: url(../../../public/pre.png)  no-repeat;
-    background-size: contain;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    margin: auto;
-    z-index: 10;   
-}
-.container :global(.swiper-button-next){
-    right:130px;
-    width: 75px;
-    height: 75px;
-    cursor: pointer;
-    background: url(../../../public/next.png)  no-repeat;
+   background: url(../../../public/pre.png)  no-repeat;
     background-size: contain;
     position: absolute;
     top: 0;
@@ -88,11 +75,30 @@ z-index: 10;
     margin: auto;
     z-index: 10;
 }
+.container :global(.swiper-button-next){
+    right:130px;
+    width: 75px;
+    height: 75px;
+    cursor: pointer;
+   background: url(../../../public/next.png)  no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 10;
+}
+.container :global(.swiper-button-prev):active,.container :global(.swiper-button-prev):focus{
+  opacity: 0.4;
+}
+.container :global(.swiper-button-next):active,.container :global(.swiper-button-next):focus{
+  opacity: 0.4;
+}
 .container :global(.swiper-button-next)::after{
-    content:'';
+  content:'';
 }
 .container :global(.swiper-button-prev)::after{
-    content:'';
+  content:'';
 }
 .leftMask{
     position: absolute;
@@ -172,6 +178,9 @@ z-index: 10;
     margin: auto;
     top: 452px;
     z-index: 10000;
+  }
+  .contactBtn:active{
+    opacity: 0.5;
   }
   .contactText{
     font-size: 20px;

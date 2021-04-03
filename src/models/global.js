@@ -12,9 +12,15 @@
  * @LastEditTime: 2020-12-04 07:36:52
  * @FilePath: \GalaxyFrontEnd\src\models\global.js
  */
+const delay = (ms) => new Promise((resolve) => {
+  setTimeout(resolve, ms);
+});
 export default {
     namespace:'global',
     state:{
+      show:false,//notification
+      message:'',//notification content
+      type:'sucess',//notification type
       isLogin:false,
       chatToken:null,
       isTop:true,//是否在最顶部
@@ -34,6 +40,22 @@ export default {
       menuVisibleMobile:false,//移动端导航栏是否可见
     },
     reducers:{
+      openNotify(state,{payload}){
+        return {
+          ...state,
+          show:true,
+          message: payload.message,
+          type:payload.type
+        }
+      },
+      closeNotify(state,{payload}){
+        return {
+          ...state,
+          show:false,
+          message:'',
+          type:'sucess'
+        }
+      },
       setChatToken(state,{payload}){
         return {
           ...state,
@@ -145,6 +167,10 @@ return {
      }
     },
     effects:{
-
+     *notify({payload},{call,put}){
+       yield put({type:'openNotify',payload:{message:payload.message,type:payload.type}})
+       yield call(delay,payload.duration)
+       yield put({type:'closeNotify'})
+    }
     }
 }

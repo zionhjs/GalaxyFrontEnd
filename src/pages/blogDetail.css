@@ -179,6 +179,9 @@
   line-height: 42px;
   cursor: pointer;
 }
+.signupBtn:active,.signupBtn:focus{
+  opacity: 0.4;
+}
 .recentPost {
   width: 100%;
   box-sizing: border-box;
@@ -343,6 +346,9 @@
   line-height: 42px;
   margin-top: 36px;
   cursor: pointer;
+}
+.sendBtn:active,.sendBtn:focus{
+  opacity: 0.4;
 }
 .commentLabel{
   font-size: 30px;

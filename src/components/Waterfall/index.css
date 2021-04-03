@@ -159,6 +159,9 @@ align-items: center;
     cursor: pointer;
     align-self: center;
 }
+.loadMore:active{
+  opacity: 0.4;
+}
 .loadMoreImg{
     position: absolute;
     top: 0;

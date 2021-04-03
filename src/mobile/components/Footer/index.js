@@ -88,7 +88,7 @@ const Footer=(props)=>{
         <div className={styles.dialogTitle}>conversation</div>
         <div className={styles.dialogLabel}>Please fill in the following</div>
         <div className={styles.dialogLabel}>information first</div>
-        <input value={name} onChange={nameChange} className={styles.nameInput} placeholder="Name" />
+        <input value={name} onChange={nameChange} className={styles.nameInput} placeholder="Phone" />
         <input value={email} onChange={emailChange} className={styles.emailInput} placeholder="Email" />
         <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div>
         </div>):null}

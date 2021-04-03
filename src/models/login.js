@@ -27,6 +27,9 @@
  * @FilePath: \GalaxyFrontEnd\src\models\login.js
  */
 import {login,logout} from '../service/api'
+const delay = (ms) => new Promise((resolve) => {
+  setTimeout(resolve, ms);
+});
 export default {
     namespace: 'login',
     state:{},
@@ -41,13 +44,18 @@ export default {
         const res=yield call(login,{phone,password})
         console.log(res)
         if(res.code==200){
+          yield put({type:'global/openNotify',payload:{type:'sucess',message:"you have logined sucessful!"}})
             const {token,userId,roleName}=res.data;
             localStorage.setItem('artjwt',token)
             localStorage.setItem('userId',userId)
           yield put({type:'global/setLogin',payload:true})
             yield put({type:'global/setRole',payload:roleName})
+            yield call(delay,1000)
             yield put({type:'global/closeAll'})
             yield put({type:'global/closeMenu'})
+          yield put({type:'global/closeNotify'})
+        }else{
+          yield put({type:'global/notify',payload:{type:'error',message:"you have login failed,please login again!",duration: 2000}})
         }
        },
        *logout({payload},{call,put}){

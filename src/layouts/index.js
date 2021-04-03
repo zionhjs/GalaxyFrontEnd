@@ -11,6 +11,7 @@ import Dashboard from '../components/Dashboard'
 import MobileLayout from '../mobile/Layout'
 import ThreeLine from '../components/ThreeLine';
 import Chat from '../components/Chat'
+import NotifyCation from '@/components/Notification'
 
 const avatar="avatar.png"
 
@@ -27,6 +28,7 @@ function BasicLayout(props) {
   }
 return  isMobile ? (<MobileLayout>{props.children}</MobileLayout>) :(
     <Element id="top" className={styles.container}>
+      <NotifyCation/>
       <ThreeLine />
         <Dashboard avatar={avatar} />
         <Menus />

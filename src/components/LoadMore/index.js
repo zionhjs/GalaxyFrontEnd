@@ -24,7 +24,7 @@ export default function(props){
                 </TweenOne>
 
                 <TweenOne key="form" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} className={styles.boxRight}>
-                    <input className={styles.nameInput} placeholder="Name" />
+                    <input className={styles.nameInput} placeholder="Phone" />
                     <input className={styles.emailInput} placeholder="Email" />
                     <div className={styles.signBtn}>Sign Me up</div>
                 </TweenOne>
