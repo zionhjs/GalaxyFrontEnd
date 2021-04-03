@@ -27,7 +27,7 @@ const HomePage= (props)=> {
           { opacity: [1, 0] },
           { opacity: [1, 0] }
         ]} className={styles.titleBox}><img key="logoAni" src="logo.png" className={styles.aboutLogo} /><span key="aboutText" className={styles.aboutTitle}>ABOUT US</span></QueueAnim></OverPack>
-        <div className={styles.aboutText}>GalaxyCGI is an Architural Visualization Company which focus on provide affordable photorealistic CG imagery &amp; Animation marketing campaigns and design presentations.</div>
+        <div className={styles.aboutText}>GalaxyCGI is an Architectural Visualization Company which focus on provide affordable photorealistic CG imagery &amp; Animation marketing campaigns and design presentations.</div>
         <div className={styles.aboutText}>Founded in 2010 by a group of architects and CGI artists in China ,
         the company seized the opportunity of China's blooming architectural revolution and organized &amp; trained a</div>
         <div className={styles.aboutText}>permanent team of Top CGI artists which specialized in Architectural Visualization.In 2016  the company opened the Shanghai office to serve

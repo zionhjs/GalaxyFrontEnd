@@ -75,6 +75,7 @@
   bottom: 0;
   margin: auto;
   z-index: 10;
+  border-radius: 6px;
 }
 .container :global(.swiper-button-next){
   right:130px;
@@ -88,6 +89,7 @@
   bottom: 0;
   margin: auto;
   z-index: 10;
+  border-radius: 6px;
 }
 .container :global(.swiper-button-prev):active,.container :global(.swiper-button-prev):focus{
   opacity: 0.4;
