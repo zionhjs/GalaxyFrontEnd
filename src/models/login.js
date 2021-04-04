@@ -5,27 +5,6 @@
  * @LastEditTime: 2020-12-23 22:37:16
  * @FilePath: \GalaxyFrontEnd\src\models\login.js
  */
-/*
- * @Author: xingzai
- * @Date: 2020-12-09 01:13:25
- * @LastEditors: xingzai
- * @LastEditTime: 2020-12-23 22:33:49
- * @FilePath: \GalaxyFrontEnd\src\models\login.js
- */
-/*
- * @Author: xingzai
- * @Date: 2020-12-09 01:13:25
- * @LastEditors: xingzai
- * @LastEditTime: 2020-12-09 01:22:20
- * @FilePath: \GalaxyFrontEnd\src\models\login.js
- */
-/*
- * @Author: xingzai
- * @Date: 2020-12-09 01:13:25
- * @LastEditors: xingzai
- * @LastEditTime: 2020-12-09 01:13:25
- * @FilePath: \GalaxyFrontEnd\src\models\login.js
- */
 import {login,logout} from '../service/api'
 const delay = (ms) => new Promise((resolve) => {
   setTimeout(resolve, ms);

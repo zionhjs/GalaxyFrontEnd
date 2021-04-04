@@ -53,18 +53,18 @@ const Footer=(props)=>{
     <div id={'footer'} className={styles.footer}>
       <OverPack playScale={0.3}>
       <QueueAnim animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} ease="easeInCirc" duration={500} className={styles.footerTitleBox}>
-        <img key="userAni" src="user.png" alt="" className={styles.userIcon} />
+        <img key="userAni" src="/user.png" alt="" className={styles.userIcon} />
         <span key="userTextAni" className={styles.footerTitle}>CONTACT</span>
         </QueueAnim>
       </OverPack>
       <OverPack playScale={0.3}>
       <QueueAnim animConfig={[{opacity:[1,0]},{opacity:[1,0]}]} ease="easeInCirc" duration={500}  className={styles.footerIconBox}>
-        <img key="email" src="email.png" className={styles.footerIcon} alt="" />
-        <img key="tel" src="tel.png" alt="" className={styles.footerIcon} />
-        <img key="camera" src="camera.png" alt="" className={styles.footerIcon} />
-        <img key="bird" src="bird.png" alt="" className={styles.footerIcon} />
-        <img key="facebook" src="facebook.png" alt="" className={styles.footerIcon} />
-        <img key="linkin" src="linkin.png" alt="" className={styles.footerIcon} />
+        <img key="email" src="/email.png" className={styles.footerIcon} alt="" />
+        <img key="tel" src="/tel.png" alt="" className={styles.footerIcon} />
+        <img key="camera" src="/camera.png" alt="" className={styles.footerIcon} />
+        <img key="bird" src="/bird.png" alt="" className={styles.footerIcon} />
+        <img key="facebook" src="/facebook.png" alt="" className={styles.footerIcon} />
+        <img key="linkin" src="/linkin.png" alt="" className={styles.footerIcon} />
       </QueueAnim>
       </OverPack>
       
@@ -83,8 +83,8 @@ const Footer=(props)=>{
         <input value={email} onChange={emailChange} className={styles.emailInput} placeholder="Email" />
            <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div></div> : null}
       </Animate>
-      <Animate className={styles.anchorContainer} transitionLeave={false} transitionName={'td'}>{isTop?(<span className={styles.anchor} onClick={gotoFooter} key={'bottomAni'} to="footer"><img src="up.png" className={styles.downIcon} alt="" /></span>):<span className={styles.anchor} onClick={gotoTop} key={'topAni'} to="top"><img src="up.png" className={styles.upIcon} alt="" /></span>}</Animate>
-      <Animate className={styles.toggleBtn}  transitionLeave={false} transitionName={'toggle'}>{(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <span key={'closeAni'} className={styles.closeBtn}  onClick={closeDialog}><CloseIcon /></span> : <img key={'contactAni'} alt="" src="contact.png" className={styles.btn}  onClick={openDialog} />}</Animate>
+      <Animate className={styles.anchorContainer} transitionLeave={false} transitionName={'td'}>{isTop?(<span className={styles.anchor} onClick={gotoFooter} key={'bottomAni'} to="footer"><img src="/up.png" className={styles.downIcon} alt="" /></span>):<span className={styles.anchor} onClick={gotoTop} key={'topAni'} to="top"><img src="/up.png" className={styles.upIcon} alt="" /></span>}</Animate>
+      <Animate className={styles.toggleBtn}  transitionLeave={false} transitionName={'toggle'}>{(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <span key={'closeAni'} className={styles.closeBtn}  onClick={closeDialog}><CloseIcon /></span> : <img key={'contactAni'} alt="" src="/contact.png" className={styles.btn}  onClick={openDialog} />}</Animate>
     </div>
   )
 }

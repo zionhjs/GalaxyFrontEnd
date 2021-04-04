@@ -7,7 +7,7 @@
  */
 import _ from 'lodash'
 import {getImages,uploadImage,updateImg,updateImgText,deleteImage} from '../service/api'
-const banners=['imageBanner1.jpeg', 'imageBanner2.jpeg', 'imageBanner3.jpeg', 'imageBanner4.jpeg','imageBanner5.jpeg','imageBanner6.jpeg','imageBanner7.jpeg']
+const banners=['/imageBanner1.jpeg', '/imageBanner2.jpeg', '/imageBanner3.jpeg', '/imageBanner4.jpeg','/imageBanner5.jpeg','/imageBanner6.jpeg','/imageBanner7.jpeg']
 export default {
     namespace:'image',
     state:{
@@ -268,7 +268,6 @@ export default {
          sortByRate(state){
       const {images}=state;
       images.sort((a,b)=>{return parseInt(b.rating)-parseInt(a.rating)})
-      console.log('sort',images)
       return {
           ...state,
           images,

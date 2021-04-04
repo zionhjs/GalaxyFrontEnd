@@ -20,15 +20,15 @@ const Header=(props)=>{
     dispatch({type:'global/setCurrentMenu',payload:index})
     openSub()
     if(item.text==='Home'){
-      router.push('home')
+      router.push('/home')
     }else if(item.text==='Images'){
-      router.push('image')
+      router.push('/image')
     }else if(item.text==='Animations'){
-      router.push('animation')
+      router.push('/animation')
     }else if(item.text==='Blogs'){
       router.push('/blogs')
     }else if(item.text==='Team'){
-      router.push('team')
+      router.push('/team')
     }
   }
   const focusHandler=useCallback(()=>{
@@ -45,7 +45,7 @@ const Header=(props)=>{
             <div onClick={() => handleClick(item, index)} key={index} className={classnames(styles.menuItem, { [styles['activeMenu']]: idx === index })}>
               <img src={item.icon} alt="" className={styles.icon} />
               <span style={{zIndex:100}}>{item.text}</span>
-              {idx===index ? <img src="active.png" className={styles.activeBg} alt="" /> :null}
+              {idx===index ? <img src="/active.png" className={styles.activeBg} alt="" /> :null}
             </div>
           ))}
         </div>
