@@ -7,6 +7,9 @@
  */
 import _ from 'lodash'
 import {subscribe,sendMessage,getMessage,connect,disconnect} from '../service/chat'
+import sendAudio from '@/assets/audio/send.wav'
+import receiveAudio from '@/assets/audio/receive.wav'
+import * as Tone from 'tone'
 export default {
     namespace:'chat',
     state:{
@@ -75,10 +78,15 @@ export default {
     },
     effects:{
         *sendMsg({payload,cb},{call,put,select}){
+          const player=new Tone.Player(sendAudio).toDestination();
+          yield Tone.loaded();
+          player.start();
           yield put({type:'addMsg',payload:payload.msg})
             let {email}=yield select(state=>state.chat)
             let ret=yield call(sendMessage,{email,message:payload.msg})
-          console.log('ret==',ret)
+          const receiverPlayer=new Tone.Player(receiveAudio).toDestination();
+          yield Tone.loaded();
+          receiverPlayer.start()
             yield put({type:'receiveMsg',payload:ret.datas})
             cb()
         },
