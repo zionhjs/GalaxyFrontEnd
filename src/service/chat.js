@@ -6,6 +6,7 @@
  * @FilePath: \GalaxyFrontEnd\src\service\chat.js
  */
 import request from '../utils/fetch'
+
 export async function subscribe(params) {
   let result=await request(`/uservo/subscribe`,{method:'POST',data:{...params}})
     return result;
