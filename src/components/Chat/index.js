@@ -9,14 +9,14 @@ import React,{useState,useCallback,useEffect,useRef} from 'react'
 import { connect } from 'dva'
 import {Picker} from 'emoji-mart'
 import classnames from 'classnames'
-import {Upload} from 'antd'
 import QueueAnim from 'rc-queue-anim';
 import Animate from 'rc-animate';
 import _ from 'lodash'
 import {ReactComponent as PlaneIcon} from '@/assets/icons/plane.svg'
 import styles from './index.css'
 import 'emoji-mart/css/emoji-mart.css'
-
+import sendAudio from '@/assets/audio/send.wav'
+import receiveAudio from '@/assets/audio/receive.wav'
 const Chat = props => {
     const { messages,dispatch,visible} = props;
     console.log('messages===',messages)
@@ -78,6 +78,8 @@ const Chat = props => {
           { opacity: [1, 0], translateX: [0, 500] }
         ]} duration={500} >{
           visible ? (<div className={styles.container} key={'chatani'}>
+            <audio id={'sendWav'} src={sendAudio} hidden={true}></audio>
+            <audio id={'receiveWav'} src={receiveAudio} hidden={true}></audio>
             <div className={styles.header}>
               <img src="chat.png" className={styles.chatIcon} alt=""/>
               <img onClick={handleClose} src="close.png" alt="" className={styles.closeIcon}/>
