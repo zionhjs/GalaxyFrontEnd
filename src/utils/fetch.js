@@ -64,7 +64,7 @@ return response;
 */
 const request = extend({
   //prefix:'https://chatbot.galaxycgi.com',
-   prefix:'http://50.18.242.4:8082',
+   prefix:'https://50.18.242.4:8082',
    errorHandler, // 默认错误处理
 //credentials: 'include', // 默认请求是否带上cookie
 });
