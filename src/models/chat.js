@@ -6,7 +6,7 @@
  * @FilePath: \GalaxyFrontEnd\src\models\chat.js
  */
 import _ from 'lodash'
-import {subscribe,sendMessage,getMessage,connect} from '../service/chat'
+import {subscribe,sendMessage,getMessage,connect,disconnect} from '../service/chat'
 export default {
     namespace:'chat',
     state:{
@@ -92,6 +92,9 @@ export default {
           userEmail='447166939@xingzai.com'
           userNumber=2138224642
           yield put({type:'saveEmail',payload:userEmail})
+          window.addEventListener('beforeunload',function() {
+            disconnect({email:userEmail})
+          })
             let result=yield call(subscribe,{userEmail,userNumber})
             yield put({type:'global/setChatToken',payload:true})
 

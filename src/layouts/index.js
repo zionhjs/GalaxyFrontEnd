@@ -1,4 +1,4 @@
-import React,{useState,useCallback} from 'react'
+import React,{useState,useCallback,useEffect} from 'react'
 import { Element } from 'rc-scroll-anim';
 import { useMediaQuery } from 'react-responsive'
 import styles from './index.css';
