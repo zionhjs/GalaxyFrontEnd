@@ -12,9 +12,16 @@ export default {
     state:{
         visible:false,
       email:'',
-      messages: []
+      messages: [],
+      loading:false,
     },
     reducers:{
+      setLoading(state,{payload}){
+        return {
+          ...state,
+          loading:payload
+        }
+      },
      openChat(state){
          return {
              ...state,
@@ -77,9 +84,11 @@ export default {
         *sendMsg({payload,cb},{call,put,select}){
           let sendNode=window.document.getElementById('sendWav')
           sendNode.play();
-          yield put({type:'addMsg',payload:payload.msg})
+            yield put({type:'addMsg',payload:payload.msg})
+          yield put({type:'setLoading',payload:true})
             let {email}=yield select(state=>state.chat)
             let ret=yield call(sendMessage,{email,message:payload.msg})
+            yield put({type:'setLoading',payload:false})
             let receiveNode=window.document.getElementById('receiveWav')
             receiveNode.play();
             yield put({type:'receiveMsg',payload:ret.datas})
@@ -92,20 +101,25 @@ export default {
       },
         *subscribe({payload},{call,put}){
             let {userEmail,userNumber}=payload
-          userEmail='447166939@xingzai.com'
-          userNumber=2138224642
+         /* userEmail='447166939@xingzai.com'
+          userNumber=2138224642*/
           yield put({type:'saveEmail',payload:userEmail})
           window.addEventListener('beforeunload',function() {
             disconnect({email:userEmail})
           })
             let result=yield call(subscribe,{userEmail,userNumber})
-            yield put({type:'global/setChatToken',payload:true})
-
-            let ret=yield call(connect,{email:userEmail})
-          if(ret.code==200||ret.code==400){
-           yield put({type:'openChat'})
-           yield put({type:'global/closeContact'})
-          }
+            if(result.code==200||result.code==400){
+              //yield put({type:'global/notify',payload:{type:'subscribe-error',duration: 2000,message:'Your Email is not in correct format',transitionName: 'subscribe'}})
+              yield put({type:'global/notify',payload:{type:'subscribe-success',duration:2000,message:"Successfully Subscribed from our list, you will get a quote soon!",transitionName:'subscribe'}})
+              yield put({type:'global/setChatToken',payload:true})
+              let ret=yield call(connect,{email:userEmail})
+              if(ret.code==200||ret.code==400){
+                yield put({type:'openChat'})
+                yield put({type:'global/closeContact'})
+              }
+            }else{
+              yield put({type:'global/notify',payload:{type:'subscribe-error',duration: 2000,message:'Your Email is not in correct format',transitionName: 'subscribe'}})
+            }
         }
     }
 }

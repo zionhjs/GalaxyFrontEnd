@@ -18,7 +18,7 @@ import 'emoji-mart/css/emoji-mart.css'
 import sendAudio from '@/assets/audio/send.wav'
 import receiveAudio from '@/assets/audio/receive.wav'
 const Chat = props => {
-    const { messages,dispatch,visible} = props;
+    const { messages,dispatch,visible,loading} = props;
     console.log('messages===',messages)
     const [msg,setMsg]=useState('')
     const [emoji,setEmoji]=useState('')
@@ -89,7 +89,7 @@ const Chat = props => {
               {
                 messages?.map((item, index) =>
                   item.from =='user' ? (<div key={index} className={styles.userBox}>
-                      <Animate transitionAppear transitionName={'slide'} ><p key={'userAni'+index} className={styles.userMsg}>{item.msg}</p></Animate>
+                      <Animate transitionAppear transitionName={'slide'} ><div key={'userAni'+index} className={styles.userMsg}>{item.msg}</div></Animate>
                     </div>)
                     : (
                       <Animate transitionAppear key={index} transitionName={'slideRight'}>
@@ -104,7 +104,15 @@ const Chat = props => {
                         )
                 )
               }
-
+              <Animate transitionAppear transitionLeave={false} key={'loadingAni'} transitionName={'slideRight'}>{loading?<div className={styles.loadingContainer}><img src={'contact.png'} alt={''} className={styles.avatar}/>
+              <div className={styles.ballContainer}>
+              <div className={classnames(styles.ball,styles.yellow)}></div>
+                <div className={classnames(styles.ball,styles.red)}></div>
+                <div className={classnames(styles.ball,styles.blue)}></div>
+                <div className={classnames(styles.ball,styles.vollet)}></div>
+              </div>
+              </div>:null}
+              </Animate>
               <div id="bottom" style={{ height: '150px' }}></div>
             </div>
            {/* <div className={styles.emojiBox}>
@@ -132,7 +140,7 @@ const Chat = props => {
                                          showPreview={false} onClick={searchEmoji}/>}
                 <img onClick={openEmoji} src="xiaolian.png" className={styles.xiaolianIcon} alt=""/>
               </div>
-              <button id={'sendBtn'} onClick={sendMsg} className={styles.sendBtn}><PlaneIcon /> </button>
+              <button id={'sendBtn'} onClick={sendMsg} className={styles.sendBtn}><img className={styles.sendImg} src={'plane.png'} /> </button>
             </div>
             </div>
           </div>) : null
@@ -140,4 +148,4 @@ const Chat = props => {
         </QueueAnim>
     )
 }
-export default connect(({ chat: { messages,visible} }) => ({ messages,visible}))(Chat)
+export default connect(({ chat: { messages,visible,loading} }) => ({ messages,visible,loading}))(Chat)

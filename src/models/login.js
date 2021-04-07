@@ -23,7 +23,7 @@ export default {
         const res=yield call(login,{phone,password})
         console.log(res)
         if(res.code==200){
-          yield put({type:'global/openNotify',payload:{type:'sucess',message:"you have logined sucessful!"}})
+          yield put({type:'global/openNotify',payload:{type:'sucess',message:"you have logined sucessful!",transitionName:'notifycation'}})
             const {token,userId,roleName}=res.data;
             localStorage.setItem('artjwt',token)
             localStorage.setItem('userId',userId)
@@ -34,7 +34,7 @@ export default {
             yield put({type:'global/closeMenu'})
           yield put({type:'global/closeNotify'})
         }else{
-          yield put({type:'global/notify',payload:{type:'error',message:"you have login failed,please login again!",duration: 2000}})
+          yield put({type:'global/notify',payload:{type:'error',message:"you have login failed,please login again!",duration: 2000,transitionName: 'notifycation'}})
         }
        },
        *logout({payload},{call,put}){

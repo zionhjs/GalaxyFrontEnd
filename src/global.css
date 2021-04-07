@@ -267,6 +267,64 @@ input,textarea{
   }
 }
 
+.slideBottom-enter {
+  opacity: 0;
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.slideBottom-appear {
+  opacity: 0;
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.slideBottom-leave {
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.slideBottom-enter.slideBottom-enter-active {
+  animation-name: slideBottomIn;
+  animation-play-state: running;
+}
+
+.slideBottom-appear.slideBottom-appear-active {
+  animation-name: slideBottomIn;
+  animation-play-state: running;
+}
+
+.slideBottom-leave.slideBottom-leave-active {
+  animation-name: slideBottomOut;
+  animation-play-state: running;
+}
+
+@keyframes slideBottomIn {
+  0% {
+    opacity:0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity:1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideBottomOut {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+
 .slideRight-enter {
   opacity: 0;
   animation-duration: .5s;
@@ -494,7 +552,9 @@ input,textarea{
     opacity: 0;
   }
 }
-
+.notify-msg{
+  margin-left: 5px;
+}
 .notification-enter {
   opacity: 0;
   animation-duration: .3s;
@@ -580,3 +640,93 @@ input,textarea{
     opacity: 0;
   }
 }
+.subscribe-success{
+  position: fixed;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  margin: auto 100px;
+  color: #33691e;
+  background-color: #dcedc8;
+  z-index: 60000;
+  font-size: 30px;
+  border-radius: 2px;
+  padding-left: 1em;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.subscribe-error{
+  position: fixed;
+  bottom: 50px;
+  left: 0;
+  right: 0;
+  margin: auto 100px;
+  color: #b71c1c;
+  background-color: #ffccbc;
+  z-index: 60000;
+  font-size: 30px;
+  border-radius: 2px;
+  padding-left: 1em;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.subscribe-enter {
+  opacity: 0;
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.subscribe-appear {
+  opacity: 0;
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.subscribe-leave {
+  animation-duration: .3s;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.55, 0, 0.55, 0.2);
+  animation-play-state: paused;
+}
+
+.subscribe-enter.subscribe-enter-active {
+  animation-name: subscribeIn;
+  animation-play-state: running;
+}
+
+.subscribe-appear.subscribe-appear-active {
+  animation-name: subscribeIn;
+  animation-play-state: running;
+}
+
+.subscribe-leave.subscribe-leave-active {
+  animation-name: subscribeOut;
+  animation-play-state: running;
+}
+
+@keyframes subscribeIn {
+  0% {
+    opacity: 0;
+    bottom:-50px;
+  }
+  100% {
+    opacity: 1;
+    bottom: 50px;
+  }
+}
+
+@keyframes subscribeOut {
+  0% {
+    opacity: 1;
+    bottom: -50px;
+  }
+  100% {
+    opacity: 0;
+    bottom: 50px;
+  }
+}
+

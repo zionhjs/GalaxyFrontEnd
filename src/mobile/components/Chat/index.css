@@ -183,7 +183,7 @@ height: auto;
   margin-bottom: 0;
   word-break: break-word;
 }
-button {
+.chatBtnWrapper button {
   --top: 50%;
   --left: 50%;
   --size: 100%;
@@ -209,7 +209,7 @@ button {
   outline: none;
 }
 /* if existing, separate the inline icon from the text which follows */
-button svg {
+.chatBtnWrapper button svg {
   width: 1em;
   height: auto;
   display: inline-block;
@@ -217,7 +217,7 @@ button svg {
 }
 
 /* with a pseudo element add a semitransparent layer with the same color of the text */
-button:before {
+.chatBtnWrapper button:before {
   content: "";
   position: absolute;
   top: 0;
@@ -231,8 +231,8 @@ button:before {
   padding: 0;
   margin: 0;
 }
-button:focus:before,
-button:hover:before {
+.chatBtnWrapper button:focus:before,
+.chatBtnWrapper button:hover:before {
   opacity: 0.1;
   box-sizing: border-box;
   padding: 0;
@@ -240,7 +240,7 @@ button:hover:before {
 }
 
 /* with another pseudo element add a semitransparent layer clipped to be a circle */
-button:after {
+.chatBtnWrapper button:after {
   content: "";
   position: absolute;
   top: var(--top);
@@ -261,7 +261,7 @@ button:after {
 ! add a negative delay for the clip to already start from a small circle
 ! add a delay for the opacity to follow the clip-path
 */
-button:active:after {
+.chatBtnWrapper button:active:after {
   clip-path: circle(100%);
   opacity: 0;
   transition: clip-path 0.3s cubic-bezier(0.55, 0.085, 0.68, 0.53), opacity 0.3s ease-in-out;

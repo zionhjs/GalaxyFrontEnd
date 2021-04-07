@@ -21,6 +21,7 @@ export default {
       show:false,//notification
       message:'',//notification content
       type:'sucess',//notification type
+      transitionName:'',//notification transitionName
       isLogin:false,
       chatToken:null,
       isTop:true,//是否在最顶部
@@ -45,7 +46,8 @@ export default {
           ...state,
           show:true,
           message: payload.message,
-          type:payload.type
+          type:payload.type,
+          transitionName:payload.transitionName
         }
       },
       closeNotify(state,{payload}){
@@ -168,9 +170,9 @@ return {
     },
     effects:{
      *notify({payload},{call,put}){
-       yield put({type:'openNotify',payload:{message:payload.message,type:payload.type}})
+       yield put({type:'openNotify',payload:{message:payload.message,type:payload.type,transitionName:payload.transitionName}})
        yield call(delay,payload.duration)
        yield put({type:'closeNotify'})
-    }
+    },
     }
 }
