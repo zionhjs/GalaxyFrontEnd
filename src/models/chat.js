@@ -6,7 +6,7 @@
  * @FilePath: \GalaxyFrontEnd\src\models\chat.js
  */
 import _ from 'lodash'
-import {subscribe,sendMessage,getMessage,connect,disconnect} from '../service/chat'
+import {subscribe,sendMessage,getMessage,connect,disconnect,heartBeat} from '../service/chat'
 export default {
     namespace:'chat',
     state:{
@@ -14,6 +14,7 @@ export default {
       email:'',
       messages: [],
       loading:false,
+      len:0
     },
     reducers:{
       setLoading(state,{payload}){
@@ -47,9 +48,10 @@ export default {
        }
       },
       saveMsg(state,{payload}){
-       console.log('chatpayload===',payload)
+        let len=payload?.length||0
        return {
          ...state,
+         len,
          messages: payload.map(item=>{
            let msgReg=/^From\:(system|user)\s#\s(.*)\s#\smsg\.index:(\d+)$/
            let temp=item.match(msgReg)
@@ -66,7 +68,6 @@ export default {
        const {messages}=state;
         let msgReg=/^From\:(system|user)\s#\s(.*)\s#\smsg\.index:(\d+)$/
         let [ret,from,msg,index]=payload[0].match(msgReg)
-        console.log('from',from)
        return {
          ...state,
          messages:messages.concat([{from,msg}])
@@ -84,14 +85,17 @@ export default {
         *sendMsg({payload,cb},{call,put,select}){
           let sendNode=window.document.getElementById('sendWav')
           sendNode.play();
-            yield put({type:'addMsg',payload:payload.msg})
+           yield put({type:'addMsg',payload:payload.msg})
           yield put({type:'setLoading',payload:true})
-            let {email}=yield select(state=>state.chat)
+            let {email,len}=yield select(state=>state.chat)
             let ret=yield call(sendMessage,{email,message:payload.msg})
+          let heartRes=yield call(heartBeat,{email,index:len})
+          let result=yield call(getMessage,{email})
+          yield put({type:'saveMsg',payload:result.datas||[]})
             yield put({type:'setLoading',payload:false})
             let receiveNode=window.document.getElementById('receiveWav')
             receiveNode.play();
-            yield put({type:'receiveMsg',payload:ret.datas})
+           // yield put({type:'receiveMsg',payload:ret.datas})
             cb()
         },
       *fetchMsg({payload},{call,put,select}){
@@ -101,8 +105,8 @@ export default {
       },
         *subscribe({payload},{call,put}){
             let {userEmail,userNumber}=payload
-         /* userEmail='447166939@xingzai.com'
-          userNumber=2138224642*/
+         userEmail='447166939@xingzai.com'
+          userNumber=2138224642
           yield put({type:'saveEmail',payload:userEmail})
           window.addEventListener('beforeunload',function() {
             disconnect({email:userEmail})

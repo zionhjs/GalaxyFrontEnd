@@ -31,3 +31,7 @@ export async function subscribe(params) {
   let result=await request('/chatbot/getmessages',{method:'POST',requestType:'form',data:{userEmail:params.email}})
     return result
   }
+  export async function heartBeat(params) {
+  let result=await request('/chatbot/getmessages/heartbeat',{method:'POST',requestType:'form',data:{userEmail:params.email,index:params.index}})
+    return result;
+  }
