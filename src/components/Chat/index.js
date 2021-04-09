@@ -103,7 +103,7 @@ const Chat = props => {
                             let regLink=/(www\..*?)(?=\s|$)/g;
                             let links=v.match(regLink)
                             let m=v.replace(regLink,'')
-                            return links==null ? <p>{v}</p> :<p>{m}{links.map((link,linkIdx)=>(<a key={linkIdx} href={'https://'+link}>{link}</a>))}</p>
+                            return links==null ? <p key={i}>{v}</p> :<div key={i}>{m}{links.map((link,linkIdx)=>(<div key={linkIdx}><a href={'https://'+link}>{link}</a></div>))}</div>
                           }
                         )}
                         </div>
