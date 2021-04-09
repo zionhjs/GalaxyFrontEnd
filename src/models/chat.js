@@ -57,7 +57,7 @@ export default {
            let temp=item.match(msgReg)
            let [ret,from,msg,index]=temp
            if(from=='system'){
-           msg=msg.split('-')
+           msg=msg.split('%')
            }else{
            msg=[msg]
            }
