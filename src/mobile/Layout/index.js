@@ -14,6 +14,7 @@ import Menus from '../../mobile/components/Menus'
 import Footer from '../../mobile/components/Footer'
 import Chat from '../components/Chat'
 import styles from './index.css'
+import NotifyCation from '../../mobile/components/Notifycation';
 export default function (props) {
     const [active,setActive]=useState(false)
     const focusHandler=useCallback(()=>{
@@ -24,6 +25,7 @@ export default function (props) {
        },[])
     return (
         <div id="top" className={styles.container}>
+          <NotifyCation/>
             <div className={styles.header}>
                 <Link to="/"><img src="purplelogo.png" alt="" className={styles.logo} /></Link>
                 <div onBlur={blurHandler} onFocus={focusHandler} className={classnames(styles.searchBox, { [styles.searchInactive]: !active, [styles.searchActive]: active })}>

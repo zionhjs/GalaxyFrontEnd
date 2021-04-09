@@ -1,0 +1,63 @@
+.subscribe-success{
+  position: fixed;
+  bottom: 0.5rem;
+  left: 0;
+  right: 0;
+  margin: auto 1rem;
+  color: #33691e;
+  background-color: #dcedc8;
+  z-index: 60000;
+  font-size: 0.3rem;
+  border-radius: 0.02rem;
+  padding-left: 1em;
+  padding-top: 0.05rem;
+  padding-bottom: 0.05rem;
+}
+.subscribe-error{
+  position: fixed;
+  bottom: 0.5rem;
+  left: 0;
+  right: 0;
+  margin: auto 1rem;
+  color: #b71c1c;
+  background-color: #ffccbc;
+  z-index: 60000;
+  font-size: 0.3rem;
+  border-radius: 0.02rem;
+  padding-left: 1em;
+  padding-top: 0.05rem;
+  padding-bottom: 0.05rem;
+}
+.notification{
+  position: fixed;
+  top: 0.5rem;
+  left: 0;
+  right: 0;
+  margin: auto 1rem;
+  color: #33691e;
+  background-color: #dcedc8;
+  z-index: 60000;
+  font-size: 0.3rem;
+  border-radius: 0.02rem;
+  padding-left: 1em;
+  padding-top: 0.05rem;
+  padding-bottom: 0.05rem;
+}
+.notification-error{
+  position: fixed;
+  top: 0.5rem;
+  left: 0;
+  right: 0;
+  margin: auto 1rem;
+  color: #b71c1c;
+  background-color: #ffccbc;
+  z-index: 60000;
+  font-size: 0.3rem;
+  border-radius: 0.02rem;
+  padding-left: 1em;
+  padding-top: 0.05rem;
+  padding-bottom: 0.05rem;
+}
+.notify-msg{
+  margin-left: 0.05rem;
+}
