@@ -17,7 +17,7 @@ export default {
         {path:'/editBlog',exact:true,component:'../pages/editBlog'},
         {path:'/addArticle',exact:true,component:'../pages/AddArticle'},
         {path:'/team',exact:true,component:'../pages/team'},
-        {path:'/hidden/image-quotation',exact:true,component:'../pages/Hidden'},
+        {path:'/hidden/image',exact:true,component:'../pages/Hidden'},
         {path:'/test',exact:true,component:'../pages/test'}
       ]
     },

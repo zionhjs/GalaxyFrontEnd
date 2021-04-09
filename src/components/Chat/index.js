@@ -97,9 +97,16 @@ const Chat = props => {
                       <img src={'contact.png'} alt={''} className={styles.avatar}/>
                       <div>
                         <p className={styles.assistantName}>galaxy assistant</p>
-                        <div className={styles.assistantMsg}>{item.msg?.map(
-                          (v,i)=>(<p key={i}>{v.isLink ?<a href={v.value}>{v.value}</a> :v.value}</p>)
-                        )}</div>
+                        <div className={styles.assistantMsg}>
+                          {item.msg?.map(
+                          (v,i)=>{
+                            let regLink=/(www\..*?)(?=\s|$)/g;
+                            let links=v.match(regLink)
+                            let m=v.replace(regLink,'')
+                            return links==null ? <p>{v}</p> :<p>{m}{links.map((link,linkIdx)=>(<a key={linkIdx} href={'https://'+link}>{link}</a>))}</p>
+                          }
+                        )}
+                        </div>
                       </div>
                     </div>
                       </Animate>

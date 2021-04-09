@@ -57,15 +57,9 @@ export default {
            let temp=item.match(msgReg)
            let [ret,from,msg,index]=temp
            if(from=='system'){
-           msg=msg.split('-').map(v=>{
-             let linkReg=/^www\.|^http:\/\/www\.|^https:\/\/www\./
-             return {
-               value:v,
-               isLink:linkReg.test(v)
-             }
-           })
+           msg=msg.split('-')
            }else{
-           msg=[{value:msg}]
+           msg=[msg]
            }
            return {
              from,
@@ -78,7 +72,7 @@ export default {
        const {messages}=state;
        return {
          ...state,
-         messages:messages.concat([{from:'user',msg:[{value:payload}]}])
+         messages:messages.concat([{from:'user',msg:[payload]}])
        }
       }
     },
