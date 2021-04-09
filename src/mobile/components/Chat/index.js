@@ -13,12 +13,12 @@ import { Picker } from 'emoji-mart';
 import { Upload } from 'antd';
 import TweenOne from 'rc-tween-one';
 import Animate from 'rc-animate';
-import {ReactComponent as PlaneIcon} from '@/assets/icons/plane.svg'
 import QueueAnim from 'rc-queue-anim';
 import _ from 'lodash';
-
+import sendAudio from '@/assets/audio/send.wav'
+import receiveAudio from '@/assets/audio/receive.wav'
 const Chat = props => {
-    const { messages,dispatch,visible } = props;
+    const { messages,dispatch,visible,loading } = props;
     const [msg,setMsg]=useState('')
   const [emoji,setEmoji]=useState('')
   const [emojiVisible,setEmojiVisible]=useState(false)
@@ -37,7 +37,7 @@ const Chat = props => {
     this.style.setProperty('--size', `${size}px`);
   }
   useEffect(()=>{
-    let btn=document.getElementById('sendBtn')
+    let btn=document.getElementById('sendMobile')
     btn&&btn.addEventListener('mousedown',handleClick)
     let ret=localStorage.getItem('artjwt')
     setToken(ret)
@@ -51,6 +51,7 @@ const Chat = props => {
         setMsg('')
     },[])
     const sendMsg=useCallback(()=>{
+      console.log('hello world')
         dispatch({type:'chat/sendMsg',payload:{msg},cb:scrollIntoview})
     },[dispatch, msg, scrollIntoview])
   const onEnter=useCallback((e)=>{
@@ -76,6 +77,8 @@ const Chat = props => {
       { opacity: [1, 0], translateX: [0, 500] }
     ]} duration={500} >{visible ? (
         <div key={'chatAnimate'} className={styles.container}>
+          <audio id={'sendWav'} src={sendAudio} hidden={true}></audio>
+          <audio id={'receiveWav'} src={receiveAudio} hidden={true}></audio>
             <img onClick={handleClose} src="close.png" alt="" className={styles.closeIcon} />
             <div className={styles.header}>
                 <img src="chat.png" className={styles.chatIcon} alt="" />
@@ -86,17 +89,30 @@ const Chat = props => {
               {
                 messages.map((item,index)=>
                   item.from=='user' ? (<div key={index} className={styles.userBox}>
-                      <p className={styles.userMsg}>{item.msg}</p>
+                      <p className={styles.userMsg}>{item.msg[0].value}</p>
                     </div>)
                     : (<div key={index} className={styles.assistantBox}>
                       <img src={'contact.png'} alt={''} className={styles.avatar} />
                       <div>
                         <p className={styles.assistantName}>galaxy assistant</p>
-                        <p className={styles.assistantMsg}>{item.msg}</p>
+                        <div className={styles.assistantMsg}>{item.msg?.map(
+                          (v,i)=>(
+                            <p key={i}>{v.isLink ? <a href={'v.value'}>{v.value}</a> :v.value}</p>
+                          )
+                        )}</div>
                       </div>
                     </div>)
                 )
               }
+              <Animate transitionAppear transitionLeave={false} key={'loadingAni'} transitionName={'slideRight'}>{loading?<div className={styles.loadingContainer}><img src={'contact.png'} alt={''} className={styles.avatar}/>
+                <div className={styles.ballContainer}>
+                  <div className={classnames(styles.ball,styles.yellow)}></div>
+                  <div className={classnames(styles.ball,styles.red)}></div>
+                  <div className={classnames(styles.ball,styles.blue)}></div>
+                  <div className={classnames(styles.ball,styles.vollet)}></div>
+                </div>
+              </div>:null}
+              </Animate>
                 <div id="bottom" style={{height:'150px'}}></div>
             </div>
           <div className={styles.sendBox}>
@@ -116,10 +132,10 @@ const Chat = props => {
                                          showPreview={false} onClick={searchEmoji}/>}
                 <img onClick={openEmoji} src="xiaolian.png" className={styles.xiaolianIcon} alt=""/>
               </div>
-              <button id={'sendBtn'} onClick={sendMsg} className={styles.sendBtn}><PlaneIcon /> </button>
+              <button id={'sendMobile'} onClick={sendMsg} className={styles.sendBtn}><img className={styles.sendImg} src={'plane.png'} /></button>
             </div>
           </div>
         </div>
     ) : null}</QueueAnim>
 }
-export default connect(({ chat: { messages,visible } }) => ({ messages,visible }))(Chat)
+export default connect(({ chat: { messages,visible,loading } }) => ({ messages,visible,loading }))(Chat)

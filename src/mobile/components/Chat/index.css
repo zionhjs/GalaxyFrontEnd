@@ -50,13 +50,17 @@
 }
 .messageBox{
     padding-left: 0.14rem;
-    padding-right: 0.14rem;
+    padding-right: 0.25rem;
     padding-top: 0.17rem;
     background-color: #F5F5F5;
     height: 7.69rem;
-    overflow-y: scroll;
-    margin-left:0.29rem;
-    margin-right: 0.29rem;
+    overflow-y: auto;
+    margin-left:0rem;
+    margin-right: 0rem;
+}
+.messageBox ::-webkit-scrollbar{
+  display: none;
+  width: 0;
 }
 .nameText{
     height: 0.43rem;
@@ -82,9 +86,9 @@
   padding-left: 0.29rem;
   overflow-y: hidden;
   font-family: 'RobotoRegular';
-  margin-top: 0;
+  margin-top: 0.12rem;
   border: none;
-  font-size: 0.16rem;
+  font-size: 0.2rem;
 }
 .emojiBox{
     display: flex;
@@ -104,21 +108,18 @@ height: auto;
 .chatTextarea{
   position: absolute;
   left:0;
-  top:0;
+  top:0.12rem;
   width:100%;
-  font-size: 0.26rem;
+  font-size: 0.2rem;
   border: none;
   color: #C5C5C5;
-  margin-top: 0;
+  margin-top: 0px;
   resize: none;
   font-family: 'RubikRegular';
   overflow-y: hidden;
   appearance: none;
   height: 100%;
   padding-left: 0.29rem;
-  vertical-align: middle;
-  line-height: 1.2;
-  padding-top: 0.15rem;
 }
 .chatBtnWrapper{
     display: flex;
@@ -127,13 +128,34 @@ height: auto;
   position: relative;
 }
 .sendBtn{
-  padding: 0.05rem 0.2rem;
+  --top: 50%;
+  --left: 50%;
+  --size: 100%;
+  --background: hsl(265, 100%, 50%);
+  --color: hsl(265, 100%, 100%);
+  --border: none;
+  color: var(--color);
+  padding: 0.01rem;
+  border: 0.01rem solid var(--border);
   margin-left: 0.05rem;
   margin-right: 0.24rem;
   cursor: pointer;
   line-height: 1;
-  margin-top: 0.01rem;
   font-size: 0.3rem;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 50%;
+  margin-top: 0.05rem;
+  background-color: #fff;
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 0.01rem;
+  overflow: hidden;
+  position: relative;
+}
+.sendImg{
+  width: 100%;
+  height: auto;
 }
 .sendBtnIcon {
   height: 0.3rem;
@@ -183,39 +205,6 @@ height: auto;
   margin-bottom: 0;
   word-break: break-word;
 }
-.chatBtnWrapper button {
-  --top: 50%;
-  --left: 50%;
-  --size: 100%;
-  --background: hsl(265, 100%, 50%);
-  --color: hsl(265, 100%, 100%);
-  /* :p */
-  --border: none;
-  color: var(--color);
-  background: var(--background);
-  border: 1px solid var(--border);
-  font-family: inherit;
-  font-size: 0.3rem;
-  border-radius: 0.03rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  /* overflow and position matching the pseudo elements */
-  overflow: hidden;
-  position: relative;
-  /* remove the default outline
-! substituted with the pseudo elements
-*/
-  outline: none;
-}
-/* if existing, separate the inline icon from the text which follows */
-.chatBtnWrapper button svg {
-  width: 1em;
-  height: auto;
-  display: inline-block;
-  margin: auto;
-}
-
 /* with a pseudo element add a semitransparent layer with the same color of the text */
 .chatBtnWrapper button:before {
   content: "";
@@ -248,7 +237,7 @@ height: auto;
   transform: translate(-50%, -50%);
   width: var(--size);
   height: var(--size);
-  background: currentColor;
+  background: linear-gradient(to right, #0dd0e0, #449fe7, #8369ef, #c62ef8, #dd1bfc);
   clip-path: circle(0%);
   opacity: 0.3;
   border-radius: inherit;
@@ -269,4 +258,57 @@ height: auto;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+.loadingContainer{
+  display: flex;
+  align-items: center;
+  margin-top:0.1rem;
+}
+.ballContainer{
+  display: flex;
+  align-items: center;
+  background-color: #ccc;
+  padding: 0.1rem;
+  border-radius: 0.04rem;
+}
+.ball{
+  width: 0.1rem;
+  height: 0.1rem;
+  border-radius: 100%;
+  margin: 0.05rem;
+  background-image: linear-gradient(145deg, rgba(255,255,255,0.5) 0%, rgba(0,0,0,0) 100%);
+  animation: bounce 1.5s 0.5s linear infinite;
+}
+.yellow{
+  /* background-color: #feb60a;*/
+  background-color:#fff;
+}
+.red {
+  /*background-color: #ff0062;*/
+  background-color:#fff;
+  animation-delay: 0.1s;
+}
+.blue{
+  /*background-color: #00dbf9;*/
+  background-color:#fff;
+  animation-delay: 0.2s;
+}
+.vollet{
+  /*background-color: #da00f7;*/
+  background-color:#fff;
+  animation-delay: 0.3s;
+}
+@keyframes bounce {
+  0%, 50%, 100% {
+    transform: scale(1);
+    filter: blur(0px);
+  }
+  25% {
+    transform: scale(0.6);
+    filter: blur(3px);
+  }
+  75% {
+    filter: blur(3px);
+    transform: scale(1.4);
+  }
 }

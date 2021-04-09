@@ -55,8 +55,18 @@ export default {
          messages: payload.map(item=>{
            let msgReg=/^From\:(system|user)\s#\s(.*)\s#\smsg\.index:(\d+)$/
            let temp=item.match(msgReg)
-           console.log('reg',temp)
            let [ret,from,msg,index]=temp
+           if(from=='system'){
+           msg=msg.split('-').map(v=>{
+             let linkReg=/^www\.|^http:\/\/www\.|^https:\/\/www\./
+             return {
+               value:v,
+               isLink:linkReg.test(v)
+             }
+           })
+           }else{
+           msg=[{value:msg}]
+           }
            return {
              from,
              msg
@@ -64,20 +74,11 @@ export default {
          })
        }
       },
-      receiveMsg(state,{payload}){
-       const {messages}=state;
-        let msgReg=/^From\:(system|user)\s#\s(.*)\s#\smsg\.index:(\d+)$/
-        let [ret,from,msg,index]=payload[0].match(msgReg)
-       return {
-         ...state,
-         messages:messages.concat([{from,msg}])
-       }
-      },
       addMsg(state,{payload}){
        const {messages}=state;
        return {
          ...state,
-         messages:messages.concat([{from:'user',msg:payload}])
+         messages:messages.concat([{from:'user',msg:[{value:payload}]}])
        }
       }
     },
@@ -95,7 +96,6 @@ export default {
             yield put({type:'setLoading',payload:false})
             let receiveNode=window.document.getElementById('receiveWav')
             receiveNode.play();
-           // yield put({type:'receiveMsg',payload:ret.datas})
             cb()
         },
       *fetchMsg({payload},{call,put,select}){

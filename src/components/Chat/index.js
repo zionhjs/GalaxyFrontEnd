@@ -89,7 +89,7 @@ const Chat = props => {
               {
                 messages?.map((item, index) =>
                   item.from =='user' ? (<div key={index} className={styles.userBox}>
-                      <Animate transitionAppear transitionName={'slide'} ><div key={'userAni'+index} className={styles.userMsg}>{item.msg}</div></Animate>
+                      <Animate transitionAppear transitionName={'slide'} ><div key={'userAni'+index} className={styles.userMsg}>{item.msg[0].value}</div></Animate>
                     </div>)
                     : (
                       <Animate transitionAppear key={index} transitionName={'slideRight'}>
@@ -97,7 +97,9 @@ const Chat = props => {
                       <img src={'contact.png'} alt={''} className={styles.avatar}/>
                       <div>
                         <p className={styles.assistantName}>galaxy assistant</p>
-                        <p className={styles.assistantMsg}>{item.msg}</p>
+                        <div className={styles.assistantMsg}>{item.msg?.map(
+                          (v,i)=>(<p key={i}>{v.isLink ?<a href={v.value}>{v.value}</a> :v.value}</p>)
+                        )}</div>
                       </div>
                     </div>
                       </Animate>
