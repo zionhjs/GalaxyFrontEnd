@@ -1,7 +1,5 @@
 import React, { useState} from 'react';
 import router from 'umi/router'
-import Swiper from '../components/Swiper'
-import styles from './test.css'
 
 
 export default function (props) {
