@@ -27,7 +27,7 @@ export default function (props) {
         <div id="top" className={styles.container}>
           <NotifyCation/>
             <div className={styles.header}>
-                <Link to="/"><img src="purplelogo.png" alt="" className={styles.logo} /></Link>
+                <Link to="/"><img src="/purplelogo.png" alt="" className={styles.logo} /></Link>
                 <div onBlur={blurHandler} onFocus={focusHandler} className={classnames(styles.searchBox, { [styles.searchInactive]: !active, [styles.searchActive]: active })}>
                     <input className={styles.searchInput} />
                     <SearchOutlined className={styles.searchIcon} />
