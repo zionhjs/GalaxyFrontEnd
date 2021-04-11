@@ -18,12 +18,11 @@ import 'emoji-mart/css/emoji-mart.css'
 import sendAudio from '@/assets/audio/send.wav'
 import receiveAudio from '@/assets/audio/receive.wav'
 const Chat = props => {
-    const { messages,dispatch,visible,loading} = props;
+    const { messages,dispatch,visible,loading,timer,chatToken} = props;
     console.log('messages===',messages)
     const [msg,setMsg]=useState('')
     const [emoji,setEmoji]=useState('')
     const [emojiVisible,setEmojiVisible]=useState(false)
-    const [token,setToken]=useState('')
   function handleClick(e) {
     const { layerX, layerY } = e;
     const { width, height } = this.getBoundingClientRect();
@@ -40,9 +39,25 @@ const Chat = props => {
     useEffect(()=>{
       let btn=document.getElementById('sendBtn')
       btn&&btn.addEventListener('mousedown',handleClick)
-        let ret=localStorage.getItem('artjwt')
-        setToken(ret)
-    },[])
+      if(chatToken!==null){
+        dispatch({type:'chat/connect'})
+      }
+      if(timer==null&&chatToken!==null){
+        let t= setInterval(()=>{
+          dispatch({type:'chat/beat'})
+        },3000)
+        dispatch({type:'chat/setTimer',payload:t})
+      }
+      return function cleanup(){
+        if(timer!==null){
+          clearInterval(timer)
+          dispatch({type:'chat/setTimer',payload:null})
+        }
+        if(chatToken!==null){
+          dispatch({type:'chat/disconnect'})
+        }
+      }
+    },[timer,chatToken])
     const handleChange=useCallback((e)=>{
       setMsg(e.target.value)
     },[])
@@ -72,12 +87,7 @@ const Chat = props => {
     const openEmoji=useCallback(()=>{
         setEmojiVisible(true)
     },[])
-    return (
-        <QueueAnim type={'right'} animConfig={[
-          { opacity: [1, 0], translateX: [0, 500] },
-          { opacity: [1, 0], translateX: [0, 500] }
-        ]} duration={500} >{
-          visible ? (<div className={styles.container} key={'chatani'}>
+    return (<div className={styles.container} key={'chatani'}>
             <audio id={'sendWav'} src={sendAudio} hidden={true}></audio>
             <audio id={'receiveWav'} src={receiveAudio} hidden={true}></audio>
             <div className={styles.header}>
@@ -89,7 +99,7 @@ const Chat = props => {
               {
                 messages?.map((item, index) =>
                   item.from =='user' ? (<div key={index} className={styles.userBox}>
-                      <Animate transitionAppear transitionName={'slide'} ><div key={'userAni'+index} className={styles.userMsg}>{item.msg[0].value}</div></Animate>
+                      <Animate transitionAppear transitionName={'slide'} ><div key={'userAni'+index} className={styles.userMsg}>{item.msg[0]}</div></Animate>
                     </div>)
                     : (
                       <Animate transitionAppear key={index} transitionName={'slideRight'}>
@@ -152,9 +162,6 @@ const Chat = props => {
               <button id={'sendBtn'} onClick={sendMsg} className={styles.sendBtn}><img className={styles.sendImg} src={'plane.png'} /> </button>
             </div>
             </div>
-          </div>) : null
-        }
-        </QueueAnim>
-    )
+          </div>)
 }
-export default connect(({ chat: { messages,visible,loading} }) => ({ messages,visible,loading}))(Chat)
+export default connect(({ chat: { messages,visible,loading,timer},global:{chatToken} }) => ({ messages,visible,loading,timer,chatToken}))(Chat)

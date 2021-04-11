@@ -18,11 +18,10 @@ import _ from 'lodash';
 import sendAudio from '@/assets/audio/send.wav'
 import receiveAudio from '@/assets/audio/receive.wav'
 const Chat = props => {
-    const { messages,dispatch,visible,loading } = props;
+    const { messages,dispatch,visible,loading,timer,chatToken } = props;
     const [msg,setMsg]=useState('')
   const [emoji,setEmoji]=useState('')
   const [emojiVisible,setEmojiVisible]=useState(false)
-  const [token,setToken]=useState('')
   function handleClick(e) {
     const { layerX, layerY } = e;
     const { width, height } = this.getBoundingClientRect();
@@ -39,9 +38,25 @@ const Chat = props => {
   useEffect(()=>{
     let btn=document.getElementById('sendMobile')
     btn&&btn.addEventListener('mousedown',handleClick)
-    let ret=localStorage.getItem('artjwt')
-    setToken(ret)
-  },[])
+    if(chatToken!==null){
+      dispatch({type:'chat/connect'})
+    }
+    if(timer==null&&chatToken!==null){
+      let t= setInterval(()=>{
+        dispatch({type:'chat/beat'})
+      },3000)
+      dispatch({type:'chat/setTimer',payload:t})
+    }
+    return function cleanup(){
+      if(timer!==null){
+        clearInterval(timer)
+        dispatch({type:'chat/setTimer',payload:null})
+      }
+      if(chatToken!==null){
+        dispatch({type:'chat/disconnect'})
+      }
+    }
+  },[chatToken,timer])
     const handleChange=useCallback((e)=>{
       setMsg(e.target.value)
     },[])
@@ -72,10 +87,7 @@ const Chat = props => {
   const openEmoji=useCallback(()=>{
     setEmojiVisible(true)
   },[])
-    return <QueueAnim type={'right'} animConfig={[
-      { opacity: [1, 0], translateX: [0, 500] },
-      { opacity: [1, 0], translateX: [0, 500] }
-    ]} duration={500} >{visible ? (
+    return  (
         <div key={'chatAnimate'} className={styles.container}>
           <audio id={'sendWav'} src={sendAudio} hidden={true}></audio>
           <audio id={'receiveWav'} src={receiveAudio} hidden={true}></audio>
@@ -141,6 +153,6 @@ const Chat = props => {
             </div>
           </div>
         </div>
-    ) : null}</QueueAnim>
+    )
 }
-export default connect(({ chat: { messages,visible,loading } }) => ({ messages,visible,loading }))(Chat)
+export default connect(({ chat: { messages,visible,loading,timer },global:{chatToken} }) => ({ messages,visible,loading,timer,chatToken }))(Chat)

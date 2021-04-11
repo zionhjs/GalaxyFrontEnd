@@ -7,8 +7,10 @@ import styles from './index.css'
 import { Element, OverPack } from 'rc-scroll-anim/es';
 import TweenOne from 'rc-tween-one';
 import LazyLoad from 'react-lazyload';
+import HiddenMobile from '../../mobile/Hidden'
 const Hidden=props=>{
   const {currentCate,dispatch,col1,col2,col3,col4}=props
+  const isMobile=window.screen.width<768
   useEffect(()=>{
     dispatch({type:'imageHidden/getImage'})
   },[])
@@ -32,7 +34,7 @@ const Hidden=props=>{
   const universeLoadMore=useCallback(()=>{
 
   },[])
-  return (
+  return isMobile ? <HiddenMobile /> : (
     <div className={styles.container}>
       <ImageSwiper/>
       <NavBar/>

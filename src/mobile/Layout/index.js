@@ -8,14 +8,18 @@
 import React,{useCallback,useState} from 'react'
 import {SearchOutlined} from '@ant-design/icons'
 import { Link } from 'umi'
+import {connect} from 'dva'
 import classnames from 'classnames'
 import ThreeLine from '../../mobile/components/ThreeLine'
 import Menus from '../../mobile/components/Menus'
 import Footer from '../../mobile/components/Footer'
 import Chat from '../components/Chat'
+import Animate from 'rc-animate';
 import styles from './index.css'
 import NotifyCation from '../../mobile/components/Notifycation';
-export default function (props) {
+const MobileLayout= (props)=> {
+  const {chatVisible}=props
+  console.log('chatVisible',chatVisible)
     const [active,setActive]=useState(false)
     const focusHandler=useCallback(()=>{
         setActive(true)
@@ -38,7 +42,8 @@ export default function (props) {
             <Menus />
             {props.children}
             <Footer />
-            <Chat />            
+          <Animate transitionName={'slide'}>{chatVisible? <Chat /> :null }</Animate>
         </div>
     )
 }
+export default connect(({chat:{visible}})=>({chatVisible:visible}))(MobileLayout)

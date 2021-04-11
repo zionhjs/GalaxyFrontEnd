@@ -10,12 +10,15 @@ import Subscribe from '../components/Subscribe'
 import Dashboard from '../components/Dashboard'
 import MobileLayout from '../mobile/Layout'
 import ThreeLine from '../components/ThreeLine';
+import Animate from 'rc-animate';
 import Chat from '../components/Chat'
 import NotifyCation from '@/components/Notification'
+import {connect} from 'dva'
 
 const avatar="avatar.png"
 
 function BasicLayout(props) {
+  const {chatVisible}=props
   const [subVisible,setSubVisible]=useState(false)
   //const isMobile = useMediaQuery({ maxWidth: 767 })
   const isMobile=window.screen.width<768
@@ -38,9 +41,9 @@ return  isMobile ? (<MobileLayout>{props.children}</MobileLayout>) :(
       <div className={styles.placeholder}></div>      
       {props.children}
       <Footer />
-      <Chat />
+      <Animate transitionName={'slide'}>{chatVisible ? <Chat /> :null}</Animate>
     </Element>
   );
 }
 
-export default BasicLayout;
+export default connect(({chat:{visible}})=>({chatVisible:visible}))(BasicLayout);

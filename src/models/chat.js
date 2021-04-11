@@ -14,9 +14,16 @@ export default {
       email:'',
       messages: [],
       loading:false,
-      len:0
+      lastIndex:0,
+      timer:null,
     },
     reducers:{
+      setTimer(state,{payload}){
+        return {
+          ...state,
+          timer: payload
+        }
+      },
       setLoading(state,{payload}){
         return {
           ...state,
@@ -74,17 +81,52 @@ export default {
          ...state,
          messages:messages.concat([{from:'user',msg:[payload]}])
        }
+      },
+      saveHeartBeat(state,{payload}){
+        const {messages}=state
+        let data=payload.map(item=>{
+          let msgReg=/^From\:(system|user)\s#\s(.*)\s#\smsg\.index:(\d+)$/
+          let temp=item.match(msgReg)
+          let [ret,from,msg,index]=temp
+          if(from=='system'){
+            msg=msg.split('%')
+          }else{
+            msg=[msg]
+          }
+          return {
+            from,
+            msg
+          }
+        })
+        let mess=messages.slice(0,payload.lastIndex).concat(data);
+        return {
+          ...state,
+          messages:mess,
+          lastIndex: mess.length
+        }
       }
     },
     effects:{
+      *connect({payload},{call,put,select}){
+        let {email}=yield select(state=>state.chat)
+        let ret=yield call(connect,{email})
+      },
+      *disconnect({payload},{call,put,select}){
+        let {email}=yield select(state=>state.chat)
+        yield call(disconnect,{email})
+      },
+      *beat({payload,cb},{call,put,select}){
+        let {email,lastIndex}=yield select(state=>state.chat)
+         let ret=yield call(heartBeat,{email,index: lastIndex})
+        if(cb)cb()
+      },
         *sendMsg({payload,cb},{call,put,select}){
           let sendNode=window.document.getElementById('sendWav')
           sendNode.play();
            yield put({type:'addMsg',payload:payload.msg})
           yield put({type:'setLoading',payload:true})
-            let {email,len}=yield select(state=>state.chat)
+            let {email}=yield select(state=>state.chat)
             let ret=yield call(sendMessage,{email,message:payload.msg})
-          let heartRes=yield call(heartBeat,{email,index:len})
           let result=yield call(getMessage,{email})
           yield put({type:'saveMsg',payload:result.datas||[]})
             yield put({type:'setLoading',payload:false})
@@ -102,19 +144,14 @@ export default {
          userEmail='447166939@xingzai.com'
           userNumber=2138224642
           yield put({type:'saveEmail',payload:userEmail})
-          window.addEventListener('beforeunload',function() {
-            disconnect({email:userEmail})
+          window.addEventListener('beforeunload',async function() {
+            await disconnect({email:userEmail})
           })
             let result=yield call(subscribe,{userEmail,userNumber})
             if(result.code==200||result.code==400){
-              //yield put({type:'global/notify',payload:{type:'subscribe-error',duration: 2000,message:'Your Email is not in correct format',transitionName: 'subscribe'}})
               yield put({type:'global/notify',payload:{type:'subscribe-success',duration:2000,message:"Successfully Subscribed from our list, you will get a quote soon!",transitionName:'subscribe'}})
               yield put({type:'global/setChatToken',payload:true})
-              let ret=yield call(connect,{email:userEmail})
-              if(ret.code==200||ret.code==400){
-                yield put({type:'openChat'})
                 yield put({type:'global/closeContact'})
-              }
             }else{
               yield put({type:'global/notify',payload:{type:'subscribe-error',duration: 2000,message:'Your Email is not in correct format',transitionName: 'subscribe'}})
             }
