@@ -63,15 +63,15 @@ const Chat = props => {
     const scrollIntoview=useCallback(()=>{
         let el=document.getElementById('bottom')
         el.scrollIntoView(false)
-        setMsg('')
     },[])
     const sendMsg=useCallback(()=>{
-      console.log('hello world')
+      setMsg('');
         dispatch({type:'chat/sendMsg',payload:{msg},cb:scrollIntoview})
     },[dispatch, msg, scrollIntoview])
   const onEnter=useCallback((e)=>{
     let ev = document.all ? window.event : e;
     if(ev.keyCode==13) {
+      setMsg('')
       dispatch({type:'chat/sendMsg',payload:{msg},cb:scrollIntoview})
     }
   },[dispatch, msg, scrollIntoview])

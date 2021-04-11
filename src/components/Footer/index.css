@@ -57,8 +57,8 @@
   .dialog{
     display: flex;
     position: fixed;
-    bottom: 120px;
-    right: 125px;
+    bottom: 150px;
+    right: 120px;
     width: 426.4px;
     height: 592.8px;
     background-color: #fff;

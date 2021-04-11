@@ -36,6 +36,8 @@ export default {
       currentNav:3,//副导航当前选中索引
       aniNavButtons:['Regular','360 VR/AR','Mixed','Nav to Images'],
       aniCurrentNav:2,
+      blogNavButtons:['All','News','Visualization','Tutorials','Real Estate'],
+      blogCurrentNav:0,
       contactVisible:false,//底部聊天对话框是否可见
       menuVisible:false,//右上角3条杠打开的菜单是否可见
       loginVisible:false,//登录对话框是否可见
@@ -100,6 +102,12 @@ export default {
         return {
           ...state,
           aniCurrentNav: payload
+        }
+      },
+      setBlogCurrentNav(state,{payload}){
+        return {
+          ...state,
+          blogCurrentNav: payload
         }
       },
       toggleMenuMobile(state){
