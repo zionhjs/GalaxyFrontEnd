@@ -55,12 +55,10 @@ export default {
        }
       },
       saveMsg(state,{payload}){
-        let len=payload?.length||0
        return {
          ...state,
-         len,
          messages: payload.map(item=>{
-           let msgReg=/^From\:(system|user)\s#\s(.*)\s#\smsg\.index:(\d+)$/
+           let msgReg=/^From\:(system|user)\s#\s([\s\S]*)\s#\smsg\.index:(\d+)$/
            let temp=item.match(msgReg)
            let [ret,from,msg,index]=temp
            if(from=='system'){
@@ -85,7 +83,7 @@ export default {
       saveHeartBeat(state,{payload}){
         const {messages}=state
         let data=payload.map(item=>{
-          let msgReg=/^From\:(system|user)\s#\s(.*)\s#\smsg\.index:(\d+)$/
+          let msgReg=/^From\:(system|user)\s#\s([\s\S]*)\s#\smsg\.index:(\d+)$/
           let temp=item.match(msgReg)
           let [ret,from,msg,index]=temp
           if(from=='system'){
@@ -102,7 +100,7 @@ export default {
         return {
           ...state,
           messages:mess,
-          lastIndex: mess.length
+          lastIndex: mess.length-1
         }
       }
     },
@@ -128,6 +126,7 @@ export default {
             let {email}=yield select(state=>state.chat)
             let ret=yield call(sendMessage,{email,message:payload.msg})
           let result=yield call(getMessage,{email})
+          console.log('result.datas',result.datas)
           yield put({type:'saveMsg',payload:result.datas||[]})
             yield put({type:'setLoading',payload:false})
             let receiveNode=window.document.getElementById('receiveWav')

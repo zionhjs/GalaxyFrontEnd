@@ -31,6 +31,7 @@ const Footer=(props)=>{
   },[chatToken])
   const handleSubmit=useCallback(()=>{
     dispatch({type:'chat/subscribe',payload:{userEmail:email,userNumber:name}})
+    dispatch({type:'chat/openChat'})
     dispatch({type:'chat/fetchMsg'})
   },[email,name])
   const nameChange=useCallback(e=>{
