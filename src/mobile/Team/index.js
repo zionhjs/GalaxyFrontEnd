@@ -12,11 +12,11 @@ import TweenOne from 'rc-tween-one';
 import GetNew from '../components/GetNews'
 import styles from './index.css'
 const TeamPage = props => {
-    const { teamData } = props
+    const { teamData,bannerImg } = props
     return (
         <div className={styles.container}>
             <div className={styles.banner}>
-                <img src={teamData.bannerImg} className={styles.bannerImg} alt="" />
+                <img src={bannerImg} className={styles.bannerImg} alt="" />
                 <div className={styles.bannerTextBox}>
                     <div className={styles.bannerTitle}>{teamData.bannerTitle}</div>
                     <div className={styles.bannerText}>{teamData.bannerText}</div>
@@ -47,4 +47,4 @@ const TeamPage = props => {
     )
 }
 
-export default connect(({ team: { data } }) => ({ teamData: data }))(TeamPage)
+export default connect(({ team: { data,bannerImg } }) => ({ teamData: data,bannerImg }))(TeamPage)

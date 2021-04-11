@@ -2,7 +2,13 @@ import { getImages } from '@/service/api';
 export default {
   namespace:'imageHidden',
   state:{
-   currentCate:'star',
+    starNavButtons: ['Interior','Exterior','360','Mixed','Nav to Animation'],//副导航菜单
+    starCurrentNav:3,//副导航当前选中索引
+    galaxyNavButtons: ['Interior','Exterior','360','Mixed','Nav to Animation'],//副导航菜单
+    galaxyCurrentNav:3,//副导航当前选中索引
+    universeNavButtons: ['Interior','Exterior','360','Mixed','Nav to Animation'],//副导航菜单
+    universeCurrentNav:3,//副导航当前选中索引
+    currentCate:'star',
     currentPage:0,
     pageSize:10,
     isLast:false,
@@ -13,6 +19,24 @@ export default {
     col4:[]
   },
   reducers:{
+    setStarCurrentNav(state,{payload}){
+      return {
+        ...state,
+        starCurrentNav: payload
+      }
+    },
+    setGalaxyCurrentNav(state,{payload}){
+      return {
+        ...state,
+        galaxyCurrentNav: payload
+      }
+    },
+    setUniverseCurrentNav(state,{payload}){
+      return {
+        ...state,
+        universeCurrentNav: payload
+      }
+    },
     setCate(state,{payload}){
       return {
         ...state,

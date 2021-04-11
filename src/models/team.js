@@ -20,7 +20,7 @@ export default {
       pageSize:20,//分页大小
       hasMore:true,//是否有更多数据
       pages:0,//图片数据总页数
-      bannerImg:'splash.jpeg',
+      bannerImg:'/splash.jpeg',
       bannerText:'We have more than 200 employees across the world. Here we only showing our permanent and business manager & technical director list',
       bannerTitle:'Team',
       data:[],

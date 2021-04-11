@@ -18,6 +18,15 @@ export default {
         articles:[],
     },
     reducers:{
+      reset(state,{payload}){
+        return {
+          ...state,
+          currentPage:1,
+          hasMore:true,
+          pages:0,
+          articles:[]
+        }
+      },
         setHasMore(state,{payload}){
             return {
                 ...state,

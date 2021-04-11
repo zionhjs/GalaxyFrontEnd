@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {connect} from 'dva'
-import NavBar from '../components/NavBar'
+import NavBar from '../components/BlogNavBar'
 import ArticleList from '../components/ArticleList'
 import LoadMore from '../components/LoadMore'
 import GetNews from '../components/GetNews'

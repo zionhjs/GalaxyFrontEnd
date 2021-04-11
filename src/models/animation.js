@@ -35,7 +35,8 @@ export default {
           ...state,
           currentPage:1,
           hasMore:true,
-          pages:0
+          pages:0,
+          videoList:[],
         }
       },
         setHasMore(state,{payload}){

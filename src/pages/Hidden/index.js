@@ -36,7 +36,6 @@ const Hidden=props=>{
   },[])
   return isMobile ? <HiddenMobile /> : (
     <div className={styles.container}>
-      <ImageSwiper/>
       <NavBar/>
       <div className={styles.category}>
         <div onClick={handleClick.bind(null,'star')} className={classnames(styles['category-item'],{[styles['active-category']]:currentCate==='star'})}>Star</div>

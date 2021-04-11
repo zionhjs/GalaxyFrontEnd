@@ -7,8 +7,7 @@
  */
 import React,{useEffect,useCallback,useState} from 'react'
 import {connect} from 'dva'
-import { useMediaQuery } from 'react-responsive'
-import NavBar from '../components/NavBar'
+import NavBar from '@/components/BlogNavBar'
 import ArticleList from '../components/ArticleList'
 import BlogMobile from '../mobile/Blogs'
 import styles from './blogs.css'

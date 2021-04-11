@@ -1,0 +1,55 @@
+/*
+ * @Author: xingzai
+ * @Date: 2020-11-07 14:59:11
+ * @LastEditors: xingzai
+ * @LastEditTime: 2020-11-07 15:32:52
+ * @FilePath: \test\src\components\NavBar\index.css
+ */
+
+.container{
+  height: 80px;
+  background-color:#000;
+  display: flex;
+  justify-content: center;
+  line-height: 80px;
+  position: sticky;
+  top: 80px;
+  z-index: 20000;
+  opacity: 0.9;
+}
+.menuItem{
+  position: relative;
+  margin-right: 68px;
+  font-family: 'RubikRegular';
+  font-size: 18px;
+  color: #9E9E9E;
+  padding-left: 17px;
+  padding-right: 17px;
+  display: flex;
+  cursor: pointer;
+}
+.activeItem{
+  color: #fff;
+}
+.underLine{
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: transparent linear-gradient(90deg, #02D9DE 0%, #E217FC 96%, #E217FC 100%) 0% 0% no-repeat;
+  margin: auto;
+  bottom: 13px;
+  left: 0;
+  right: 0;
+}
+.top{
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  transform: translateY(-101px);
+  transition: all 0.3s linear;
+  z-index: 0;
+}
+.top1{
+  transform: translateY(0);
+  transition: all 0.3s linear;
+}
+

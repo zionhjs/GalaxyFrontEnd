@@ -17,12 +17,8 @@ const NavBar=(props)=>{
       dispatch({type:'global/setCurrentMenu',payload:2})
       router.push('/animation')
     }else {
-      dispatch({type:'global/setCurrentMenu',payload:1})
       dispatch({type:'image/reset'})
-      console.log('has reset')
       dispatch({type:'image/getImage'})
-      router.push('/image')
-
     }
   },[])
     useEffect(()=>{
@@ -33,7 +29,6 @@ const NavBar=(props)=>{
       let top=el&&getComputedStyle(el,null).getPropertyValue('top').replace('px','')
       let t=Math.ceil(top)
       let isTop=(offsetTop-scrollTop)<=t;
-      console.log('scrollTop',scrollTop)
       setPosition(scrollTop)
       let direction=scrollTop-position<0 ?'up':'down'
       if(scrollTop!=position){

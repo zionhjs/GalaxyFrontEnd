@@ -1,0 +1,51 @@
+
+.container{
+  height: 0.99rem;
+  background-color:#000;
+  display: flex;
+  justify-content: space-between;
+  line-height: 0.99rem;
+  position: sticky;
+  top: 1rem;
+  z-index: 20000;
+  opacity: 0.9;
+  padding-left: 0.21rem;
+  padding-right: 0.21rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+.menuItem{
+  position: relative;
+  font-family: 'RubikRegular';
+  font-size: 0.2rem;
+  color: #9E9E9E;
+  padding-left: 0.14rem;
+  padding-right: 0.14rem;
+  display: flex;
+  cursor: pointer;
+}
+.activeItem{
+  color: #fff;
+}
+.underLine{
+  position: absolute;
+  width: 100%;
+  height: 4px;
+  background: transparent linear-gradient(90deg, #02D9DE 0%, #E217FC 96%, #E217FC 100%) 0% 0% no-repeat;
+  margin: auto;
+  bottom: 0.2rem;
+  left: 0;
+  right: 0;
+}
+.top{
+  backface-visibility:hidden;
+  -webkit-backface-visibility:hidden;
+  transform: translateY(-1rem);
+  transition: all 0.3s linear;
+  z-index: 0;
+}
+.top1{
+  transform: translateY(0);
+  transition: all 0.3s linear;
+}
+
