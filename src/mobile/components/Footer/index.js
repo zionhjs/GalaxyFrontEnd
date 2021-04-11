@@ -100,4 +100,4 @@ const Footer=(props)=>{
     </div>
   )
 }
-export default connect(({global,chat})=>({isTop:global.isTop,chatVisible:chat.chatVisible,chatToken:global.chatToken,contactVisible:global.contactVisible}))(Footer)
+export default connect(({global,chat})=>({isTop:global.isTop,chatVisible:chat.visible,chatToken:global.chatToken,contactVisible:global.contactVisible}))(Footer)

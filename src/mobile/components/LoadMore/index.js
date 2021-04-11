@@ -15,7 +15,7 @@ const LoadMore=(props)=>{
   const {loadMore=function(){},handleScroll=function(){}}=props;
 
     return (
-            <OverPack onScroll={handleScroll} playScale={0.3} ><TweenOne onClick={loadMore} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key="loadmore" className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></TweenOne></OverPack>
+            <OverPack onScroll={handleScroll} playScale={0.3} ><TweenOne onClick={loadMore} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key="loadmore" className={styles.loadMore}><img src="/loadMore.png" className={styles.loadMoreImg} /><img src="/loadMoreText.png" className={styles.loadMoreText} /></TweenOne></OverPack>
             
     
     )
