@@ -27,3 +27,11 @@
   background: transparent linear-gradient(90deg, #02D9DE 0%, #BE29EA 100%) 0% 0% no-repeat;
   color: #fff;
 }
+.titleBox{
+  background: transparent linear-gradient(90deg, #02D9DE 0%, #BE29EA 100%) 0% 0% no-repeat;
+  height:1rem;
+  font-size: 0.4rem;
+  text-align: center;
+  line-height: 1rem;
+  color: #fff;
+}
