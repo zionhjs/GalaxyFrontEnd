@@ -91,8 +91,8 @@ const Chat = props => {
             <audio id={'sendWav'} src={sendAudio} hidden={true}></audio>
             <audio id={'receiveWav'} src={receiveAudio} hidden={true}></audio>
             <div className={styles.header}>
-              <img src="chat.png" className={styles.chatIcon} alt=""/>
-              <img onClick={handleClose} src="close.png" alt="" className={styles.closeIcon}/>
+              <img src="/chat.png" className={styles.chatIcon} alt=""/>
+              <img onClick={handleClose} src="/close.png" alt="" className={styles.closeIcon}/>
             </div>
             <div className={styles.chatTitle}>WELCOME TO GalaxyChat.</div>
             <div id="msg" className={styles.messageBox}>
@@ -104,7 +104,7 @@ const Chat = props => {
                     : (
                       <Animate transitionAppear key={index} transitionName={'slideRight'}>
                       <div key={index+'Slide'} className={styles.assistantBox}>
-                      <img src={'contact.png'} alt={''} className={styles.avatar}/>
+                      <img src={'/contact.png'} alt={''} className={styles.avatar}/>
                       <div>
                         <p className={styles.assistantName}>galaxy assistant</p>
                         <div className={styles.assistantMsg}>
@@ -123,7 +123,7 @@ const Chat = props => {
                         )
                 )
               }
-              <Animate transitionAppear transitionLeave={false} key={'loadingAni'} transitionName={'slideRight'}>{loading?<div className={styles.loadingContainer}><img src={'contact.png'} alt={''} className={styles.avatar}/>
+              <Animate transitionAppear transitionLeave={false} key={'loadingAni'} transitionName={'slideRight'}>{loading?<div className={styles.loadingContainer}><img src={'/contact.png'} alt={''} className={styles.avatar}/>
               <div className={styles.ballContainer}>
               <div className={classnames(styles.ball,styles.yellow)}></div>
                 <div className={classnames(styles.ball,styles.red)}></div>
@@ -157,9 +157,9 @@ const Chat = props => {
               <div className={styles.emojiBox}>
                 {emojiVisible && <Picker style={{ position: 'absolute', right: '0px', bottom: '0px' }} set="apple" emoji=""
                                          showPreview={false} onClick={searchEmoji}/>}
-                <img onClick={openEmoji} src="xiaolian.png" className={styles.xiaolianIcon} alt=""/>
+                <img onClick={openEmoji} src="/xiaolian.png" className={styles.xiaolianIcon} alt=""/>
               </div>
-              <button id={'sendBtn'} onClick={sendMsg} className={styles.sendBtn}><img className={styles.sendImg} src={'plane.png'} /> </button>
+              <button id={'sendBtn'} onClick={sendMsg} className={styles.sendBtn}><img className={styles.sendImg} src={'/plane.png'} /> </button>
             </div>
             </div>
           </div>)
