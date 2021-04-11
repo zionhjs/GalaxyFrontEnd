@@ -7,8 +7,7 @@
  */
 import React, {useEffect } from 'react'
 import {connect} from 'dva'
-import { useMediaQuery } from 'react-responsive'
-import NavBar from '../components/NavBar'
+import AnimationNavBar from '@/components/AnimationNavBar'
 import VideoList from '../components/VideoList'
 import Video from '../components/Video'
 import AnimationSwiper from '../components/AnimationSwiper'
@@ -21,7 +20,7 @@ const AnimationPage=({dispatch})=> {
   return isMobile ? (<AnimationMobile />) : (
     <div className={styles.container}>
       <AnimationSwiper />
-      <NavBar />
+      <AnimationNavBar />
       <VideoList />
       <Video  />
     </div>

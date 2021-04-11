@@ -13,7 +13,6 @@ const NavBar=(props)=>{
     const handleClick=useCallback((item,index)=>{
      dispatch({type:'global/setCurrentNav',payload:index})
      if(index==4){
-       dispatch({type:'global/setCurrentMenu',payload:2})
       router.push('/animation')
      }else {
       //dispatch({type:'global/setCurrentMenu',payload:1})

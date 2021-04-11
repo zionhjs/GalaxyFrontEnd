@@ -18,6 +18,7 @@ export default {
         {path:'/addArticle',exact:true,component:'../pages/AddArticle'},
         {path:'/team',exact:true,component:'../pages/team'},
         {path:'/hidden/image-quotation',exact:true,component:'../pages/Hidden'},
+        {path:'/hidden/animation-quotation',exact:true,component:'../pages/AnimationHidden'},
         {path:'/test',exact:true,component:'../pages/test'}
       ]
     },

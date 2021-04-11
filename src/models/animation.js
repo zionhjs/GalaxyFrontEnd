@@ -14,7 +14,7 @@
  */
 import _ from 'lodash'
 import {getAnimation,uploadVideo,updateVideo,updateVideoUrl} from '../service/api'
-const banners=['animationBanner1.jpeg', 'animationBanner2.jpeg', 'animationBanner3.jpeg', 'animationBanner4.jpeg']
+const banners=['/animationBanner1.jpeg', '/animationBanner2.jpeg', '/animationBanner3.jpeg', '/animationBanner4.jpeg']
 export default {
     namespace:'animation',
     state: {
@@ -30,6 +30,14 @@ export default {
        banners:banners,//轮播图
     },
     reducers: {
+      reset(state,{payload}){
+        return {
+          ...state,
+          currentPage:1,
+          hasMore:true,
+          pages:0
+        }
+      },
         setHasMore(state,{payload}){
             return {
                 ...state,

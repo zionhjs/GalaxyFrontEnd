@@ -34,6 +34,8 @@ export default {
       currentMenu:0,//当前菜单选中索引
       navButtons: ['Interior','Exterior','360','Mixed','Nav to Animation'],//副导航菜单
       currentNav:3,//副导航当前选中索引
+      aniNavButtons:['Regular','360 VR/AR','Mixed','Nav to Images'],
+      aniCurrentNav:2,
       contactVisible:false,//底部聊天对话框是否可见
       menuVisible:false,//右上角3条杠打开的菜单是否可见
       loginVisible:false,//登录对话框是否可见
@@ -93,6 +95,12 @@ export default {
          ...state,
          currentNav:payload
        }
+      },
+      setAniCurrentNav(state,{payload}){
+        return {
+          ...state,
+          aniCurrentNav: payload
+        }
       },
       toggleMenuMobile(state){
        return {
