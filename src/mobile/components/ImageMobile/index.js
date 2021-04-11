@@ -14,10 +14,19 @@ import NavBar from '../NavBar'
 import LoadMore from '../LoadMore'
 import BigImage360 from '../Image360Mobile'
 import styles from './index.css'
+import _ from 'lodash';
 const ImageMobile = ({ images,dispatch }) => {
   const openBigImg=useCallback((item)=>{
     dispatch({type:'image/setCurrent',payload:item})
     dispatch({type:'image/openImg360'})
+  },[])
+  const handleScroll=useCallback(_.debounce(({showHeight})=>{
+    if(showHeight>=0){
+      dispatch({type:'image/getImage'})
+    }
+  },2000),[])
+  const loadMore=useCallback(()=>{
+    dispatch({type:'image/getImage'})
   },[])
     return (
         <div className={styles.container}>
@@ -34,7 +43,7 @@ const ImageMobile = ({ images,dispatch }) => {
                     </OverPack>
                 ))}
             </div>
-            <LoadMore />
+            <LoadMore loadMore={loadMore} handleScroll={handleScroll} />
             <BigImage360/>
         </div>
     )
