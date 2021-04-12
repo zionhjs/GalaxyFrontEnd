@@ -34,19 +34,19 @@
   line-height: 100px;
   color: #fff;
 }
-.star-container{
+.starContainer{
   padding: 40px;
-  padding-bottom: 56px;
+  padding-bottom: 1px;
   background-color:  #2e2e2e;
 }
-.galaxy-container{
+.galaxyContainer{
   padding: 40px;
-  padding-bottom: 56px;
+  padding-bottom: 1px;
   background-color:  #2e2e2e;
 }
-.universe-container{
+.universeContainer{
   padding: 40px;
-  padding-bottom: 56px;
+  padding-bottom: 1px;
   background-color:  #2e2e2e;
 }
 .row{
@@ -160,4 +160,37 @@
   color: #fff;
   margin-left: auto;
   margin-right: 11px;
+}
+.loadMore{
+  position: relative;
+  width: 367px;
+  height: 45px;
+  margin: 73px auto;
+  text-align: center;
+  line-height: 45px;
+  cursor: pointer;
+  align-self: center;
+}
+.loadMore:active{
+  opacity: 0.4;
+}
+.loadMoreImg{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 100%;
+  height: auto;
+}
+.loadMoreText{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 110px;
+  height: auto;
 }

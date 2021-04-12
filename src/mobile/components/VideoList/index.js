@@ -21,7 +21,7 @@ const VideoList=(props)=>{
                     <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'video'} className={styles.listItem}>
                         <div className={styles.imgWrapper}>
                             <img src={item.imgUrl} alt="" className={styles.listImg} />
-                            <img src="playBtn.png" className={styles.playIcon} alt="" />
+                            <img src="/playBtn.png" className={styles.playIcon} alt="" />
                         </div>
                         <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{moment(item.date).format('YYYY[.]MM[.]DD')}</span></div>
                         <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>

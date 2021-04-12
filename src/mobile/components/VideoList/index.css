@@ -28,8 +28,8 @@
    cursor: pointer;
 }
 .listImg{
-   height: 100%;
-   width: auto;
+   width: 100%;
+  height: auto;
 }
 .nameWrapper{
    display: flex;
