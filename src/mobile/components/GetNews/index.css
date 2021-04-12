@@ -43,3 +43,6 @@
         background-image: linear-gradient(to right,#02D9DE , #E217FC 90%,#E217FC);
         cursor: pointer;
       }
+    .signBtn:active{
+      opacity: 0.4;
+    }
