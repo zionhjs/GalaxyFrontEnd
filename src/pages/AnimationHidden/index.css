@@ -1,3 +1,163 @@
 .container{
 
 }
+.category{
+  height: 245px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1d1d1d;
+}
+.category-item{
+  height:100px;
+  width: 245px;
+  background-color: #585858;
+  border-radius: 50px;
+  color:#9e9e9e;
+  font-size: 44px;
+  line-height: 100px;
+  text-align: center;
+}
+.galaxy-item{
+  margin-left: 55px;
+  margin-right: 55px;
+}
+.active-category{
+  background: transparent linear-gradient(90deg, #02D9DE 0%, #BE29EA 100%) 0% 0% no-repeat;
+  color: #fff;
+}
+.titleBox{
+  background: transparent linear-gradient(90deg, #02D9DE 0%, #BE29EA 100%) 0% 0% no-repeat;
+  height:100px;
+  font-size: 40px;
+  text-align: center;
+  line-height: 100px;
+  color: #fff;
+}
+.star-container{
+  padding: 40px;
+  padding-bottom: 56px;
+  background-color:  #2e2e2e;
+}
+.galaxy-container{
+  padding: 40px;
+  padding-bottom: 56px;
+  background-color:  #2e2e2e;
+}
+.universe-container{
+  padding: 40px;
+  padding-bottom: 56px;
+  background-color:  #2e2e2e;
+}
+.row{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+.box1{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  align-items: center;
+  line-height: 1;
+  background-color: #000;
+  position: relative;
+  justify-content: space-between;
+}
+.box2,.box3{
+  width: 512px;
+  height: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background-color: #000;
+  position: relative;
+  flex-direction: column;
+}
+.box2{
+  margin-bottom: 40px;
+}
+.rightBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.box1Img{
+  /*  height: 708px;
+  width: auto;  */
+  width: 100%;
+  height: auto;
+}
+.nameWrapper{
+  align-self: stretch;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+.nameText{
+  font-family: 'RubikRegular';
+  font-size: 26px;
+  color: #fff;
+  margin-left: 15px;
+}
+.dateText{
+  margin-left: 75px;
+  font-size: 19px;
+  font-family: 'RubikRegular';
+  color: rgba(255,255,255,0.6);
+}
+.desc{
+  font-family: 'RubikRegular';
+  font-size: 19px;
+  color: rgba(255,255,255,0.6);
+  align-self: stretch;
+  padding-left: 15px;
+  align-items: center;
+  display: flex;
+  margin-bottom: 15px;
+}
+.rightBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.box1{
+  width: 1288px;
+}
+.box2Img,.box3Img{
+  /*  height: 304px;
+   width: auto; */
+  width: 100%;
+  height: auto;
+}
+.playBtn1{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 101px;
+  margin: auto;
+  width: 85px;
+  height: auto;
+  cursor: pointer;
+}
+.playBtn2,.playBtn3{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 101px;
+  margin: auto;
+  width: 85px;
+  height: auto;
+  cursor: pointer;
+}
+.fullScreen{
+  font-size: 18px;
+  color: #fff;
+  margin-left: auto;
+  margin-right: 11px;
+}
