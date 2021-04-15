@@ -16,14 +16,17 @@ const Image360=(props)=>{
        const [viewer,setViewer]=useState(null)
     useEffect(()=>{
       if(viewer){
-          viewer.setPanorama(currentItem.imgUrl)
+          if(currentItem.imgUrl&&currentItem.statusName=='360'){
+            viewer.setPanorama(currentItem.imgUrl)
+          }
         }else{
-          console.log(viewer)
+        if(currentItem.imgUrl&&currentItem.statusName=='360'){
           let temp = new Viewer({
             container: document.querySelector('#viewer'),
             panorama:currentItem.imgUrl
           });
           setViewer(temp)
+        }
         }
         if(document.createEvent) {
           let event = document.createEvent("HTMLEvents");

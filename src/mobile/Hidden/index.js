@@ -6,10 +6,10 @@ import classnames from 'classnames';
 import { OverPack } from 'rc-scroll-anim/es';
 import TweenOne from 'rc-tween-one';
 import LoadMore from '@/mobile/components/LoadMore';
-import BigImage360 from '@/mobile/components/Image360Mobile';
+import BigImage from '@/mobile/components/HiddenBigImage';
 import router from 'umi/router';
 const HiddenMobile=props=>{
-  const {dispatch,currentCate,images,starNavButtons,starCurrentNav,galaxyNavButtons,
+  const {dispatch,currentCate,starImages,galaxyImages,universeImages,starNavButtons,starCurrentNav,galaxyNavButtons,
     galaxyCurrentNav,universeNavButtons,universeCurrentNav
   }=props;
   const handleClick=useCallback(item=>{
@@ -17,41 +17,45 @@ const HiddenMobile=props=>{
     let el=document.getElementById(item)
     el.scrollIntoView({behavior:'smooth',block:'center'})
   },[])
-  //todo
   const starLoadMore=useCallback(()=>{
-
+ dispatch({type:'imageHidden/getStarImage'})
   },[])
-  //todo
   const galaxyLoadMore=useCallback(()=>{
-
+ dispatch({type:'imageHidden/getGalaxyImage'})
   },[])
-  //todo
   const universeLoadMore=useCallback(()=>{
-
+  dispatch({type:'imageHidden/getUniverseImage'})
   },[])
-  //todo
   const starHandleClick=useCallback((item,index)=>{
     dispatch({type:'imageHidden/setStarCurrentNav',payload: index})
     if(index==4){
       router.push('/hidden/animation-quotation')
+    }else{
+      dispatch({type:'imageHidden/resetStar'})
+      dispatch({type:'imageHidden/getStarImage'})
     }
   },[])
-  //todo
   const galaxyHandleClick=useCallback((item,index)=>{
     dispatch({type:'imageHidden/setGalaxyCurrentNav',payload:index})
     if(index==4){
       router.push('/hidden/animation-quotation')
+    }else{
+      dispatch({type:'imageHidden/resetGalaxy'})
+      dispatch({type:'imageHidden/getGalaxyImage'})
     }
   },[])
   const universeHandleClick=useCallback((item,index)=>{
     dispatch({type:'imageHidden/setUniverseCurrentNav',payload:index})
     if(index==4){
       router.push('/hidden/animation-quotation')
+    }else{
+      dispatch({type:'imageHidden/resetUniverse'})
+      dispatch({type:'imageHidden/getUniverseImage'})
     }
   },[])
-  const openBigImg=useCallback((item)=>{
-    dispatch({type:'image/setCurrent',payload:item})
-    dispatch({type:'image/openImg360'})
+  const openBigImg=useCallback((item,type)=>{
+    dispatch({type:'imageHidden/setCurrent',payload:{type,item}})
+    dispatch({type:'imageHidden/openBigImage'})
   },[])
   return (
     <div className={styles.container}>
@@ -63,10 +67,10 @@ const HiddenMobile=props=>{
       <div id={'star'} className={styles.titleBox}>Star - Good Quality</div>
       <NavBar navButtons={starNavButtons} currentNav={starCurrentNav} handleClick={starHandleClick}/>
       <div className={styles.list}>
-        {images.map((item, index) => (
+        {starImages.map((item, index) => (
           <OverPack key={index+item.imgUrl} playScale={0.3}>
             <TweenOne className={styles.listItem} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'tw'}>
-              <img onClick={openBigImg.bind(null,item)} className={styles.listImg} src={item.imgUrl} alt="" />
+              <img onClick={openBigImg.bind(null,item,'star')} className={styles.listImg} src={item.imgUrl} alt="" />
               <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
               <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
             </TweenOne>
@@ -77,10 +81,10 @@ const HiddenMobile=props=>{
       <div id={'galaxy'} className={styles.titleBox} style={{marginTop:'0.41rem'}}>Galaxy - Excellent Quality</div>
       <NavBar navButtons={galaxyNavButtons} currentNav={galaxyCurrentNav} handleClick={galaxyHandleClick}/>
       <div className={styles.list}>
-        {images.map((item, index) => (
+        {galaxyImages.map((item, index) => (
           <OverPack key={index+item.imgUrl} playScale={0.3}>
             <TweenOne className={styles.listItem} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'tw'}>
-              <img onClick={openBigImg.bind(null,item)} className={styles.listImg} src={item.imgUrl} alt="" />
+              <img onClick={openBigImg.bind(null,item,'galaxy')} className={styles.listImg} src={item.imgUrl} alt="" />
               <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
               <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
             </TweenOne>
@@ -91,10 +95,10 @@ const HiddenMobile=props=>{
       <div id={'universe'} className={styles.titleBox} style={{marginTop:'0.41rem'}}>Universe - Superior Quality</div>
       <NavBar navButtons={universeNavButtons} currentNav={universeCurrentNav} handleClick={universeHandleClick}/>
       <div className={styles.list}>
-        {images.map((item, index) => (
+        {universeImages.map((item, index) => (
           <OverPack key={index+item.imgUrl} playScale={0.3}>
             <TweenOne className={styles.listItem} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'tw'}>
-              <img onClick={openBigImg.bind(null,item)} className={styles.listImg} src={item.imgUrl} alt="" />
+              <img onClick={openBigImg.bind(null,item,'universe')} className={styles.listImg} src={item.imgUrl} alt="" />
               <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
               <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
             </TweenOne>
@@ -102,8 +106,8 @@ const HiddenMobile=props=>{
         ))}
       </div>
       <LoadMore loadMore={universeLoadMore}  />
-      <BigImage360/>
+      <BigImage/>
     </div>
   )
 }
-export default connect(({imageHidden:{currentCate,images,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}})=>({currentCate,images,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}))(HiddenMobile)
+export default connect(({imageHidden:{currentCate,starImages,galaxyImages,universeImages,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}})=>({currentCate,starImages,galaxyImages,universeImages,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}))(HiddenMobile)

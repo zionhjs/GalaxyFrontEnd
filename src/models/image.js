@@ -131,7 +131,6 @@ export default {
             }
         },
         setuploadSuffix(state,{payload}){
-          console.log('uploadSufixxChange',payload)
         return {
             ...state,
             statusName:payload

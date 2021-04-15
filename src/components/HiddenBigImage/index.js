@@ -11,7 +11,7 @@ import classnames from 'classnames'
 import { Viewer } from 'photo-sphere-viewer';
 import styles from './index.css'
 import 'photo-sphere-viewer/dist/photo-sphere-viewer.css'
-const Image360=(props)=>{
+const HiddenBigImage=(props)=>{
   const {visible,currentItem,dispatch}=props;
   const [viewer,setViewer]=useState(null)
   useEffect(()=>{
@@ -39,23 +39,23 @@ const Image360=(props)=>{
 
 
   const close=useCallback(()=>{
-    dispatch({type:'image/closeImg360'})
+    dispatch({type:'imageHidden/closeBigImage'})
   },[])
   const pre=useCallback(()=>{
-    dispatch({type:'image/pre'})
+    dispatch({type:'imageHidden/pre'})
   },[])
   const next=useCallback(()=>{
-    dispatch({type:'image/next'})
+    dispatch({type:'imageHidden/next'})
   },[])
   return (
     <div className={classnames(styles.container,{[styles.visible]:visible})}>
-      <img onClick={close} src="close.png" className={styles.closeIcon} alt="" />
-      <img onClick={pre} className={styles.pre} src="pre.png" alt="" />
-      <img onClick={next} className={styles.next} src="next.png" alt="" />
+      <img onClick={close} src="/close.png" className={styles.closeIcon} alt="" />
+      <img onClick={pre} className={styles.pre} src="/pre.png" alt="" />
+      <img onClick={next} className={styles.next} src="/next.png" alt="" />
       <div id="viewer" className={classnames(styles.picBox,{[styles.hidden]:currentItem.statusName!='360'})}></div>
-      <div className={classnames(styles.picBox,{[styles.hidden]:currentItem.statusName=='360'})}><img src={currentItem.imgUrl} alt="" className={styles.pic} /></div>
+      <div className={classnames(styles.picBox,{[styles.hidden]:currentItem.statusName=='360'})}><img crossOrigin={'anonymous'} src={currentItem.imgUrl} alt="" className={styles.pic} /></div>
       <div className={styles.desc}>{currentItem.desc}</div>
     </div>
   )
 }
-export default connect(({image})=>({visible:image.img360Visible,currentItem:image.currentItem}))(Image360)
+export default connect(({imageHidden:{bigImageVisible,currentItem}})=>({visible:bigImageVisible,currentItem}))(HiddenBigImage)

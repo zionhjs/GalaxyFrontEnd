@@ -32,6 +32,10 @@ export async function getImages({currentPage,pageSize,statusName}){
   let result=await request(`/gateway/upload/images/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName}})
   return result
 }
+export async function getImagesByLevel({currentPage,pageSize,statusName,level}) {
+  let result=await request(`/gateway/upload/images/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName,level}})
+  return result
+}
 export async function uploadImage(params){
   console.log('upload',params)
   let result=await request('/gateway/upload/images/uploadImages',{method:'POST',body:params})
