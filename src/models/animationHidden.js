@@ -26,6 +26,7 @@ export default {
     universeNavButtons:['Regular','360 VR/AR','Mixed','Nav to Images'],
     universeCurrentNav:2,
     currentCate:'star',
+    type:'',
   },
   reducers:{
     resetStar(state,{payload}){
@@ -108,17 +109,30 @@ export default {
       }
     },
     setCurrent(state,{payload}){
-      const {videoList}=state;
-      let index=_.findIndex(videoList,function(o){return o.id===payload.id})
+      const {type,item}=payload
+      const {starVideoList,galaxyVideoList,universeVideoList}=state;
+      let videoList;
+      if(type=='star'){
+        videoList=starVideoList
+      }else if (type=='galaxy'){
+        videoList=galaxyVideoList
+      } else if(type=='universe'){
+        videoList=universeVideoList
+      }
+      let index=_.findIndex(videoList,function(o){return o.id===item.id})
       return {
         ...state,
         currentIndex:index,
-        currentItem:payload
+        currentItem:item,
+        type,
 
       }
     },
     pre(state){
-      let {currentIndex,videoList}=state;
+      let {currentIndex,type,starVideoList,galaxyVideoList,universeVideoList}=state;
+      let videoList;
+      let map={'star':starVideoList,'galaxy':galaxyVideoList,'universe':universeVideoList}
+      videoList= map[type]
       let len=videoList.length;
       if(currentIndex-1>=0){
         currentIndex--;
@@ -132,7 +146,10 @@ export default {
       }
     },
     next(state){
-      let {currentIndex,videoList}=state;
+      let {currentIndex,type,starVideoList,galaxyVideoList,universeVideoList}=state;
+      let videoList;
+      let map={'star':starVideoList,'galaxy':galaxyVideoList,'universe':universeVideoList}
+      videoList=map[type]
       let len=videoList.length;
       if(currentIndex<len-1){
         currentIndex++;

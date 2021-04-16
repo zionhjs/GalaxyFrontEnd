@@ -9,6 +9,7 @@ import * as moment from 'moment';
 import NavBar from '@/components/ImageHiddenNavBar'
 import AnimationMobile from '@/mobile/AnimationHidden'
 import { FullscreenOutlined } from '@ant-design/icons';
+import Video from '@/components/HiddenVideo'
 import router from 'umi/router';
 
 const AnimationHidden=props=>{
@@ -34,8 +35,8 @@ const AnimationHidden=props=>{
     let el=document.getElementById(item)
     el.scrollIntoView({behavior:'smooth',block:'center'})
   },[])
-  const play=useCallback((item)=>{
-    dispatch({type:'animationHidden/setCurrent',payload:item})
+  const play=useCallback((item,type)=>{
+    dispatch({type:'animationHidden/setCurrent',payload:{type,item}})
     dispatch({type:'animationHidden/openVideo'})
   },[])
   const starLoadMore=useCallback(()=>{
@@ -94,20 +95,20 @@ dispatch({type:'animationHidden/getUniverseAnimation'})
                   <img src={item[0].imgUrl} className={styles.box1Img} />
                   <div className={styles.nameWrapper}><span className={styles.nameText}>{item[0].name}</span><span className={styles.dateText}>{moment(item[0].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                   <div className={styles.desc}>{item[0].desc}</div>
-                  <img onClick={play.bind(null,item[0])} src="/playBtn.png" className={styles.playBtn1} />
+                  <img onClick={play.bind(null,item[0],'star')} src="/playBtn.png" className={styles.playBtn1} />
                 </TweenOne>)}
                 <OverPack playScale={0.3} style={col1Style} className={styles.rightBox}>
                   {item[1]&&(<TweenOne key="box2ani" animation={{ y: '-=50',opacity: 0,type: 'from', ease: 'easeOutQuad'}} resetStyle className={styles.box2}>
                     <img src={item[1].imgUrl} className={styles.box2Img} />
                     <div className={styles.nameWrapper}><span className={styles.nameText}>{item[1].name}</span><span className={styles.dateText}>{moment(item[1].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                     <div className={styles.desc}>{item[1].desc}</div>
-                    <img onClick={play.bind(null,item[1])} src="/playBtn.png" className={styles.playBtn2} />
+                    <img onClick={play.bind(null,item[1],'star')} src="/playBtn.png" className={styles.playBtn2} />
                   </TweenOne>)}
                   {item[2]&&(<TweenOne key="box3ani" animation={{ y: '+=50',opacity: 0,type: 'from', ease: 'easeOutQuad'}} resetStyle className={styles.box3}>
                     <img src={item[2].imgUrl} className={styles.box3Img} />
                     <div className={styles.nameWrapper}><span className={styles.nameText}>{item[2].name}</span><span className={styles.dateText}>{moment(item[2].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                     <div className={styles.desc}>{item[2].desc}</div>
-                    <img onClick={play.bind(null,item[2])} src="/playBtn.png" className={styles.playBtn3} />
+                    <img onClick={play.bind(null,item[2],'star')} src="/playBtn.png" className={styles.playBtn3} />
                   </TweenOne>)}
                 </OverPack>
               </OverPack>
@@ -129,20 +130,20 @@ dispatch({type:'animationHidden/getUniverseAnimation'})
                   <img src={item[0].imgUrl} className={styles.box1Img} />
                   <div className={styles.nameWrapper}><span className={styles.nameText}>{item[0].name}</span><span className={styles.dateText}>{moment(item[0].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                   <div className={styles.desc}>{item[0].desc}</div>
-                  <img onClick={play.bind(null,item[0])} src="/playBtn.png" className={styles.playBtn1} />
+                  <img onClick={play.bind(null,item[0],'galaxy')} src="/playBtn.png" className={styles.playBtn1} />
                 </TweenOne>)}
                 <OverPack playScale={0.3} style={col1Style} className={styles.rightBox}>
                   {item[1]&&(<TweenOne key="box2ani" animation={{ y: '-=50',opacity: 0,type: 'from', ease: 'easeOutQuad'}} resetStyle className={styles.box2}>
                     <img src={item[1].imgUrl} className={styles.box2Img} />
                     <div className={styles.nameWrapper}><span className={styles.nameText}>{item[1].name}</span><span className={styles.dateText}>{moment(item[1].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                     <div className={styles.desc}>{item[1].desc}</div>
-                    <img onClick={play.bind(null,item[1])} src="/playBtn.png" className={styles.playBtn2} />
+                    <img onClick={play.bind(null,item[1],'galaxy')} src="/playBtn.png" className={styles.playBtn2} />
                   </TweenOne>)}
                   {item[2]&&(<TweenOne key="box3ani" animation={{ y: '+=50',opacity: 0,type: 'from', ease: 'easeOutQuad'}} resetStyle className={styles.box3}>
                     <img src={item[2].imgUrl} className={styles.box3Img} />
                     <div className={styles.nameWrapper}><span className={styles.nameText}>{item[2].name}</span><span className={styles.dateText}>{moment(item[2].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                     <div className={styles.desc}>{item[2].desc}</div>
-                    <img onClick={play.bind(null,item[2])} src="/playBtn.png" className={styles.playBtn3} />
+                    <img onClick={play.bind(null,item[2],'galaxy')} src="/playBtn.png" className={styles.playBtn3} />
                   </TweenOne>)}
                 </OverPack>
               </OverPack>
@@ -164,20 +165,20 @@ dispatch({type:'animationHidden/getUniverseAnimation'})
                   <img src={item[0].imgUrl} className={styles.box1Img} />
                   <div className={styles.nameWrapper}><span className={styles.nameText}>{item[0].name}</span><span className={styles.dateText}>{moment(item[0].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                   <div className={styles.desc}>{item[0].desc}</div>
-                  <img onClick={play.bind(null,item[0])} src="/playBtn.png" className={styles.playBtn1} />
+                  <img onClick={play.bind(null,item[0],'universe')} src="/playBtn.png" className={styles.playBtn1} />
                 </TweenOne>)}
                 <OverPack playScale={0.3} style={col1Style} className={styles.rightBox}>
                   {item[1]&&(<TweenOne key="box2ani" animation={{ y: '-=50',opacity: 0,type: 'from', ease: 'easeOutQuad'}} resetStyle className={styles.box2}>
                     <img src={item[1].imgUrl} className={styles.box2Img} />
                     <div className={styles.nameWrapper}><span className={styles.nameText}>{item[1].name}</span><span className={styles.dateText}>{moment(item[1].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                     <div className={styles.desc}>{item[1].desc}</div>
-                    <img onClick={play.bind(null,item[1])} src="/playBtn.png" className={styles.playBtn2} />
+                    <img onClick={play.bind(null,item[1],'universe')} src="/playBtn.png" className={styles.playBtn2} />
                   </TweenOne>)}
                   {item[2]&&(<TweenOne key="box3ani" animation={{ y: '+=50',opacity: 0,type: 'from', ease: 'easeOutQuad'}} resetStyle className={styles.box3}>
                     <img src={item[2].imgUrl} className={styles.box3Img} />
                     <div className={styles.nameWrapper}><span className={styles.nameText}>{item[2].name}</span><span className={styles.dateText}>{moment(item[2].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                     <div className={styles.desc}>{item[2].desc}</div>
-                    <img onClick={play.bind(null,item[2])} src="/playBtn.png" className={styles.playBtn3} />
+                    <img onClick={play.bind(null,item[2],'universe')} src="/playBtn.png" className={styles.playBtn3} />
                   </TweenOne>)}
                 </OverPack>
               </OverPack>
@@ -186,6 +187,7 @@ dispatch({type:'animationHidden/getUniverseAnimation'})
         }
         <div onClick={universeLoadMore} className={styles.loadMore}><img src="/loadMore.png" className={styles.loadMoreImg} /><img src="/loadMoreText.png" className={styles.loadMoreText} /></div>
       </div>
+      <Video/>
     </div>
   )
 }
