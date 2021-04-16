@@ -6,6 +6,7 @@ import styles from './index.css'
 import classnames from 'classnames';
 import router from 'umi/router';
 import { OverPack } from 'rc-scroll-anim';
+import Video from '@/mobile/components/HiddenVideo'
 import TweenOne from 'rc-tween-one';
 import * as moment from 'moment';
 const AnimationHidden=props=>{
@@ -51,6 +52,10 @@ dispatch({type:'animationHidden/getUniverseAnimation'})
       dispatch({type:'animationHidden/getUniverseAnimation'})
     }
   },[])
+  const play=useCallback((item,type)=>{
+    dispatch({type:'animationHidden/setCurrent',payload:{type,item}})
+    dispatch({type:'animationHidden/openVideo'})
+  },[])
   return (
     <div className={styles.container}>
       <div className={styles.category}>
@@ -67,7 +72,7 @@ dispatch({type:'animationHidden/getUniverseAnimation'})
               <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'video'} className={styles.listItem}>
                 <div className={styles.imgWrapper}>
                   <img src={item.imgUrl} alt="" className={styles.listImg} />
-                  <img src="/playBtn.png" className={styles.playIcon} alt="" />
+                  <img onClick={play.bind(null,item,'star')} src="/playBtn.png" className={styles.playIcon} alt="" />
                 </div>
                 <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{moment(item.date).format('YYYY[.]MM[.]DD')}</span></div>
                 <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
@@ -86,7 +91,7 @@ dispatch({type:'animationHidden/getUniverseAnimation'})
               <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'video'} className={styles.listItem}>
                 <div className={styles.imgWrapper}>
                   <img src={item.imgUrl} alt="" className={styles.listImg} />
-                  <img src="/playBtn.png" className={styles.playIcon} alt="" />
+                  <img onClick={play.bind(null,item,'galaxy')} src="/playBtn.png" className={styles.playIcon} alt="" />
                 </div>
                 <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{moment(item.date).format('YYYY[.]MM[.]DD')}</span></div>
                 <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
@@ -105,7 +110,7 @@ dispatch({type:'animationHidden/getUniverseAnimation'})
               <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'video'} className={styles.listItem}>
                 <div className={styles.imgWrapper}>
                   <img src={item.imgUrl} alt="" className={styles.listImg} />
-                  <img src="/playBtn.png" className={styles.playIcon} alt="" />
+                  <img onClick={play.bind(null,item,'universe')} src="/playBtn.png" className={styles.playIcon} alt="" />
                 </div>
                 <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{moment(item.date).format('YYYY[.]MM[.]DD')}</span></div>
                 <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
@@ -115,6 +120,7 @@ dispatch({type:'animationHidden/getUniverseAnimation'})
         }
       </div>
       <LoadMore loadMore={universeLoadMore}  />
+      <Video/>
     </div>
   )
 }

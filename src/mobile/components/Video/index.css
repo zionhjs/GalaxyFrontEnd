@@ -9,27 +9,27 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 30px;
-  padding-top: 72px;
+  padding-bottom: 0.3rem;
+  padding-top: 0.72rem;
 }
 .desc{
-  margin-top: 50px;
+  margin-top: 0.5rem;
   font-family: 'Segoe UI';
   color: #fff;
-  font-size: 16px;
+  font-size: 0.16rem;
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 0.3rem;
 }
 .videoWrapper{
-  width: 1606px;
+  width: 100%;
   height: 80vh;
 }
 .video{
 }
 .preIcon{
-  width: 50px;
+  width: 0.5rem;
   height: auto;
-  left: 32px;
+  left: 0.32rem;
   top: 0;
   bottom: 0;
   margin: auto;
@@ -37,9 +37,9 @@
   cursor: pointer;
 }
 .nextIcon{
-  width: 50px;
+  width: 0.5rem;
   height: auto;
-  right: 32px;
+  right: 0.32rem;
   top: 0;
   bottom: 0;
   margin: auto;
@@ -47,9 +47,10 @@
   cursor: pointer;
 }
 .closeIcon{
-  width: 13px;
+  width: 0.13rem;
   height: auto;
   position: absolute;
-  top: 86px;
-  right: 37px;
+  top: 0.86rem;
+  right: 0.37rem;
 }
+

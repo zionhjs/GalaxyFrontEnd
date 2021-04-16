@@ -12,6 +12,7 @@ import NavBar from '../components/AnimationNavBar'
 import VideoList from '../components/VideoList'
 import LoadMore from '../components/LoadMore'
 import GetNews from '../components/GetNews'
+import Video from '@/mobile/components/Video'
 import styles from './index.css'
 const AnimationPage=(props)=>{
   const {dispatch}=props;
@@ -25,6 +26,7 @@ const AnimationPage=(props)=>{
             <VideoList />
             <LoadMore loadMore={loadMore} />
             <GetNews />
+            <Video/>
         </div>
     )
 }
