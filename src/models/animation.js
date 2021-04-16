@@ -105,9 +105,10 @@ export default {
         },
         save(state,{payload}){
             const {list}=payload
+          const {videoList}=state
             return {
                 ...state,
-                videoList:list
+                videoList:videoList.concat(list)
             }
         },
         openVideo(state){
@@ -201,10 +202,15 @@ export default {
           loading: payload
         }
         },
+      closeEditor(state){
+        return {
+          ...state,
+          currentItem:{id:null}
+        }
+      },
     },
     effects: {
         *getAnimation({payload},{call,put,select}){
-            yield put({type:'setPage',payload:1})
             let {currentPage,pageSize,loading,isLast}=yield select(state=>state.animation)
           let {aniCurrentNav}=yield select(state=>state.global)
           if(isLast!=true) {
@@ -279,6 +285,7 @@ export default {
             let {imgUrl,name,desc,statusName,level,id}=currentItem
             let result=yield call(updateVideo,{id,objectUrl480:imgUrl,title:name,description:desc,statusName,level})
             if(result.code===200){
+              yield put({type:'closeEditor'})
               yield put({type:'reset'})
                 yield put({type:'getAnimation'})
             }

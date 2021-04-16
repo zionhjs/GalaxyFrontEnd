@@ -10,6 +10,10 @@ export async function getAnimation({currentPage,pageSize,statusName}) {
   let result=await request(`/gateway/upload/video/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName}})
     return result;
   }
+export async function getAnimationByLevel({currentPage,pageSize,statusName,level}) {
+  let result=await request(`/gateway/upload/video/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName,level}})
+  return result;
+}
 export async function login(params){
     let result=await request('/gateway/ucenter/user/login',{method:'POST',data:params})
     return result;

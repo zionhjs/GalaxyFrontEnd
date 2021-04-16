@@ -22,9 +22,6 @@ const NavBar=(props)=>{
       //router.push('/image')
     }
   },[])
-  useEffect(()=>{
-
-  },[])
   let handleScroll=useCallback(_.debounce(({ scrollTop, offsetTop, id})=>{
     let el=document.getElementById(id)
     let top=el&&getComputedStyle(el,null).getPropertyValue('top').replace('px','')

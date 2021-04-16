@@ -9,42 +9,46 @@ import { OverPack } from 'rc-scroll-anim';
 import TweenOne from 'rc-tween-one';
 import * as moment from 'moment';
 const AnimationHidden=props=>{
-  const {dispatch,currentCate,videoList,starNavButtons,galaxyNavButtons,universeNavButtons,starCurrentNav,galaxyCurrentNav,universeCurrentNav}=props
+  const {dispatch,currentCate,starVideoList,galaxyVideoList,universeVideoList,starNavButtons,galaxyNavButtons,universeNavButtons,starCurrentNav,galaxyCurrentNav,universeCurrentNav}=props
   const handleClick=useCallback(item=>{
     dispatch({type:'animationHidden/setCate',payload:item})
     let el=document.getElementById(item)
     el.scrollIntoView({behavior:'smooth',block:'center'})
   },[])
-  //todo
   const starLoadMore=useCallback(()=>{
-
+ dispatch({type:'animationHidden/getStarAnimation'})
   },[])
-  //todo
   const galaxyLoadMore=useCallback(()=>{
-
+ dispatch({type:'animationHidden/getGalaxyAnimation'})
   },[])
-  //todo
   const universeLoadMore=useCallback(()=>{
-
+dispatch({type:'animationHidden/getUniverseAnimation'})
   },[])
-  //todo
   const starHandleClick=useCallback((item,index)=>{
     dispatch({type:'animationHidden/setStarCurrentNav',payload: index})
     if(index==3){
       router.push('/hidden/image-quotation')
+    }else{
+      dispatch({type:'animationHidden/resetStar'})
+      dispatch({type:'animationHidden/getStarAnimation'})
     }
   },[])
-  //todo
   const galaxyHandleClick=useCallback((item,index)=>{
     dispatch({type:'animationHidden/setGalaxyCurrentNav',payload:index})
     if(index==3){
       router.push('/hidden/image-quotation')
+    }else{
+      dispatch({type:'animationHidden/resetGalaxy'})
+      dispatch({type:'animationHidden/getGalaxyAnimation'})
     }
   },[])
   const universeHandleClick=useCallback((item,index)=>{
     dispatch({type:'animationHidden/setUniverseCurrentNav',payload:index})
     if(index==3){
       router.push('/hidden/image-quotation')
+    }else{
+      dispatch({type:'animationHidden/resetUniverse'})
+      dispatch({type:'animationHidden/getUniverseAnimation'})
     }
   },[])
   return (
@@ -58,7 +62,7 @@ const AnimationHidden=props=>{
       <NavBar navButtons={starNavButtons} currentNav={starCurrentNav} handleClick={starHandleClick}/>
       <div className={styles.starContainer}>
         {
-          videoList.map((item,index)=>(
+          starVideoList.map((item,index)=>(
             <OverPack playScale={0.3} key={index}>
               <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'video'} className={styles.listItem}>
                 <div className={styles.imgWrapper}>
@@ -77,7 +81,7 @@ const AnimationHidden=props=>{
       <NavBar navButtons={galaxyNavButtons} currentNav={galaxyCurrentNav} handleClick={galaxyHandleClick}/>
       <div className={styles.galaxyContainer}>
         {
-          videoList.map((item,index)=>(
+          galaxyVideoList.map((item,index)=>(
             <OverPack playScale={0.3} key={index}>
               <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'video'} className={styles.listItem}>
                 <div className={styles.imgWrapper}>
@@ -96,7 +100,7 @@ const AnimationHidden=props=>{
       <NavBar navButtons={universeNavButtons} currentNav={universeCurrentNav} handleClick={universeHandleClick}/>
       <div className={styles.universeContainer}>
         {
-          videoList.map((item,index)=>(
+          universeVideoList.map((item,index)=>(
             <OverPack playScale={0.3} key={index}>
               <TweenOne animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'video'} className={styles.listItem}>
                 <div className={styles.imgWrapper}>
@@ -114,4 +118,4 @@ const AnimationHidden=props=>{
     </div>
   )
 }
-export default connect(({animationHidden:{currentCate,videoList,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}})=>({currentCate,videoList,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}))(AnimationHidden)
+export default connect(({animationHidden:{currentCate,starVideoList,galaxyVideoList,universeVideoList,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}})=>({currentCate,starVideoList,galaxyVideoList,universeVideoList,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}))(AnimationHidden)

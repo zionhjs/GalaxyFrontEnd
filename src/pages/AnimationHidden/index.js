@@ -12,13 +12,23 @@ import { FullscreenOutlined } from '@ant-design/icons';
 import router from 'umi/router';
 
 const AnimationHidden=props=>{
-  const {dispatch,currentCate,videoList,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}=props
+  const {dispatch,currentCate,starVideoList,galaxyVideoList,universeVideoList,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}=props
   const isMobile=window.screen.width<768
   useEffect(()=>{
-    dispatch({type:'animationHidden/getAnimation'})},[])
-  let list = useMemo(() => {
-    return _.chunk(videoList, 3)
-  }, [videoList])
+    dispatch({type:'animationHidden/getStarAnimation'})
+    dispatch({type:'animationHidden/getGalaxyAnimation'})
+    dispatch({type:'animationHidden/getUniverseAnimation'})
+  },[])
+
+  let starList = useMemo(() => {
+    return _.chunk(starVideoList, 3)
+  }, [starVideoList])
+  let galaxyList = useMemo(() => {
+    return _.chunk(galaxyVideoList, 3)
+  }, [galaxyVideoList])
+  let universeList = useMemo(() => {
+    return _.chunk(universeVideoList, 3)
+  }, [universeVideoList])
   const handleClick=useCallback(item=>{
     dispatch({type:'animationHidden/setCate',payload:item})
     let el=document.getElementById(item)
@@ -28,36 +38,40 @@ const AnimationHidden=props=>{
     dispatch({type:'animationHidden/setCurrent',payload:item})
     dispatch({type:'animationHidden/openVideo'})
   },[])
-  //todo star loadmore
   const starLoadMore=useCallback(()=>{
-
+dispatch({type:'animationHidden/getStarAnimation'})
   },[])
-  //todo galaxy loadmore
   const galaxyLoadMore=useCallback(()=>{
-
+dispatch({type:'animationHidden/getGalaxyAnimation'})
   },[])
-  //todo universe loadmore
   const universeLoadMore=useCallback(()=>{
-
+dispatch({type:'animationHidden/getUniverseAnimation'})
   },[])
-  //todo
   const starHandleClick=useCallback((item,index)=>{
     dispatch({type:'animationHidden/setStarCurrentNav',payload: index})
     if(index==3){
       router.push('/hidden/image-quotation')
+    }else{
+      dispatch({type:'animationHidden/resetStar'})
+      dispatch({type:'animationHidden/getStarAnimation'})
     }
   },[])
-  //todo
   const galaxyHandleClick=useCallback((item,index)=>{
     dispatch({type:'animationHidden/setGalaxyCurrentNav',payload:index})
     if(index==3){
       router.push('/hidden/image-quotation')
+    }else {
+      dispatch({type:'animationHidden/resetGalaxy'})
+      dispatch({type:'animationHidden/getGalaxyAnimation'})
     }
   },[])
   const universeHandleClick=useCallback((item,index)=>{
     dispatch({type:'animationHidden/setUniverseCurrentNav',payload:index})
     if(index==3){
       router.push('/hidden/image-quotation')
+    }else{
+      dispatch({type:'animationHidden/resetUniverse'})
+      dispatch({type:'animationHidden/getUniverseAnimation'})
     }
   },[])
   return isMobile ? (<AnimationMobile />) : (
@@ -71,7 +85,7 @@ const AnimationHidden=props=>{
       <NavBar navButtons={starNavButtons} currentNav={starCurrentNav} handleClick={starHandleClick}/>
       <div className={styles.starContainer}>
         {
-          list.map((item,index)=>{
+          starList.map((item,index)=>{
             const colStyle = index % 2 === 0 ? { order: 1 } : { order: 2 }
             const col1Style = index % 2 === 0 ? { order: 2 } : { order: 1 }
             return (
@@ -106,7 +120,7 @@ const AnimationHidden=props=>{
       <NavBar navButtons={galaxyNavButtons} currentNav={galaxyCurrentNav} handleClick={galaxyHandleClick}/>
       <div className={styles.galaxyContainer}>
         {
-          list.map((item,index)=>{
+          galaxyList.map((item,index)=>{
             const colStyle = index % 2 === 0 ? { order: 1 } : { order: 2 }
             const col1Style = index % 2 === 0 ? { order: 2 } : { order: 1 }
             return (
@@ -141,7 +155,7 @@ const AnimationHidden=props=>{
       <NavBar navButtons={universeNavButtons} currentNav={universeCurrentNav} handleClick={universeHandleClick}/>
       <div className={styles.universeContainer}>
         {
-          list.map((item,index)=>{
+          universeList.map((item,index)=>{
             const colStyle = index % 2 === 0 ? { order: 1 } : { order: 2 }
             const col1Style = index % 2 === 0 ? { order: 2 } : { order: 1 }
             return (
@@ -175,4 +189,4 @@ const AnimationHidden=props=>{
     </div>
   )
 }
-export default connect(({animationHidden:{currentCate,videoList,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}})=>({currentCate,videoList,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}))(AnimationHidden)
+export default connect(({animationHidden:{currentCate,starVideoList,galaxyVideoList,universeVideoList,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}})=>({currentCate,starVideoList,galaxyVideoList,universeVideoList,starCurrentNav,starNavButtons,galaxyCurrentNav,galaxyNavButtons,universeCurrentNav,universeNavButtons}))(AnimationHidden)

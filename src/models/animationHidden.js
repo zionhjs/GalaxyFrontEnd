@@ -1,60 +1,98 @@
 import _ from 'lodash';
-import { getAnimation } from '@/service/api';
+import { getAnimationByLevel } from '@/service/api';
 
 export default {
   namespace:'animationHidden',
   state:{
-    currentPage:1,//当前分页
-    pageSize:20,//分页大小
-    hasMore:true,//是否有更多数据
-    pages:0,//图片数据总页数
     videoVisible:false,//播放器对话框是否可见
     currentIndex:0,//当前选中的视频的索引
     currentItem:{},//当前选中的视频
-    videoList: [],//视频列表
+    starCurrentPage:1,//当前分页
+    starPageSize:10,//分页大小
+    starIsLast:false,
+    starVideoList: [],//视频列表
     starNavButtons:['Regular','360 VR/AR','Mixed','Nav to Images'],
     starCurrentNav:2,
+    galaxyCurrentPage:1,
+    galaxyPageSize:10,
+    galaxyIsLast:false,
+    galaxyVideoList:[],
     galaxyNavButtons:['Regular','360 VR/AR','Mixed','Nav to Images'],
     galaxyCurrentNav:2,
+    universeCurrentPage:1,
+    universePageSize:10,
+    universeIsLast:false,
+    universeVideoList:[],
     universeNavButtons:['Regular','360 VR/AR','Mixed','Nav to Images'],
     universeCurrentNav:2,
     currentCate:'star',
   },
   reducers:{
-    reset(state,{payload}){
+    resetStar(state,{payload}){
       return {
         ...state,
-        currentPage:1,
-        hasMore:true,
-        pages:0,
-        videoList:[],
+        starCurrentPage:1,
+        starIsLast:false,
+        starVideoList:[],
       }
     },
-    setHasMore(state,{payload}){
+    resetGalaxy(state,{payload}){
       return {
         ...state,
-        hasMore:payload
+        galaxyCurrentPage:1,
+        galaxyIsLast:false,
+        galaxyVideoList:[],
       }
     },
-    setPage(state,{payload}){
+    resetUniverse(state,{payload}){
       return {
         ...state,
-        currentPage:payload
+        universeCurrentPage:1,
+        universeIsLast:false,
+        universeVideoList:[],
       }
     },
-    save(state,{payload}){
-      const {pages,list}=payload
+
+    setStarPage(state,{payload}){
       return {
         ...state,
-        videoList:list,
-        pages
+        starCurrentPage:payload
       }
     },
-    saveMore(state,{payload}){
-      const {videoList}=state
+    setGalaxyPage(state,{payload}){
       return {
         ...state,
-        videoList: videoList.concat(payload)
+        galaxyCurrentPage:payload
+      }
+    },
+    setUniversePage(state,{payload}){
+      return {
+        ...state,
+        universeCurrentPage:payload
+      }
+    },
+    saveStar(state,{payload}){
+      const {list}=payload
+      const {starVideoList}=state
+      return {
+        ...state,
+        starVideoList:starVideoList.concat(list),
+      }
+    },
+    saveGalaxy(state,{payload}){
+      const {list}=payload
+      const {galaxyVideoList}=state;
+      return {
+        ...state,
+        galaxyVideoList:galaxyVideoList.concat(list),
+      }
+    },
+    saveUniverse(state,{payload}){
+      const {list}=payload
+      const {universeVideoList}=state;
+      return {
+        ...state,
+        universeVideoList:universeVideoList.concat(list),
       }
     },
     openVideo(state){
@@ -132,29 +170,118 @@ export default {
         currentCate: payload
       }
     },
-  },
-  effects:{
-    *getAnimation({payload},{call,put,select}){
-      yield put({type:'setPage',payload:1})
-      let {currentPage,pageSize}=yield select(state=>state.animationHidden)
-      const result= yield call(getAnimation,{currentPage,pageSize})
-      let list=result?.data?.list||[]
-      list=list.map((item)=>({
-        id:item.id,
-        name:item.title,
-        date:item.createdAt,
-        desc:item.description,
-        imgUrl:item.frameImages,
-        video:item.objectUrl480,
-        statusName:item.statusName,
-        level:item.level
-
-      }))
-      yield put({type:'save',payload:{list,pages:result?.data?.pages||0}})
-      if(currentPage<(result?.data?.pages||0)){
-        yield put({type:'setHasMore',payload:true})
-        yield put({type:'setPage',payload:(currentPage+1)})
+    setStarIsLast(state,{payload}){
+      return {
+        ...state,
+        starIsLast:payload
       }
     },
-  }
+    setGalaxyIsLast(state,{payload}){
+      return {
+        ...state,
+        galaxyIsLast:payload
+      }
+    },
+    setUniverseIsLast(state,{payload}){
+      return {
+        ...state,
+        universeIsLast:payload
+      }
+    }
+  },
+  effects:{
+    *getStarAnimation({payload},{call,put,select}){
+      let {starCurrentPage,starPageSize,starIsLast,starCurrentNav}=yield select(state=>state.animationHidden)
+      if(starIsLast!=true) {
+        let s;
+        if (starCurrentNav == 0) {
+          s = 'regular'
+        } else if (starCurrentNav == 1) {
+          s = '360'
+        } else {
+          s = ''
+        }
+          const result= yield call(getAnimationByLevel,{currentPage:starCurrentPage,pageSize:starPageSize,statusName:s,level:'star'})
+          let list=result?.data?.list||[]
+          list=list.map((item)=>({
+            id:item.id,
+            name:item.title,
+            date:item.createdAt,
+            desc:item.description,
+            imgUrl:item.frameImages,
+            video:item.objectUrl480,
+            statusName:item.statusName,
+            level:item.level
+
+          }))
+          yield put({type:'saveStar',payload:{list}})
+          yield put({type:'setStarIsLast',payload:result?.data?.isLastPage})
+          if(result?.data?.hasNextPage==true){
+            yield put({type:'setStarPage',payload:(starCurrentPage+1)})
+          }
+    }
+    },
+    *getGalaxyAnimation({payload},{call,put,select}){
+      let {galaxyCurrentPage,galaxyPageSize,galaxyIsLast,galaxyCurrentNav}=yield select(state=>state.animationHidden)
+      if(galaxyIsLast!=true) {
+        let s;
+        if (galaxyCurrentNav == 0) {
+          s = 'regular'
+        } else if (galaxyCurrentNav == 1) {
+          s = '360'
+        } else {
+          s = ''
+        }
+        const result= yield call(getAnimationByLevel,{currentPage:galaxyCurrentPage,pageSize:galaxyPageSize,statusName:s,level:'galaxy'})
+        let list=result?.data?.list||[]
+        list=list.map((item)=>({
+          id:item.id,
+          name:item.title,
+          date:item.createdAt,
+          desc:item.description,
+          imgUrl:item.frameImages,
+          video:item.objectUrl480,
+          statusName:item.statusName,
+          level:item.level
+
+        }))
+        yield put({type:'saveGalaxy',payload:{list}})
+        yield put({type:'setGalaxyIsLast',payload:result?.data?.isLastPage})
+        if(result?.data?.hasNextPage==true){
+          yield put({type:'setGalaxyPage',payload:(galaxyCurrentPage+1)})
+        }
+      }
+    },
+    *getUniverseAnimation({payload},{call,put,select}){
+      let {universeCurrentPage,universePageSize,universeIsLast,universeCurrentNav}=yield select(state=>state.animationHidden)
+      if(universeIsLast!=true) {
+        let s;
+        if (universeCurrentNav == 0) {
+          s = 'regular'
+        } else if (universeCurrentNav == 1) {
+          s = '360'
+        } else {
+          s = ''
+        }
+        const result= yield call(getAnimationByLevel,{currentPage:universeCurrentPage,pageSize:universePageSize,statusName:s,level:'universe'})
+        let list=result?.data?.list||[]
+        list=list.map((item)=>({
+          id:item.id,
+          name:item.title,
+          date:item.createdAt,
+          desc:item.description,
+          imgUrl:item.frameImages,
+          video:item.objectUrl480,
+          statusName:item.statusName,
+          level:item.level
+
+        }))
+        yield put({type:'saveUniverse',payload:{list}})
+        yield put({type:'setUniverseIsLast',payload:result?.data?.isLastPage})
+        if(result?.data?.hasNextPage==true){
+          yield put({type:'setUniversePage',payload:(universeCurrentPage+1)})
+        }
+      }
+    }
+  },
 }
