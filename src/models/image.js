@@ -273,22 +273,7 @@ export default {
       }
         },
         divideCol(state,{payload}){
-            const {currentNav}=payload
             const {images}=state;
-            console.log('images====divide',images)
-
-           /* if(currentNav==0){
-                temp=_.filter(images,{statusName:'interior'})
-                console.log('temp===interior',temp)
-            }else if(currentNav==1){
-                console.log('temp===exterior',temp)
-                temp=_.filter(images,{statusName:'exterior'})
-            }else if(currentNav==2){
-                console.log('temp===360',temp)
-                temp=_.filter(images,{statusName:'360'})
-            }else {
-                temp=images
-            }*/
             let len=images.length;
             let col1=[]
             let col2=[]
@@ -327,7 +312,6 @@ export default {
          let {currentPage,pageSize,isLast,loading}=yield select(state=>state.image)
          let {currentNav}=yield select(state=>state.global)
          if(isLast!=true){
-             console.log('isLast',isLast!=true)
            let s;
            if(currentNav==0){
              s='interior'}
@@ -341,9 +325,7 @@ export default {
            if(!loading){
              yield put({type:'setLoading',payload:true})
              const ret=yield call(getImages,{currentPage,pageSize,statusName:s})
-             console.log('status==1',ret)
              let list=ret?.data?.list||[]
-             console.log('ret===',ret)
              list= list.map((item,index)=>{
                return {
                  id:item.id,
@@ -371,9 +353,6 @@ export default {
         *upload({payload},{call,put,select}){
           const  image=yield select(state=>state.image)
           const {uploadImg,name,desc,statusName,level}=image
-          console.log('uploadstatusnameimage',image)
-
-          console.log('uploadstatusName=====',statusName)
             let form=new FormData()
             form.append('multipartFile',uploadImg)
             form.append('title',name)
@@ -381,10 +360,8 @@ export default {
             form.append('statusName',statusName)
             form.append('level',level)
            const result= yield call(uploadImage,form)
-           console.log('uploadimg',result)
            yield put({type:'reset'})
            let data= yield put({type:'getImage'})
-               console.log('data===',data)
         },
         *updateImg({payload},{call,put,select}){
             let {id,file}=payload

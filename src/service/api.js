@@ -6,9 +6,8 @@
  * @FilePath: \GalaxyFrontEnd\src\service\api.js
  */
 import request from '../utils/request'
-export async function getAnimation({currentPage,pageSize}) {
-  let result=await request(`/gateway/upload/video/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{}})
-  console.log('animation=====',result)
+export async function getAnimation({currentPage,pageSize,statusName}) {
+  let result=await request(`/gateway/upload/video/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName}})
     return result;
   }
 export async function login(params){

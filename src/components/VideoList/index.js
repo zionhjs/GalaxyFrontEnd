@@ -31,14 +31,12 @@ const VideoList=(props)=> {
         dispatch({type:'animation/setSuffix',payload:value})
     },[])
     const levelChange=useCallback(value=>{
-        console.log('levelValue===',value)
         dispatch({type:'animation/setLevel',payload:value})
     },[])
     const closeEditor=useCallback(()=>{
         dispatch({type:'animation/setCurrent',payload:{id:null}})
     },[])
     const play=useCallback((item)=>{
-        console.log('item',item)
         dispatch({type:'animation/setCurrent',payload:item})
         dispatch({type:'animation/openVideo'})
     },[])
@@ -69,7 +67,7 @@ const VideoList=(props)=> {
         dispatch({type:'animation/confirmEdit'})
     },[])
     const loadMore=useCallback(()=>{
-        dispatch({type:'animation/loadMore'})
+        dispatch({type:'animation/getAnimation'})
     },[])
     return (
         <div className={styles.container}>
@@ -87,15 +85,14 @@ const VideoList=(props)=> {
                                 <div className={styles.editLeft}>
                                     <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput} />
                                     <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea} />
-                                    <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
-                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
-                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
-                                    <Option className={styles.dropOption} value="360">360</Option>
+                                    <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="regular">
+                                    <Option className={styles.dropOption} value="regular">Regular</Option>
+                                    <Option className={styles.dropOption} value="360">360 VR/AR</Option>
                                 </Select>
                                 <Select value={currentItem.level} onChange={levelChange} bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
-                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
-                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
-                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    <Option className={styles.levelDropdownoption} value="star">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="galaxy">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="universe">universe</Option>
                                     </Select>
                                 </div>
                                 <div className={styles.editRight}>
@@ -116,19 +113,18 @@ const VideoList=(props)=> {
                                     <div className={styles.editLeft}>
                                         <input value={uploadFile.name||''} onChange={uploadNameChange} className={styles.editInput}  />
                                         <input onChange={uploadDescChange} value={uploadFile.desc||''} className={styles.editTextArea}  />
-                                        <Select onChange={uploadSuffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
-                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
-                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
-                                    <Option className={styles.dropOption} value="360">360</Option>
+                                        <Select onChange={uploadSuffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="regular">
+                                    <Option className={styles.dropOption} value="regular">Regular</Option>
+                                    <Option className={styles.dropOption} value="360">360 VR/AR</Option>
                                 </Select>
                                 <Select onChange={uploadLevelChange} bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
-                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
-                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
-                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    <Option className={styles.levelDropdownoption} value="star">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="galaxy">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="universe">universe</Option>
                                     </Select>
                                     </div>
                                     <div className={styles.editRight}>
-                                        <img src="close.png" className={styles.editClose} alt="" />
+                                        <img src="/close.png" className={styles.editClose} alt="" />
                                         <div className={styles.uploadView}><img src="uploadS.png" className={styles.editUpdate} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectUploadFile} /></div>
                                         <img onClick={confirmUpload} src="confirm.png" className={styles.checkIcon} alt="" />
                                     </div>
@@ -146,15 +142,14 @@ const VideoList=(props)=> {
                                     <div className={styles.editLeft}>
                                         <input value={currentItem.name||''} onChange={nameChange||''} className={styles.editInput} />
                                         <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea}  />
-                                        <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
-                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
-                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
-                                    <Option className={styles.dropOption} value="360">360</Option>
+                                        <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="regular">
+                                    <Option className={styles.dropOption} value="regular">Regular</Option>
+                                    <Option className={styles.dropOption} value="360">360 VR/AR</Option>
                                 </Select>
                                 <Select value={currentItem.level} onChange={levelChange} bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
-                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
-                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
-                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    <Option className={styles.levelDropdownoption} value="star">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="galaxy">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="universe">universe</Option>
                                     </Select>
                                     </div>
                                     <div className={styles.editRight}>
@@ -177,15 +172,14 @@ const VideoList=(props)=> {
                                     <div className={styles.editLeft}>
                                         <input value={uploadFile.name||''} onChange={uploadNameChange} className={styles.editInput}  />
                                         <input onChange={uploadDescChange} value={uploadFile.desc||''} className={styles.editTextArea}  />
-                                        <Select onChange={uploadSuffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
-                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
-                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
-                                    <Option className={styles.dropOption} value="360">360</Option>
+                                        <Select onChange={uploadSuffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="regular">
+                                    <Option className={styles.dropOption} value="regular">Regular</Option>
+                                    <Option className={styles.dropOption} value="360">360 VR/AR</Option>
                                 </Select>
                                 <Select onChange={uploadLevelChange} bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
-                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
-                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
-                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    <Option className={styles.levelDropdownoption} value="star">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="galaxy">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="universe">universe</Option>
                                     </Select>
                                     </div>
                                     <div className={styles.editRight}>
@@ -204,21 +198,20 @@ const VideoList=(props)=> {
                                     <div className={styles.editLeft}>
                                         <input value={currentItem.name||''} onChange={nameChange} className={styles.editInput}  />
                                         <input onChange={descChange} value={currentItem.desc||''} className={styles.editTextArea}  />
-                                        <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
-                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
-                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
-                                    <Option className={styles.dropOption} value="360">360</Option>
+                                        <Select value={currentItem.statusName} onChange={suffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="regular">
+                                    <Option className={styles.dropOption} value="regular">Regular</Option>
+                                    <Option className={styles.dropOption} value="360">360 VR/AR</Option>
                                 </Select>
                                 <Select value={currentItem.level} onChange={levelChange} bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
-                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
-                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
-                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    <Option className={styles.levelDropdownoption} value="star">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="galaxy">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="universe">universe</Option>
                                     </Select>
                                     </div>
                                     <div className={styles.editRight}>
-                                        <img onClick={closeEditor} src="close.png" className={styles.editClose} alt="" />
+                                        <img onClick={closeEditor} src="/close.png" className={styles.editClose} alt="" />
                                         <div className={styles.updateView}><img src="update.png" className={styles.editUpdate} alt="" /><input type="file" className={styles.fileUpload} accept="video/*" onChange={selectFiles.bind(null, item[2])} /></div>
-                                        <img onClick={confirmEdit} src="confirm.png" className={styles.checkIcon} alt="" />
+                                        <img onClick={confirmEdit} src="/confirm.png" className={styles.checkIcon} alt="" />
                                     </div>
                                 </div>
                                 <img onClick={play.bind(null,item[2])} src="playBtn.png" className={styles.playBtn3} />
@@ -233,15 +226,14 @@ const VideoList=(props)=> {
                                     <div className={styles.editLeft}>
                                         <input value={uploadFile.name||''} onChange={uploadNameChange} className={styles.editInput} />
                                         <input onChange={uploadDescChange} value={uploadFile.desc||''} className={styles.editTextArea}  />
-                                        <Select onChange={uploadSuffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="Interior">
-                                    <Option className={styles.dropOption} value="Interior">Interior</Option>
-                                    <Option className={styles.dropOption} value="Exterior">Exterior</Option>
-                                    <Option className={styles.dropOption} value="360">360</Option>
+                                        <Select onChange={uploadSuffixChange} bordered={false} dropdownClassName={styles.dropDown} defaultValue="regular">
+                                    <Option className={styles.dropOption} value="regular">Regular</Option>
+                                    <Option className={styles.dropOption} value="360">360 VR/AR</Option>
                                 </Select>
                                 <Select onChange={uploadLevelChange} bordered={false} dropdownClassName={styles.levelDropdown} defaultValue="star">
-                                    <Option className={styles.levelDropdownoption} value="Interior">star</Option>
-                                    <Option className={styles.levelDropdownoption} value="Exterior">galaxy</Option>
-                                    <Option className={styles.levelDropdownoption} value="360">universe</Option>
+                                    <Option className={styles.levelDropdownoption} value="star">star</Option>
+                                    <Option className={styles.levelDropdownoption} value="galaxy">galaxy</Option>
+                                    <Option className={styles.levelDropdownoption} value="universe">universe</Option>
                                     </Select>
                                     </div>
                                     <div className={styles.editRight}>

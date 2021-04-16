@@ -20,12 +20,12 @@ export default {
     state: {
         currentPage:1,//当前分页
         pageSize:20,//分页大小
-        hasMore:true,//是否有更多数据
-        pages:0,//图片数据总页数
+        isLast:false,
+       loading:false,
         videoVisible:false,//播放器对话框是否可见
         currentIndex:0,//当前选中的视频的索引
         currentItem:{},//当前选中的视频
-        uploadFile:{},//当前要上传的视频        
+        uploadFile:{},//当前要上传的视频
        videoList: [],//视频列表
        banners:banners,//轮播图
     },
@@ -35,21 +35,22 @@ export default {
           ...state,
           currentPage:1,
           hasMore:true,
+          isLast:false,
           pages:0,
           videoList:[],
         }
       },
-        setHasMore(state,{payload}){
-            return {
-                ...state,
-                hasMore:payload
-            }
-        },
+      setIsLast(state,{payload}){
+        return {
+          ...state,
+          isLast:payload
+        }
+      },
         setPage(state,{payload}){
             return {
                 ...state,
                 currentPage:payload
-            }       
+            }
       },
         setUpdateFile(state,{payload}){
             const {currentItem}=state;
@@ -103,19 +104,11 @@ export default {
             }
         },
         save(state,{payload}){
-            const {pages,list}=payload
+            const {list}=payload
             return {
                 ...state,
-                videoList:list,
-                pages
+                videoList:list
             }
-        },
-        saveMore(state,{payload}){
-            const {videoList}=state
-          return {
-              ...state,
-              videoList: videoList.concat(payload)
-          }
         },
         openVideo(state){
             return {
@@ -165,8 +158,6 @@ export default {
         },
         setLevel(state,{payload}){
             const {currentItem}=state;
-            console.log('currentItem===',currentItem)
-            console.log(payload)
             return {
                 ...state,
                 currentItem:{
@@ -202,79 +193,59 @@ export default {
                 currentIndex,
                 currentItem:videoList[currentIndex]
             }
-            
+
           },
+        setLoading(state,{payload}){
+        return {
+          ...state,
+          loading: payload
+        }
+        },
     },
     effects: {
         *getAnimation({payload},{call,put,select}){
             yield put({type:'setPage',payload:1})
-            let {currentPage,pageSize}=yield select(state=>state.animation)
-           const result= yield call(getAnimation,{currentPage,pageSize})
-           let list=result?.data?.list||[]
-           list=list.map((item)=>({
-               id:item.id,
-               name:item.title,
-               date:item.createdAt,
-               desc:item.description,
-               imgUrl:item.frameImages,
-               video:item.objectUrl480,
-               statusName:item.statusName,
-               level:item.level
+            let {currentPage,pageSize,loading,isLast}=yield select(state=>state.animation)
+          let {aniCurrentNav}=yield select(state=>state.global)
+          if(isLast!=true) {
+            let s;
+            if (aniCurrentNav == 0) {
+              s = 'regular'
+            } else if (aniCurrentNav == 1) {
+              s = '360'
+            } else {
+              s = ''
+            }
+            if(!loading){
+              const result= yield call(getAnimation,{currentPage,pageSize,statusName:s})
+              let list=result?.data?.list||[]
+              list=list.map((item)=>({
+                id:item.id,
+                name:item.title,
+                date:item.createdAt,
+                desc:item.description,
+                imgUrl:item.frameImages,
+                video:item.objectUrl480,
+                statusName:item.statusName,
+                level:item.level
 
-           }))
-            yield put({type:'save',payload:{list,pages:result?.data?.pages||0}})
-            if(currentPage<(result?.data?.pages||0)){
-                yield put({type:'setHasMore',payload:true})
+              }))
+              yield put({type:'save',payload:{list}})
+              yield put({type:'setIsLast',payload:result?.data?.isLastPage})
+              if(result?.data?.hasNextPage==true){
                 yield put({type:'setPage',payload:(currentPage+1)})
+              }
+              yield put({type:'setLoading',payload:false})
             }
-        },
-        *loadMore({payload},{call,put,select}){
-            let {currentPage,pageSize,pages,hasMore}=yield select(state=>state.animation)
-            if(currentPage<pages){
-                const ret=yield call(getAnimation,{currentPage,pageSize})
-                let list=ret?.data.list||[]
-                list= list.map((item,index)=>{
-                 return {
-                    id:item.id,
-                    name:item.title,
-                    date:item.createdAt,
-                    desc:item.description,
-                    imgUrl:item.frameImages,
-                    video:item.objectUrl480,
-                    statusName:item.statusName,
-                    level:item.level
-                 }
-             })
-             yield put({type:'saveMore',payload:list})
-             yield put({type:'setPage',payload:currentPage+1})
-             yield put({type:'setHasMore',payload:true})
-             }
-             else if(currentPage==pages&&hasMore){
-                const ret=yield call(getAnimation,{currentPage,pageSize})
-                let list=ret?.data.list||[]
-                list= list.map((item,index)=>{
-                 return {
-                    id:item.id,
-                    name:item.title,
-                    date:item.createdAt,
-                    desc:item.description,
-                    imgUrl:item.frameImages,
-                    video:item.objectUrl480,
-                    statusName:item.statusName,
-                    level:item.level
-                 }
-             })
-             yield put({type:'saveMore',payload:list})
-             yield put({type:'setHasMore',payload:false})
-            }
+          }
         },
         *upload({payload},{call,put,select}){
             let state=yield select(state=>state.animation)
             let file=state?.uploadFile?.file||''
             let name=state?.uploadFile?.name||''
-            let desc=state?.uploadFile.desc||''  
+            let desc=state?.uploadFile.desc||''
             let statusName=state?.uploadFile.statusName||''
-            let level=state?.uploadFile.level||'' 
+            let level=state?.uploadFile.level||''
             let form=new FormData()
             form.append('multipartFile',file)
             form.append('title',name)
@@ -284,6 +255,7 @@ export default {
             console.log('form===',form)
            const result= yield call(uploadVideo,form)
            if(result.code===200){
+                yield put({type:'reset'})
                yield put({type:'getAnimation'})
            }
         },
@@ -297,17 +269,19 @@ export default {
               yield put({type:'setUpdateFile',payload:result.data})
               let ret=yield call(updateVideo,{id,objectUrl480:result.data,title:name,description:desc,statusName,level})
               if(ret.code===200){
+                yield put({type:'reset'})
                 yield put({type:'getAnimation'})
-            } 
-          }          
+            }
+          }
         },
         *confirmEdit({payload},{call,put,select}){
             let {currentItem}=yield select(state=>state.animation)
             let {imgUrl,name,desc,statusName,level,id}=currentItem
             let result=yield call(updateVideo,{id,objectUrl480:imgUrl,title:name,description:desc,statusName,level})
             if(result.code===200){
+              yield put({type:'reset'})
                 yield put({type:'getAnimation'})
-            }            
+            }
 
         }
     }

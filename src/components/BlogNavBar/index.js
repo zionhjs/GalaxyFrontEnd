@@ -10,7 +10,7 @@ const NavBar=(props)=>{
   const [direction,setDirection]=useState('down')
   let {blogNavButtons,blogCurrentNav,dispatch}=props;
   const handleClick=useCallback((item,index)=>{
-    dispatch({type:'global/setAniCurrentNav',payload:index})
+    dispatch({type:'global/setBlogCurrentNav',payload:index})
       dispatch({type:'blog/reset'})
       dispatch({type:'blog/getArticles'})
   },[])

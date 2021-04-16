@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-12-12 08:36:05
  * @FilePath: \GalaxyFrontEnd\src\mobile\Animation\index.js
  */
-import React from 'react'
+import React,{useCallback} from 'react'
 import {connect} from 'dva'
 import Swiper from './swiper'
 import NavBar from '../components/AnimationNavBar'
@@ -14,12 +14,16 @@ import LoadMore from '../components/LoadMore'
 import GetNews from '../components/GetNews'
 import styles from './index.css'
 const AnimationPage=(props)=>{
+  const {dispatch}=props;
+  const loadMore=useCallback(()=>{
+    dispatch({type:'animation/getAnimation'})
+  },[])
     return (
         <div className={styles.container}>
             <Swiper />
             <NavBar />
             <VideoList />
-            <LoadMore />
+            <LoadMore loadMore={loadMore} />
             <GetNews />
         </div>
     )
