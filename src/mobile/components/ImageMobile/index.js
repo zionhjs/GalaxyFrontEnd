@@ -24,7 +24,7 @@ const ImageMobile = ({ images,dispatch }) => {
     if(showHeight>=0){
       dispatch({type:'image/getImage'})
     }
-  },2000),[])
+  },1500),[])
   const loadMore=useCallback(()=>{
     dispatch({type:'image/getImage'})
   },[])

@@ -92,7 +92,7 @@ const Waterfall=(props)=> {
     if(showHeight>=0){
       dispatch({type:'image/getImage'})
     }
-  },2000),[])
+  },1500),[])
     return (
         <div className={styles.container}>
             <div className={styles.waterfall}>
