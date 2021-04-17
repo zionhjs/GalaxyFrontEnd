@@ -266,10 +266,24 @@ export default {
         },
          sortByRate(state){
       const {images}=state;
-      images.sort((a,b)=>{return parseInt(b.rating)-parseInt(a.rating)})
+
+      let star=[]
+      let galaxy=[]
+      let universe=[]
+      for( let value of images){
+        if(value.level=='star'){
+          star.push(value)
+        }else if(value.level=='galaxy'){
+          galaxy.push(value)
+        }else if(value.level=='universe'){
+          universe.push(value)
+        }
+      }
+      let temp=universe.concat(galaxy).concat(star)
+      temp.sort((a,b)=>{return parseInt(b.rating)-parseInt(a.rating)})
       return {
           ...state,
-          images,
+          images:temp,
       }
         },
         divideCol(state,{payload}){
