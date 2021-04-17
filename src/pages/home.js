@@ -5,21 +5,6 @@
  * @LastEditTime: 2020-12-05 01:29:14
  * @FilePath: \GalaxyFrontEnd\src\pages\home.js
  */
-/*
- * @Author: xingzai
- * @Date: 2020-11-25 05:29:09
- * @LastEditors: xingzai
- * @LastEditTime: 2020-12-04 08:04:10
- * @FilePath: \GalaxyFrontEnd\src\pages\home.js
- */
-
-/*
- * @Author: xingzai
- * @Date: 2020-11-04 09:04:59
- * @LastEditors: xingzai
- * @LastEditTime: 2020-11-07 06:00:11
- * @FilePath: \test\src\pages\index.js
- */
 import React,{useCallback,useEffect} from 'react';
 import {connect} from 'dva'
 import router from 'umi/router'
