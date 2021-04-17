@@ -3,12 +3,20 @@
   padding-bottom: 0.57rem;
 }
 .category{
+  position: fixed;
+  width: 100%;
+  z-index: 20000;
   height: 2.45rem;
+  top:1.25rem;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #1d1d1d;
   padding: 0 0.15rem;
+}
+.space{
+  height:2.45rem;
+  width:100%;
 }
 .category-item{
   height:1rem;

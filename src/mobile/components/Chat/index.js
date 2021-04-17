@@ -71,6 +71,7 @@ const Chat = props => {
   const onEnter=useCallback((e)=>{
     let ev = document.all ? window.event : e;
     if(ev.keyCode==13) {
+      ev.preventDefault();
       setMsg('')
       dispatch({type:'chat/sendMsg',payload:{msg},cb:scrollIntoview})
     }

@@ -54,7 +54,7 @@ export default {
          email:payload
        }
       },
-      saveMsg(state,{payload}){
+      saveMsg(state,{payload=[]}){
        return {
          ...state,
          messages: payload.map(item=>{
@@ -70,7 +70,8 @@ export default {
              from,
              msg
            }
-         })
+         }),
+         lastIndex:payload.length-1
        }
       },
       addMsg(state,{payload}){
@@ -82,7 +83,7 @@ export default {
       },
       saveHeartBeat(state,{payload}){
         const {messages}=state
-        let data=payload.map(item=>{
+        let data=payload?.data?.map(item=>{
           let msgReg=/^From\:(system|user)\s#\s([\s\S]*)\s#\smsg\.index:(\d+)$/
           let temp=item.match(msgReg)
           let [ret,from,msg,index]=temp
@@ -96,7 +97,8 @@ export default {
             msg
           }
         })
-        let mess=messages.slice(0,payload.lastIndex).concat(data);
+        let mess=messages.slice(0,payload.lastIndex+1).concat(data);
+        console.log('length',mess.length-1)
         return {
           ...state,
           messages:mess,
@@ -116,6 +118,7 @@ export default {
       *beat({payload,cb},{call,put,select}){
         let {email,lastIndex}=yield select(state=>state.chat)
          let ret=yield call(heartBeat,{email,index: lastIndex})
+        yield put({type:'saveHeartBeat',payload:{lastIndex,data:ret?.datas||[]}})
         if(cb)cb()
       },
         *sendMsg({payload,cb},{call,put,select}){
@@ -143,9 +146,6 @@ export default {
          userEmail='447166939@xingzai.com'
           userNumber=2138224642
           yield put({type:'saveEmail',payload:userEmail})
-          window.addEventListener('beforeunload',async function() {
-            await disconnect({email:userEmail})
-          })
             let result=yield call(subscribe,{userEmail,userNumber})
             if(result.code==200||result.code==400){
               yield put({type:'global/notify',payload:{type:'subscribe-success',duration:2000,message:"Successfully Subscribed from our list, you will get a quote soon!",transitionName:'subscribe'}})

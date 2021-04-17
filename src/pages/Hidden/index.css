@@ -4,11 +4,19 @@
   background-color: #000;
 }
 .category{
+  position: fixed;
+  width:100%;
+  top: 80px;
+  z-index: 20000;
   height: 245px;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #1d1d1d;
+}
+.space{
+  width:100%;
+  height:245px;
 }
 .category-item{
   height:100px;

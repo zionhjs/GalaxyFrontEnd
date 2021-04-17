@@ -2,11 +2,19 @@
 
 }
 .category{
+  position: fixed;
+  width: 100%;
+  top:80px;
   height: 245px;
   display: flex;
+  z-index: 20000;
   justify-content: center;
   align-items: center;
   background-color: #1d1d1d;
+}
+.space{
+  height:245px;
+  width: 100%;
 }
 .category-item{
   height:100px;

@@ -58,9 +58,10 @@ const Chat = props => {
         }
       }
     },[timer,chatToken])
-    const handleChange=useCallback((e)=>{
-      setMsg(e.target.value)
-    },[])
+    const handleChange=useCallback((e)=> {
+        setMsg(e.target.value)
+      }
+    ,[])
     const scrollIntoview=useCallback(()=>{
         let el=document.getElementById('bottom')
         el.scrollIntoView(false)
@@ -71,7 +72,9 @@ const Chat = props => {
     },[dispatch, msg, scrollIntoview])
     const onEnter=useCallback((e)=>{
         let ev = document.all ? window.event : e;
+       // ev.preventDefault();
         if(ev.keyCode==13) {
+          ev.preventDefault();
           setMsg('')
          dispatch({type:'chat/sendMsg',payload:{msg},cb:scrollIntoview})
         }
@@ -124,7 +127,7 @@ const Chat = props => {
                         )
                 )
               }
-              <Animate transitionAppear transitionLeave={false} key={'loadingAni'} transitionName={'slideRight'}>{loading?<div className={styles.loadingContainer}><img src={'/contact.png'} alt={''} className={styles.avatar}/>
+              <Animate transitionAppear transitionLeave={false} key={'loadingAni'} transitionName={'slideRight'}>{loading?<div key={'loadingAni'} className={styles.loadingContainer}><img src={'/contact.png'} alt={''} className={styles.avatar}/>
               <div className={styles.ballContainer}>
               <div className={classnames(styles.ball,styles.yellow)}></div>
                 <div className={classnames(styles.ball,styles.red)}></div>

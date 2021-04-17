@@ -63,6 +63,7 @@ dispatch({type:'animationHidden/getUniverseAnimation'})
         <div onClick={handleClick.bind(null,'galaxy')} className={classnames(styles['category-item'],styles['galaxy-item'],{[[styles['active-category']]]:currentCate==='galaxy'})}>Galaxy</div>
         <div onClick={handleClick.bind(null,'universe')} className={classnames(styles['category-item'],{[styles['active-category']]:currentCate==='universe'})}>Universe</div>
       </div>
+      <div className={styles.space}></div>
       <div id={'star'} className={styles.titleBox}>Star - Good Quality</div>
       <NavBar navButtons={starNavButtons} currentNav={starCurrentNav} handleClick={starHandleClick}/>
       <div className={styles.starContainer}>
