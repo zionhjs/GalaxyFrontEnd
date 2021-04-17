@@ -18,7 +18,7 @@ import _ from 'lodash';
 import sendAudio from '@/assets/audio/send.wav'
 import receiveAudio from '@/assets/audio/receive.wav'
 const Chat = props => {
-    const { messages,dispatch,visible,loading,timer,chatToken } = props;
+    const { messages,dispatch,loading, } = props;
     const [msg,setMsg]=useState('')
   const [emoji,setEmoji]=useState('')
   const [emojiVisible,setEmojiVisible]=useState(false)
@@ -36,27 +36,23 @@ const Chat = props => {
     this.style.setProperty('--size', `${size}px`);
   }
   useEffect(()=>{
+    let timer=null;
     let btn=document.getElementById('sendMobile')
     btn&&btn.addEventListener('mousedown',handleClick)
-    if(chatToken!==null){
       dispatch({type:'chat/connect'})
-    }
-    if(timer==null&&chatToken!==null){
-      let t= setInterval(()=>{
+    if(timer==null){
+       timer= setInterval(()=>{
         dispatch({type:'chat/beat'})
       },3000)
-      dispatch({type:'chat/setTimer',payload:t})
     }
     return function cleanup(){
       if(timer!==null){
         clearInterval(timer)
-        dispatch({type:'chat/setTimer',payload:null})
+        timer=null
       }
-      if(chatToken!==null){
-        dispatch({type:'chat/disconnect'})
-      }
+      dispatch({type:'chat/disconnect'})
     }
-  },[chatToken,timer])
+  },[])
     const handleChange=useCallback((e)=>{
       setMsg(e.target.value)
     },[])
@@ -156,4 +152,4 @@ const Chat = props => {
         </div>
     )
 }
-export default connect(({ chat: { messages,visible,loading,timer },global:{chatToken} }) => ({ messages,visible,loading,timer,chatToken }))(Chat)
+export default connect(({ chat: { messages,loading } }) => ({ messages,loading }))(Chat)

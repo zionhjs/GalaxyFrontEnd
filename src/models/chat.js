@@ -15,15 +15,8 @@ export default {
       messages: [],
       loading:false,
       lastIndex:0,
-      timer:null,
     },
     reducers:{
-      setTimer(state,{payload}){
-        return {
-          ...state,
-          timer: payload
-        }
-      },
       setLoading(state,{payload}){
         return {
           ...state,
