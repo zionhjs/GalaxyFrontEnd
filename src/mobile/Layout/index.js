@@ -19,7 +19,6 @@ import styles from './index.css'
 import NotifyCation from '../../mobile/components/Notifycation';
 const MobileLayout= (props)=> {
   const {chatVisible}=props
-  console.log('chatVisible',chatVisible)
     const [active,setActive]=useState(false)
     const focusHandler=useCallback(()=>{
         setActive(true)

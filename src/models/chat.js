@@ -91,7 +91,6 @@ export default {
           }
         })
         let mess=messages.slice(0,payload.lastIndex+1).concat(data);
-        console.log('length',mess.length-1)
         return {
           ...state,
           messages:mess,
@@ -122,7 +121,6 @@ export default {
             let {email}=yield select(state=>state.chat)
             let ret=yield call(sendMessage,{email,message:payload.msg})
           let result=yield call(getMessage,{email})
-          console.log('result.datas',result.datas)
           yield put({type:'saveMsg',payload:result.datas||[]})
             yield put({type:'setLoading',payload:false})
             let receiveNode=window.document.getElementById('receiveWav')

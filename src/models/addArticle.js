@@ -77,7 +77,6 @@ export default {
       }
       },
       tagChange(state,{payload:{index,value}}){
-        console.log(index)
         let {data}=state;
         let {tags}=data;
         tags[index].text=value
@@ -105,7 +104,6 @@ export default {
            status:checked ? 1 : 0,
          }))
          let tagName=tags.map(item=>item.text).join('/')
-         console.log('temp==',temp)
         let result= yield call(addArticle,{author,content:article,title:caption,blogImagesList:temp,tagName})
         if(result.code==200){
           router.goBack()

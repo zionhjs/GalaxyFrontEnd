@@ -22,7 +22,6 @@ function BasicLayout(props) {
   const [subVisible,setSubVisible]=useState(false)
   //const isMobile = useMediaQuery({ maxWidth: 767 })
   const isMobile=window.screen.width<768
-  console.log('ismobile',isMobile)
   function closeSub(){
     setSubVisible(false)
   }

@@ -294,7 +294,6 @@ export default {
             let col3=[]
             let col4=[]
             for(let i=0;i<len;i=i+4){
-                console.log('images',images[i])
               col1.push(images[i])
               if(i<len-1){
                 col2.push(images[i+1])

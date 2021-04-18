@@ -10,7 +10,6 @@ import LoadMore from '../components/LoadMore'
 
 const TeamPage=(props)=> {
     const {dispatch,teamData,role,bannerImg,bannerTitle,bannerText}=props;
-    console.log('teamdata===d=d',teamData)
     //const isMobile = useMediaQuery({ maxWidth: 767 })
   const isMobile=window.screen.width<768
     const addMember=useCallback((index)=>{

@@ -48,8 +48,8 @@ const Sw=(props)=>{
       navigation={{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'}}
       loop
       pagination={{ clickable: true,el:'.swiper-pagination',type:'custom', renderCustom}}
-      onSwiper={(swiper) => console.log(swiper)}
-      onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => {}}
+      onSlideChange={() => {}}
     >
       {
           banners.map((item,index)=>(

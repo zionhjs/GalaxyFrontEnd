@@ -59,7 +59,6 @@ export default {
         },
         save(state,{payload}){
             const {pages,list}=payload
-            console.log('save',list)
             return {
                 ...state,
                 articles:[...list],
@@ -79,7 +78,6 @@ export default {
         yield put({type:'setPage',payload:1})
         let {currentPage,pageSize}=yield select(state=>state.blog)
            let result=yield call(getArticle,{currentPage,pageSize})
-           console.log('blog',result)
            let list=result.data.list
            list=list.map(item=>{
                let temp=item.blogImagesList.map(v=>v.url||'')
@@ -150,9 +148,7 @@ export default {
     },
        *delArticle({payload},{call,put,select}){
            const {delItem}=yield select(state=>state.blog)
-           console.log('delaaaa=',delItem)
            let result=yield call(delArticle,{id:delItem.id})
-           console.log(result)        
            yield put({type:'closeConfirm'})
            yield put({type:'getArticles'})
        },
@@ -165,9 +161,7 @@ export default {
        *search({payload},{call,put,select}){
            const {title}=payload
            let result=yield call(searchBlog,{title})
-           console.log('searchresult',result)
            let list=result.data.list
-           console.log('search',list)
            list=list.map(item=>{
                let temp=item.blogImagesList.map(v=>v.url||'')
                let comment=item.momentCommentList?.length||0

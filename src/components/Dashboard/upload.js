@@ -12,7 +12,6 @@ const UploadDialog=()=>{
     e.preventDefault();
     setEnter(false)
     var files = e.dataTransfer.files;
-    console.log('files==',files)
     setFileList(fileList.concat(files[0]))
   },[fileList.length])
   const handleDragover=useCallback((e)=>{

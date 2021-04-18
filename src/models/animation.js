@@ -258,7 +258,6 @@ export default {
             form.append('description',desc)
             form.append('statusName',statusName)
             form.append('level',level)
-            console.log('form===',form)
            const result= yield call(uploadVideo,form)
            if(result.code===200){
                 yield put({type:'reset'})

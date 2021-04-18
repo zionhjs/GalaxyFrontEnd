@@ -31,7 +31,6 @@ export async function login(params){
     return result
   }
 export async function getImages({currentPage,pageSize,statusName}){
-  console.log('currentPage',currentPage)
   let result=await request(`/gateway/upload/images/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName}})
   return result
 }
@@ -40,7 +39,6 @@ export async function getImagesByLevel({currentPage,pageSize,statusName,level}) 
   return result
 }
 export async function uploadImage(params){
-  console.log('upload',params)
   let result=await request('/gateway/upload/images/uploadImages',{method:'POST',body:params})
   return result
 }
@@ -97,7 +95,6 @@ export async function delArticle(params){
   return result;
 }
 export async function addComment(params){
-  console.log('params',params)
   let result=await request('/gateway/cms/moment/comment/add',{method:'POST',data:{...params}})
   return result
 }

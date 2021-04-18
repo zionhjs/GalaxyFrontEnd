@@ -279,7 +279,6 @@ export default {
     },
     next(state){
       let {currentIndex,type,starImages,galaxyImages,universeImages}=state;
-      console.log('type',type)
       let images;
       if(type==='star'){
        images=starImages
@@ -341,8 +340,6 @@ export default {
     *getStarImage(action,{call,put,select}){
       let r=yield select(state=>state.imageHidden)
       let {starCurrentPage,starPageSize,starIsLast,starCurrentNav}=r
-      console.log('starCurrentPage',starCurrentPage)
-      console.log(starPageSize)
 
       if(starIsLast!=true){
         let s;

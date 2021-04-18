@@ -20,7 +20,6 @@ import Confirm from '../Confirm'
 const ArticleList=(props)=> {
     const {articles,role,dispatch } = props
     const delPost=useCallback((item)=>{
-        console.log('item===',item)
         dispatch({type:'blog/setDelItem',payload:item})
         dispatch({type:'blog/openConfirm'})
     },[])

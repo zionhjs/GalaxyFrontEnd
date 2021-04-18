@@ -167,11 +167,9 @@ export default {
        } else{
          result=yield call(addTeamMember,payload)
        }
-       console.log('addTeam',result)
      },
      *delMember({payload},{call,put}){
        let result;
-       console.log(payload)
        result=yield call(delTeamMember,payload)
        if(result.code==200){
          yield put({type:'getTeamData'})

@@ -30,13 +30,11 @@ const NavBar=(props)=>{
       let top=el&&getComputedStyle(el,null).getPropertyValue('top').replace('px','')
       let t=Math.ceil(top)
       let isTop=(offsetTop-scrollTop)<=t;
-      console.log('scrollTop',scrollTop)
       setPosition(scrollTop)
       let direction=scrollTop-position<0 ?'up':'down'
       if(scrollTop!=position){
         setDirection(direction)
-      }      
-      console.log(direction)
+      }
       setIsTop(isTop)
     },100),[position])
     return (

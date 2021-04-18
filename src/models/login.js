@@ -18,10 +18,7 @@ export default {
     effects:{
        *login({payload},{call,put}){
         const {phone,password}=payload
-        console.log(phone)
-        console.log(password)
         const res=yield call(login,{phone,password})
-        console.log(res)
         if(res.code==200){
           yield put({type:'global/openNotify',payload:{type:'sucess',message:"you have logined sucessful!",transitionName:'notifycation'}})
             const {token,userId,roleName}=res.data;

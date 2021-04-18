@@ -77,7 +77,6 @@ export default {
         }
         },
         tagChange(state,{payload:{index,value}}){
-          console.log(index)
           let {data}=state;
           let {tags}=data;
           tags[index].text=value

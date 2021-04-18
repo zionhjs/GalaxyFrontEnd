@@ -11,10 +11,6 @@ import styles from './index.css'
 const {Option}=Select
 const Waterfall=(props)=> {
     let { col1,col2,col3,col4,currentItem,showEdit,dispatch, role,uploadImg,uploadName,uploadDesc} = props
-    console.log('col1====',col1)
-    console.log('col2',col2)
-    console.log('col3',col3)
-    console.log('col4',col4)
     const [url,seturl]=useState('')
     const nameChange=useCallback((e)=>{
         dispatch({type:'image/setName',payload:e.target.value})
@@ -46,7 +42,6 @@ const Waterfall=(props)=> {
             url = window.createObjectURL(file) ;
 
         } else if (window.URL!=undefined) { // mozilla(firefox)
-          console.log('window.URL',window.URL)
             url = window.URL.createObjectURL(file) ;
 
         } else if (window.webkitURL!=undefined) { // webkit or chrome
@@ -74,7 +69,6 @@ const Waterfall=(props)=> {
         dispatch({type:'image/upload'})
     },[])
     const updateImage=useCallback((id,e)=>{
-        console.log('id',id)
         let file=e.target.files[0]
         dispatch({type:'image/updateImg',payload:{id,file}})
     },[])
@@ -85,7 +79,6 @@ const Waterfall=(props)=> {
         dispatch({type:'image/getImage'})
     },[])
   const handleDelete=useCallback(item=>{
-    console.log('del')
     dispatch({type:'image/deleteImage',payload:item.id})
   },[])
   const handleScroll=useCallback(_.debounce(({scrollTop,offsetTop,showHeight,id})=>{

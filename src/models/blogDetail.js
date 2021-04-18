@@ -35,7 +35,6 @@ export default {
          }
         },
         save(state,{payload}){
-            console.log('payload===',payload)
             return {
                 ...state,
                 data:payload
@@ -45,7 +44,6 @@ export default {
             const {data}=state
             let {article}=data
             article=article.replace(payload,'<span class="text-selection">$&</span>')
-            console.log('replaceText')
             return {
                 ...state,
                 data:{
@@ -76,7 +74,6 @@ export default {
     effects:{
      *getDetailData({payload},{call,put}){
         let {data,code}= yield call(getArticleDetail,{id:payload})
-        console.log('data===',data)
         let comments=data?.momentCommentList||[]
         comments=comments.map(item=>({
             id:item.id,
@@ -124,21 +121,15 @@ export default {
      },
      *toNextPost({payload},{call,put,select}){
          const {articleId}=payload
-         console.log('articleId',articleId)
          const {articles}=yield select(state=>state.blog)
-         console.log('articles',articles)
          let idx=_.findIndex(articles,function(o){return o.id==articleId})
          let len=articles.length
          let nextId
-         console.log('idx',idx)
-         console.log('len',len)
-         console.log('idx<len-1',idx<len-1)
          if(idx<len-1){
              nextId=_.nth(articles,idx+1).id
          }else{
              nextId=_.first(articles).id
          }
-         console.log('nextid',nextId)
          router.replace('blogDetail?id='+nextId)
      },
      *addLike({payload},{call,put}){

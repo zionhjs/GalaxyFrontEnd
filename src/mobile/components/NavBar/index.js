@@ -33,8 +33,7 @@ const NavBar=(props)=>{
       let direction=scrollTop-position<0 ?'up':'down'
       if(scrollTop!=position){
         setDirection(direction)
-      }      
-      console.log(direction)
+      }
       setIsTop(isTop)
     },100),[position])
     return (

@@ -16,7 +16,6 @@ const Dashboard=(props)=>{
     const {avatar,visible}=props
     const [idx,setIdx]=useState(0)
     const selectMenu=useCallback(index=>{
-        console.log('index===',index)
         setIdx(index)
     },[])
     return (
