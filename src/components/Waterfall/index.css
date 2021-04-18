@@ -25,7 +25,6 @@
     background-color: #000;
     line-height: 21px;
     position: relative;
-  min-height: 250px;
 }
 .listImg{
   cursor: pointer;

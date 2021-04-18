@@ -49,9 +49,9 @@ const Image360=(props)=>{
     },[])
     return (
         <div className={classnames(styles.container,{[styles.visible]:visible})}>
-            <img onClick={close} src="close.png" className={styles.closeIcon} alt="" />
-            <img onClick={pre} className={styles.pre} src="pre.png" alt="" />
-            <img onClick={next} className={styles.next} src="next.png" alt="" />
+            <img onClick={close} src="/close.png" className={styles.closeIcon} alt="" />
+            <img onClick={pre} className={styles.pre} src="/pre.png" alt="" />
+            <img onClick={next} className={styles.next} src="/next.png" alt="" />
            <div id="viewer" className={classnames(styles.picBox,{[styles.hidden]:currentItem.statusName!='360'})}></div>
            <div className={classnames(styles.picBox,{[styles.hidden]:currentItem.statusName=='360'})}><img crossOrigin={'anonymous'} src={currentItem.imgUrl} alt="" className={styles.pic} /></div>
           <div className={styles.desc}>{currentItem.desc}</div>
