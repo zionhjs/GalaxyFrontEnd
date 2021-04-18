@@ -27,6 +27,7 @@
   font-size: 44px;
   line-height: 100px;
   text-align: center;
+  cursor: pointer;
 }
 .galaxy-item{
   margin-left: 55px;
