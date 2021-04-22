@@ -82,7 +82,7 @@ const Hidden=props=>{
               <OverPack playScale={0.2} key={index+item.imgUrl}>
                 <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                   <LazyLoad height={200} offset={100}>
-                    <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'star')} src={item.imgUrl} />
+                    <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'star')} src={item.smallImage} />
                   </LazyLoad>
                   <div className={styles.imgFooter}>
                     <div>
@@ -100,7 +100,7 @@ const Hidden=props=>{
               <OverPack playScale={0.2} key={index+item.imgUrl}>
                 <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                   <LazyLoad height={200} offset={100}>
-                    <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'star')} src={item.imgUrl} />
+                    <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'star')} src={item.smallImage} />
                   </LazyLoad>
                   <div className={styles.imgFooter}>
                     <div>
@@ -118,7 +118,7 @@ const Hidden=props=>{
               <OverPack playScale={0.2} key={index+item.imgUrl}>
                 <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                   <LazyLoad height={200} offset={100}>
-                    <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'star')} src={item.imgUrl} />
+                    <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'star')} src={item.smallImage} />
                   </LazyLoad>
                   <div className={styles.imgFooter}>
                     <div>
@@ -136,7 +136,7 @@ const Hidden=props=>{
               <OverPack playScale={0.2} key={index+item.imgUrl}>
                 <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                   <LazyLoad height={200} offset={100}>
-                    <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'star')} src={item.imgUrl} />
+                    <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'star')} src={item.smallImage} />
                   </LazyLoad>
                   <div className={styles.imgFooter}>
                     <div>
@@ -161,7 +161,7 @@ const Hidden=props=>{
                 <OverPack playScale={0.2} key={index+item.imgUrl}>
                   <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                     <LazyLoad height={200} offset={100}>
-                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'galaxy')} src={item.imgUrl} />
+                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'galaxy')} src={item.smallImage} />
                     </LazyLoad>
                     <div className={styles.imgFooter}>
                       <div>
@@ -179,7 +179,7 @@ const Hidden=props=>{
                 <OverPack playScale={0.2} key={index+item.imgUrl}>
                   <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                     <LazyLoad height={200} offset={100}>
-                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'galaxy')} src={item.imgUrl} />
+                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'galaxy')} src={item.smallImage} />
                     </LazyLoad>
                     <div className={styles.imgFooter}>
                       <div>
@@ -197,7 +197,7 @@ const Hidden=props=>{
                 <OverPack playScale={0.2} key={index+item.imgUrl}>
                   <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                     <LazyLoad height={200} offset={100}>
-                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'galaxy')} src={item.imgUrl} />
+                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'galaxy')} src={item.smallImage} />
                     </LazyLoad>
                     <div className={styles.imgFooter}>
                       <div>
@@ -215,7 +215,7 @@ const Hidden=props=>{
                 <OverPack playScale={0.2} key={index+item.imgUrl}>
                   <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                     <LazyLoad height={200} offset={100}>
-                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'galaxy')} src={item.imgUrl} />
+                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'galaxy')} src={item.smallImage} />
                     </LazyLoad>
                     <div className={styles.imgFooter}>
                       <div>
@@ -240,7 +240,7 @@ const Hidden=props=>{
                 <OverPack playScale={0.2} key={index+item.imgUrl}>
                   <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                     <LazyLoad height={200} offset={100}>
-                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'universe')} src={item.imgUrl} />
+                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'universe')} src={item.smallImage} />
                     </LazyLoad>
                     <div className={styles.imgFooter}>
                       <div>
@@ -258,7 +258,7 @@ const Hidden=props=>{
                 <OverPack playScale={0.2} key={index+item.imgUrl}>
                   <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                     <LazyLoad height={200} offset={100}>
-                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'universe')} src={item.imgUrl} />
+                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'universe')} src={item.smallImage} />
                     </LazyLoad>
                     <div className={styles.imgFooter}>
                       <div>
@@ -276,7 +276,7 @@ const Hidden=props=>{
                 <OverPack playScale={0.2} key={index+item.imgUrl}>
                   <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                     <LazyLoad height={200} offset={100}>
-                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'universe')} src={item.imgUrl} />
+                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'universe')} src={item.smallImage} />
                     </LazyLoad>
                     <div className={styles.imgFooter}>
                       <div>
@@ -294,7 +294,7 @@ const Hidden=props=>{
                 <OverPack playScale={0.2} key={index+item.imgUrl}>
                   <TweenOne component="div" animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'col1'} className={styles.imgWrapper}>
                     <LazyLoad height={200} offset={100}>
-                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'universe')} src={item.imgUrl} />
+                      <img crossOrigin={'anonymous'} className={styles.listImg} onClick={openBigImg.bind(null, item,'universe')} src={item.smallImage} />
                     </LazyLoad>
                     <div className={styles.imgFooter}>
                       <div>

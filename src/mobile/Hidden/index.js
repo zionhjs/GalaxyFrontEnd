@@ -71,7 +71,7 @@ const HiddenMobile=props=>{
         {starImages.map((item, index) => (
           <OverPack key={index+item.imgUrl} playScale={0.3}>
             <TweenOne className={styles.listItem} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'tw'}>
-              <img onClick={openBigImg.bind(null,item,'star')} className={styles.listImg} src={item.imgUrl} alt="" />
+              <img onClick={openBigImg.bind(null,item,'star')} className={styles.listImg} src={item.smallImage} alt="" />
               <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
               <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
             </TweenOne>
@@ -85,7 +85,7 @@ const HiddenMobile=props=>{
         {galaxyImages.map((item, index) => (
           <OverPack key={index+item.imgUrl} playScale={0.3}>
             <TweenOne className={styles.listItem} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'tw'}>
-              <img onClick={openBigImg.bind(null,item,'galaxy')} className={styles.listImg} src={item.imgUrl} alt="" />
+              <img onClick={openBigImg.bind(null,item,'galaxy')} className={styles.listImg} src={item.smallImage} alt="" />
               <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
               <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
             </TweenOne>
@@ -99,7 +99,7 @@ const HiddenMobile=props=>{
         {universeImages.map((item, index) => (
           <OverPack key={index+item.imgUrl} playScale={0.3}>
             <TweenOne className={styles.listItem} animation={{ y: '+=50',opacity: 0,type: 'from', ease: "easeInCirc"}} key={index+'tw'}>
-              <img onClick={openBigImg.bind(null,item,'universe')} className={styles.listImg} src={item.imgUrl} alt="" />
+              <img onClick={openBigImg.bind(null,item,'universe')} className={styles.listImg} src={item.smallImage} alt="" />
               <div className={styles.nameWrapper}><span className={styles.nameText}>{item.name}</span><span className={styles.dateText}>{item.date}</span></div>
               <div className={styles.descWrapper}><span className={styles.descText}>{item.desc}</span></div>
             </TweenOne>
