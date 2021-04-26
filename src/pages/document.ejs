@@ -2,7 +2,9 @@
 <html>
 <head>
   <meta charSet="utf-8" />
-  <meta http-equiv="Cache-Control" content="no-cache">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
   <title>GalaxyCGI Visualization</title>
   <link rel="icon" href="logo.ico" type="image/x-icon">
@@ -180,15 +182,24 @@
        boxNode.addClass('box')
        splashFooterNode.addClass('splashFooter')
      }
+     logoNode=null;
+     text1Node=null;
+     text2Node=null;
+     boxNode=null
+     splashFooterNode=null
    })
-  </script>
-  <script type="text/javascript">
   $(window).load(function(){
-    setTimeout(() => {
-      $("#splashbox").remove() 
+    let t=null;
+    t= setTimeout(() => {
+      $("#splashbox").remove();
+      $("#splashtemplate").remove();
+      clearTimeout(t);
+      t=null;
+      template=null;
+      window.isMobile=null;
     },3000);
   })
-     </script>
+  </script>
 </head>
 <body>
   <div id="root"></div>

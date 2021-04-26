@@ -293,16 +293,17 @@ export default {
             let col2=[]
             let col3=[]
             let col4=[]
-            for(let i=0;i<len;i=i+4){
-              col1.push(images[i])
-              if(i<len-1){
-                col2.push(images[i+1])
+            for(let i=0;i<len;i++){
+              let rest=i%4
+              if(rest==0)col1.push(images[i])
+              if(rest==1){
+                col2.push(images[i])
               }
-              if(i<len-2){
-                col3.push(images[i+2])
+              if(rest==2){
+                col3.push(images[i])
               }
-              if(i<len-3){
-                col4.push(images[i+3])
+              if(rest==3){
+                col4.push(images[i])
               }
             }
             return {

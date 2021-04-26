@@ -185,16 +185,17 @@ export default {
       let starCol2=[]
       let starCol3=[]
       let starCol4=[]
-      for(let i=0;i<len;i=i+4){
-        starCol1.push(starImages[i])
-        if(i<len-1){
-          starCol2.push(starImages[i+1])
+      for(let i=0;i<len;i++){
+        let rest=i%4
+        if(rest==0)starCol1.push(starImages[i])
+        if(rest==1){
+          starCol2.push(starImages[i])
         }
-        if(i<len-2){
-          starCol3.push(starImages[i+2])
+        if(rest==2){
+          starCol3.push(starImages[i])
         }
-        if(i<len-3){
-          starCol4.push(starImages[i+3])
+        if(rest==3){
+          starCol4.push(starImages[i])
         }
       }
       return {
@@ -212,16 +213,17 @@ export default {
       let galaxyCol2=[]
       let galaxyCol3=[]
       let galaxyCol4=[]
-      for(let i=0;i<len;i=i+4){
-        galaxyCol1.push(galaxyImages[i])
-        if(i<len-1){
-          galaxyCol2.push(galaxyImages[i+1])
+      for(let i=0;i<len;i++){
+        let rest=i%4
+        if(rest==0)galaxyCol1.push(galaxyImages[i])
+        if(rest==1){
+          galaxyCol2.push(galaxyImages[i])
         }
-        if(i<len-2){
-          galaxyCol3.push(galaxyImages[i+2])
+        if(rest==2){
+          galaxyCol3.push(galaxyImages[i])
         }
-        if(i<len-3){
-          galaxyCol4.push(galaxyImages[i+3])
+        if(rest==3){
+          galaxyCol4.push(galaxyImages[i])
         }
       }
       return {
@@ -239,16 +241,17 @@ export default {
       let universeCol2=[]
       let universeCol3=[]
       let universeCol4=[]
-      for(let i=0;i<len;i=i+4){
-        universeCol1.push(universeImages[i])
-        if(i<len-1){
-          universeCol2.push(universeImages[i+1])
+      for(let i=0;i<len;i++){
+        let rest=i%4
+        if(rest==0)universeCol1.push(universeImages[i])
+        if(rest==1){
+          universeCol2.push(universeImages[i])
         }
-        if(i<len-2){
-          universeCol3.push(universeImages[i+2])
+        if(rest==2){
+          universeCol3.push(universeImages[i])
         }
-        if(i<len-3){
-          universeCol4.push(universeImages[i+3])
+        if(rest==3){
+          universeCol4.push(universeImages[i])
         }
       }
       return {

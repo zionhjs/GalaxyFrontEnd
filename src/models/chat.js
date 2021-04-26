@@ -126,6 +126,8 @@ export default {
             let receiveNode=window.document.getElementById('receiveWav')
             receiveNode.play();
             cb()
+          sendNode=null;
+            receiveNode=null;
         },
       *fetchMsg({payload},{call,put,select}){
           let {email}=yield select(state=>state.chat)
