@@ -50,6 +50,10 @@ export async function uploadVideo(params){
   let result=await request('/gateway/upload/video/uploadVideo',{method:'POST',body:params})
   return result
 }
+export async function deleteVideo(params) {
+  let result=await request('/gateway/upload/video/delete?id='+params.id,{method:'POST'})
+  return result
+}
 export async function updateVideoUrl(params){
   let result=await request('/gateway/upload/video/uploadVideoUrl',{method:'POST',body:params})
   return result;

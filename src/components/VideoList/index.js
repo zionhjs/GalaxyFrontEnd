@@ -69,6 +69,9 @@ const VideoList=(props)=> {
     const loadMore=useCallback(()=>{
         dispatch({type:'animation/getAnimation'})
     },[])
+  const handleDelete=useCallback(item=>{
+dispatch({type:'animation/deleteVideo',payload:{id:item.id}})
+  },[])
     return (
         <div className={styles.container}>
             {list.map((item, index) => {
@@ -79,6 +82,7 @@ const VideoList=(props)=> {
                         
                         {item[0]&&item[0].id!==undefined&&(<OverPack playScale={0.3}><TweenOne key="box1ani" animation={{ x: '-=50',opacity: 0,type: 'from', ease: 'easeOutQuad'}} resetStyle style={colStyle} className={styles.box1}>
                             <img src={item[0].imgUrl} className={styles.box1Img} />
+                          {role=='admin' ? (<img onClick={handleDelete.bind(null,item[0])}  className={styles.redClose} src={"/redClose.png"} />) :null}
                             <div className={styles.nameWrapper}><span className={styles.nameText}>{item[0].name}</span><span className={styles.dateText}>{moment(item[0].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                             <div className={styles.desc}>{item[0].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[0])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
                             <div className={classnames(styles.editBox, { [styles.editShow]: (role=='admin'&&currentItem.id === item[0].id)&&showEdit })}>
@@ -136,6 +140,7 @@ const VideoList=(props)=> {
                             
                            {item[1]&&item[1].id!==undefined&&(<TweenOne key="box2ani" animation={{ y: '-=50',opacity: 0,type: 'from', ease: 'easeOutQuad'}} resetStyle className={styles.box2}>
                                 <img src={item[1].imgUrl} className={styles.box2Img} />
+                             {role=='admin' ? (<img onClick={handleDelete.bind(null,item[1])}  className={styles.redClose} src={"/redClose.png"} />) :null}
                                 <div className={styles.nameWrapper}><span className={styles.nameText}>{item[1].name}</span><span className={styles.dateText}>{moment(item[1].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                                 <div className={styles.desc}>{item[1].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[1])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
                                 <div className={classnames(styles.editBox, { [styles.editShow]: (role=='admin'&&currentItem.id === item[1].id)&&showEdit })}>
@@ -192,6 +197,7 @@ const VideoList=(props)=> {
 
                             {item[2]&&item[2].id!==undefined&&(<TweenOne key="box3ani" animation={{ y: '+=50',opacity: 0,type: 'from', ease: 'easeOutQuad'}} resetStyle className={styles.box3}>
                                 <img src={item[2].imgUrl} className={styles.box3Img} />
+                              {role=='admin' ? (<img onClick={handleDelete.bind(null,item[2])}  className={styles.redClose} src={"/redClose.png"} />) :null}
                                 <div className={styles.nameWrapper}><span className={styles.nameText}>{item[2].name}</span><span className={styles.dateText}>{moment(item[2].date).format('YYYY[.] MM[.] DD')}</span><FullscreenOutlined className={styles.fullScreen} /></div>
                                 <div className={styles.desc}>{item[2].desc}{role === 'admin' ? <img onClick={edit.bind(null, item[2])} src="editW.png" className={styles.editIcon} alt="" /> : null}</div>
                                 <div className={classnames(styles.editBox, { [styles.editShow]: (role=='admin'&&currentItem.id === item[2].id)&&showEdit })}>

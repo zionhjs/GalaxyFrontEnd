@@ -327,4 +327,13 @@ align-items: center;
 .uploadLeft :global(.ant-select){
  margin-bottom: 10px!important;
 }
+.redClose{
+  width: 20px;
+  height: auto;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 25000;
+  cursor: pointer;
+}
 

@@ -13,7 +13,7 @@
  * @FilePath: \GalaxyFrontEnd\src\models\animation.js
  */
 import _ from 'lodash'
-import {getAnimation,uploadVideo,updateVideo,updateVideoUrl} from '../service/api'
+import {getAnimation,uploadVideo,updateVideo,updateVideoUrl,deleteVideo} from '../service/api'
 const banners=['/animationBanner1.jpeg', '/animationBanner2.jpeg', '/animationBanner3.jpeg', '/animationBanner4.jpeg']
 export default {
     namespace:'animation',
@@ -289,6 +289,13 @@ export default {
                 yield put({type:'getAnimation'})
             }
 
+        },
+      *deleteVideo({payload},{call,put,select}){
+          let result=yield call(deleteVideo,{id:payload.id})
+        if(result.code==200){
+          yield put({type:'reset'})
+          yield put({type:'getAnimation'})
         }
+      }
     }
 }
