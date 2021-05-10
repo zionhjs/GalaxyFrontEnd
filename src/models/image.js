@@ -8,6 +8,9 @@
 import _ from 'lodash'
 import {getImages,uploadImage,updateImg,updateImgText,deleteImage} from '../service/api'
 const banners=['/imageBanner1.jpeg', '/imageBanner2.jpeg', '/imageBanner3.jpeg', '/imageBanner4.jpeg','/imageBanner5.jpeg','/imageBanner6.jpeg','/imageBanner7.jpeg']
+const delay = (ms) => new Promise((resolve) => {
+  setTimeout(resolve, ms);
+});
 export default {
     namespace:'image',
     state:{
@@ -375,8 +378,16 @@ export default {
             form.append('statusName',statusName)
             form.append('level',level)
            const result= yield call(uploadImage,form)
-           yield put({type:'reset'})
-           let data= yield put({type:'getImage'})
+          if(result.code===200){
+            yield put({type:'global/openNotify',payload:{type:'sucess',message:"you have uploaded sucessful!",transitionName:'notifycation'}})
+            yield call(delay,1000)
+            yield put({type:'global/closeNotify'})
+            yield put({type:'reset'})
+            let data= yield put({type:'getImage'})
+          }else{
+            yield put({type:'global/notify',payload:{type:'error',message:"you have uploaded failed,please upload again!",duration: 2000,transitionName: 'notifycation'}})
+          }
+
         },
         *updateImg({payload},{call,put,select}){
             let {id,file}=payload
