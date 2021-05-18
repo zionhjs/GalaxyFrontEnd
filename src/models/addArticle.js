@@ -103,7 +103,7 @@ export default {
            url:item,
            status:checked ? 1 : 0,
          }))
-         let tagName=tags.map(item=>item.text).join('/')
+         let tagName=tags.map(item=>item.text).join(',')
         let result= yield call(addArticle,{author,content:article,title:caption,blogImagesList:temp,tagName})
         if(result.code==200){
           router.goBack()

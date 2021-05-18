@@ -95,7 +95,7 @@ export default {
          }))
         }
         let tags=data?.tagName||''
-        tags=tags.split('/')
+        tags=tags.split(',')
         let result={
             title:data?.title||'',
             author:data?.author||'',

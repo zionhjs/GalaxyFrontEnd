@@ -12,6 +12,7 @@
  * @LastEditTime: 2020-12-04 07:36:52
  * @FilePath: \GalaxyFrontEnd\src\models\global.js
  */
+import {getAllTags} from '../service/api'
 const delay = (ms) => new Promise((resolve) => {
   setTimeout(resolve, ms);
 });
@@ -182,7 +183,13 @@ return {
          loginVisible:false,
          dashboardVisible:false
        }
-     }
+     },
+      saveBlogNavButtons(state,{payload}){
+        return {
+          ...state,
+          blogNavButtons: payload
+        }
+      }
     },
     effects:{
      *notify({payload},{call,put}){
@@ -190,5 +197,13 @@ return {
        yield call(delay,payload.duration)
        yield put({type:'closeNotify'})
     },
+      *getBlogNavButtons({payload},{call,put}){
+       let result=yield call(getAllTags);
+       if(result.code==200){
+         let ret=result?.data?.list||[];
+          let tags=ret.map(v=>v.tagName)
+         yield put({type:'saveBlogNavButtons',payload:['All'].concat(tags)})
+       }
+      }
     }
 }

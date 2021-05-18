@@ -91,7 +91,7 @@ export default {
     *getEditBlogData({payload},{call,put}){
       let {data,code}=yield call(getArticleDetail,{id:payload})
       let images=data.blogImagesList?.map(item=>item.url)||[]
-      let tags=data.tagName?.split('/')||[]
+      let tags=data.tagName?.split(',')||[]
       tags=tags.map(item=>({text:item}))
       let result={
         id:data.id,
@@ -120,7 +120,7 @@ export default {
            url:item,
            status:1,
          }))
-         let tagName=tags.map(item=>item.text).join('/')
+         let tagName=tags.map(item=>item.text).join(',')
         let result= yield call(updateArticle,{id:payload,author,content:article,title:caption,blogImagesList:temp,tagName})
         if(result.code==200){
           router.goBack()

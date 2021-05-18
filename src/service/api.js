@@ -86,8 +86,10 @@ export async function updateArticle(params){
   let result=await request('/gateway/cms/blog/update',{method:'POST',data:{...params}})
   return result
 }
-export async function getArticle({currentPage,pageSize}){
-  let result=await request(`/gateway/cms/blog/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{}})
+export async function getArticle({currentPage,pageSize,tagName}){
+   let params= tagName=='All' ? {}:{tagName}
+   let result=await request(`/gateway/cms/blog/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:params})
+
   return result;
 }
 export async function getArticleDetail(params){
@@ -120,5 +122,9 @@ export async function getRecentPost(params){
 }
 export async function searchBlog(params){
   let result=await request('/gateway/cms/blog/findByModal?page=0&size=0',{method:'POST',data:{title:params.title}})
+  return result
+}
+export async function getAllTags(params) {
+  let result=await request('/gateway/cms/blog/tag/findByModal',{method:'POST',data:{}})
   return result
 }

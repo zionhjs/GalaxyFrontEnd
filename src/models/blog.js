@@ -5,7 +5,7 @@
  * @LastEditTime: 2020-12-13 03:24:41
  * @FilePath: \GalaxyFrontEnd\src\models\blog.js
  */
-import {getArticle,delArticle,addLike,searchBlog} from '../service/api'
+import {getArticle,delArticle,addLike,searchBlog,getAllTags} from '../service/api'
 export default {
     namespace:'blog',
     state:{
@@ -77,7 +77,9 @@ export default {
        *getArticles({payload},{call,put,select}){
         yield put({type:'setPage',payload:1})
         let {currentPage,pageSize}=yield select(state=>state.blog)
-           let result=yield call(getArticle,{currentPage,pageSize})
+         let {blogCurrentNav,blogNavButtons}=yield select(state=>state.global)
+           let tagName=blogNavButtons[blogCurrentNav]
+           let result=yield call(getArticle,{currentPage,pageSize,tagName})
            let list=result.data.list
            list=list.map(item=>{
                let temp=item.blogImagesList.map(v=>v.url||'')

@@ -20,6 +20,7 @@ const Blogs=(props)=>{
   const isMobile=window.screen.width<768
     useEffect(()=>{
     dispatch({type:'blog/getArticles'})
+      dispatch({type:'global/getBlogNavButtons'})
     },[]) 
     const blogTitleChange=useCallback(e=>{
         setTitle(e.target.value)
