@@ -1,10 +1,8 @@
 import React, { useState,useCallback } from 'react'
-import { Link } from 'rc-scroll-anim';
 import classnames from 'classnames'
 import {connect} from 'dva'
 import QueueAnim from 'rc-queue-anim';
 import Icon from '@ant-design/icons';
-import TweenOne from 'rc-tween-one';
 import Animate from 'rc-animate';
 import OverPack from 'rc-scroll-anim/lib/ScrollOverPack';
 import {ReactComponent  as CloseSvg} from '../../assets/icons/close.svg'
