@@ -136,8 +136,6 @@ export default {
       },
         *subscribe({payload},{call,put}){
             let {userEmail,userNumber}=payload
-         userEmail='447166939@xingzai.com'
-          userNumber=2138224642
           yield put({type:'saveEmail',payload:userEmail})
             let result=yield call(subscribe,{userEmail,userNumber})
             if(result.code==200||result.code==400){
