@@ -124,7 +124,7 @@ export default {
       *deleteImg({payload},{call,put}){
        let result=yield call(deleteBlogImg,{url:payload})
         if(result.code==200){
-          yield put({type:'deleteCover',payload})
+          yield put({type:'deleteCover',payload});
         }
       }
     }
