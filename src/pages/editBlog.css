@@ -96,7 +96,17 @@
     align-items: center;
     margin-bottom: 15px;
     margin-right: calc(4%/3);
+  position: relative;
 }
+.imgClose{
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  width: 25px;
+  height: auto;
+}
+
 .imgStyle{
     width: 100%;
     height: auto;

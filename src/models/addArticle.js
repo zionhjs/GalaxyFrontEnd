@@ -6,7 +6,7 @@
  * @FilePath: \GalaxyFrontEnd\src\models\editBlog.js
  */
 import router from 'umi/router'
-import {addArticle,uploadImgNotLogo} from '../service/api'
+import {addArticle,uploadImgNotLogo,deleteBlogImg} from '../service/api'
 export default {
     namespace:'addArticle',
     state:{
@@ -39,6 +39,18 @@ export default {
          }
 
        }
+      },
+      deleteCover(state,{payload}){
+        const {data}=state;
+        const {images}=data
+        const ret=images.filter(item=>item!==payload)
+        return {
+          ...state,
+          data:{
+            ...data,
+            images:ret
+          }
+        }
       },
       changeCaption(state,{payload}){
         const {data}=state;
@@ -108,6 +120,12 @@ export default {
         if(result.code==200){
           router.goBack()
         }
-    }
+    },
+      *deleteImg({payload},{call,put}){
+       let result=yield call(deleteBlogImg,{url:payload})
+        if(result.code==200){
+          yield put({type:'deleteCover',payload})
+        }
+      }
     }
 }

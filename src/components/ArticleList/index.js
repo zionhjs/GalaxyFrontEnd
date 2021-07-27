@@ -45,7 +45,7 @@ const ArticleList=(props)=> {
                         <Swiper images={item.images} />
                     </div>
                     <div className={styles.rightBox}>
-                         {role==='admin' ? <img onClick={delPost.bind(null,item)} src="redClose.png" alt="" className={styles.redClose} /> : null}
+                         {role==='admin' ? <img onClick={delPost.bind(null,item)} src="/redClose.png" alt="" className={styles.redClose} /> : null}
                         <div className={styles.listTitle}>{item.title}</div>
                         <div className={styles.listMidBox}><div className={styles.listAuthor}>{item.author}</div><div className={styles.listDate}>{moment(item.date).format('YYYY[.]MM[.]DD')}</div></div>
                         <div className={styles.listContent}><div dangerouslySetInnerHTML={{ __html: item.content }}></div></div>

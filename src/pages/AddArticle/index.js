@@ -84,6 +84,9 @@ const AddarticlePage= (props)=> {
     const tagChange=useCallback((index,e)=>{
         dispatch({type:'addArticle/tagChange',payload:{index,value:e.target.value}})
     },[])
+  const delImg=useCallback((url)=>{
+    dispatch({type:'addArticle/deleteImg',payload:url})
+  },[])
     return (
         <div className={styles.container}>
             <div className={styles.label}>Caption</div>
@@ -111,7 +114,10 @@ const AddarticlePage= (props)=> {
             <div className={styles.imageBox}>
                 {
                     images.map((item, index) => (
-                        <div key={index} className={classnames(styles.imageItem,styles.extra)}><img className={styles.imgStyle} src={item} alt="" /></div>
+                        <div key={index} className={classnames(styles.imageItem,styles.extra)}>
+                          <img onClick={delImg.bind(null,item)} src="/redClose.png" alt="" className={styles.imgClose} />
+                          <img className={styles.imgStyle} src={item} alt="" />
+                        </div>
                     ))
                 }
                 <div className={classnames(styles.uploadBox,styles.extra)}>

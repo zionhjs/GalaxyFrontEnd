@@ -6,7 +6,14 @@
  * @FilePath: \GalaxyFrontEnd\src\models\editBlog.js
  */
 import router from 'umi/router'
-import {addArticle,uploadImgNotLogo,getArticleDetail,updateArticle,deleteComment} from '../service/api'
+import {
+  addArticle,
+  uploadImgNotLogo,
+  getArticleDetail,
+  updateArticle,
+  deleteComment,
+  deleteBlogImg,
+} from '../service/api';
 export default {
     namespace:'editblog',
     state:{
@@ -91,6 +98,7 @@ export default {
     *getEditBlogData({payload},{call,put}){
       let {data,code}=yield call(getArticleDetail,{id:payload})
       let images=data.blogImagesList?.map(item=>item.url)||[]
+     // let images=data.blogImagesList
       let tags=data.tagName?.split(',')||[]
       tags=tags.map(item=>({text:item}))
       let result={
@@ -130,6 +138,12 @@ export default {
       const {commentId,blogId}=payload
       let result=yield call(deleteComment,{id:commentId})
         yield put({type:'getEditBlogData',payload:blogId})
+      },
+      *deleteImg({payload},{call,put}){
+      let ret=yield call(deleteBlogImg,{url:payload.url})
+        if(ret.code==200){
+          yield put({type:'getEditBlogData',payload:payload.articleId})
+        }
       }
     }
 }

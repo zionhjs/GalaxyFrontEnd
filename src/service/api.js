@@ -128,3 +128,7 @@ export async function getAllTags(params) {
   let result=await request('/gateway/cms/blog/tag/findByModal',{method:'POST',data:{}})
   return result
 }
+export async function deleteBlogImg(params) {
+  let result=await request('/gateway/cms/blog/images/deleteByUrl?url='+params.url,{method:'POST'})
+  return result
+}

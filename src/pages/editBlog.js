@@ -90,6 +90,10 @@ const EditBlog= (props)=> {
   const deleteComment=useCallback((item)=>{
  dispatch({type:'editblog/deleteComment',payload:{commentId:item.id,blogId:query.id}})
   },[query.id])
+  const delImg=useCallback((item)=>{
+    console.log(item)
+dispatch({type:'editblog/deleteImg',payload:item})
+  },[])
 
     return (
         <div className={styles.container}>
@@ -118,7 +122,10 @@ const EditBlog= (props)=> {
             <div className={styles.imageBox}>
                 {
                     images.map((item, index) => (
-                        <div key={index} className={classnames(styles.imageItem,styles.extra)}><img className={styles.imgStyle} src={item} alt="" /></div>
+                        <div key={index} className={classnames(styles.imageItem,styles.extra)}>
+                          <img onClick={delImg.bind(null,{url:item,articleId:query.id})} src="/redClose.png" alt="" className={styles.imgClose} />
+                          <img className={styles.imgStyle} src={item} alt="" />
+                        </div>
                     ))
                 }
                 <div className={classnames(styles.uploadBox,styles.extra)}>
