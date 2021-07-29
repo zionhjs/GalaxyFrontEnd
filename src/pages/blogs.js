@@ -19,6 +19,7 @@ const Blogs=(props)=>{
     //const isMobile = useMediaQuery({ maxWidth: 767 })
   const isMobile=window.screen.width<768
     useEffect(()=>{
+      console.log('update at 2021/7/29')
     dispatch({type:'blog/getArticles'})
       dispatch({type:'global/getBlogNavButtons'})
     },[]) 
