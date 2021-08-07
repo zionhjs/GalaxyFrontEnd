@@ -22,6 +22,20 @@ export default {
         }
     },
     reducers:{
+      reset(state){
+        return {
+          ...state,
+          data:{
+            images:[],
+            comments: [],
+            tags:[],
+            caption:'',
+            author:'',
+            article:'',
+            lastUpdate: ''
+          }
+        }
+      },
       save(state,{payload}){
           return {
               ...state,

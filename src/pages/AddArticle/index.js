@@ -87,6 +87,9 @@ const AddarticlePage= (props)=> {
   const delImg=useCallback((url)=>{
     dispatch({type:'addArticle/deleteImg',payload:url})
   },[])
+  useEffect(()=>{
+    dispatch({type:'addArticle/reset'})
+  },[])
     return (
         <div className={styles.container}>
             <div className={styles.label}>Caption</div>
