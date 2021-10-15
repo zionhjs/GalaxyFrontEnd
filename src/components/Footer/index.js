@@ -68,7 +68,7 @@ const Footer=(props)=>{
       </OverPack>
       
       <div id="email" className={classnames(styles.footerText,styles.emailText)}>zion@galaxycgi.com</div>
-      <div className={styles.footerText}>6262655257</div>
+      <div className={styles.footerText}>213-822-4642</div>
       <div className={styles.footerText}>  9415 Culver Blvd #19, Culver City, CA 90232</div>
       <div className={styles.footerText}> Copyright © GalaxyCGI www.galaxycgi.com all rights reserved.</div>
       <div className={styles.footerText}> The website design, the logo, the covers and gallery images are property of GalaxyCGI for its total or partial reproduction, as well as exploitation, distribution</div>
