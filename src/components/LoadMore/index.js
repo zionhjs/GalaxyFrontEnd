@@ -26,7 +26,7 @@ const LoadMore=(props)=>{
   },[email,phone])
     return (
         <React.Fragment>
-            <div onClick={loadMore} className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></div>
+            <div className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></div>
             
             <OverPack playScale={0.3} className={styles.downBox}>
 

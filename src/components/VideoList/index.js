@@ -67,7 +67,7 @@ const VideoList=(props)=> {
         dispatch({type:'animation/confirmEdit'})
     },[])
     const loadMore=useCallback(()=>{
-        dispatch({type:'animation/getAnimation'})
+        //dispatch({type:'animation/getAnimation'})
     },[])
   const handleDelete=useCallback(item=>{
 dispatch({type:'animation/deleteVideo',payload:{id:item.id}})

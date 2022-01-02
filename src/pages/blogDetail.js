@@ -62,7 +62,7 @@ const BlogDetail= (props)=> {
             <div className={styles.articleTitle}>{data.title}</div>
             <div className={styles.articleInfo}>
                 <span className={styles.authorText}>{data.author}</span>
-                <span className={styles.dateText}>{moment(data.date).format('YYYY[.]MM[.]DD')}</span>
+                <span className={styles.dateText}>{}</span>
                 <img src="read.png" className={styles.readIcon} />
                 <span className={styles.readText}>{data.read}</span>
                 <img onClick={addLike} src="liked.png" className={styles.likedIcon} />

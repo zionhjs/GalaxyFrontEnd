@@ -30,7 +30,7 @@ const ArticleList=(props)=> {
         router.push('editBlog?id='+item.id)
     },[])
     const loadMore=useCallback(()=>{
-        dispatch({type:'blog/loadMore'})
+        //dispatch({type:'blog/loadMore'})
     },[])
     const addLike=useCallback((item)=>{
         dispatch({type:'blog/addLike',payload:{id:item.id,type:1}})

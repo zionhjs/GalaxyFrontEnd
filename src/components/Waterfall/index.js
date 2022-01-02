@@ -76,16 +76,11 @@ const Waterfall=(props)=> {
         dispatch({type:'image/updateImgText'})
     },[])
     const loadMore=useCallback(()=>{
-        dispatch({type:'image/getImage'})
+        //dispatch({type:'image/getImage'})
     },[])
   const handleDelete=useCallback(item=>{
     dispatch({type:'image/deleteImage',payload:item.id})
   },[])
-  const handleScroll=useCallback(_.debounce(({scrollTop,offsetTop,showHeight,id})=>{
-    if(showHeight>=0){
-      dispatch({type:'image/getImage'})
-    }
-  },1000),[])
     return (
         <div className={styles.container}>
             <div className={styles.waterfall}>
@@ -279,7 +274,7 @@ const Waterfall=(props)=> {
                     }
                 </div>
             </div>
-            <Element onScroll={handleScroll} onClick={loadMore} className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></Element>
+            <Element className={styles.loadMore}><img src="loadMore.png" className={styles.loadMoreImg} /><img src="loadMoreText.png" className={styles.loadMoreText} /></Element>
            {/* <BigImage  />*/}
             <Image360 />
         </div>

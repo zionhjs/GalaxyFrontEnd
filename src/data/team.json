@@ -1,112 +1,241 @@
-{
-    "bannerTitle":"Team",
-    "bannerText":"We have more than 200 employees across the world. Here we only showing our permanent and business manager & technical director list",
-    "bannerImg":"splash.jpeg",
-    "list":[
-        {
-            "title":"Chengdu Office",
-            "data":[
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                }
-            ]
-        },
-        {
-            "title":"Chengdu Office",
-            "data":[
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                }
-            ]
-        },
-        {
-            "title":"Chengdu Office",
-            "data":[
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.comkkkkkkkkkkkk"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                },
-                {
-                    "name":"Tom Tang",
-                    "job":"Architect & 3D Artist",
-                    "email":"tangshaobo90@gmail.com"
-                }
-            ]
-        }
+[
+  {
+    "createdAt": 1609799280000,
+    "id": 83,
+    "name": "Los Angeles Office",
+    "teamMemberList": [
+      {
+        "createdAt": 1609799375000,
+        "email": "zion@galaxycgi.com",
+        "id": 90,
+        "name": "Zion Huang",
+        "teamId": "83",
+        "title": "Manger",
+        "updatedAt": 1625423820000
+      },
+      {
+        "createdAt": 1610225678000,
+        "email": "tomtang@galaxycgi.com",
+        "id": 95,
+        "name": "Tom Tang",
+        "teamId": "83",
+        "title": "Manager",
+        "updatedAt": 1625423819000
+      },
+      {
+        "createdAt": 1610225704000,
+        "email": "poppyzhao@galaxycgi.com",
+        "id": 96,
+        "name": "Poppy Zhao",
+        "teamId": "83",
+        "title": "Architect & 3D Artist",
+        "updatedAt": 1624840274000
+      },
+      {
+        "createdAt": 1610225751000,
+        "email": "jessiexu@galaxycgi.com",
+        "id": 97,
+        "name": "Jessie Xu",
+        "teamId": "83",
+        "title": "Architect & 3D Artist",
+        "updatedAt": 1624840275000
+      },
+      {
+        "createdAt": 1610225752000,
+        "email": "sybellaliu@galaxycgi.com",
+        "id": 98,
+        "name": "Sybella Liu",
+        "teamId": "83",
+        "title": "Architect & 3D Artist",
+        "updatedAt": 1624840320000
+      },
+      {
+        "createdAt": 1610225754000,
+        "email": "clare@galaxycgi.com",
+        "id": 99,
+        "name": "Clare Zhang",
+        "teamId": "83",
+        "title": "Project Manager ",
+        "updatedAt": 1625423697000
+      },
+      {
+        "createdAt": 1610225758000,
+        "email": "ethan@galaxycgi.com",
+        "id": 100,
+        "name": "Ethan Chen",
+        "teamId": "83",
+        "title": "Project Manager ",
+        "updatedAt": 1625423716000
+      },
+      {
+        "createdAt": 1610225760000,
+        "email": "lisa@galaxycgi.com",
+        "id": 101,
+        "name": "Lisa Chen",
+        "teamId": "83",
+        "title": "Accounting",
+        "updatedAt": 1625423779000
+      }
     ]
-}
+  },
+  {
+    "createdAt": 1609799288000,
+    "id": 84,
+    "name": "Chengdu Office",
+    "teamMemberList": [
+      {
+        "createdAt": 1609799432000,
+        "email": "coral@galaxycgi.com",
+        "id": 91,
+        "name": "Coral Zhang",
+        "teamId": "84",
+        "title": "Project Manager ",
+        "updatedAt": 1625423628000
+      },
+      {
+        "createdAt": 1610225868000,
+        "email": "echo@galaxycgi.com",
+        "id": 102,
+        "name": "Echo Chen",
+        "teamId": "84",
+        "title": "Project Manager ",
+        "updatedAt": 1625423653000
+      },
+      {
+        "createdAt": 1610225869000,
+        "email": "clarej@galaxycgi.com",
+        "id": 103,
+        "name": "Clare Jing",
+        "teamId": "84",
+        "title": "Architect & 3D Artist",
+        "updatedAt": 1624840600000
+      },
+      {
+        "createdAt": 1610225870000,
+        "email": "arthurguo@galaxycgi.com",
+        "id": 104,
+        "name": "Arthur Guo",
+        "teamId": "84",
+        "title": "Architect & 3D Artist",
+        "updatedAt": 1624840631000
+      },
+      {
+        "createdAt": 1610225925000,
+        "email": "Justin@galaxycgi.com",
+        "id": 108,
+        "name": "Justin Xu",
+        "teamId": "84",
+        "title": "Marketing Manager",
+        "updatedAt": 1624840667000
+      },
+      {
+        "createdAt": 1610225928000,
+        "email": "daniellee@galaxycgi.com",
+        "id": 109,
+        "name": "Daniel Lee",
+        "teamId": "84",
+        "title": "Project Manager",
+        "updatedAt": 1624840706000
+      },
+      {
+        "createdAt": 1610225931000,
+        "email": "tomtang@galaxycgi.com",
+        "id": 110,
+        "name": "TomTang",
+        "teamId": "84",
+        "title": "Architect & 3D Artist",
+        "updatedAt": 1625439675000
+      },
+      {
+        "createdAt": 1610225942000,
+        "email": "audit@galaxycgi.com",
+        "id": 111,
+        "name": "Yi Zhang",
+        "teamId": "84",
+        "title": "Accounting",
+        "updatedAt": 1625423790000
+      }
+    ]
+  },
+  {
+    "createdAt": 1609799290000,
+    "id": 85,
+    "name": "Shanghai Office",
+    "teamMemberList": [
+      {
+        "createdAt": 1609799480000,
+        "email": "calvin@galaxycgi.com",
+        "id": 92,
+        "name": "Calvin Zhang",
+        "teamId": "85",
+        "title": "Architect & 3D Artist",
+        "updatedAt": 1625423905000
+      },
+      {
+        "createdAt": 1610226007000,
+        "email": "armand@galaxycgi.com",
+        "id": 113,
+        "name": "Armand Li",
+        "teamId": "85",
+        "title": "Architect & 3D Artist",
+        "updatedAt": 1625423916000
+      },
+      {
+        "createdAt": 1625423922000,
+        "email": "cissy@galaxycgi.com",
+        "id": 118,
+        "name": "Cissy Ren",
+        "teamId": "85",
+        "title": "Architect & 3D Artist"
+      },
+      {
+        "createdAt": 1625423945000,
+        "email": "matt@galaxycgi.com",
+        "id": 119,
+        "name": "Matt Wang",
+        "teamId": "85",
+        "title": "Architect & 3D Artist"
+      },
+      {
+        "createdAt": 1625424013000,
+        "email": "alan@galaxycgi.com",
+        "id": 120,
+        "name": "Alan Jin",
+        "teamId": "85",
+        "title": "Project Manager"
+      },
+      {
+        "createdAt": 1625424061000,
+        "email": "kim@galaxycgi.com",
+        "id": 121,
+        "name": "Kim Chang",
+        "teamId": "85",
+        "title": "Project Manager"
+      },
+      {
+        "createdAt": 1625424096000,
+        "email": "larry@galaxycgi.com",
+        "id": 122,
+        "name": "Larry Zeng",
+        "teamId": "85",
+        "title": "Marketing Manager"
+      }
+    ]
+  },
+  {
+    "createdAt": 1609799292000,
+    "id": 86,
+    "name": "Ukraine Office",
+    "teamMemberList": [
+      {
+        "createdAt": 1609799556000,
+        "email": "adelina@galaxycgi.com",
+        "id": 93,
+        "name": "Adelina",
+        "teamId": "86",
+        "title": "Marketing Specialist",
+        "updatedAt": 1625424213000
+      }
+    ]
+  }
+]

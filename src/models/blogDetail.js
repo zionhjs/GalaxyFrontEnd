@@ -73,7 +73,7 @@ export default {
     },
     effects:{
      *getDetailData({payload},{call,put}){
-        let {data,code}= yield call(getArticleDetail,{id:payload})
+        let data= yield call(getArticleDetail,{id:payload})
         let comments=data?.momentCommentList||[]
         comments=comments.map(item=>({
             id:item.id,

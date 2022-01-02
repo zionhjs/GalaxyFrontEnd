@@ -6,13 +6,19 @@
  * @FilePath: \GalaxyFrontEnd\src\service\api.js
  */
 import request from '../utils/request'
+import data from '../data/image'
+import animationData from  '../data/animation'
+import teamData from '../data/team'
+import blogData from  '../data/blog'
+import blogDetailData from '../data/blogDetail'
 export async function getAnimation({currentPage,pageSize,statusName}) {
-  let result=await request(`/gateway/upload/video/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName}})
-    return result;
+  //let result=await request(`/gateway/upload/video/findByModal?page=${currentPage}&size=${10000}`,{method:'POST',data:{statusName}})
+  //console.log('result',result)
+    return animationData;
   }
 export async function getAnimationByLevel({currentPage,pageSize,statusName,level}) {
-  let result=await request(`/gateway/upload/video/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName,level}})
-  return result;
+ // let result=await request(`/gateway/upload/video/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName,level}})
+  return animationData;
 }
 export async function login(params){
     let result=await request('/gateway/ucenter/user/login',{method:'POST',data:params})
@@ -23,20 +29,29 @@ export async function login(params){
     return result
   }
   export async function getTeam({currentPage,pageSize}){
-    let result=await request(`/gateway/cms/team/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{}})
-    return result;
+   // let result=await request(`/gateway/cms/team/findByModal?page=${currentPage}&size=${10000}`,{method:'POST',data:{}})
+    //console.log('team',result)
+    return teamData;
   }
   export async function delTeamMember(params){
     let result=await request('/gateway/cms/team/member/delete?id='+params.id,{method:'POST'})
     return result
   }
 export async function getImages({currentPage,pageSize,statusName}){
-  let result=await request(`/gateway/upload/images/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName}})
-  return result
+  //let result=await request(`/gateway/upload/images/findByModal?page=${currentPage}&size=${1000}`,{method:'POST',data:{statusName}})
+  return data.filter((item)=>(statusName==''? true :item.statusName==statusName))
 }
 export async function getImagesByLevel({currentPage,pageSize,statusName,level}) {
-  let result=await request(`/gateway/upload/images/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName,level}})
-  return result
+  //let result=await request(`/gateway/upload/images/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:{statusName,level}})
+  let ret;
+  ret=data.filter((item)=>{
+    if(statusName==''){
+      return item.level==level
+    }else {
+      return item.statusName==statusName&&item.level==level
+    }
+  })
+  return ret
 }
 export async function uploadImage(params){
   let result=await request('/gateway/upload/images/uploadImages',{method:'POST',body:params})
@@ -87,14 +102,19 @@ export async function updateArticle(params){
   return result
 }
 export async function getArticle({currentPage,pageSize,tagName}){
-   let params= tagName=='All' ? {}:{tagName}
-   let result=await request(`/gateway/cms/blog/findByModal?page=${currentPage}&size=${pageSize}`,{method:'POST',data:params})
-
-  return result;
+   //let params= tagName=='All' ? {}:{tagName}
+   //let result=await request(`/gateway/cms/blog/findByModal?page=${currentPage}&size=${10000}`,{method:'POST',data:{}})
+  return blogData.filter((item)=>{
+    if(tagName=='All'){
+      return true
+    }else {
+      return item.tagName==tagName
+    }
+  });
 }
 export async function getArticleDetail(params){
-  let result=await request('/gateway/cms/blog/detail?id='+params.id,{method:'POST',data:{}})
-  return result
+//  let result=await request('/gateway/cms/blog/detail?id='+params.id,{method:'POST',data:{}})
+  return blogDetailData[params.id]
 }
 export async function delArticle(params){
   let result=await request('/gateway/cms/blog/delete?id='+params.id,{method:'POST'})
@@ -126,6 +146,7 @@ export async function searchBlog(params){
 }
 export async function getAllTags(params) {
   let result=await request('/gateway/cms/blog/tag/findByModal',{method:'POST',data:{}})
+  console.log('tags',result)
   return result
 }
 export async function deleteBlogImg(params) {

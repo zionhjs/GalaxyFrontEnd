@@ -80,7 +80,7 @@ export default {
          let {blogCurrentNav,blogNavButtons}=yield select(state=>state.global)
            let tagName=blogNavButtons[blogCurrentNav]
            let result=yield call(getArticle,{currentPage,pageSize,tagName})
-           let list=result.data.list
+           let list=result
            list=list.map(item=>{
                let temp=item.blogImagesList.map(v=>v.url||'')
                let comment=item.momentCommentList?.length||0

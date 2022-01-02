@@ -356,7 +356,7 @@ export default {
           s=''
         }
         const ret=yield call(getImagesByLevel,{currentPage:starCurrentPage,pageSize:starPageSize,statusName:s,level:'star'})
-        let list=ret?.data?.list||[]
+        let list=ret||[]
         list= list.map((item,index)=>{
           return {
             id:item.id,
@@ -394,7 +394,7 @@ export default {
           s=''
         }
         const ret=yield call(getImagesByLevel,{currentPage:galaxyCurrentPage,pageSize:galaxyPageSize,statusName:s,level:'galaxy'})
-        let list=ret?.data?.list||[]
+        let list=ret||[]
         list= list.map((item,index)=>{
           return {
             id:item.id,
@@ -432,7 +432,7 @@ export default {
           s=''
         }
         const ret=yield call(getImagesByLevel,{currentPage:universeCurrentPage,pageSize:universePageSize,statusName:s,level:'universe'})
-        let list=ret?.data?.list||[]
+        let list=ret||[]
         list= list.map((item,index)=>{
           return {
             id:item.id,

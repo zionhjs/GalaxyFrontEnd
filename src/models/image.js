@@ -342,7 +342,7 @@ export default {
            if(!loading){
              yield put({type:'setLoading',payload:true})
              const ret=yield call(getImages,{currentPage,pageSize,statusName:s})
-             let list=ret?.data?.list||[]
+             let list=ret
              list= list.map((item,index)=>{
                return {
                  id:item.id,

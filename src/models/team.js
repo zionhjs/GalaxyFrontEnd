@@ -94,8 +94,8 @@ export default {
      *getTeamData({payload},{call,put,select}){
       yield put({type:'setPage',payload:1})
       let {currentPage,pageSize}=yield select(state=>state.team)
-      let {code,data}= yield call(getTeam,{currentPage,pageSize})
-       let list=data?.list||[]
+      let ret= yield call(getTeam,{currentPage,pageSize})
+       let list=ret||[]
        list=list.map(item=>{
          let {teamMemberList}=item
         let ret= teamMemberList.map(v=>({
@@ -110,55 +110,13 @@ export default {
            data: ret
          }
        })
-       yield put({type:'save',payload:{list,pages:data?.pages||0}})
-       if(currentPage<(data?.pages||0)){
+       yield put({type:'save',payload:{list,pages:ret.data?.pages||0}})
+       if(currentPage<(ret.data?.pages||0)){
         yield put({type:'setHasMore',payload:true})
         yield put({type:'setPage',payload:(currentPage+1)})
     }              
      },
      *loadMore({payload},{call,put,select}){
-      let {currentPage,pageSize,pages,hasMore}=yield select(state=>state.team)
-      if(currentPage<pages){
-          const ret=yield call(getTeam,{currentPage,pageSize})
-          let list=ret?.data.list||[]
-          list= list.map((item,index)=>{
-            let {teamMemberList}=item
-            let ret= teamMemberList.map(v=>({
-               id:v.id,
-               name:v.name,
-               job:v.title,
-               email:v.email,
-             }))
-             return {
-               id:item.id,
-               title:item.name,
-               data: ret
-             }
-       })
-       yield put({type:'saveMore',payload:list})
-       yield put({type:'setPage',payload:currentPage+1})
-       yield put({type:'setHasMore',payload:true})
-       }
-       else if(currentPage==pages&&hasMore){
-          const ret=yield call(getTeam,{currentPage,pageSize})
-          let list=ret?.data.list||[]
-          list= list.map((item,index)=>{
-            let {teamMemberList}=item
-            let ret= teamMemberList.map(v=>({
-               id:v.id,
-               name:v.name,
-               job:v.title,
-               email:v.email,
-             }))
-             return {
-               id:item.id,
-               title:item.name,
-               data: ret
-             }
-       })
-       yield put({type:'saveMore',payload:list})
-       yield put({type:'setHasMore',payload:false})
-      }
   },
      *addTeamMember({payload},{call,put}){
        let result;

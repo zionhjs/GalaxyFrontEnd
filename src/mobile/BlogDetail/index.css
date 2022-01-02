@@ -3,6 +3,7 @@
   padding-top: 0.43rem;   
   padding-left: 0.2rem; 
   padding-right: 0.2rem;
+  min-height: 100vh;
 }
 .articleTitle {
     font-family: 'Microsoft YaHei';

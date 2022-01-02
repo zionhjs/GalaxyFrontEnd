@@ -1,70 +1,82 @@
-{
-    "videoList": [{
-        "id":1,
-        "name": "voluptatem",
-        "date": "2020.11.23",
-        "desc": "GalaxyCGI is an Architectural Visualization",
-        "imgUrl": "cover.png",
-        "video": "watermarked4kAedas.mp4"
-      }, {
-        "id":2,
-        "name": "voluptatem",
-        "date": "2020.11.23",
-        "desc": "GalaxyCGI is an Architectural Visualization",
-        "imgUrl": "cover.png",
-        "video": "watermarked4kAedas.mp4"
-      }, {
-        "id":3,
-        "name": "voluptatem",
-        "date": "2020.11.23",
-        "desc": "GalaxyCGI is an Architectural Visualization",
-        "imgUrl": "cover.png",
-        "video": "watermarked4kAedas.mp4"
-      }, {
-        "id":4,
-        "name": "voluptatem",
-        "date": "2020.11.23",
-        "desc": "GalaxyCGI is an Architectural Visualization",
-        "imgUrl": "cover.png",
-        "video": "watermarked4kAedas.mp4"
-      }, {
-        "id":5,
-        "name": "voluptatem",
-        "date": "2020.11.23",
-        "desc": "GalaxyCGI is an Architectural Visualization",
-        "imgUrl": "cover.png",
-        "video": "watermarked4kAedas.mp4"
-      }, {
-        "id":6,
-        "name": "voluptatem",
-        "date": "2020.11.23",
-        "desc": "GalaxyCGI is an Architectural Visualization",
-        "imgUrl": "cover.png",
-        "video": "watermarked4kAedas.mp4"
-      }, {
-        "id":7,
-        "name": "voluptatem",
-        "date": "2020.11.23",
-        "desc": "GalaxyCGI is an Architectural Visualization",
-        "imgUrl": "cover.png",
-        "video": "watermarked4kAedas.mp4"
-      },
-      {
-        "id":8,
-        "name": "voluptatem",
-        "date": "2020.11.23",
-        "desc": "GalaxyCGI is an Architectural Visualization",
-        "imgUrl": "cover.png",
-        "video": "watermarked4kAedas.mp4"
-      },
-      {
-        "id":9,
-        "name": "voluptatem",
-        "date": "2020.11.23",
-        "desc": "GalaxyCGI is an Architectural Visualization",
-        "imgUrl": "cover.png",
-        "video": "watermarked4kAedas.mp4"
-      }      
-      ],
-      "banners": ["banner1.jpeg", "banner2.jpeg", "banner3.jpeg", "banner4.jpeg"]
-}
+[
+  {
+    "contentType": "video/mp4",
+    "createdAt": 1621197200000,
+    "description": "description",
+    "frameImages": "https://galaxy-image.s3-us-west-1.amazonaws.com/2021-05-16T21:45:53.600_out_frame_pic.png",
+    "id": 118,
+    "level": "star",
+    "objectUrl480": "https://galaxy-video.s3-us-west-1.amazonaws.com/2021-05-16T21:41:11.175_target480.mp4",
+    "s3BucketName": "galaxy-video",
+    "s3Key480": "2021-05-16T21:41:11.175_target480.mp4",
+    "size": 738314663,
+    "status": 1,
+    "suffix": "in",
+    "title": "newtitle",
+    "videoName": "021.mp4"
+  },
+  {
+    "contentType": "video/mp4",
+    "createdAt": 1621198010000,
+    "description": "description",
+    "frameImages": "https://galaxy-image.s3-us-west-1.amazonaws.com/2021-05-16T21:52:16.070_out_frame_pic.png",
+    "id": 119,
+    "level": "star",
+    "objectUrl480": "https://galaxy-video.s3-us-west-1.amazonaws.com/2021-05-16T21:50:28.174_target480.mp4",
+    "s3BucketName": "galaxy-video",
+    "s3Key480": "2021-05-16T21:50:28.174_target480.mp4",
+    "size": 327606101,
+    "status": 1,
+    "suffix": "in",
+    "title": "newtitle",
+    "videoName": "dali.mp4"
+  },
+  {
+    "contentType": "video/mp4",
+    "createdAt": 1621198694000,
+    "description": "description",
+    "frameImages": "https://galaxy-image.s3-us-west-1.amazonaws.com/2021-05-16T22:04:00.618_out_frame_pic.png",
+    "id": 120,
+    "level": "star",
+    "objectUrl480": "https://galaxy-video.s3-us-west-1.amazonaws.com/2021-05-16T22:01:54.807_target480.mp4",
+    "s3BucketName": "galaxy-video",
+    "s3Key480": "2021-05-16T22:01:54.807_target480.mp4",
+    "size": 334596113,
+    "status": 1,
+    "suffix": "in",
+    "title": "newtitle",
+    "videoName": "lake.mp4"
+  },
+  {
+    "contentType": "video/mp4",
+    "createdAt": 1621199056000,
+    "description": "description",
+    "frameImages": "https://galaxy-image.s3-us-west-1.amazonaws.com/2021-05-16T22:06:53.157_out_frame_pic.png",
+    "id": 121,
+    "level": "star",
+    "objectUrl480": "https://galaxy-video.s3-us-west-1.amazonaws.com/2021-05-16T22:05:46.073_target480.mp4",
+    "s3BucketName": "galaxy-video",
+    "s3Key480": "2021-05-16T22:05:46.073_target480.mp4",
+    "size": 115580383,
+    "status": 1,
+    "suffix": "in",
+    "title": "newtitle",
+    "videoName": "Shenzhen Super Headquarters Super Campus.mp4"
+  },
+  {
+    "contentType": "video/mp4",
+    "createdAt": 1621199302000,
+    "description": "description",
+    "frameImages": "https://galaxy-image.s3-us-west-1.amazonaws.com/2021-05-16T22:12:05.794_out_frame_pic.png",
+    "id": 122,
+    "level": "star",
+    "objectUrl480": "https://galaxy-video.s3-us-west-1.amazonaws.com/2021-05-16T22:10:24.949_target480.mp4",
+    "s3BucketName": "galaxy-video",
+    "s3Key480": "2021-05-16T22:10:24.949_target480.mp4",
+    "size": 311203006,
+    "status": 1,
+    "suffix": "in",
+    "title": "newtitle",
+    "videoName": "zhongtie.mp4"
+  }
+]

@@ -219,7 +219,7 @@ export default {
           s = ''
         }
           const result= yield call(getAnimationByLevel,{currentPage:starCurrentPage,pageSize:starPageSize,statusName:s,level:'star'})
-          let list=result?.data?.list||[]
+          let list=result||[]
           list=list.map((item)=>({
             id:item.id,
             name:item.title,
@@ -250,7 +250,7 @@ export default {
           s = ''
         }
         const result= yield call(getAnimationByLevel,{currentPage:galaxyCurrentPage,pageSize:galaxyPageSize,statusName:s,level:'galaxy'})
-        let list=result?.data?.list||[]
+        let list=result||[]
         list=list.map((item)=>({
           id:item.id,
           name:item.title,
@@ -281,7 +281,7 @@ export default {
           s = ''
         }
         const result= yield call(getAnimationByLevel,{currentPage:universeCurrentPage,pageSize:universePageSize,statusName:s,level:'universe'})
-        let list=result?.data?.list||[]
+        let list=result||[]
         list=list.map((item)=>({
           id:item.id,
           name:item.title,

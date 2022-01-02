@@ -102,7 +102,7 @@ const Sw=(props)=>{
     </Swiper>
           <div className={styles.leftMask}></div>
           <div className={styles.rightMask}></div>
-          <div onClick={openDialog} className={styles.contactBtn}><span className={styles.contactText}>CONTACT US</span></div>
+          <div className={styles.contactBtn}><span className={styles.contactText}>CONTACT US</span></div>
         </div>
     )
 }

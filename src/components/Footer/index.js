@@ -83,7 +83,7 @@ const Footer=(props)=>{
            <div onClick={handleSubmit} className={styles.submitButton}>SUBMIT</div></div> : null}
       </Animate>
       <Animate className={styles.anchorContainer} transitionLeave={false} transitionName={'td'}>{isTop?(<span className={styles.anchor} onClick={gotoFooter} key={'bottomAni'} to="footer"><img src="/up.png" className={styles.downIcon} alt="" /></span>):<span className={styles.anchor} onClick={gotoTop} key={'topAni'} to="top"><img src="/up.png" className={styles.upIcon} alt="" /></span>}</Animate>
-      <Animate className={styles.toggleBtn}  transitionLeave={false} transitionName={'toggle'}>{(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <span key={'closeAni'} className={styles.closeBtn}  onClick={closeDialog}><CloseIcon /></span> : <img key={'contactAni'} alt="" src="/contact.png" className={styles.btn}  onClick={openDialog} />}</Animate>
+      {/*<Animate className={styles.toggleBtn}  transitionLeave={false} transitionName={'toggle'}>{(chatToken&&chatVisible)||(!chatToken&&contactVisible) ? <span key={'closeAni'} className={styles.closeBtn}  onClick={closeDialog}><CloseIcon /></span> : <img key={'contactAni'} alt="" src="/contact.png" className={styles.btn}  onClick={openDialog} />}</Animate>*/}
     </div>
   )
 }

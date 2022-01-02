@@ -224,7 +224,7 @@ export default {
             }
             if(!loading){
               const result= yield call(getAnimation,{currentPage,pageSize,statusName:s})
-              let list=result?.data?.list||[]
+              let list=result||[]
               list=list.map((item)=>({
                 id:item.id,
                 name:item.title,
